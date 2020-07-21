@@ -1,4 +1,5 @@
 import React from 'react';
+import './style.css';
 import {Header} from './components/layouts/Header';
 import {Content} from './components/layouts/Content';
 import {Footer} from './components/layouts/Footer';

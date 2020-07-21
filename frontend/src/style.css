@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --font-dark: rgb(19, 15, 83);
+    --white-1: rgb(246, 246, 246);
+    --white-2: rgb(242, 242, 242);
+    --accent-1: rgba(65, 111, 216, 1.0);
+    --accent-1-light: rgb(122, 158, 239);
+    --accent-1-faded: rgb(65, 111, 216);
+    --accent-2: rgb(238, 204, 35);
+    --accent-2-light: rgb(241, 218, 105);
+    --accent-2-faded: rgb(238, 204, 35);
+    --accent-3: rgb(112, 112, 112)
+}
+
+body {
+    font-family: "Nunito", sans-serif;
+    margin: 0;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer #top {
+    background-color: var(--accent-2);
+    display: grid;
+    grid-template-columns: 50% 50%;
+    color: var(--accent-1);
+}
+
+.footer #showcase {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+}
+
+.footer #contact {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 10px;
+}
+
+.contact-label {
+    justify-self: end;
+}
+
+.footer #bottom {
+    background-color: var(--accent-1);
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+    color: var(--white-1);
+}
+
+#authors p {
+    text-align: right;
+}
