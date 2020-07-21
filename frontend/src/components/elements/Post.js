@@ -50,10 +50,9 @@ export class Post extends Component {
                                 attachments.map(att => {
                                     if (att){
                                         return (
-                                            <div key={att.id}>
+                                            <div key={att.id} className={"post-attachment"}>
                                                 <p>{att.title}</p>
-                                                <a href={att.url} rel={"noopener noreferrer"} target={"_blank"}>o </a>
-                                                <a href={att.url} download={att.title} target={"_blank"}> v</a>
+                                                <a href={att.url} rel={"noopener noreferrer"} target={"_blank"}><img src={"images/icon_download.png"} alt={"Pobierz"}/></a>
                                             </div>
                                         )
                                     }
