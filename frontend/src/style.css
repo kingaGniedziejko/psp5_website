@@ -19,6 +19,7 @@ body {
     font-family: "Nunito", sans-serif;
     min-width: 360px;
     margin: 0;
+    padding: 0;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -42,7 +43,6 @@ ul {
 /*}*/
 
 .footer {
-    
     flex-shrink: 0;
     width: 100%;
 }

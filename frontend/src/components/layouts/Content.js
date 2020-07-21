@@ -1,5 +1,6 @@
 import React, {Component} from "react";
-import axios from 'axios';
+import Post from "../elements/Post"
+import axios from "axios";
 
 
 export class Content extends Component {
@@ -19,10 +20,16 @@ export class Content extends Component {
 
     render() {
         console.log(this.state.posts);
-        return (
-            <div>
-                <h1>PSP5</h1>
-            </div>
-        );
+        const {posts, isLoaded} = this.state;
+        if(isLoaded){
+            return (
+                <div>
+                    {posts.map(post => (
+                        <Post key={post.id} post={post} />
+                    ))}
+                </div>
+            );
+        }
+        return <h3>...</h3>;
     }
 }
