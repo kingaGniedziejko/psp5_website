@@ -58,6 +58,10 @@ button.button-accent-2:hover {
     background-color: var(--accent-2-light);
 }
 
+div.post div.post-attachment {
+    background-color: var(--accent-2-light);
+}
+
 /*h1, h2, h3 {*/
 /*    font-family: "Rowdies", cursive;*/
 /*}*/
