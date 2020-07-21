@@ -12,6 +12,7 @@ div.posts-container{
 
 div.post{
     display: flex;
+    flex-wrap: wrap;
     width: 70%;
     margin-bottom: 30px;
     padding: 10px;
@@ -46,10 +47,11 @@ div.post>div>img {
 div.post div.post-attachment{
     max-height: 20px;
     margin: 5px 0;
-    padding: 5px 8px;
+    padding: 5px 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 }
 
 div.post>div>div.post-attachment:first-of-type {
@@ -57,6 +59,7 @@ div.post>div>div.post-attachment:first-of-type {
 }
 
 div.post div.post-attachment p{
+    font-size: 0.9em;
     margin: 0;
     display: inline-block;
 }
