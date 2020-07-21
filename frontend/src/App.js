@@ -6,7 +6,7 @@ import {Footer} from './components/layouts/Footer';
 
 export const App = function() {
     return (
-        <div>
+        <div className={"container"}>
             <Header />
             <Content />
             <Footer />

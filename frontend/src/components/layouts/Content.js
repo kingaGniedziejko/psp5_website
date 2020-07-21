@@ -33,6 +33,10 @@ export class Content extends Component {
                 </div>
             );
         }
-        return <h3><p className={"content"}>Praesent a mauris vulputate, elementum sem vitae, tincidunt ipsum. In arcu odio, faucibus id dolor a, venenatis placerat nisl. Mauris porttitor vitae augue pellentesque placerat. Integer sit amet.</p></h3>;
+        return (
+            <div className={"content"}>
+                <h3>...</h3>
+            </div>
+        );
     }
 }

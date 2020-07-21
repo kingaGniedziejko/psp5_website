@@ -16,12 +16,13 @@
 }
 
 html {
-    height: 100%;
+    min-height: 100vh;
 }
 
 body {
     font-family: "Nunito", sans-serif;
     min-width: 360px;
+    min-height: 100%;
     margin: 0;
     padding: 0;
 
@@ -30,6 +31,11 @@ body {
     min-height: 100%;
     flex-direction: column;
     border-style: dotted;
+}
+
+div.content{
+    width: 100%;
+    min-height: 80vh;
 }
 
 ul {
