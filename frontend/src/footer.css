@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&family=Rowdies:wght@300;400;700&display=swap');
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer #top {
+    background-color: var(--accent-2);
+    color: var(--accent-1);
+    padding: 20px;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    vertical-align: center;
+}
+
+.footer .footer-column {
+    flex: 1;
+
+}
+
+.footer #top #showcase {
+    display: flex;
+    flex-direction: row;
+}
+
+.footer #top #showcase img{
+    width: 120px;
+    margin-right: 5px;
+    align-self: center;
+}
+
+.footer #top #showcase ul{
+    align-self: center;
+}
+
+.footer #emblem {
+    align-self: center;
+    flex: 0;
+}
+
+.footer #emblem img{
+    height: 100px;
+    margin: 0;
+    align-self: center;
+}
+
+.footer #top #contact {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 10px;
+    justify-content: end;
+}
+
+.footer #top #contact .contact-label {
+    justify-self: end;
+}
+
+.footer #bottom {
+    padding: 10px;
+    background-color: var(--accent-1);
+    color: var(--white-1);
+}
+
+.footer #bottom #copyright {
+    vertical-align: center;
+}
+
+.footer #bottom #authors {
+}
+
+.footer #bottom #authors li {
+    text-align: right;
+}
+
+.email {
+    font-size: small;
+}
+
+@media (max-width: 970px) {
+    .footer-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .footer #top #showcase {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .footer #top #showcase img{
+        margin: 0;
+        align-self: center;
+    }
+
+    .footer #top #showcase ul{
+        align-self: center;
+        text-align: center;
+        padding-bottom: 20px;
+    }
+
+    .footer #top #contact {
+        justify-content: center;
+    }
+
+    .footer #top #contact .contact-label {
+        justify-self: end;
+    }
+
+    .footer #bottom #copyright {
+        padding: 0;
+        margin: 0;
+    }
+
+    .footer #bottom {
+        text-align: center;
+    }
+
+    .footer #bottom #authors li {
+        text-align: center;
+    }
+}

@@ -23,7 +23,7 @@ export class Content extends Component {
         const {posts, isLoaded} = this.state;
         if(isLoaded){
             return (
-                <div>
+                <div className={"content"}>
                     {posts.map(post => (
                         <Post key={post.id} post={post} />
                     ))}
