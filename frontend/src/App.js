@@ -8,9 +8,7 @@ export const App = function() {
     return (
         <div>
             <Header />
-            <div>
-                <Content />
-            </div>
+            <Content />
             <Footer />
         </div>
     );

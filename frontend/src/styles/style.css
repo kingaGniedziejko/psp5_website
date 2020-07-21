@@ -15,22 +15,19 @@
     --accent-3: rgb(112, 112, 112)
 }
 
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+
 body {
     font-family: "Nunito", sans-serif;
     min-width: 360px;
-    min-height: 100%;
+    position: relative;
     margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-.page-container {
-}
-
-.content-wrap {
-    flex: 1 0 auto;
+    padding: 0 0 0;
+    min-height: 100%;
 }
 
 ul {
@@ -65,129 +62,3 @@ div.post div.post-attachment {
 /*h1, h2, h3 {*/
 /*    font-family: "Rowdies", cursive;*/
 /*}*/
-
-.footer {
-    flex-shrink: 0;
-    width: 100%;
-}
-
-.footer #top {
-    background-color: var(--accent-2);
-    color: var(--accent-1);
-    padding: 20px;
-}
-
-.footer-container {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    vertical-align: center;
-}
-
-.footer .footer-column {
-    flex: 1;
-
-}
-
-.footer #top #showcase {
-    display: flex;
-    flex-direction: row;
-}
-
-.footer #top #showcase img{
-    width: 120px;
-    margin-right: 5px;
-    align-self: center;
-}
-
-.footer #top #showcase ul{
-    align-self: center;
-}
-
-.footer #emblem {
-    align-self: center;
-    flex: 0;
-}
-
-.footer #emblem img{
-    height: 100px;
-    margin: 0;
-    align-self: center;
-}
-
-.footer #top #contact {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-column-gap: 10px;
-    justify-content: end;
-}
-
-.footer #top #contact .contact-label {
-    justify-self: end;
-}
-
-.footer #bottom {
-    padding: 10px;
-    background-color: var(--accent-1);
-    color: var(--white-1);
-}
-
-.footer #bottom #copyright {
-    vertical-align: center;
-}
-
-.footer #bottom #authors {
-}
-
-.footer #bottom #authors li {
-    text-align: right;
-}
-
-.email {
-    font-size: small;
-}
-
-@media (max-width: 970px) {
-    .footer-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .footer #top #showcase {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .footer #top #showcase img{
-        margin: 0;
-        align-self: center;
-    }
-
-    .footer #top #showcase ul{
-        align-self: center;
-        text-align: center;
-        padding-bottom: 20px;
-    }
-
-    .footer #top #contact {
-        justify-content: center;
-    }
-
-    .footer #top #contact .contact-label {
-        justify-self: end;
-    }
-
-    .footer #bottom #copyright {
-        padding: 0;
-        margin: 0;
-    }
-
-    .footer #bottom {
-        text-align: center;
-    }
-
-    .footer #bottom #authors li {
-        text-align: center;
-    }
-}
