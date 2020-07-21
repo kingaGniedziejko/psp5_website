@@ -6,7 +6,8 @@ export class Post extends Component {
     state = {
         imgUrl: '',
         isLoaded: false,
-        isExpanded: false
+        isExpanded: false,
+        excerptLength: 190
     }
 
     static propTypes = {
@@ -30,7 +31,8 @@ export class Post extends Component {
     }
 
     render() {
-        const {title, date, excerpt, content, acf} = this.props.post;
+        const {title, date, content, acf} = this.props.post;
+        const excerpt = content.rendered.substring(0, this.state.excerptLength)+"...";
         const {imgUrl, isLoaded, isExpanded} = this.state;
         const attachments = [
             acf.attachment1,
@@ -63,7 +65,7 @@ export class Post extends Component {
                     <div>
                         <h2 className={"post-title"}>{title.rendered}</h2>
                         <small className={"post-date"}>{date}</small>
-                        <p className={"post-text"} dangerouslySetInnerHTML={{ __html: isExpanded ? content.rendered : excerpt.rendered}} />
+                        <p className={"post-text"} dangerouslySetInnerHTML={{ __html: isExpanded ? content.rendered : excerpt}} />
                         <button className={"post-button button-accent-2"} onClick={this.extendButtonClick.bind(this)}>{isExpanded ? "mniej" : "więcej"}</button>
                     </div>
                 </div>

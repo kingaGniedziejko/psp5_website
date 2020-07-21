@@ -74,10 +74,21 @@ div.post div button{
     justify-self: flex-end;
 }
 
-div.post div:last-child p{
+div.post div:last-child>p{
     flex: 2;
 }
 
+div.post div:last-child>p>p{
+    margin: 0;
+}
+
 div.post div:last-child h2{
-    margin-top: 0;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+@media only screen and (max-width: 680px) {
+    div.post{
+        width: 90%;
+    }
 }

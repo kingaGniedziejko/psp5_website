@@ -30,7 +30,6 @@ body {
     display: flex;
     min-height: 100%;
     flex-direction: column;
-    border-style: dotted;
 }
 
 div.content{
