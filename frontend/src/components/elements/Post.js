@@ -42,7 +42,7 @@ export class Post extends Component {
 
         if (isLoaded){
             return (
-                <div>
+                <div className={"post"}>
                     <div>
                         <img src={imgUrl} alt={title.rendered}/>
                         {
@@ -65,7 +65,7 @@ export class Post extends Component {
                         <h2 className={"post-title"}>{title.rendered}</h2>
                         <small className={"post-date"}>{date}</small>
                         <p className={"post-text"} dangerouslySetInnerHTML={{ __html: isExpanded ? content.rendered : excerpt.rendered}} />
-                        <button className={"post-button"} onClick={this.extendButtonClick.bind(this)}>{isExpanded ? "mniej" : "więcej"}</button>
+                        <button className={"post-button button-accent-2"} onClick={this.extendButtonClick.bind(this)}>{isExpanded ? "mniej" : "więcej"}</button>
                     </div>
                 </div>
             );

@@ -1,0 +1,57 @@
+div.content{
+    width: 100%;
+    min-height: 100%;
+}
+
+div.posts-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5%;
+}
+
+div.post{
+    display: flex;
+    width: 70%;
+    margin-bottom: 30px;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+div.post:last-child{
+    margin-bottom: 0;
+}
+
+div.post div:first-child{
+    flex: 1;
+}
+
+div.post div:last-child{
+    flex: 3;
+}
+
+div.post div {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+div.post div img {
+    width: 200px;
+    height: 200px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    object-fit: cover;
+}
+
+div.post div button{
+    align-self: flex-end;
+    justify-self: flex-end;
+}
+
+div.post div:last-child p{
+    flex: 2;
+}
+
+div.post div:last-child h2{
+    margin-top: 0;
+}

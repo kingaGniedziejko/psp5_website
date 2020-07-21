@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import "../../styles/content_style.css"
 import Post from "../elements/Post"
 import axios from "axios";
 
@@ -23,10 +24,12 @@ export class Content extends Component {
         const {posts, isLoaded} = this.state;
         if(isLoaded){
             return (
-                <div>
-                    {posts.map(post => (
-                        <Post key={post.id} post={post} />
-                    ))}
+                <div className={"content"}>
+                    <div className={"posts-container"}>
+                        {posts.map(post => (
+                            <Post key={post.id} post={post} />
+                        ))}
+                    </div>
                 </div>
             );
         }
