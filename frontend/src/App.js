@@ -6,9 +6,11 @@ import {Footer} from './components/layouts/Footer';
 
 export const App = function() {
     return (
-        <div id={"container"}>
+        <div>
             <Header />
-            <Content />
+            <div>
+                <Content />
+            </div>
             <Footer />
         </div>
     );

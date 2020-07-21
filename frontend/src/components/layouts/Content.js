@@ -21,7 +21,7 @@ export class Content extends Component {
         console.log(this.state.posts);
         return (
             <div>
-
+                <h1>PSP5</h1>
             </div>
         );
     }
