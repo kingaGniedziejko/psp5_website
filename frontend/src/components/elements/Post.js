@@ -58,7 +58,7 @@ export class Post extends Component {
                                                 return (
                                                     <div key={att.id} className={"post-attachment"}>
                                                         <p>{att.title}</p>
-                                                        <a href={att.url} rel={"noopener noreferrer"} target={"_blank"}><img src={"images/icon_download.png"} alt={"Pobierz"}/></a>
+                                                        <a href={att.url} rel={"noopener noreferrer"} target={"_blank"}><div className={"attachment-download"}/></a>
                                                     </div>
                                                 )
                                             }
