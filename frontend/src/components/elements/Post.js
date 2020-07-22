@@ -48,18 +48,22 @@ export class Post extends Component {
                     <div>
                         <img src={imgUrl} alt={title.rendered}/>
                         {
-                            isExpanded ?
-                                attachments.map(att => {
-                                    if (att){
-                                        return (
-                                            <div key={att.id} className={"post-attachment"}>
-                                                <p>{att.title}</p>
-                                                <a href={att.url} rel={"noopener noreferrer"} target={"_blank"}><img src={"images/icon_download.png"} alt={"Pobierz"}/></a>
-                                            </div>
-                                        )
-                                    }
-                                })
-                            : ""
+                            isExpanded ? <div>
+                                {
+                                    isExpanded ?
+                                        attachments.map(att => {
+                                            if (att){
+                                                return (
+                                                    <div key={att.id} className={"post-attachment"}>
+                                                        <p>{att.title}</p>
+                                                        <a href={att.url} rel={"noopener noreferrer"} target={"_blank"}><img src={"images/icon_download.png"} alt={"Pobierz"}/></a>
+                                                    </div>
+                                                )
+                                            }
+                                        })
+                                        : ""
+                                }
+                            </div> : ""
                         }
                     </div>
                     <div>

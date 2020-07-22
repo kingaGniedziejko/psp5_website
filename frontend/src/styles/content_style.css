@@ -29,6 +29,7 @@ div.post>div:first-child{
 
 div.post>div:last-child{
     flex: 3;
+    min-width: 300px;
 }
 
 div.post>div {
@@ -46,7 +47,7 @@ div.post>div>img {
 
 div.post div.post-attachment{
     max-height: 20px;
-    margin: 5px 0;
+    margin: 10px 0;
     padding: 5px 10px;
     display: flex;
     flex-direction: row;
@@ -54,7 +55,7 @@ div.post div.post-attachment{
     align-items: center;
 }
 
-div.post>div>div.post-attachment:first-of-type {
+div.post>div>div>div.post-attachment:first-of-type {
     margin-top: 20px;
 }
 
@@ -87,8 +88,53 @@ div.post div:last-child h2{
     margin-bottom: 5px;
 }
 
-@media only screen and (max-width: 680px) {
+
+@media only screen and (min-width: 1300px) {
+    div.post>div>img {
+        width: 100%;
+        min-width: 200px;
+    }
+}
+
+@media only screen and (max-width: 960px) {
+    div.post{
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 750px) {
     div.post{
         width: 90%;
     }
 }
+
+@media only screen and (max-width: 666px) {
+    div.post>div:first-child{
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    div.post>div:first-child>div{
+        flex: 1;
+    }
+
+    div.post>div>img {
+        width: 100%;
+        min-width: 200px;
+    }
+
+    div.post>div:first-child>div{
+        min-width: 70px;
+    }
+
+}
+
+@media only screen and (max-width: 370px) {
+    div.post>div:last-child{
+        min-width: 200px;
+    }
+}
+
+
