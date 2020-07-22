@@ -65,16 +65,21 @@ div.post div.post-attachment {
     background-color: var(--accent-2-light);
 }
 
+div.post h2{
+    font-family: "Nunito", sans-serif;
+}
+
 h1, h2, h3 {
     font-family: "Rowdies", cursive;
 }
 
-a:link {
-}
-
-a:visited {
+a:link, a:visited {
     color: var(--accent-1);
 }
+
+/*a:visited {*/
+/*    color: var(--font-dark);*/
+/*}*/
 
 a:hover {
     color: var(--accent-1-light);
