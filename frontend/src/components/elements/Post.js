@@ -1,4 +1,6 @@
 import React, {Component} from "react";
+import Moment from 'react-moment';
+import 'moment/locale/pl';
 import PropTypes from "prop-types";
 import axios from "axios";
 
@@ -68,7 +70,7 @@ export class Post extends Component {
                     </div>
                     <div>
                         <h2 className={"post-title"}>{title.rendered}</h2>
-                        <small className={"post-date"}>{date}</small>
+                        <small className={"post-date"}><Moment locale={"pl"} format="DD MMMM YYYYr. HH:mm">{date}</Moment></small>
                         <p className={"post-text"} dangerouslySetInnerHTML={{ __html: isExpanded ? content.rendered : excerpt}} />
                         <button className={"post-button button-accent-2"} onClick={this.extendButtonClick.bind(this)}>{isExpanded ? "mniej" : "więcej"}</button>
                     </div>
