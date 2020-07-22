@@ -5,7 +5,7 @@
     --font-dark: rgb(19, 15, 83);
     --white-1: rgb(246, 246, 246);
     --white-2: rgb(242, 242, 242);
-    --accent-1: rgba(65, 111, 216, 1.0);
+    --accent-1: rgb(65, 111, 216);
     /*--accent-1: rgb(0, 82, 165);// <- podoba mi sie ten */
     --accent-1-light: rgb(122, 158, 239);
     --accent-1-faded: rgb(65, 111, 216);
@@ -25,11 +25,10 @@ body {
     min-height: 100%;
     margin: 0;
     padding: 0;
-
-
     display: flex;
     min-height: 100%;
     flex-direction: column;
+    background-color: var(--white-1);
 }
 
 div.content{
@@ -66,6 +65,21 @@ div.post div.post-attachment {
     background-color: var(--accent-2-light);
 }
 
-/*h1, h2, h3 {*/
-/*    font-family: "Rowdies", cursive;*/
-/*}*/
+h1, h2, h3 {
+    font-family: "Rowdies", cursive;
+}
+
+a:link {
+}
+
+a:visited {
+    color: var(--accent-1);
+}
+
+a:hover {
+    color: var(--accent-1-light);
+}
+
+a:active {
+    font-weight: bold;
+}
