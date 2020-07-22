@@ -26,6 +26,7 @@
     flex: 1;
 }
 
+
 .footer #top #showcase {
     display: flex;
     flex-direction: row;
@@ -47,20 +48,35 @@
 }
 
 .footer #emblem img{
-    height: 100px;
+    height: 150px;
     margin: 0;
     align-self: center;
 }
 
 .footer #top #contact {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-column-gap: 10px;
-    justify-content: end;
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
 }
 
-.footer #top #contact .contact-label {
-    justify-self: end;
+.footer #top #contact #labels li {
+    margin-right: 1em;
+}
+
+.footer #top #contact .inline-label {
+    display: none;
+}
+
+.footer #top #links {
+    text-align: right;
+}
+
+.footer #top #links h3 {
+    margin-block-start: 0;
+}
+
+.footer #top #links a img {
+    margin-block-start: 1em;
 }
 
 .footer #bottom {
@@ -104,15 +120,37 @@
     .footer #top #showcase ul{
         align-self: center;
         text-align: center;
-        padding-bottom: 20px;
     }
 
     .footer #top #contact {
         justify-content: center;
+        text-align: center;
     }
 
-    .footer #top #contact .contact-label {
-        justify-self: end;
+    .footer #top #contact #labels  {
+        display: none;
+    }
+
+    .footer #top #contact .inline-label {
+        display: inline;
+    }
+
+    .footer #emblem img{
+        display: none;
+    }
+
+    .footer #top #links {
+        text-align: center;
+    }
+
+    .footer #top h3 {
+        text-align: center;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+    }
+
+    .footer #top #links h3 {
+        margin-block-start: 1em;
     }
 
     .footer #bottom #copyright {
