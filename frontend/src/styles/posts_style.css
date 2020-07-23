@@ -1,0 +1,154 @@
+div.posts-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5%;
+}
+
+div.post{
+    display: flex;
+    flex-wrap: wrap;
+    width: 70%;
+    margin-bottom: 30px;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+div.post.post-left {
+    flex-direction: row-reverse;
+}
+
+div.post:last-child{
+    margin-bottom: 0;
+}
+
+div.post>div:first-child{
+    flex: 1;
+}
+
+div.post>div:last-child{
+    flex: 3;
+    min-width: 200px;
+}
+
+div.post>div {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+div.post>div>img {
+    width: 100%;
+    min-width: 150px;
+    height: 150px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    object-fit: cover;
+}
+
+div.post div.attachment{
+    max-height: 20px;
+    margin: 10px 0;
+    padding: 5px 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+div.post>div>div>div.post-attachment:first-of-type {
+    margin-top: 20px;
+}
+
+div.post div.attachment p{
+    font-size: 0.8em;
+    margin: 0;
+    display: inline-block;
+}
+
+div.post div.attachment a div.attachment-download{
+    width: 10px;
+    height: 10px;
+    background: url(../images/icon_download.png) no-repeat;
+    background-size: contain;
+}
+
+div.post div.attachment a div.attachment-download:hover{
+    background: url(../images/icon_download_light.png) no-repeat;
+    background-size: contain;
+}
+
+div.post div button{
+    align-self: flex-end;
+    justify-self: flex-end;
+}
+
+div.post.post-left div button {
+    align-self: flex-start;
+}
+
+div.post div:last-child>p{
+    flex: 2;
+}
+
+div.post div:last-child>p>p{
+    margin: 0;
+    display: inline;
+}
+
+div.post div:last-child h2{
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+@media only screen and (min-width: 1600px) {
+    div.post>div:last-child{
+        flex: 4;
+    }
+}
+
+@media only screen and (min-width: 1300px) {
+    div.post>div>img {
+        width: 100%;
+        min-width: 150px;
+    }
+}
+
+@media only screen and (max-width: 960px) {
+    div.post{
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    div.post{
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 666px) {
+    div.post>div:first-child>div{
+        flex: 1;
+    }
+
+    div.post>div>img {
+        width: 100%;
+        min-width: 200px;
+    }
+
+    div.post>div:first-child>div{
+        min-width: 70px;
+    }
+
+}
+
+@media only screen and (max-width: 543px) {
+    div.post.post-left div button {
+        align-self: flex-end;
+    }
+}
+
+@media only screen and (max-width: 370px) {
+    div.post>div:last-child{
+        min-width: 200px;
+    }
+}
