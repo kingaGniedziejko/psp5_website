@@ -10,7 +10,7 @@
     margin: 0 auto;
     display: flex;
     flex-direction: row;
-    /*align-items: stretch;*/
+    align-items: center;
     vertical-align: center;
 }
 
@@ -24,9 +24,10 @@
     background-color: var(--accent-2);
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
-.header #ribbon #ribbon-contact {
+.header #ribbon #ribbon-contact, #ribbon-links {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -36,6 +37,12 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-inline-start: 0.5em;
+    margin-inline-end: 0.5em;
+}
+
+#ribbon svg {
+    height: 1.5em;
 }
 
 .header #showcase {

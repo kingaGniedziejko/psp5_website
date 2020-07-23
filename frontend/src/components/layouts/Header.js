@@ -1,7 +1,9 @@
 import React from "react";
 import "../../styles/header_style.css";
-import { ReactComponent as IconPhone } from 'phone.svg';
-
+import { ReactComponent as IconPhone } from '../../images/phone.svg';
+import { ReactComponent as IconMail } from '../../images/mail.svg';
+import { ReactComponent as IconFacebook } from '../../images/facebook.svg';
+import { ReactComponent as IconYoutube } from '../../images/youtube.svg';
 import {Button} from "../elements/Button"
 
 
@@ -24,29 +26,24 @@ export const Header = () => (
         <div id={"ribbon"}>
             <div id={"ribbon-contact"}>
                 <div className={"ribbon-data"}>
-                    <img
-                        src={'images/phone.png'}
-                        alt={"Tel"}
-                    />
+                    <IconPhone />
                     <a type={"tel"}>77 545 32 23</a>
                 </div>
 
                 <div className={"ribbon-data"}>
-                    <img
-                        src={'images/phone.png'}
-                        alt={"Tel"}
-                    />
+                    <IconPhone />
                     <a type={"tel"}>77 545 32 24</a>
                 </div>
 
                 <div className={"ribbon-data"}>
-                    <img
-                        src={'images/mail.png'}
-                        alt={"Mail"}
-                    />
+                    <IconMail />
                     <a type={"email"}>psp5@psp5.opole.pl</a>
                 </div>
+            </div>
 
+            <div id={"ribbon-links"}>
+                <IconFacebook />
+                <IconYoutube />
             </div>
         </div>
 
