@@ -6,6 +6,8 @@
     margin-top: 50px;
     bottom: 0;
     width: 100%;
+    box-shadow: 0 -4px 8px 0 rgba(0, 0, 0, 0.2);
+
 }
 
 .footer h3 {
@@ -106,12 +108,14 @@ a:active {
     color: var(--white-1);
 }
 
+.footer #divider {
+    height: 0.5em;
+    background-color: var(--accent-2-light);
+}
+
 .footer #bottom #copyright {
     display: flex;
     align-items: center;
-}
-
-.footer #bottom #authors {
 }
 
 .footer #bottom #authors li {
@@ -121,7 +125,6 @@ a:active {
 .email {
     font-size: small;
 }
-
 
 @media (max-width: 970px) {
     .footer-container {

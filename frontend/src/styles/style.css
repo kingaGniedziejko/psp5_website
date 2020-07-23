@@ -12,7 +12,7 @@
     --accent-2: rgb(238, 204, 35);
     --accent-2-light: rgb(241, 218, 105);
     --accent-2-faded: rgb(238, 204, 35);
-    --accent-3: rgb(112, 112, 112)
+    --accent-3: rgba(112, 112, 112, 0.78)
 }
 
 html {

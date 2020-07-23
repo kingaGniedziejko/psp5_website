@@ -70,6 +70,10 @@ export const Footer = () => (
             </div>
         </div>
 
+        <div id={"divider"}>
+
+        </div>
+
         <div id="bottom">
             <div className={"footer-container"}>
                 <div id={"copyright"} className={"footer-column"}>
