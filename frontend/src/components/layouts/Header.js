@@ -1,6 +1,6 @@
 import React from "react";
 import "../../styles/header_style.css";
-// import { ReactComponent as IconPhone } from '%PUBLIC_URL%/phone.svg';
+import { ReactComponent as IconPhone } from 'phone.svg';
 
 import {Button} from "../elements/Button"
 

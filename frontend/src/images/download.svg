@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="28" height="33" viewBox="0 0 28 33">
+  <defs>
+    <clipPath id="clip-download">
+      <rect width="28" height="33"/>
+    </clipPath>
+  </defs>
+  <g id="download" clip-path="url(#clip-download)">
+    <g id="Icon_material-file-download" transform="translate(3.2 4.25)">
+      <path id="Icon_material-file-download-2" d="M28.5,13.5h-6v-9h-9v9h-6L18,24ZM7.5,27v3h21V27Z" transform="translate(-7.5 -4.5)" fill="#130f53"/>
+    </g>
+  </g>
+</svg>
