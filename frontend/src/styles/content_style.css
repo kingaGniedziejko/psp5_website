@@ -19,6 +19,10 @@ div.post{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+div.post.post-left {
+    flex-direction: row-reverse;
+}
+
 div.post:last-child{
     margin-bottom: 0;
 }
@@ -83,6 +87,10 @@ div.post div button{
     justify-self: flex-end;
 }
 
+div.post.post-left div button {
+    align-self: flex-start;
+}
+
 div.post div:last-child>p{
     flex: 2;
 }
@@ -96,6 +104,11 @@ div.post div:last-child h2{
     margin-bottom: 5px;
 }
 
+@media only screen and (min-width: 1600px) {
+    div.post>div:last-child{
+        flex: 4;
+    }
+}
 
 @media only screen and (min-width: 1300px) {
     div.post>div>img {
@@ -130,6 +143,12 @@ div.post div:last-child h2{
         min-width: 70px;
     }
 
+}
+
+@media only screen and (max-width: 543px) {
+    div.post.post-left div button {
+        align-self: flex-end;
+    }
 }
 
 @media only screen and (max-width: 370px) {

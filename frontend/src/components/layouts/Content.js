@@ -22,13 +22,17 @@ export class Content extends Component {
     render() {
         console.log(this.state.posts);
         const {posts, isLoaded} = this.state;
+        var postNr = -1;
+
         if(isLoaded){
             return (
                 <div className={"content"}>
                     <div className={"posts-container"}>
-                        {posts.map(post => (
-                            <Post key={post.id} post={post} />
-                        ))}
+                        {posts.map(post => {
+                            postNr = postNr+1;
+                            console.log(postNr);
+                            return <Post key={post.id} post={post} postNr={postNr} />;
+                        })}
                     </div>
                 </div>
             );

@@ -13,7 +13,8 @@ export class Post extends Component {
     }
 
     static propTypes = {
-        post: PropTypes.object.isRequired
+        post: PropTypes.object.isRequired,
+        postNr: PropTypes.number
     }
 
     componentDidMount() {
@@ -34,6 +35,7 @@ export class Post extends Component {
 
     render() {
         const {title, date, content, acf} = this.props.post;
+        const {postNr} = this.props;
         const excerpt = content.rendered.substring(0, this.state.excerptLength)+"...";
         const {imgUrl, isLoaded, isExpanded} = this.state;
         const attachments = [
@@ -43,10 +45,11 @@ export class Post extends Component {
             acf.attachment4,
             acf.attachment5
         ];
+        const postDirection = postNr%2;
 
         if (isLoaded){
             return (
-                <div className={"post"}>
+                <div className={"post " + (postDirection ? "post-left" : "post-right")}>
                     <div>
                         <img src={imgUrl} alt={title.rendered}/>
                         {
