@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="35" height="32" viewBox="0 0 35 32">
+  <defs>
+    <clipPath id="clip-cross">
+      <rect width="35" height="32"/>
+    </clipPath>
+  </defs>
+  <g id="cross" clip-path="url(#clip-cross)">
+    <path id="Icon_material-close" data-name="Icon material-close" d="M33.5,10.119,30.881,7.5,20.5,17.881,10.119,7.5,7.5,10.119,17.881,20.5,7.5,30.881,10.119,33.5,20.5,23.119,30.881,33.5,33.5,30.881,23.119,20.5Z" transform="translate(-2.5 -4.5)" fill="#f2f2f2"/>
+  </g>
+</svg>

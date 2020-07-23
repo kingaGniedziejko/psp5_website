@@ -3,6 +3,7 @@
 
 .header {
     background-color: var(--accent-1);
+    position: relative;
 }
 
 .header-container {
@@ -12,28 +13,27 @@
     flex-direction: row;
     align-items: center;
     vertical-align: center;
+    justify-content: space-between;
+}
+
+.header #mobile-menu, #short-showcase {
+    display: none;
 }
 
 .header #ribbon {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 0.5em;
+    padding: 0.5em 1em;
     border-bottom-left-radius: 10em;
+    border-bottom-right-radius: 10em;
     align-self: end;
     background-color: var(--accent-2);
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
 }
+
 
 .header #ribbon #ribbon-contact, #ribbon-links {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.ribbon-data {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -41,9 +41,35 @@
     margin-inline-end: 0.5em;
 }
 
+/*#ribbon-links {*/
+/*    margin-inline-start: 5em;*/
+/*}*/
+
+.ribbon-data {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-inline-end: 0.5em;
+}
+
+#ribbon a {
+    height: 1.5em;
+    margin: 0;
+}
+
 #ribbon svg {
     height: 1.5em;
+    margin: 0;
 }
+
+#ribbon .image-button path{
+    fill: var(--font-dark);
+}
+
+#ribbon .image-button path:hover {
+    fill: var(--accent-1);
+}
+
 
 .header #showcase {
     display: flex;
@@ -52,13 +78,66 @@
 
 .header #showcase img{
     margin: 0.5em;
-    width: 120px;
+    width: 100px;
     align-self: center;
 }
 
 .header #showcase ul#school-name{
     color: var(--white-1);
     font-family: Rowdies, cursive;
+    font-size: larger;
     font-weight: lighter;
     align-self: center;
+}
+
+@media (max-width: 1200px) {
+
+    .header #ribbon {
+        border-bottom-right-radius: 0;
+    }
+}
+
+/*@media (max-width: 1200px) {*/
+
+/*    #ribbon-links {*/
+/*        margin-inline-start: 2em;*/
+/*    }*/
+/*}*/
+
+@media (max-width: 975px) {
+
+    .header #mobile-menu {
+        display: block;
+    }
+
+    .header #mobile-menu svg {
+        height: 1.5em;
+        width: 1.5em;
+        margin: 0.5em;
+        stroke-width: 5;
+    }
+
+    .header #mobile-menu svg path {
+        stroke-width: 5;
+    }
+
+    .header #ribbon {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    #short-showcase {
+        display: block;
+        color: var(--white-1);
+        font-family: Rowdies, cursive;
+        font-size: larger;
+        font-weight: lighter;
+        align-self: center;
+    }
+
+    .header #showcase {
+        display: none;
+    }
+
 }

@@ -1,5 +1,7 @@
 import React from "react";
 import "../../styles/footer_style.css"
+import { ReactComponent as LogoBip } from '../../images/bip.svg';
+
 
 export const Footer = () => (
     // "Footer"
@@ -59,10 +61,7 @@ export const Footer = () => (
                         <li><a href="https://poczta22688.domeny.host/" rel="noopener noreferrer" target="_blank">Poczta pracownicza</a></li>
                         <li><a href="" rel="noopener noreferrer" target="_blank">Administrator</a></li>
                         <li><a href="https://psp5-opole.ssdip.bip.gov.pl/" rel="noopener noreferrer" target="_blank">
-                            <img
-                            src={'images/bip.png'}
-                            alt={"Bielutyn Informacji Publicznej"}
-                            />
+                            <LogoBip />
                         </a></li>
 
                     </ul>
