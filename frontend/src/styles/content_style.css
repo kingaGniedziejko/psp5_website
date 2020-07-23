@@ -16,16 +16,17 @@ div.content div.photo {
 
 div.content div.photo-1 {
     background-image: url(../images/photo_home_1.jpg);
-    height: 50vh;
+    height: 400px;
 }
 
 div.content div.photo-2 {
     background-image: url(../images/photo_home_2.jpg);
-    height: 30vh;
+    height: 200px;
 }
 
 div.content div#shortcut {
     width: 90%;
+    max-width: 1200px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
