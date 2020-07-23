@@ -20,7 +20,7 @@ export const Footer = () => (
                         </ul>
                     </div>
 
-                   <h3>KONTAKT</h3>
+                   <h3>Kontakt</h3>
                    <div id={"contact"}>
 
 
@@ -34,9 +34,9 @@ export const Footer = () => (
 
                         <ul id={"data"}>
                             <li className={"contact-data"}><a className={"inline-label"}>(Adres) </a>ul. Majora Hubala 2, 45-267 Opole</li>
-                            <li className={"contact-data"}><a className={"inline-label"}>(Tel) </a>77 545 32 23, 77 545 32 24</li>
+                            <li className={"contact-data"}><a className={"inline-label"}>(Tel) </a><a type={"tel"}>77 545 32 23</a>, <a type={"tel"}>77 545 32 24</a></li>
                             <li className={"contact-data"}><a className={"inline-label"}>(Fax) </a>77 40 30 850</li>
-                            <li className={"contact-data"}><a className={"inline-label"}>(Mail) </a>psp5@psp5.opole.pl</li>
+                            <li className={"contact-data"}><a className={"inline-label"}>(Mail) </a><a type={"email"}>psp5@psp5.opole.pl</a></li>
                             <li className={"contact-data"}><a className={"inline-label"}>(NIP) </a>754 315 63 13</li>
                         </ul>
                    </div>
@@ -51,7 +51,7 @@ export const Footer = () => (
                 </div>
 
                 <div id={"links"} className={"footer-column"}>
-                    <h3>LINKI</h3>
+                    <h3>Linki</h3>
                     <ul>
                         <li><a href="" target="_blank">Kontakt</a></li>
                         <li><a href="http://www.kuratorium.opole.pl/" rel="noopener noreferrer" target="_blank">Kuratorium Oświaty w Opolu</a></li>
