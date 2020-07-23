@@ -67,6 +67,7 @@ div.post div.post-attachment {
 
 h1, h2, h3 {
     font-family: "Rowdies", cursive;
+    text-transform: uppercase;
 }
 
 a:link {
