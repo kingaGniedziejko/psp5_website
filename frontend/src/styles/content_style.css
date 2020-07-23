@@ -19,6 +19,10 @@ div.post{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+div.post.post-left {
+    flex-direction: row-reverse;
+}
+
 div.post:last-child{
     margin-bottom: 0;
 }
@@ -29,7 +33,7 @@ div.post>div:first-child{
 
 div.post>div:last-child{
     flex: 3;
-    min-width: 300px;
+    min-width: 200px;
 }
 
 div.post>div {
@@ -39,8 +43,9 @@ div.post>div {
 }
 
 div.post>div>img {
-    width: 200px;
-    height: 200px;
+    width: 100%;
+    min-width: 150px;
+    height: 150px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     object-fit: cover;
 }
@@ -60,19 +65,30 @@ div.post>div>div>div.post-attachment:first-of-type {
 }
 
 div.post div.post-attachment p{
-    font-size: 0.9em;
+    font-size: 0.8em;
     margin: 0;
     display: inline-block;
 }
 
-div.post div.post-attachment a img{
+div.post div.post-attachment a div.attachment-download{
     width: 10px;
     height: 10px;
+    background: url(../images/icon_download.png) no-repeat;
+    background-size: contain;
+}
+
+div.post div.post-attachment a div.attachment-download:hover{
+    background: url(../images/icon_download_light.png) no-repeat;
+    background-size: contain;
 }
 
 div.post div button{
     align-self: flex-end;
     justify-self: flex-end;
+}
+
+div.post.post-left div button {
+    align-self: flex-start;
 }
 
 div.post div:last-child>p{
@@ -88,11 +104,16 @@ div.post div:last-child h2{
     margin-bottom: 5px;
 }
 
+@media only screen and (min-width: 1600px) {
+    div.post>div:last-child{
+        flex: 4;
+    }
+}
 
 @media only screen and (min-width: 1300px) {
     div.post>div>img {
         width: 100%;
-        min-width: 200px;
+        min-width: 150px;
     }
 }
 
@@ -109,13 +130,6 @@ div.post div:last-child h2{
 }
 
 @media only screen and (max-width: 666px) {
-    div.post>div:first-child{
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
     div.post>div:first-child>div{
         flex: 1;
     }
@@ -129,6 +143,12 @@ div.post div:last-child h2{
         min-width: 70px;
     }
 
+}
+
+@media only screen and (max-width: 543px) {
+    div.post.post-left div button {
+        align-self: flex-end;
+    }
 }
 
 @media only screen and (max-width: 370px) {

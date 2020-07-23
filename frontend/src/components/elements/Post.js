@@ -1,4 +1,6 @@
 import React, {Component} from "react";
+import Moment from 'react-moment';
+import 'moment/locale/pl';
 import PropTypes from "prop-types";
 import axios from "axios";
 
@@ -11,7 +13,8 @@ export class Post extends Component {
     }
 
     static propTypes = {
-        post: PropTypes.object.isRequired
+        post: PropTypes.object.isRequired,
+        postNr: PropTypes.number
     }
 
     componentDidMount() {
@@ -32,6 +35,7 @@ export class Post extends Component {
 
     render() {
         const {title, date, content, acf} = this.props.post;
+        const {postNr} = this.props;
         const excerpt = content.rendered.substring(0, this.state.excerptLength)+"...";
         const {imgUrl, isLoaded, isExpanded} = this.state;
         const attachments = [
@@ -41,10 +45,11 @@ export class Post extends Component {
             acf.attachment4,
             acf.attachment5
         ];
+        const postDirection = postNr%2;
 
         if (isLoaded){
             return (
-                <div className={"post"}>
+                <div className={"post " + (postDirection ? "post-left" : "post-right")}>
                     <div>
                         <img src={imgUrl} alt={title.rendered}/>
                         {
@@ -56,7 +61,7 @@ export class Post extends Component {
                                                 return (
                                                     <div key={att.id} className={"post-attachment"}>
                                                         <p>{att.title}</p>
-                                                        <a href={att.url} rel={"noopener noreferrer"} target={"_blank"}><img src={"images/icon_download.png"} alt={"Pobierz"}/></a>
+                                                        <a href={att.url} rel={"noopener noreferrer"} target={"_blank"}><div className={"attachment-download"}/></a>
                                                     </div>
                                                 )
                                             }
@@ -68,7 +73,7 @@ export class Post extends Component {
                     </div>
                     <div>
                         <h2 className={"post-title"}>{title.rendered}</h2>
-                        <small className={"post-date"}>{date}</small>
+                        <small className={"post-date"}><Moment locale={"pl"} format="DD MMMM YYYYr. HH:mm">{date}</Moment></small>
                         <p className={"post-text"} dangerouslySetInnerHTML={{ __html: isExpanded ? content.rendered : excerpt}} />
                         <button className={"post-button button-accent-2"} onClick={this.extendButtonClick.bind(this)}>{isExpanded ? "mniej" : "więcej"}</button>
                     </div>

@@ -4,6 +4,7 @@ import "../../styles/header_style.css";
 
 import {Button} from "../elements/Button"
 
+
 export const Header = () => (
     //"Header"
     <div className={"header"}>
@@ -50,7 +51,4 @@ export const Header = () => (
         </div>
 
     </div>
-
-
-    // <Button text={"Więcej"}/>
 );
