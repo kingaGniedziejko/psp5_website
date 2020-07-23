@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import Post from "../elements/Post"
 import axios from "axios";
 import "../../styles/posts_style.css"
+import PropTypes from "prop-types";
 
 export class PostDisplay extends Component {
     state = {
@@ -20,18 +21,31 @@ export class PostDisplay extends Component {
 
     render() {
         const {posts, isLoaded} = this.state;
-        const {postsCount} = this.props.postsCount;
+        const {postsCount} = this.props;
+
         var postNr = -1;
 
         if(isLoaded){
-            return (
-                <div className={"posts-container"}>
-                    {posts.slice(0, postsCount).map(post => {
-                        postNr = postNr+1;
-                        return <Post key={post.id} post={post} postNr={postNr} />;
-                    })}
-                </div>
-            );
+            if (postsCount === -1) {
+                return (
+                    <div className={"posts-container"}>
+                        {posts.map(post => {
+                            postNr = postNr+1;
+                            return <Post key={post.id} post={post} postNr={postNr} />;
+                        })}
+                    </div>
+                );
+            } else {
+                return (
+                    <div className={"posts-container"}>
+                        {posts.slice(0, postsCount).map(post => {
+                            postNr = postNr+1;
+                            return <Post key={post.id} post={post} postNr={postNr} />;
+                        })}
+                    </div>
+                );
+            }
+
         }
         return <h3>...</h3> ;
     }
