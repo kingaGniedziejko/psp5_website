@@ -117,3 +117,32 @@ a:active {
     font-weight: bold;
     color: var(--accent-1);
 }
+
+div.attachment{
+    max-height: 20px;
+    margin: 10px 0;
+    padding: 5px 10px;
+    background-color: var(--accent-2-light);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+div.attachment p{
+    font-size: 0.8em;
+    margin: 0;
+    display: inline-block;
+}
+
+div.attachment a div.attachment-download{
+    width: 10px;
+    height: 10px;
+    background: url(../images/icon_download.png) no-repeat;
+    background-size: contain;
+}
+
+div.attachment a div.attachment-download:hover{
+    background: url(../images/icon_download_light.png) no-repeat;
+    background-size: contain;
+}
