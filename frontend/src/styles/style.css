@@ -21,7 +21,7 @@ html {
 
 body {
     font-family: "Nunito", sans-serif;
-    font-size: 15px;
+    font-size: 17px;
     min-width: 360px;
     min-height: 100%;
     margin: 0;
@@ -30,6 +30,7 @@ body {
     min-height: 100%;
     flex-direction: column;
     background-color: var(--white-1);
+    color: var(--font-dark);
 }
 
 div.content{
@@ -45,26 +46,32 @@ ul {
 }
 
 button {
-    width: 100px;
     height: auto;
     border-radius: 50px;
-    padding: 8px;
+    padding: 8px 30px;
     font-family: "Rowdies", cursive;
     font-size: 0.8em;
     text-transform: uppercase;
+    white-space: nowrap;
     border: none;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+button.button-accent-1 {
+    background-color: var(--accent-1);
+    color: var(--white-1);
+}
+
+button.button-accent-1:hover {
+    background-color: var(--accent-1-light);
+}
+
 button.button-accent-2 {
     background-color: var(--accent-2);
+    color: var(--font-dark);
 }
 
 button.button-accent-2:hover {
-    background-color: var(--accent-2-light);
-}
-
-div.post div.post-attachment {
     background-color: var(--accent-2-light);
 }
 
@@ -108,4 +115,34 @@ a:hover {
 
 a:active {
     font-weight: bold;
+    color: var(--accent-1);
+}
+
+div.attachment{
+    max-height: 20px;
+    margin: 10px 0;
+    padding: 5px 10px;
+    background-color: var(--accent-2-light);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+div.attachment p{
+    font-size: 0.8em;
+    margin: 0;
+    display: inline-block;
+}
+
+div.attachment a div.attachment-download{
+    width: 10px;
+    height: 10px;
+    background: url(../images/icon_download.png) no-repeat;
+    background-size: contain;
+}
+
+div.attachment a div.attachment-download:hover{
+    background: url(../images/icon_download_light.png) no-repeat;
+    background-size: contain;
 }

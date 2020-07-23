@@ -1,8 +1,9 @@
 div.posts-container{
+    max-width: 1200px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 5%;
+    margin: 20px 5% 30px 5%;
 }
 
 div.post{
@@ -45,36 +46,8 @@ div.post>div>img {
     object-fit: cover;
 }
 
-div.post div.attachment{
-    max-height: 20px;
-    margin: 10px 0;
-    padding: 5px 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
 div.post>div>div>div.post-attachment:first-of-type {
     margin-top: 20px;
-}
-
-div.post div.attachment p{
-    font-size: 0.8em;
-    margin: 0;
-    display: inline-block;
-}
-
-div.post div.attachment a div.attachment-download{
-    width: 10px;
-    height: 10px;
-    background: url(../images/icon_download.png) no-repeat;
-    background-size: contain;
-}
-
-div.post div.attachment a div.attachment-download:hover{
-    background: url(../images/icon_download_light.png) no-repeat;
-    background-size: contain;
 }
 
 div.post div button{
