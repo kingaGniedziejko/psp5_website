@@ -1,5 +1,6 @@
 {
   "name": "psp5_website",
+  "homepage": "http://this.mind-the-web.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -9,10 +10,11 @@
     "axios": "^0.19.2",
     "mdbreact": "^4.27.0",
     "moment": "^2.27.0",
+    "npm-watch": "^0.6.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-router-dom": "^5.2.0",
     "react-moment": "^0.9.7",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1"
   },
   "scripts": {
@@ -36,8 +38,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://192.168.99.100:8000",
   "devDependencies": {
+    "ftp-deploy": "^2.3.7",
     "images": "^3.2.2"
   }
 }
