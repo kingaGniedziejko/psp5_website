@@ -6,6 +6,7 @@ import { ReactComponent as IconFacebook } from '../../images/facebook.svg';
 import { ReactComponent as IconYoutube } from '../../images/youtube.svg';
 import { ReactComponent as IconMenu } from '../../images/menu.svg';
 import { ReactComponent as IconSearch } from '../../images/search.svg';
+import { ReactComponent as IconLogo } from '../../images/logo.svg';
 
 export const Header = () => (
     //"Header"
@@ -14,10 +15,11 @@ export const Header = () => (
             <div id={"mobile-spacer"}/>
                 <div id={"showcase"}>
                     <a href={""}>
-                        <img
-                            src={'images/logo-very-small.png'}
-                            alt={"Logo PSP 5"}
-                        />
+                        {/*<img*/}
+                        {/*    src={'images/logo-very-small.png'}*/}
+                        {/*    alt={"Logo PSP 5"}*/}
+                        {/*/>*/}
+                        <IconLogo />
                     </a>
                     <ul id={"school-name"}>
                         <li>Publiczna Szkoła Podstawowa nr 5</li>
