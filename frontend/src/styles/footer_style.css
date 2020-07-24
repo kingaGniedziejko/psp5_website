@@ -42,8 +42,9 @@
     flex-direction: row;
 }
 
-.footer #top #showcase img{
+.footer #top #showcase svg{
     width: 120px;
+    height: auto;
     margin-right: 5px;
     align-self: center;
 }

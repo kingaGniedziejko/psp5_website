@@ -1,6 +1,7 @@
 import React from "react";
 import "../../styles/footer_style.css"
 import { ReactComponent as LogoBip } from '../../images/bip.svg';
+import {ReactComponent as IconLogo} from "../../images/logo.svg";
 
 
 export const Footer = () => (
@@ -11,10 +12,8 @@ export const Footer = () => (
             <div className={"footer-container"}>
                <div id={"info"} className={"footer-column"}>
                     <div id={"showcase"}>
-                        <img
-                        src={'images/logo-very-small.png'}
-                        alt={"Logo PSP 5"}
-                        />
+                        <IconLogo />
+
                         <ul>
                             <li>Publiczna Szkoła Podstawowa nr 5</li>
                             <li>z Oddziałami Integracyjnymi</li>

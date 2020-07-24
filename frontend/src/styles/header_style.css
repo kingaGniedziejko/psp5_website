@@ -78,11 +78,13 @@
     flex-direction: row;
 }
 
-.header #showcase img{
+.header #showcase svg{
     margin: 0.5em;
     width: 100px;
+    height: auto;
     align-self: center;
 }
+
 
 .header #showcase ul#school-name{
     color: var(--white-1);
@@ -115,7 +117,7 @@
         right: 0;
     }
 
-    .header #showcase img{
+    .header #showcase svg {
         width: 70px;
     }
 
@@ -147,7 +149,7 @@
 
 @media (max-width: 600px) {
 
-    .header #showcase img {
+    .header #showcase svg {
         display: none;
         /*width: 50px;*/
     }
