@@ -7,16 +7,11 @@ import { ReactComponent as IconYoutube } from '../../images/youtube.svg';
 import { ReactComponent as IconMenu } from '../../images/menu.svg';
 import { ReactComponent as IconSearch } from '../../images/search.svg';
 
-import {Button} from "../elements/Button"
-
-
 export const Header = () => (
     //"Header"
     <div className={"header"}>
         <div className={"header-container"}>
             <div id={"mobile-spacer"}/>
-
-
                 <div id={"showcase"}>
                     <a href={""}>
                         <img
@@ -30,9 +25,6 @@ export const Header = () => (
                         <li>im. Karola Musioła w Opolu</li>
                     </ul>
                 </div>
-
-
-
             <div id={"short-showcase"}>PSP nr 5</div>
 
             <div id={"ribbon"}>

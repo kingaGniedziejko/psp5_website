@@ -11,7 +11,7 @@ export class PostDisplay extends Component {
     }
 
     componentDidMount() {
-        axios.get('/wp-json/wp/v2/komunikaty')
+        axios.get('/wp-json/wp/v2/news')
             .then(res => this.setState({
                 posts: res.data,
                 isLoaded: true
@@ -26,25 +26,26 @@ export class PostDisplay extends Component {
         var postNr = -1;
 
         if(isLoaded){
-            if (postsCount === -1) {
-                return (
-                    <div className={"posts-container"}>
-                        {posts.map(post => {
-                            postNr = postNr+1;
-                            return <Post key={post.id} post={post} postNr={postNr} />;
-                        })}
-                    </div>
-                );
-            } else {
-                return (
-                    <div className={"posts-container"}>
-                        {posts.slice(0, postsCount).map(post => {
-                            postNr = postNr+1;
-                            return <Post key={post.id} post={post} postNr={postNr} />;
-                        })}
-                    </div>
-                );
-            }
+            console.log(posts);
+            // if (postsCount === -1) {
+            //     return (
+            //         <div className={"posts-container"}>
+            //             {posts.map(post => {
+            //                 postNr = postNr+1;
+            //                 return <Post key={post.id} post={post} postNr={postNr} />;
+            //             })}
+            //         </div>
+            //     );
+            // } else {
+            //     return (
+            //         <div className={"posts-container"}>
+            //             {posts.slice(0, postsCount).map(post => {
+            //                 postNr = postNr+1;
+            //                 return <Post key={post.id} post={post} postNr={postNr} />;
+            //             })}
+            //         </div>
+            //     );
+            // }
 
         }
         return <h3>...</h3> ;
