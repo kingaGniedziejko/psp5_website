@@ -11,7 +11,7 @@ export class Post extends Component {
         imgUrl: '',
         isLoaded: false,
         isExpanded: false,
-        excerptLength: 190
+        excerptLength: 150
     }
 
     static propTypes = {

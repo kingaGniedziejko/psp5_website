@@ -1,5 +1,6 @@
 div.posts-container{
     max-width: 1200px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -82,7 +83,7 @@ div.post div:last-child h2{
 @media only screen and (min-width: 1300px) {
     div.post>div>img {
         width: 100%;
-        min-width: 150px;
+        min-width: 200px;
     }
 }
 
