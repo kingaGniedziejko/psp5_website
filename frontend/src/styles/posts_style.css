@@ -1,6 +1,6 @@
 div.posts-container{
     max-width: 1200px;
-    width: 100%;
+    width: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
