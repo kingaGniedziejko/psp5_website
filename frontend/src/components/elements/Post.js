@@ -37,8 +37,8 @@ export class Post extends Component {
 
     render() {
         const {title, date, content, acf} = this.props.post;
-        const {postNr} = this.props;
-        const excerpt = content.rendered.substring(0, this.state.excerptLength)+"...";
+        const {text} = acf;
+        const excerpt = text.substring(0, this.state.excerptLength)+"...";
         const {imgUrl, isLoaded, isExpanded} = this.state;
         const attachments = [
             acf.attachment1,
@@ -47,6 +47,8 @@ export class Post extends Component {
             acf.attachment4,
             acf.attachment5
         ];
+
+        const {postNr} = this.props;
         const postDirection = postNr%2;
 
         if (isLoaded){
@@ -65,7 +67,7 @@ export class Post extends Component {
                         <small className={"post-date"}>
                             <Moment locale={"pl"} format="DD MMMM YYYYr. HH:mm">{date}</Moment>
                         </small>
-                        <p className={"post-text"} dangerouslySetInnerHTML={{ __html: isExpanded ? content.rendered : excerpt}} />
+                        <p className={"post-text"} dangerouslySetInnerHTML={{ __html: isExpanded ? text : excerpt}} />
                         <button className={"post-button button-accent-2"}
                                 onClick={this.extendButtonClick.bind(this)}>{isExpanded ? "mniej" : "więcej"}
                         </button>

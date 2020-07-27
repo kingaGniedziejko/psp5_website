@@ -2,50 +2,55 @@ import React, {Component} from "react";
 import Post from "../elements/Post"
 import axios from "axios";
 import "../../styles/posts_style.css"
-import PropTypes from "prop-types";
 
 export class PostDisplay extends Component {
     state = {
         posts: [],
+        categories: [],
         isLoaded: false
     }
 
     componentDidMount() {
-        axios.get('/wp-json/wp/v2/news')
+        const getPosts = axios.get("/wp-json/wp/v2/news");
+        const getCategories = axios.get("/wp-json/wp/v2/categories");
+
+        Promise.all([getPosts, getCategories])
             .then(res => this.setState({
-                posts: res.data,
+                posts: res[0].data,
+                categories: res[1].data,
                 isLoaded: true
             }))
             .catch(err => console.log(err));
     }
 
     render() {
-        const {posts, isLoaded} = this.state;
-        const {postsCount} = this.props;
+        let {posts, categories, isLoaded} = this.state;
+        const {postCategory, postsCount} = this.props;
 
-        var postNr = -1;
+        if (postCategory !== ""){
+            const category = categories.find(cat => cat.name.toLowerCase() === postCategory.toLowerCase());
+            posts = posts.filter(elem => elem.categories[0] === category.id);
+        }
 
         if(isLoaded){
             console.log(posts);
-            // if (postsCount === -1) {
-            //     return (
-            //         <div className={"posts-container"}>
-            //             {posts.map(post => {
-            //                 postNr = postNr+1;
-            //                 return <Post key={post.id} post={post} postNr={postNr} />;
-            //             })}
-            //         </div>
-            //     );
-            // } else {
-            //     return (
-            //         <div className={"posts-container"}>
-            //             {posts.slice(0, postsCount).map(post => {
-            //                 postNr = postNr+1;
-            //                 return <Post key={post.id} post={post} postNr={postNr} />;
-            //             })}
-            //         </div>
-            //     );
-            // }
+            if (postsCount === -1) {
+                return (
+                    <div className={"posts-container"}>
+                        {posts.map((post, index) => {
+                            return <Post key={post.id} post={post} postNr={index} />;
+                        })}
+                    </div>
+                );
+            } else {
+                return (
+                    <div className={"posts-container"}>
+                        {posts.slice(0, postsCount).map((post, index) => {
+                            return <Post key={post.id} post={post} postNr={index} />;
+                        })}
+                    </div>
+                );
+            }
 
         }
         return <h3>...</h3> ;

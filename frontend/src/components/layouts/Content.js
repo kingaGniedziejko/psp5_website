@@ -17,7 +17,7 @@ export class Content extends Component {
 
                 <div className={"photo photo-2"}/>
                 <h1>Komunikaty</h1>
-                <PostDisplay postsCount={this.state.postCount} />
+                <PostDisplay postCategory={"komunikaty"} postsCount={this.state.postCount} />
                 <button className={"button-accent-1"}>Czytaj więcej</button>
             </div>
         );
