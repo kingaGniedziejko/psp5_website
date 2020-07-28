@@ -1,5 +1,7 @@
 import React from "react";
 import "../../styles/header_style.css";
+import "../../styles/menu_style.css";
+
 import Menu from "../elements/Menu";
 import { ReactComponent as IconPhone } from '../../images/phone.svg';
 import { ReactComponent as IconMail } from '../../images/mail.svg';
@@ -26,7 +28,7 @@ export const Header = () => (
                 </div>
             <div id={"short-showcase"}>PSP nr 5</div>
 
-            <div>
+            <div id={"menu-container"}>
                 <div id={"ribbon"}>
                     <div id={"ribbon-contact"}>
                         <div className={"ribbon-data"}>
@@ -51,9 +53,7 @@ export const Header = () => (
                     </div>
                 </div>
 
-                <div id={"navigation"}>
-                    <Menu />
-                </div>
+                <Menu />
             </div>
 
             <div id={"mobile-menu"}>

@@ -13,9 +13,11 @@ export class Submenu extends Component {
                 { child_items !== undefined ?
                     child_items.map(elem => {
                         return (
-                            <li>
-                                <Link to={elem.url}>{elem.title}</Link>
-                            </li>
+                            <Link to={elem.url}>
+                                <li className={"submenu-item"}>
+                                    {elem.title}
+                                </li>
+                            </Link>
                         )
                     })
                     : ""

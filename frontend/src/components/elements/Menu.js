@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import axios from "axios";
 import Submenu from "./Submenu"
+import { ReactComponent as IconHome } from '../../images/home.svg';
+import { ReactComponent as IconSearch } from '../../images/search.svg';
 
 export class Menu extends Component {
     state = {
@@ -24,17 +26,32 @@ export class Menu extends Component {
         if(isLoaded){
             console.log(barItems);
             return (
-                <ul className={"menu"}>
-                    <li><Link to={"/"}>H</Link></li>
-                        {barItems.map((barItem, index) => {
+                <ul id={"menu"}>
+                    <li className={"menu-item"}>
+                        <Link to={"/"}>
+                            <IconHome />
+                        </Link>
+                    </li>
+
+                    {
+                        barItems.map((barItem, index) => {
                             return (
-                                <li>
                                     <Link to={barItem.url}>{barItem.title}</Link>
-                                    <Submenu key={index} barItem={barItem} barItemNo={index} />
-                                </li>
+                                <Link to={barItem.url}>
+                                    <li className={"menu-item"}>
+                                        <div>{barItem.title}</div>
+                                        <Submenu key={index} barItem={barItem} barItemNo={index} />
+                                    </li>
+                                </Link>
                             );
-                        })}
-                    <li><a href={"#"} onClick={console.log("search")}>S</a></li>
+                        })
+                    }
+
+                    <li className={"menu-item"}>
+                        <a href={"#"} onClick={console.log("search")}>
+                            <IconSearch />
+                        </a>
+                    </li>
                 </ul>
             );
         }

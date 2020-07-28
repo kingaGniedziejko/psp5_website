@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&family=Rowdies:wght@300;400;700&display=swap');
+
+#menu {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    text-transform: uppercase;
+    font-size: medium;
+    width: 100%;
+    font-family: Rowdies, cursive;
+}
+
+#menu a:link, #menu a:visited {
+    color: var(--white-1);
+    text-decoration: none;
+}
+
+#menu a:hover {
+    color: var(--accent-2-light);
+}
+
+#menu a:active {
+    font-weight: bold;
+    color: var(--accent-1);
+}
+
+.menu-item {
+    height: 100%;
+}
+
+#menu li div {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+#menu li svg {
+    height: 1.5em;
+}
+
+.submenu {
+    display: none;
+}
+
+.menu-item:hover .submenu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: var(--accent-2-light);
+    font-size: medium;
+}
+
+.menu-item:hover .submenu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: var(--accent-2-light);
+    padding-top: 0.3em;
+    padding-bottom: 0.5em;
+}
+
+.menu-item:hover .submenu li {
+    color: var(--accent-1);
+    padding: 0.4em 0.7em;
+}
+
+.menu-item:hover .submenu li:hover {
+    color: var(--accent-1-light);
+}

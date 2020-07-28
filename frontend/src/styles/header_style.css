@@ -3,7 +3,10 @@
 
 .header {
     background-color: var(--accent-1);
-    position: relative;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -12,14 +15,47 @@
     margin: 0 auto;
     display: flex;
     flex-direction: row;
-    align-items: center;
-    vertical-align: center;
+    align-items: stretch;
     justify-content: space-between;
 }
 
 .header #mobile-menu, #short-showcase, #mobile-spacer {
     display: none;
 }
+
+/* Showcase */
+
+.header #showcase {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.header #showcase svg{
+    margin: 0.5em;
+    width: 100px;
+    height: auto;
+    align-self: center;
+}
+
+
+.header #showcase ul#school-name{
+    color: var(--white-1);
+    font-family: Rowdies, cursive;
+    font-weight: lighter;
+    font-size: larger;
+    align-self: center;
+}
+
+/* Menu container = contact ribbon + menu */
+
+#menu-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Contact ribbon */
 
 .header #ribbon {
     padding: 0.5em 1em;
@@ -42,10 +78,6 @@
     margin-inline-start: 0.5em;
     margin-inline-end: 0.5em;
 }
-
-/*#ribbon-links {*/
-/*    margin-inline-start: 5em;*/
-/*}*/
 
 .ribbon-data {
     display: flex;
@@ -72,27 +104,7 @@
     fill: var(--accent-1);
 }
 
-
-.header #showcase {
-    display: flex;
-    flex-direction: row;
-}
-
-.header #showcase svg{
-    margin: 0.5em;
-    width: 100px;
-    height: auto;
-    align-self: center;
-}
-
-
-.header #showcase ul#school-name{
-    color: var(--white-1);
-    font-family: Rowdies, cursive;
-    font-weight: lighter;
-    font-size: larger;
-    align-self: center;
-}
+/* smaller pc */
 
 @media (max-width: 1200px) {
 
@@ -107,6 +119,8 @@
 /*        margin-inline-start: 2em;*/
 /*    }*/
 /*}*/
+
+/* tablet */
 
 @media (max-width: 1065px) {
 
@@ -146,6 +160,8 @@
         display: none;
     }
 }
+
+/* phone */
 
 @media (max-width: 600px) {
 
