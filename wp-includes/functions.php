@@ -1,4 +1,17 @@
 <?php
+
+function get_main_menu() {
+    # Change 'menu' to your own navigation slug.
+    return wp_get_nav_menu_items('menu-glowne');
+}
+
+add_action( 'rest_api_init', function () {
+        register_rest_route('/menus', array(
+        'methods' => 'GET',
+        'callback' => 'get_main_menu',
+    ));
+});
+
 /**
  * Main WordPress API
  *

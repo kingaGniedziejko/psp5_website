@@ -1,5 +1,6 @@
 import React from "react";
 import "../../styles/header_style.css";
+import NavigationBar from "../elements/NavigationBar";
 import { ReactComponent as IconPhone } from '../../images/phone.svg';
 import { ReactComponent as IconMail } from '../../images/mail.svg';
 import { ReactComponent as IconFacebook } from '../../images/facebook.svg';
@@ -15,10 +16,6 @@ export const Header = () => (
             <div id={"mobile-spacer"}/>
                 <div id={"showcase"}>
                     <a href={""}>
-                        {/*<img*/}
-                        {/*    src={'images/logo-very-small.png'}*/}
-                        {/*    alt={"Logo PSP 5"}*/}
-                        {/*/>*/}
                         <IconLogo />
                     </a>
                     <ul id={"school-name"}>
@@ -60,6 +57,7 @@ export const Header = () => (
         </div>
 
         <div id={"navigation"}>
+            <NavigationBar />
         </div>
     </div>
 );
