@@ -1,6 +1,6 @@
 import React from "react";
 import "../../styles/header_style.css";
-import NavigationBar from "../elements/NavigationBar";
+import Menu from "../elements/Menu";
 import { ReactComponent as IconPhone } from '../../images/phone.svg';
 import { ReactComponent as IconMail } from '../../images/mail.svg';
 import { ReactComponent as IconFacebook } from '../../images/facebook.svg';
@@ -52,7 +52,7 @@ export const Header = () => (
                 </div>
 
                 <div id={"navigation"}>
-                    <NavigationBar />
+                    <Menu />
                 </div>
             </div>
 

@@ -1,8 +1,9 @@
 import React, {Component} from "react";
-import { BrowserRouter, Route} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 import "../../styles/content_style.css"
 
 import HomePage from "../contents/HomePage";
+import SwimmingPool from "../contents/about_school/SwimmingPool";
 
 export class Content extends Component {
     state = {
@@ -11,21 +12,23 @@ export class Content extends Component {
             {
                 name: "strona główna",
                 path: "/",
-                isExact: true,
                 component: HomePage
+            },
+            {
+                name: "basen",
+                path: "/o-szkole/basen",
+                component: SwimmingPool
             }
         ]
     }
 
     render() {
         return (
-            <BrowserRouter>
-                <div>
-                    {this.state.contents.map(elem => {
-                        return <Route key={elem.name} path={elem.path} {... elem.isExact ? "exact" : ""} component={elem.component} />;
-                    })}
-                </div>
-            </BrowserRouter>
+            <div className={"content-container"}>
+                {this.state.contents.map(elem => {
+                    return <Route key={elem.name} path={elem.path} exact component={elem.component} />;
+                })}
+            </div>
         );
     }
 }
