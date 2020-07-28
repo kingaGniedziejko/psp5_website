@@ -1,25 +1,30 @@
 import React, {Component} from "react";
+import { BrowserRouter, Route} from 'react-router-dom';
 import "../../styles/content_style.css"
-import Shortcut from "../elements/Shortcut";
-import PostDisplay from "../elements/PostDisplay";
+import HomePage from "../contents/HomePage";
 
 export class Content extends Component {
     state = {
-        postCount: 3
+        postCount: 3,
+        contents: [
+            {
+                name: "strona główna",
+                path: "/",
+                isExact: true,
+                component: HomePage
+            }
+        ]
     }
 
     render() {
         return (
-            <div className={"content"}>
-                <div className={"photo photo-1"}/>
-                <h1>Na skróty</h1>
-                <Shortcut />
-
-                <div className={"photo photo-2"}/>
-                <h1>Komunikaty</h1>
-                <PostDisplay postCategory={"announcements"} postsCount={this.state.postCount} />
-                <button className={"button-accent-1"}>Czytaj więcej</button>
-            </div>
+            <BrowserRouter>
+                <div>
+                    {this.state.contents.map(elem => {
+                        return <Route path={elem.path} {... elem.isExact ? "exact" : ""} component={elem.component} />;
+                    })}
+                </div>
+            </BrowserRouter>
         );
     }
 }
