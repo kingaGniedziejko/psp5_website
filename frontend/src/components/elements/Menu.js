@@ -36,7 +36,6 @@ export class Menu extends Component {
                     {
                         barItems.map((barItem, index) => {
                             return (
-                                    <Link to={barItem.url}>{barItem.title}</Link>
                                 <Link to={barItem.url}>
                                     <li className={"menu-item"}>
                                         <div>{barItem.title}</div>
