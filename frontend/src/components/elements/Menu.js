@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import axios from "axios";
 import Submenu from "./Submenu"
 
@@ -22,14 +22,13 @@ export class Menu extends Component {
         const {barItems, isLoaded} = this.state;
 
         if(isLoaded){
-            console.log(barItems);
             return (
                 <ul className={"menu"}>
-                    <li><Link to={"/"}>H</Link></li>
+                    <li><NavLink to={"/"} exact className={"menu-item"} activeClassName={"menu-item-active"}>H</NavLink></li>
                         {barItems.map((barItem, index) => {
                             return (
                                 <li>
-                                    <Link to={barItem.url}>{barItem.title}</Link>
+                                    <NavLink to={barItem.url} className={"menu-item"} activeClassName={"menu-item-active"}>{barItem.title}</NavLink>
                                     <Submenu key={index} barItem={barItem} barItemNo={index} />
                                 </li>
                             );
