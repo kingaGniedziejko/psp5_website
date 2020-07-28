@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import axios from "axios";
 import Submenu from "./Submenu"
 import { ReactComponent as IconHome } from '../../images/home.svg';
@@ -24,24 +24,24 @@ export class Menu extends Component {
         const {barItems, isLoaded} = this.state;
 
         if(isLoaded){
-            console.log(barItems);
             return (
                 <ul id={"menu"}>
-                    <li className={"menu-item"}>
-                        <Link to={"/"}>
+                    <li className={"menu-item"} >
+                        <NavLink to={"/"} exac activeClassName={"menu-item-active"}>
                             <IconHome />
-                        </Link>
+                        </NavLink>
                     </li>
 
                     {
                         barItems.map((barItem, index) => {
                             return (
-                                <Link to={barItem.url}>
-                                    <li className={"menu-item"}>
+                                <NavLink to={barItem.url}>
+                                    <li className={"menu-item"} activeClassName={"menu-item-active"}>
                                         <div>{barItem.title}</div>
                                         <Submenu key={index} barItem={barItem} barItemNo={index} />
                                     </li>
-                                </Link>
+                                </NavLink>
+
                             );
                         })
                     }

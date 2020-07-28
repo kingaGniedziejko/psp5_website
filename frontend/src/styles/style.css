@@ -147,3 +147,7 @@ div.attachment a div.attachment-download:hover{
     background: url(../images/icon_download_light.png) no-repeat;
     background-size: contain;
 }
+
+.menu-item-active {
+    color: red !important;
+}
