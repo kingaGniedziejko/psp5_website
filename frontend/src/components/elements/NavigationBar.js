@@ -9,26 +9,23 @@ export class NavigationBar extends Component {
     }
 
     componentDidMount() {
-        const getBarItems = axios.get("/wp-json/menus/v1/menus/main-menu");
-
-        Promise.all([getBarItems])
+        axios.get("/wp-json/menus/v1/menus/main-menu")
             .then(res => this.setState({
-                posts: res[0].items.data,
+                barItems: res.data.items,
                 isLoaded: true
             }))
             .catch(err => console.log(err));
-
     }
 
     render() {
-        let {barItems, isLoaded} = this.state;
+        const {barItems, isLoaded} = this.state;
 
         if(isLoaded){
             console.log(barItems);
             return (
-                <div className={"posts-container"}>
+                <div className={"menu"}>
                     {barItems.map((barItem, index) => {
-                        return <NavigationBarItem key={barItem.id} barItem={barItem} barItemNo={index} />;
+                        return <NavigationBarItem key={index} barItem={barItem} barItemNo={index} />;
                     })}
                 </div>
             );

@@ -33,7 +33,6 @@ export class PostDisplay extends Component {
         }
 
         if(isLoaded){
-            console.log(posts);
             if (postsCount === -1) {
                 return (
                     <div className={"posts-container"}>

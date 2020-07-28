@@ -36,7 +36,7 @@ export class Post extends Component {
     }
 
     render() {
-        const {title, date, content, acf} = this.props.post;
+        const {title, date, acf} = this.props.post;
         const {text} = acf;
         const excerpt = text.substring(0, this.state.excerptLength)+"...";
         const {imgUrl, isLoaded, isExpanded} = this.state;
@@ -59,6 +59,7 @@ export class Post extends Component {
                         { isExpanded ? <div>
                             { attachments.map(att => {
                                 if (att) return <Attachment key={att.id} className={"post-attachment"} title={att.title} url={att.url}/>
+                                else return "";
                             })}
                         </div> : "" }
                     </div>

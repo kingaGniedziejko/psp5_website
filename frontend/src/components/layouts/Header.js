@@ -26,27 +26,33 @@ export const Header = () => (
                 </div>
             <div id={"short-showcase"}>PSP nr 5</div>
 
-            <div id={"ribbon"}>
-                <div id={"ribbon-contact"}>
-                    <div className={"ribbon-data"}>
-                        <IconPhone />
-                        <a type={"tel"}>77 545 32 23</a>
+            <div>
+                <div id={"ribbon"}>
+                    <div id={"ribbon-contact"}>
+                        <div className={"ribbon-data"}>
+                            <IconPhone />
+                            <a type={"tel"}>77 545 32 23</a>
+                        </div>
+
+                        <div className={"ribbon-data"}>
+                            <IconPhone />
+                            <a type={"tel"}>77 545 32 24</a>
+                        </div>
+
+                        <div className={"ribbon-data"}>
+                            <IconMail />
+                            <a type={"email"}>psp5@psp5.opole.pl</a>
+                        </div>
                     </div>
 
-                    <div className={"ribbon-data"}>
-                        <IconPhone />
-                        <a type={"tel"}>77 545 32 24</a>
-                    </div>
-
-                    <div className={"ribbon-data"}>
-                        <IconMail />
-                        <a type={"email"}>psp5@psp5.opole.pl</a>
+                    <div id={"ribbon-links"}>
+                        <a href={"https://www.facebook.com/psp5opole"} rel="noopener noreferrer" target="_blank"><IconFacebook className={"image-button"}/></a>
+                        <IconYoutube className={"image-button"}/>
                     </div>
                 </div>
 
-                <div id={"ribbon-links"}>
-                    <a href={"https://www.facebook.com/psp5opole"} rel="noopener noreferrer" target="_blank"><IconFacebook className={"image-button"}/></a>
-                    <IconYoutube className={"image-button"}/>
+                <div id={"navigation"}>
+                    <NavigationBar />
                 </div>
             </div>
 
@@ -56,8 +62,6 @@ export const Header = () => (
             </div>
         </div>
 
-        {/*<div id={"navigation"}>*/}
-        {/*    <NavigationBar />*/}
-        {/*</div>*/}
+
     </div>
 );

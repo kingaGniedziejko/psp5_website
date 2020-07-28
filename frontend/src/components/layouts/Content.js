@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import { BrowserRouter, Route} from 'react-router-dom';
 import "../../styles/content_style.css"
+
 import HomePage from "../contents/HomePage";
 
 export class Content extends Component {
@@ -21,7 +22,7 @@ export class Content extends Component {
             <BrowserRouter>
                 <div>
                     {this.state.contents.map(elem => {
-                        return <Route path={elem.path} {... elem.isExact ? "exact" : ""} component={elem.component} />;
+                        return <Route key={elem.name} path={elem.path} {... elem.isExact ? "exact" : ""} component={elem.component} />;
                     })}
                 </div>
             </BrowserRouter>
