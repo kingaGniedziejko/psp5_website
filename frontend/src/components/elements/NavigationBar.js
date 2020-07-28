@@ -17,7 +17,7 @@ export class NavigationBar extends Component {
                 isLoaded: true
             }))
             .catch(err => console.log(err));
-
+        
     }
 
     render() {
