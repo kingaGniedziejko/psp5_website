@@ -56,8 +56,8 @@ export const Header = () => (
             </div>
         </div>
 
-        <div id={"navigation"}>
-            <NavigationBar />
-        </div>
+        {/*<div id={"navigation"}>*/}
+        {/*    <NavigationBar />*/}
+        {/*</div>*/}
     </div>
 );
