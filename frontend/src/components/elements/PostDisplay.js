@@ -28,7 +28,7 @@ export class PostDisplay extends Component {
         const {postCategory, postsCount} = this.props;
 
         if (postCategory !== ""){
-            const category = categories.find(cat => cat.name.toLowerCase() === postCategory.toLowerCase());
+            const category = categories.find(cat => cat.slug.toLowerCase() === postCategory.toLowerCase());
             posts = posts.filter(elem => elem.categories[0] === category.id);
         }
 
