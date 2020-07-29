@@ -13,32 +13,67 @@
     font-family: Rowdies, cursive;
 }
 
-#menu a:link, #menu a:visited {
-    color: var(--white-1);
+#menu * {
     text-decoration: none;
 }
 
-#menu a:hover {
-    color: var(--accent-2-light);
-}
-
-#menu a:active {
-    font-weight: bold;
-    color: var(--accent-1);
-}
-
-.menu-item {
-    height: 100%;
-}
-
-#menu li div {
-    height: 100%;
+#menu > * {
+    position: relative;
     display: flex;
     align-items: center;
+    justify-content: center;
+    max-lines: 1;
+    flex: 0 1 25%;
 }
 
-#menu li svg {
-    height: 1.5em;
+#menu > *:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -2px;
+    top: 25%;
+    width: 1px;
+    height: 50%;
+    background-color: var(--white-1);
+}
+
+.menu-item:link, .menu-item:visited, .menu-item:link path, .menu-item:visited path {
+    color: var(--white-1);
+}
+
+.menu-item:hover, .menu-item:hover path {
+    color: var(--accent-2-light);
+    fill: var(--accent-2-light);
+}
+
+.menu-item:active, .menu-item:active path {
+    color: var(--accent-2-light);
+    fill: var(--accent-2-light);
+    font-weight: normal;
+}
+
+.menu-item-active {
+    color: var(--accent-2) !important;
+    fill: var(--accent-2) !important;
+}
+.menu-item {
+    height: 100%;
+    white-space: nowrap
+}
+
+.menu-item div {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 0.8em;
+    padding-right: 0.8em;
+}
+
+.menu-item svg {
+    height: 1.2em;
+    width: auto;
+    align-self: center;
+    padding: 0;
 }
 
 .submenu {
@@ -49,14 +84,7 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-    background-color: var(--accent-2-light);
     font-size: medium;
-}
-
-.menu-item:hover .submenu {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
     background-color: var(--accent-2-light);
     padding-top: 0.3em;
     padding-bottom: 0.5em;
@@ -65,6 +93,7 @@
 .menu-item:hover .submenu li {
     color: var(--accent-1);
     padding: 0.4em 0.7em;
+    width: 15em;
 }
 
 .menu-item:hover .submenu li:hover {

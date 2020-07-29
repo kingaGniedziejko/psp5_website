@@ -90,15 +90,15 @@
     margin-block-start: 1em;
 }
 
-a:link, a:visited {
+.footer a:link, a:visited {
     color: var(--white-1);
 }
 
-a:hover {
+.footer a:hover {
     color: var(--accent-2-light);
 }
 
-a:active {
+.footer a:active {
     font-weight: bold;
 }
 

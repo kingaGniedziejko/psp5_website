@@ -26,17 +26,17 @@ export class Menu extends Component {
         if(isLoaded){
             return (
                 <ul id={"menu"}>
-                    <li className={"menu-item"} >
-                        <NavLink to={"/"} exac activeClassName={"menu-item-active"}>
-                            <IconHome />
-                        </NavLink>
-                    </li>
+                    <NavLink to={"/"} exact activeClassName={"menu-item-active"}>
+                        <li className={"menu-item"} >
+                            <div><IconHome /></div>
+                        </li>
+                    </NavLink>
 
                     {
                         barItems.map((barItem, index) => {
                             return (
-                                <NavLink to={barItem.url}>
-                                    <li className={"menu-item"} activeClassName={"menu-item-active"}>
+                                <NavLink to={barItem.url} activeClassName={"menu-item-active"}>
+                                    <li className={"menu-item"}>
                                         <div>{barItem.title}</div>
                                         <Submenu key={index} barItem={barItem} barItemNo={index} />
                                     </li>
@@ -46,11 +46,11 @@ export class Menu extends Component {
                         })
                     }
 
-                    <li className={"menu-item"}>
-                        <a href={"#"} onClick={console.log("search")}>
-                            <IconSearch />
-                        </a>
-                    </li>
+                    <a href={"#"} onClick={console.log("search")}>
+                        <li className={"menu-item"}>
+                            <div><IconSearch /></div>
+                        </li>
+                    </a>
                 </ul>
             );
         }

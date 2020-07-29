@@ -52,8 +52,7 @@ export const Header = () => (
                         <IconYoutube className={"image-button"}/>
                     </div>
                 </div>
-
-                <Menu />
+                    <Menu />
             </div>
 
             <div id={"mobile-menu"}>
