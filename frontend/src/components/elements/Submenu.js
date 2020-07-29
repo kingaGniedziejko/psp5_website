@@ -4,16 +4,16 @@ import {Link} from "react-router-dom";
 export class Submenu extends Component {
 
     render() {
-        const {barItem} = this.props;
-        const {child_items} = barItem;
+        const {menuItem} = this.props;
+        const {child_items} = menuItem;
 
         console.log(child_items);
         return (
             <ul className={"submenu"}>
                 { child_items !== undefined ?
-                    child_items.map(elem => {
+                    child_items.map((elem, index) => {
                         return (
-                            <Link to={elem.url}>
+                            <Link to={elem.url} key={index}>
                                 <li className={"submenu-item"}>
                                     {elem.title}
                                 </li>
