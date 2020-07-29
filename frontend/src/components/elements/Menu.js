@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Link, NavLink} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import axios from "axios";
 import Submenu from "./Submenu"
 import { ReactComponent as IconHome } from '../../images/home.svg';
