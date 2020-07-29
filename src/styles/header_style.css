@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&family=Rowdies:wght@300;400;700&display=swap');
+
+.header {
+    background-color: var(--accent-1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+}
+
+.header #mobile-menu, #short-showcase, #mobile-spacer {
+    display: none;
+}
+
+/* Showcase */
+
+.header #showcase {
+    display: flex;
+    flex-direction: row;
+}
+
+.header #showcase svg{
+    margin: 0.5em;
+    width: 100px;
+    height: auto;
+    align-self: center;
+}
+
+
+.header #showcase ul#school-name{
+    color: var(--white-1);
+    font-family: Rowdies, cursive;
+    font-weight: lighter;
+    font-size: medium;
+    align-self: center;
+}
+
+/* Menu container = contact ribbon + menu */
+
+#menu-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /*flex: 1;*/
+}
+
+/* Contact ribbon */
+
+.header #ribbon {
+    padding: 0.5em 1em;
+    border-bottom-left-radius: 10em;
+    border-bottom-right-radius: 10em;
+    background-color: var(--accent-2);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-size: smaller;
+}
+
+
+.header #ribbon #ribbon-contact, #ribbon-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-inline-start: 0.5em;
+    margin-inline-end: 0.5em;
+}
+
+.ribbon-data {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-inline-end: 0.5em;
+}
+
+#ribbon a {
+    height: 1.5em;
+    margin: 0;
+}
+
+#ribbon svg {
+    height: 1.5em;
+    margin: 0;
+}
+
+#ribbon .image-button path{
+    fill: var(--font-dark);
+}
+
+#ribbon .image-button path:hover {
+    fill: var(--accent-1);
+}
+
+/* smaller pc */
+
+@media (max-width: 1200px) {
+    .header #ribbon {
+        border-bottom-right-radius: 0;
+    }
+}
+
+/*@media (max-width: 1200px) {*/
+
+/*    #ribbon-links {*/
+/*        margin-inline-start: 2em;*/
+/*    }*/
+/*}*/
+
+/* tablet */
+
+@media (max-width: 1065px) {
+
+    .header {
+        position: sticky;
+        top: 0;
+        left: 0;
+        right: 0;
+
+        overflow-x: hidden;
+    }
+
+    .header #showcase svg {
+        width: 70px;
+    }
+
+    .header #showcase {
+        font-size: small;
+    }
+
+    .header #mobile-menu {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .header #mobile-menu>* {
+        height: 1.7em;
+        width: 1.7em;
+        margin: 1em;
+        stroke-width: 7;
+    }
+
+    .header #mobile-menu svg path {
+        stroke-width: 7;
+    }
+
+    .header #ribbon {
+        display: none;
+    }
+}
+
+/* phone */
+
+@media (max-width: 600px) {
+
+    .header #showcase svg {
+        display: none;
+    }
+
+    .header #showcase {
+        font-size: x-small;
+        margin: 0.5em;
+    }
+
+    .header #mobile-menu>* {
+        height: 1.5em;
+        width: 1.5em;
+        margin: 0.5em;
+        stroke-width: 7;
+        /*filter: drop-shadow(0 4px 4px var(--accent-3));*/
+    }
+
+    .header #mobile-menu>*>div {
+        width: 1.5em;
+    }
+
+    .header #mobile-menu svg path {
+        stroke-width: 7;
+    }
+
+    .header #mobile-menu{
+        justify-content: flex-end;
+        margin-right: 0.5em;
+    }
+
+}
