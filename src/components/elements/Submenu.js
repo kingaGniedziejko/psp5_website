@@ -7,7 +7,6 @@ export class Submenu extends Component {
         const {menuItem} = this.props;
         const {child_items} = menuItem;
 
-        console.log(child_items);
         return (
             <ul className={"submenu"}>
                 { child_items !== undefined ?
