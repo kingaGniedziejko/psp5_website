@@ -23,7 +23,6 @@ export class App extends Component {
 
     render (){
         const { menuItems, isLoaded } = this.state;
-        console.log(isLoaded);
         if (isLoaded){
             return (
                 <div className={"container"}>
