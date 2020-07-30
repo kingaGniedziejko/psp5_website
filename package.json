@@ -42,7 +42,8 @@
   },
   "devDependencies": {
     "ftp-deploy": "^2.3.7",
-    "images": "^3.2.2"
+    "images": "^3.2.2",
+    "react-addons-css-transition-group": "^15.6.2"
   },
   "proxy": "http://this.mind-the-web.com"
 }

@@ -16,6 +16,11 @@ import { ReactComponent as IconSearch } from '../../images/search.svg';
 import { ReactComponent as IconLogo } from '../../images/logo.svg';
 
 export class Header extends Component {
+    constructor(props) {
+        super(props);
+        this.burgerRef = React.createRef();
+    }
+
     state = {
         open: false,
         width:  800
@@ -25,6 +30,7 @@ export class Header extends Component {
         this.setState({
             open: open
         })
+        if(!open)this.burgerRef.current.close();
     }
 
     updateDimensions() {
@@ -46,7 +52,6 @@ export class Header extends Component {
 
         return (
             <>
-
             <div className={"header"}>
                 <div className={"header-container"}>
                     <div id={"mobile-spacer"}/>
@@ -94,13 +99,20 @@ export class Header extends Component {
 
                     <div id={"mobile-menu"}>
                         <IconSearch/>
-                        <Burger open={this.state.open} mutateState={this.setOpen} menuItems={menuItems}/>
+                        <Burger open={this.state.open} mutateState={this.setOpen} menuItems={menuItems} ref={this.burgerRef}/>
                     </div>
                 </div>
             </div>
+            <CSSTransition
+                in={this.state.open}
+                timeout={300}
+                classNames="side-menu-anim"
+                unmountOnExit
+            >
             {
-                this.state.width < 1020 && this.state.open ? <SideMenu menuItems={menuItems} open={this.state.open} /> : ""
+                 <SideMenu menuItems={menuItems} mutateState={this.setOpen} open={this.state.open} />
             }
+            </CSSTransition>
             </>
         );
     }

@@ -3,17 +3,20 @@
 
 .header {
     background-color: var(--accent-1);
-    position: relative;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+#wrapper {
+    position: relative;
+}
+
 .header-container {
     max-width: 1200px;
     margin: 0 auto;
-    position: relative;
     display: flex;
     flex-direction: row;
     align-items: stretch;
@@ -53,6 +56,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
+
     /*flex: 1;*/
 }
 
@@ -146,6 +151,8 @@
         flex-direction: row;
         justify-content: flex-end;
         align-items: center;
+        position: relative;
+
     }
 
     .header #mobile-menu>* {

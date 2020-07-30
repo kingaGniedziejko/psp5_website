@@ -3,99 +3,100 @@
 
 
 
-/*@media (min-width: 1020px) {*/
-#menu {
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: stretch;
-    text-transform: uppercase;
-    font-size: medium;
-    width: 100%;
-    font-family: Rowdies, cursive;
-}
+@media (min-width: 1020px) {
+    #menu {
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: stretch;
+        text-transform: uppercase;
+        font-size: medium;
+        width: 100%;
+        font-family: Rowdies, cursive;
+    }
 
-#menu * {
-    text-decoration: none;
-}
+    #menu * {
+        text-decoration: none;
+    }
 
-#menu > * {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    max-lines: 1;
-    flex: 0 1 25%;
-}
+    #menu > * {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-lines: 1;
+        flex: 0 1 25%;
+    }
 
-#menu > *:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    right: -2px;
-    top: 25%;
-    width: 1px;
-    height: 50%;
-    background-color: var(--white-1);
-}
+    #menu > *:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        right: -2px;
+        top: 25%;
+        width: 1px;
+        height: 50%;
+        background-color: var(--white-1);
+    }
 
-.menu-item:link, .menu-item:visited, .menu-item:link path, .menu-item:visited path {
-    color: var(--white-1);
-}
+    .menu-item:link, .menu-item:visited, .menu-item:link path, .menu-item:visited path {
+        color: var(--white-1);
+    }
 
-.menu-item:hover a, .menu-item:hover path {
-    color: var(--accent-2-light);
-    fill: var(--accent-2-light);
-}
+    .menu-item:hover a, .menu-item:hover path {
+        color: var(--accent-2-light);
+        fill: var(--accent-2-light);
+    }
 
-.menu-item:active a, .menu-item:active path {
-    color: var(--accent-2-light);
-    fill: var(--accent-2-light);
-    font-weight: normal;
-}
+    .menu-item:active a, .menu-item:active path {
+        color: var(--accent-2-light);
+        fill: var(--accent-2-light);
+        font-weight: normal;
+    }
 
 
-.menu-item {
-    height: 100%;
-    white-space: nowrap
-}
+    .menu-item {
+        height: 100%;
+        white-space: nowrap
+    }
 
-.menu-item div {
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding-left: 0.8em;
-    padding-right: 0.8em;
-}
+    .menu-item div {
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-left: 0.8em;
+        padding-right: 0.8em;
+    }
 
-.menu-item svg {
-    height: 1.2em;
-    width: auto;
-    align-self: center;
-    padding: 0;
-}
+    .menu-item svg {
+        height: 1.2em;
+        width: auto;
+        align-self: center;
+        padding: 0;
+    }
 
-.submenu {
-    display: none;
-}
+    .submenu {
+        display: none;
+    }
 
-.menu-item:hover .submenu {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    font-size: medium;
-    background-color: var(--accent-2-light);
-    padding-top: 0.3em;
-    padding-bottom: 0.5em;
-}
+    .menu-item:hover .submenu {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        font-size: medium;
+        background-color: var(--accent-2-light);
+        padding-top: 0.3em;
+        padding-bottom: 0.5em;
+    }
 
-.menu-item:hover .submenu li {
-    color: var(--accent-1);
-    padding: 0.4em 0.7em;
-    width: 15em;
-}
+    .menu-item:hover .submenu li {
+        color: var(--accent-1);
+        padding: 0.4em 0.7em;
+        width: 15em;
+    }
 
-.menu-item:hover .submenu li:hover {
-    color: var(--accent-1-light);
+    .menu-item:hover .submenu li:hover {
+        color: var(--accent-1-light);
+    }
 }

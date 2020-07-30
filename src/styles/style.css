@@ -114,7 +114,6 @@ a:hover {
 }
 
 a:active {
-    font-weight: bold;
     color: var(--accent-1);
 }
 
@@ -154,7 +153,7 @@ div.attachment a div.attachment-download:hover{
 }
 
 @media (max-width: 1020px) {
-    .menu-item-active {
+    .menu-item-active, .menu-item-active>* {
         color: var(--accent-1-light) !important;
         fill: var(--accent-1-light) !important;
     }
