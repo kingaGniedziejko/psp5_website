@@ -4,7 +4,7 @@ import SideMenu from "./SideMenu";
 
 
 const StyledBurger = styled.div`
-    position: fixed;
+    position: relative;
     display: flex;
     justify-content: space-around;
     flex-flow: column nowrap;  
@@ -32,19 +32,33 @@ const StyledBurger = styled.div`
 
 export class Burger extends Component {
     state = {
-        open: this.props.open,
-        width: 0
+        open: false,
+    }
+
+    componentDidMount() {
+        this.setState({
+            open: this.props.open
+        })
     }
 
     handleClick = () => {
         this.props.mutateState(!this.open);
-        this.open = !this.open
+        this.setState({
+            open: !this.state.open
+        })
+    }
+
+    close = () => {
+        // this.props.mutateState(false);
+        this.setState({
+            open: false
+        })
     }
 
     render() {
         return (
             <>
-                <StyledBurger open={this.open} onClick={this.handleClick}>
+                <StyledBurger open={this.state.open} onClick={this.handleClick}>
                     <div/>
                     <div/>
                     <div/>
