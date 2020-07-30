@@ -1,8 +1,12 @@
 import React, {Component} from "react";
+import {CSSTransition} from 'react-transition-group';
 import "../../styles/header_style.css";
 import "../../styles/menu_style.css";
+import "../../styles/sidemenu_style.css";
 
 import Menu from "../elements/Menu";
+import SideMenu from "../elements/SideMenu";
+import Burger from "../elements/Burger";
 import { ReactComponent as IconPhone } from '../../images/phone.svg';
 import { ReactComponent as IconMail } from '../../images/mail.svg';
 import { ReactComponent as IconFacebook } from '../../images/facebook.svg';
@@ -12,11 +16,37 @@ import { ReactComponent as IconSearch } from '../../images/search.svg';
 import { ReactComponent as IconLogo } from '../../images/logo.svg';
 
 export class Header extends Component {
+    state = {
+        open: false,
+        width:  800
+    }
+
+    setOpen = (open) => {
+        this.setState({
+            open: open
+        })
+    }
+
+    updateDimensions() {
+        let update_width  = window.innerWidth-100;
+        this.setState({ width: update_width});
+    }
+
+    componentDidMount() {
+        this.updateDimensions();
+        window.addEventListener("resize", this.updateDimensions.bind(this));
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.updateDimensions.bind(this));
+    }
 
     render() {
         const { menuItems } = this.props;
 
         return (
+            <>
+
             <div className={"header"}>
                 <div className={"header-container"}>
                     <div id={"mobile-spacer"}/>
@@ -57,15 +87,21 @@ export class Header extends Component {
                                 <IconYoutube className={"image-button"}/>
                             </div>
                         </div>
-                        <Menu menuItems={menuItems}/>
+                        {
+                            this.state.width > 1020 ? <Menu menuItems={menuItems}/> : ""
+                        }
                     </div>
 
                     <div id={"mobile-menu"}>
                         <IconSearch/>
-                        <IconMenu/>
+                        <Burger open={this.state.open} mutateState={this.setOpen} menuItems={menuItems}/>
                     </div>
                 </div>
             </div>
+            {
+                this.state.width < 1020 && this.state.open ? <SideMenu menuItems={menuItems} open={this.state.open} /> : ""
+            }
+            </>
         );
     }
 }

@@ -3,7 +3,7 @@
 
 .header {
     background-color: var(--accent-1);
-    position: sticky;
+    position: relative;
     top: 0;
     left: 0;
     right: 0;
@@ -13,6 +13,7 @@
 .header-container {
     max-width: 1200px;
     margin: 0 auto;
+    position: relative;
     display: flex;
     flex-direction: row;
     align-items: stretch;
@@ -52,7 +53,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: stretch;
     /*flex: 1;*/
 }
 
@@ -62,7 +62,6 @@
     padding: 0.5em 1em;
     border-bottom-left-radius: 10em;
     border-bottom-right-radius: 10em;
-    width: 100%;
     background-color: var(--accent-2);
     display: flex;
     flex-direction: row;
@@ -109,7 +108,7 @@
 /* smaller pc */
 
 @media (max-width: 1200px) {
-    #ribbon {
+    .header #ribbon {
         border-bottom-right-radius: 0;
     }
 }
@@ -124,11 +123,14 @@
 /* tablet */
 
 @media (max-width: 1065px) {
+
     .header {
         position: sticky;
         top: 0;
         left: 0;
         right: 0;
+
+        overflow-x: hidden;
     }
 
     .header #showcase svg {
@@ -143,9 +145,10 @@
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
+        align-items: center;
     }
 
-    .header #mobile-menu svg {
+    .header #mobile-menu>* {
         height: 1.7em;
         width: 1.7em;
         margin: 1em;
@@ -167,26 +170,14 @@
 
     .header #showcase svg {
         display: none;
-        /*width: 50px;*/
     }
 
     .header #showcase {
-        /*display: none;*/
         font-size: x-small;
         margin: 0.5em;
     }
 
-    /*#short-showcase {*/
-    /*    display: block;*/
-    /*    color: var(--white-1);*/
-    /*    font-family: Rowdies, cursive;*/
-    /*    font-weight: lighter;*/
-    /*    align-self: center;*/
-    /*    !*text-shadow: 0 4px 4px var(--accent-3);*!*/
-    /*    font-size: larger;*/
-    /*}*/
-
-    .header #mobile-menu svg {
+    .header #mobile-menu>* {
         height: 1.5em;
         width: 1.5em;
         margin: 0.5em;
@@ -194,26 +185,18 @@
         /*filter: drop-shadow(0 4px 4px var(--accent-3));*/
     }
 
+    .header #mobile-menu>*>div {
+        width: 1.5em;
+    }
+
     .header #mobile-menu svg path {
         stroke-width: 7;
     }
 
-
-
-    /*.header #mobile-spacer {*/
-    /*    display: block;*/
-    /*    flex: 1;*/
-    /*}*/
-
-    /*.header #mobile-showcase {*/
-    /*    align-self: center;*/
-    /*    flex: 0;*/
-    /*}*/
-
     .header #mobile-menu{
         justify-content: flex-end;
-        flex: 1;
-
+        margin-right: 0.5em;
+        position: relative;
     }
 
 }

@@ -21,12 +21,15 @@ export class Menu extends Component {
                 {
                     menuItems.map((menuItem, index) => {
                         return (
-                            <NavLink to={menuItem.url} activeClassName={"menu-item-active"} key={index}>
+                            <div key={index}>
                                 <li className={"menu-item"}>
-                                    <div>{menuItem.title}</div>
-                                    <Submenu key={index} menuItem={menuItem} />
+                                    <NavLink to={menuItem.url} activeClassName={"menu-item-active"}>
+                                        <div>{menuItem.title}</div>
+                                    </NavLink>
+                                    <Submenu menuItem={menuItem}/>
                                 </li>
-                            </NavLink>
+                            </div>
+
                         );
                     })
                 }

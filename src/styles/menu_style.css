@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&family=Rowdies:wght@300;400;700&display=swap');
 
+
+
+/*@media (min-width: 1020px) {*/
 #menu {
     height: 100%;
     display: flex;
@@ -40,21 +43,18 @@
     color: var(--white-1);
 }
 
-.menu-item:hover, .menu-item:hover path {
+.menu-item:hover a, .menu-item:hover path {
     color: var(--accent-2-light);
     fill: var(--accent-2-light);
 }
 
-.menu-item:active, .menu-item:active path {
+.menu-item:active a, .menu-item:active path {
     color: var(--accent-2-light);
     fill: var(--accent-2-light);
     font-weight: normal;
 }
 
-.menu-item-active {
-    color: var(--accent-2) !important;
-    fill: var(--accent-2) !important;
-}
+
 .menu-item {
     height: 100%;
     white-space: nowrap
