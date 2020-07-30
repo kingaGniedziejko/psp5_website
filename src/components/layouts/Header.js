@@ -52,7 +52,6 @@ export class Header extends Component {
 
         return (
             <>
-
             <div className={"header"}>
                 <div className={"header-container"}>
                     <div id={"mobile-spacer"}/>

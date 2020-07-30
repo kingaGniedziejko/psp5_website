@@ -33,7 +33,6 @@ export class SideMenu extends Component {
 
         const {menuItems} = this.props;
 
-
         return (
             <>
 
@@ -48,13 +47,24 @@ export class SideMenu extends Component {
 
                     {
                         menuItems.map((menuItem, index) => {
+                            const {child_items} = menuItem;
+
                             return (
                                 <div key={index}>
                                     <li className={"side-menu-item"}>
-                                        <NavLink to={menuItem.url} activeClassName={"menu-item-active"}>
-                                            <div>{menuItem.title}</div>
-                                        </NavLink>
-                                        <Submenu menuItem={menuItem}/>
+                                        {
+                                            child_items !== undefined ?
+                                                <details>
+                                                    <summary>
+                                                        <div>{menuItem.title}</div>
+                                                    </summary>
+                                                    <Submenu menuItem={menuItem}/>
+                                                </details>
+                                            :
+                                                <NavLink to={menuItem.url} activeClassName={"menu-item-active"}>
+                                                    <div>{menuItem.title}</div>
+                                                </NavLink>
+                                        }
                                     </li>
                                 </div>
                             );
