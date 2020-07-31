@@ -19,6 +19,10 @@ div.content div.photo {
 
 div.content div.photo-1 {
     background-image: url(../images/photo_home_1.jpg);
+    height: 300px;
+}
+
+div.content div.photo-main {
     height: 400px;
 }
 

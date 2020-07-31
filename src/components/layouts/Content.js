@@ -69,7 +69,7 @@ export class Content extends Component {
     render() {
         const {homePage, isAdditionalPagesLoaded} = this.state;
 
-        if (isAdditionalPagesLoaded) {
+        // if (isAdditionalPagesLoaded) {
             const menuItems = this.separateMenuItems();
             const additionalPagesFiltered = this.filterAdditionalPages(menuItems);
             const contentsFiltered = this.filterContents(menuItems, additionalPagesFiltered);
@@ -93,12 +93,12 @@ export class Content extends Component {
                     })}
                 </div>
             );
-        } else {
-            return (
-                <div className={"content-container"}>
-                    <Route key={homePage.title} path={homePage.path} exact component={homePage.component}/>
-                </div>
-            );
-        }
+        // } else {
+        //     return (
+        //         <div className={"content-container"}>
+        //             <Route key={homePage.title} path={homePage.path} exact component={homePage.component}/>
+        //         </div>
+        //     );
+        // }
     }
 }

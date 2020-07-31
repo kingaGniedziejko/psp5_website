@@ -13,7 +13,7 @@ export class HomePage extends Component {
         return (
             <div className={"content"}>
                 <div className={"section section-1"}>
-                    <div className={"photo photo-1"}/>
+                    <div className={"photo photo-1 photo-main"}/>
                     <h1>Na skróty</h1>
                     <Shortcut />
                 </div>
