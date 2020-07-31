@@ -9,7 +9,6 @@ import AdditionalPage from "../elements/AdditionalPage";
 
 export class Content extends Component {
     state = {
-        allMenuItems: [],
         homePage: {
             title: "strona główna",
             path: "/",
@@ -28,7 +27,7 @@ export class Content extends Component {
 
     separateMenuItems() {
         const {menuItems} = this.props;
-        var allItems = [];
+        let allItems = [];
 
         menuItems.forEach(menuItem => {
             const {child_items} = menuItem;
@@ -37,37 +36,25 @@ export class Content extends Component {
                 allItems = allItems.concat(child_items);
         });
 
-        this.setState({
-            allMenuItems: allItems
-        })
+        return allItems;
     }
 
-    filterAdditionalPages() {
-        const {allMenuItems, additionalPages, isAdditionalPagesLoaded} = this.state;
-        if (isAdditionalPagesLoaded)
-            var filteredPages = additionalPages.filter(elem => allMenuItems.some(item => item.url.toLowerCase() === elem.acf.path.toLowerCase()))
-
-        this.setState({
-            additionalPages: filteredPages
-        })
+    filterAdditionalPages(menuItems) {
+        const {additionalPages} = this.state;
+        return additionalPages.filter(elem => menuItems.some(item => item.url.toLowerCase() === elem.acf.path.toLowerCase()));
     }
 
-    filterContents(){
-        const {allMenuItems, contents, additionalPages, isAdditionalPagesLoaded} = this.state;
-        var filteredContents;
+    filterContents(menuItems, additionalPagesFiltered){
+        const {contents} = this.state;
+        let filteredContents;
 
-        filteredContents = contents.filter(elem => allMenuItems.some(item => item.title.toLowerCase() === elem.title.toLowerCase()));
+        filteredContents = contents.filter(elem => menuItems.some(item => item.title.toLowerCase() === elem.title.toLowerCase()));
         filteredContents.forEach(elem => {
-            elem.path = allMenuItems.filter((item => item.title.toLowerCase() === elem.title.toLowerCase()))[0].url;
+            elem.path = menuItems.filter((item => item.title.toLowerCase() === elem.title.toLowerCase()))[0].url;
         });
-        // if(isAdditionalPagesLoaded) filteredContents = filteredContents.filter(elem => !additionalPages.some(item => item.acf.path.toLowerCase() === elem.path.toLowerCase()));
+        filteredContents = filteredContents.filter(elem => !(additionalPagesFiltered.some(item => item.acf.path.toLowerCase() === elem.path.toLowerCase())));
 
-        console.log(allMenuItems);
-        console.log(filteredContents);
-
-        this.setState({
-            contents: filteredContents
-        })
+        return filteredContents;
     }
 
     componentDidMount() {
@@ -77,30 +64,41 @@ export class Content extends Component {
                 isAdditionalPagesLoaded: true
             }))
             .catch(err => console.log(err));
-
-
-        this.separateMenuItems();
-        this.filterAdditionalPages();
-        this.filterContents();
-
     }
 
     render() {
-        const {homePage, contents, additionalPages, isAdditionalPagesLoaded} = this.state;
+        const {homePage, isAdditionalPagesLoaded} = this.state;
 
-        return (
-            <div className={"content-container"}>
-                <Route key={homePage.title} path={homePage.path} exact component={homePage.component} />
-                {contents.map(elem => {
-                    return <Route key={elem.title} path={elem.path} exact component={elem.component} />;
-                })}
-                {/*{isAdditionalPagesLoaded ?*/}
-                {/*    additionalPages.map(page => {*/}
-                {/*        return <AdditionalPage page={page}/>;*/}
-                {/*    })*/}
-                {/*    : ""*/}
-                {/*}*/}
-            </div>
-        );
+        if (isAdditionalPagesLoaded) {
+            const menuItems = this.separateMenuItems();
+            const additionalPagesFiltered = this.filterAdditionalPages(menuItems);
+            const contentsFiltered = this.filterContents(menuItems, additionalPagesFiltered);
+
+            // console.log(menuItems);
+            // console.log(additionalPagesFiltered);
+            // console.log(contentsFiltered);
+
+            return (
+                <div className={"content-container"}>
+                    <Route key={homePage.title} path={homePage.path} exact component={homePage.component}/>
+                    {contentsFiltered.map((elem, index) => {
+                        return <Route key={index} path={elem.path} exact component={elem.component}/>;
+                    })}
+                    {additionalPagesFiltered.map((page, index) => {
+                        return (
+                            <Route key={index} path={page.acf.path} exact>
+                                <AdditionalPage page={page}/>
+                            </Route>
+                        );
+                    })}
+                </div>
+            );
+        } else {
+            return (
+                <div className={"content-container"}>
+                    <Route key={homePage.title} path={homePage.path} exact component={homePage.component}/>
+                </div>
+            );
+        }
     }
 }

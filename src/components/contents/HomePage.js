@@ -8,16 +8,21 @@ export class HomePage extends Component {
     }
 
     render() {
+        const {postCount} = this.state;
+
         return (
             <div className={"content"}>
-                <div className={"photo photo-1"}/>
-                <h1>Na skróty</h1>
-                <Shortcut />
-
-                <div className={"photo photo-2"}/>
-                <h1>Komunikaty</h1>
-                <PostDisplay postCategory={"komunikaty"} postsCount={this.state.postCount} />
-                <button className={"button-accent-1"}>Czytaj więcej</button>
+                <div className={"section section-1"}>
+                    <div className={"photo photo-1"}/>
+                    <h1>Na skróty</h1>
+                    <Shortcut />
+                </div>
+                <div className={"section section-2"}>
+                    <div className={"photo photo-2"}/>
+                    <h1>Komunikaty</h1>
+                    <PostDisplay postCategory={"komunikaty"} postsCount={postCount} />
+                    <button className={"button-accent-1"}>Czytaj więcej</button>
+                </div>
             </div>
         );
     }

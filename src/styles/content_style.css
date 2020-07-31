@@ -1,6 +1,9 @@
-div.content{
-    width: 100%;
+div.content {
     min-height: 80vh;
+}
+
+div.content div.section {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
