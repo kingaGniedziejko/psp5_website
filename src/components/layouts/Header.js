@@ -102,6 +102,10 @@ export class Header extends Component {
                         <Burger open={this.state.open} mutateState={this.setOpen} menuItems={menuItems} ref={this.burgerRef}/>
                     </div>
                 </div>
+
+            </div>
+            <div id={"searchbar"}>
+
             </div>
             <CSSTransition
                 in={this.state.open}

@@ -33,13 +33,16 @@ body {
     color: var(--font-dark);
 }
 
+*:focus {
+    outline-style: none;
+}
+
 div.content{
     width: 100%;
     min-height: 80vh;
 }
 
 ul {
-    font-size: 0.8em;
     list-style: none;
     margin: 0;
     padding: 0;

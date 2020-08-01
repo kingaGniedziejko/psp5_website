@@ -110,6 +110,11 @@
     fill: var(--accent-1);
 }
 
+/* searchbar */
+#searchbar {
+    background-color: var(--accent-1-light);
+}
+
 /* smaller pc */
 
 @media (max-width: 1200px) {

@@ -26,7 +26,7 @@ export class Menu extends Component {
                                     <NavLink to={menuItem.url} activeClassName={"menu-item-active"}>
                                         <div>{menuItem.title}</div>
                                     </NavLink>
-                                    <Submenu menuItem={menuItem}/>
+                                    <Submenu menuItem={menuItem} type={"fullscreen"} />
                                 </li>
                             </div>
 

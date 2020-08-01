@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {NavLink} from "react-router-dom";
 import ReactDOM from 'react-dom';
 import Submenu from "./Submenu"
-
+import {CSSTransition} from 'react-transition-group';
 
 export class SideMenu extends Component {
     state = {
@@ -13,6 +13,19 @@ export class SideMenu extends Component {
             open: this.props.open
         })
         document.addEventListener('click', this.handleClickOutside, true);
+
+        const details = document.querySelectorAll("details");
+
+        details.forEach((targetDetail) => {
+            targetDetail.addEventListener("click", () => {
+                // Close all the details that are not targetDetail.
+                details.forEach((detail) => {
+                    if (detail !== targetDetail) {
+                        detail.removeAttribute("open");
+                    }
+                });
+            });
+        });
     }
 
     componentWillUnmount() {
@@ -22,11 +35,15 @@ export class SideMenu extends Component {
     handleClickOutside = event => {
         const domNode = ReactDOM.findDOMNode(this);
         if (!domNode || !domNode.contains(event.target)) {
-            this.setState({
-                open: false
-            })
-            this.props.mutateState(false);
+            this.closeSideMenu()
         }
+    }
+
+    closeSideMenu = event => {
+        this.setState({
+            open: false
+        })
+        this.props.mutateState(false);
     }
 
     render() {
@@ -35,43 +52,44 @@ export class SideMenu extends Component {
 
         return (
             <>
-
                 <ul id={"side-menu"} style={this.state.open ? {animationName: 'slide-in'} : {animationName: 'slide-out'}}>
-                    <div>
-                        <li className={"side-menu-item"} >
-                            <NavLink to={"/"} exact activeClassName={"menu-item-active"}>
-                                <div>Strona główna</div>
-                            </NavLink>
-                        </li>
-                    </div>
+                    <div id={"side-menu-container"}>
+                        <div>
+                            <li className={"side-menu-item"} >
+                                <NavLink to={"/"} exact activeClassName={"menu-item-active"} onClick={this.closeSideMenu}>
+                                    <div>Strona główna</div>
+                                </NavLink>
+                            </li>
+                        </div>
 
-                    {
-                        menuItems.map((menuItem, index) => {
-                            const {child_items} = menuItem;
-
-                            return (
-                                <div key={index}>
-                                    <li className={"side-menu-item"}>
-                                        {
-                                            child_items !== undefined ?
-                                                <details>
-                                                    <summary>
-                                                        <div>{menuItem.title}</div>
-                                                    </summary>
-                                                    <Submenu menuItem={menuItem}/>
-                                                </details>
-                                            :
-                                                <NavLink to={menuItem.url} activeClassName={"menu-item-active"}>
-                                                    <div>{menuItem.title}</div>
-                                                </NavLink>
-                                        }
-                                    </li>
-                                </div>
-                            );
-                        })
-                    }
-                </ul>
-            </>
+                        {
+                            menuItems.map((menuItem, index) => {
+                                const {child_items} = menuItem;
+                                // var req = require('details-polyfill');
+                                return (
+                                    <div key={index}>
+                                        <li className={"side-menu-item"}>
+                                            {
+                                                child_items !== undefined ?
+                                                    <details>
+                                                        <summary>
+                                                            {menuItem.title}
+                                                        </summary>
+                                                        <Submenu menuItem={menuItem} closeSideMenu={this.closeSideMenu} type={"mobile"} />
+                                                    </details>
+                                                    :
+                                                    <NavLink to={menuItem.url} activeClassName={"menu-item-active"} onClick={this.closeSideMenu}>
+                                                        {menuItem.title}
+                                                    </NavLink>
+                                            }
+                                        </li>
+                                    </div>
+                                );
+                            })
+                        }
+                </div>
+            </ul>
+        </>
         );
     }
 }

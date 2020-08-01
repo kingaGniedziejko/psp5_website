@@ -3,6 +3,14 @@ import {Link} from "react-router-dom";
 
 export class Submenu extends Component {
 
+    handleItemClick = event => {
+        if(this.props.type === "fullscreen") {
+            // TODO: close submenu on click
+        } else if(this.props.type === "mobile"){
+            this.props.closeSideMenu();
+        }
+    }
+
     render() {
         const {menuItem} = this.props;
         const {child_items} = menuItem;
@@ -12,7 +20,7 @@ export class Submenu extends Component {
                 { child_items !== undefined ?
                     child_items.map((elem, index) => {
                         return (
-                            <Link to={elem.url} key={index}>
+                            <Link to={elem.url} key={index} onClick={this.handleItemClick}>
                                 <li className={"submenu-item"}>
                                     {elem.title}
                                 </li>

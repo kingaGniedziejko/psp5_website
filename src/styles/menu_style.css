@@ -80,7 +80,7 @@
         display: none;
     }
 
-    .menu-item:hover .submenu {
+    .menu-item:hover:not(:focus) .submenu {
         display: flex;
         flex-direction: column;
         position: absolute;
@@ -90,13 +90,14 @@
         padding-bottom: 0.5em;
     }
 
-    .menu-item:hover .submenu li {
+    .menu-item:hover:not(:focus) .submenu li {
         color: var(--accent-1);
         padding: 0.4em 0.7em;
         width: 15em;
     }
 
-    .menu-item:hover .submenu li:hover {
+    .menu-item:hover:not(:focus) .submenu li:hover {
         color: var(--accent-1-light);
     }
+
 }

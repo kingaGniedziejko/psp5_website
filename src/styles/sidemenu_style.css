@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&family=Rowdies:wght@300;400;700&display=swap');
 
 #dim {
-    position: fixed;
+    position: absolute;
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.14);
@@ -14,14 +14,11 @@
         top: 0;
         right: 0;
         bottom: 0;
-        height: 100vh;
-        width: 20em;
-        display: flex;
-        flex-direction: column;
-        z-index: 15;
+        height: 100%;
+        width: 18em;
         background-color: var(--accent-2-light);
         box-shadow: -10px 0 8px 0 rgba(0, 0, 0, 0.2);
-        padding-top: 4.5em;
+        z-index: 15;
 
         -webkit-touch-callout: none;
         -webkit-user-select: none;
@@ -31,7 +28,39 @@
         user-select: none;
     }
 
-    #side-menu, summary {
+    #side-menu-container {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        height: 100%;
+        padding-top: 4em;
+    }
+
+    /*@keyframes growAndFadeInFontSize {*/
+    /*    0% {*/
+    /*        font-size: 0;*/
+    /*        opacity: 0;*/
+    /*    }*/
+    /*    100% {*/
+    /*        font-size: 1em;*/
+    /*        opacity: 1;*/
+    /*    }*/
+    /*}*/
+
+
+    /*details[open] .submenu {*/
+    /*    animation: growAndFadeInFontSize;*/
+    /*    animation-duration: 500ms, 200ms;*/
+    /*    animation-delay: 0ms, 500ms;*/
+    /*}*/
+
+    /*details:not([open]) .submenu {*/
+    /*    animation: growAndFadeInFontSize reverse;*/
+    /*    animation-duration: 500ms, 200ms;*/
+    /*    animation-delay: 0ms, 500ms;*/
+    /*}*/
+
+
+    #side-menu-container, summary {
         font-family: Rowdies, cursive;
         text-transform: uppercase;
         color: var(--accent-1)
@@ -70,10 +99,10 @@
 
     #side-menu li {
         list-style: none;
-        font-size: larger;
+        /*font-size: larger;*/
     }
 
-    #side-menu>div {
+    #side-menu-container>div {
         display: flex;
         align-items: center;
         padding: 1em;

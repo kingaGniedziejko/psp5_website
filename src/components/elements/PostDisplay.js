@@ -1,4 +1,6 @@
 import React, {Component} from "react";
+import Lottie from 'react-lottie';
+import spinner from '../../images/spinner';
 import Post from "../elements/Post"
 import axios from "axios";
 import "../../styles/posts_style.css"
@@ -26,6 +28,14 @@ export class PostDisplay extends Component {
     render() {
         let {posts, categories, isLoaded} = this.state;
         const {postCategory, postsCount} = this.props;
+        const defaultOptions = {
+            loop: true,
+            autoplay: true,
+            animationData: spinner,
+            rendererSettings: {
+                preserveAspectRatio: "xMidYMid slice"
+            }
+        };
 
         if (postCategory !== ""){
             const category = categories.find(cat => cat.slug.toLowerCase() === postCategory.toLowerCase());
@@ -52,7 +62,16 @@ export class PostDisplay extends Component {
             }
 
         }
-        return <h3>...</h3> ;
+        return(
+            <div>
+                <Lottie
+                    options={defaultOptions}
+                    height={50}
+                    width={50}
+                    style={{margin: "2em"}}
+                />
+            </div>
+        );
     }
 }
 
