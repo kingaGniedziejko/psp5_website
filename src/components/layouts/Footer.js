@@ -1,6 +1,6 @@
 import React from "react";
 import "../../styles/footer_style.css"
-import { ReactComponent as LogoBip } from '../../images/bip.svg';
+import {ReactComponent as LogoBip } from '../../images/bip.svg';
 import {ReactComponent as IconLogo} from "../../images/logo.svg";
 
 
@@ -46,7 +46,7 @@ export const Footer = () => (
 
                 <div id={"emblem"} className={"footer-column"}>
                     <img
-                        src={'images/emblem.png'}
+                        src={'../../images/emblem.png'}
                         alt={"Godło"}
                     />
                 </div>
