@@ -54,7 +54,7 @@ div.post>div>div>div.post-attachment:first-of-type {
 div.post div button{
     align-self: flex-end;
     justify-self: flex-end;
-    width: 7em;
+    width: 10em;
 }
 
 div.post.post-left div button {
