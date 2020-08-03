@@ -1,12 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&family=Rowdies:wght@300;400;700&display=swap');
 
-.header {
-    background-color: var(--accent-1);
-    position: sticky;
+#header {
     top: 0;
     left: 0;
     right: 0;
+    position: fixed;
+}
+
+#navigation-bar {
+    background-color: var(--accent-1);
+    z-index: 10;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -14,27 +18,30 @@
     position: relative;
 }
 
-.header-container {
+#header .container {
     max-width: 1200px;
     margin: 0 auto;
+    justify-content: space-between;
     display: flex;
     flex-direction: row;
-    align-items: stretch;
-    justify-content: space-between;
 }
 
-.header #mobile-menu, #short-showcase, #mobile-spacer {
+#navigation-bar .container {
+    align-items: stretch;
+}
+
+#navigation-bar #mobile-menu, #short-showcase, #mobile-spacer {
     display: none;
 }
 
 /* Showcase */
 
-.header #showcase {
+#navigation-bar #showcase {
     display: flex;
     flex-direction: row;
 }
 
-.header #showcase svg{
+#navigation-bar #showcase svg{
     margin: 0.5em;
     width: 100px;
     height: auto;
@@ -42,7 +49,7 @@
 }
 
 
-.header #showcase ul#school-name{
+#navigation-bar #showcase ul#school-name{
     color: var(--white-1);
     font-family: Rowdies, cursive;
     font-weight: lighter;
@@ -63,7 +70,7 @@
 
 /* Contact ribbon */
 
-.header #ribbon {
+#navigation-bar #ribbon {
     padding: 0.5em 1em;
     border-bottom-left-radius: 10em;
     border-bottom-right-radius: 10em;
@@ -77,7 +84,7 @@
 }
 
 
-.header #ribbon #ribbon-contact, #ribbon-links {
+#navigation-bar #ribbon #ribbon-contact, #ribbon-links {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -111,14 +118,91 @@
 }
 
 /* searchbar */
-#searchbar {
-    background-color: var(--accent-1-light);
+
+.search-bar-anim-enter {
+    transform: translateY(0);
+    opacity: 1;
+    transition: all 300ms linear;
+}
+.search-bar-anim-enter-active {
+    transform: translateY(100%);
+    opacity: 1;
+    transition: all 300ms linear;
+}
+.search-bar-anim-exit {
+    transform: translateY(100%);
+    opacity: 1;
+    transition: all 300ms linear;
+
+}
+.search-bar-anim-exit-active {
+    transform: translateY(0);
+    opacity: 1;
+    transition: all 300ms linear;
 }
 
+#search-bar {
+    background-color: var(--accent-1-light);
+    padding: 0.5em;
+    text-align: center;
+    position: relative;
+    z-index: 5;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#search-bar .container {
+    align-items: center;
+}
+
+#search-bar #spacer {
+    flex: 1;
+}
+
+#search-bar #form {
+    flex: 0;
+    display: flex;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+}
+
+#search-bar #input {
+    border-style: none;
+    border-radius: 50px;
+    width: 30em;
+    padding: 7px 15px;
+    margin-right: 1em;
+    font-family: Nunito, sans-serif;
+    font-size: 0.8em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#search-bar #cross-container {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#cross {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+#search-bar #cross>* {
+    height: 1.2em;
+    padding-right: 0.4em;
+}
+
+#search-bar #cross:hover svg path {
+    fill: var(--accent-2-light);
+}
 /* smaller pc */
 
 @media (max-width: 1200px) {
-    .header #ribbon {
+    #navigation-bar #ribbon {
         border-bottom-right-radius: 0;
     }
 }
@@ -132,26 +216,29 @@
 
 /* tablet */
 
-@media (max-width: 1065px) {
+@media (max-width: 1130px) {
 
-    .header {
-        position: sticky;
-        top: 0;
-        left: 0;
-        right: 0;
-
-        overflow-x: hidden;
+    #navigation-bar #ribbon {
+        display: none;
     }
 
-    .header #showcase svg {
+    /*#navigation-bar {*/
+    /*    position: sticky;*/
+    /*    top: 0;*/
+    /*    left: 0;*/
+    /*    right: 0;*/
+    /*    overflow-x: hidden;*/
+    /*}*/
+
+    #navigation-bar #showcase svg {
         width: 70px;
     }
 
-    .header #showcase {
+    #navigation-bar #showcase {
         font-size: small;
     }
 
-    .header #mobile-menu {
+    #navigation-bar #mobile-menu {
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
@@ -160,36 +247,54 @@
 
     }
 
-    .header #mobile-menu>* {
+    #navigation-bar #mobile-menu>* {
         height: 1.7em;
         width: 1.7em;
         margin: 1em;
         stroke-width: 7;
     }
 
-    .header #mobile-menu svg path {
+    #navigation-bar #mobile-menu svg path {
         stroke-width: 7;
-    }
-
-    .header #ribbon {
-        display: none;
     }
 }
 
 /* phone */
 
-@media (max-width: 600px) {
+@media (max-width: 675px) {
+    #search-bar #form {
+        flex: 1;
+    }
 
-    .header #showcase svg {
+    #search-bar #input {
+        width: 100%;
+    }
+
+    #search-bar .button-accent-2 {
+        padding: 8px 15px;
+    }
+
+    #search-bar #spacer {
         display: none;
     }
 
-    .header #showcase {
+    #search-bar #cross-container {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+
+    #navigation-bar #showcase svg {
+        display: none;
+    }
+
+    #navigation-bar #showcase {
         font-size: x-small;
         margin: 0.5em;
     }
 
-    .header #mobile-menu>* {
+    #navigation-bar #mobile-menu>* {
         height: 1.5em;
         width: 1.5em;
         margin: 0.5em;
@@ -197,15 +302,15 @@
         /*filter: drop-shadow(0 4px 4px var(--accent-3));*/
     }
 
-    .header #mobile-menu>*>div {
+    #navigation-bar #mobile-menu>*>div {
         width: 1.5em;
     }
 
-    .header #mobile-menu svg path {
+    #navigation-bar #mobile-menu svg path {
         stroke-width: 7;
     }
 
-    .header #mobile-menu{
+    #navigation-bar #mobile-menu{
         justify-content: flex-end;
         margin-right: 0.5em;
         position: relative;

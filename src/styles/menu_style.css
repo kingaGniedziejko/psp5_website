@@ -78,6 +78,7 @@
 
     .submenu {
         display: none;
+        z-index: 15;
     }
 
     .menu-item:hover:not(:focus) .submenu {

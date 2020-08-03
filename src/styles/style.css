@@ -12,7 +12,11 @@
     --accent-2: rgb(238, 204, 35);
     --accent-2-light: rgb(241, 218, 105);
     --accent-2-faded: rgb(238, 204, 35);
-    --accent-3: rgba(112, 112, 112, 0.78)
+    --accent-3: rgba(112, 112, 112, 0.78);
+
+    --min-width-wide-pc: 1200px;
+    --min-width-pc: 1130px;
+    --min-width-tablet: 600px;
 }
 
 html {
