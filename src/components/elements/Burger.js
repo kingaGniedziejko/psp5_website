@@ -12,53 +12,53 @@ const StyledBurger = styled.div`
     div {
         width: 1.7em;
         height: 0.2em;
-        background-color: ${({ open }) => open ? 'var(--accent-1)' : 'var(--white-1)'};
+        background-color: ${({ isSideMenuOpen }) => isSideMenuOpen ? 'var(--accent-1)' : 'var(--white-1)'};
         border-radius: 6px;
         transform-origin: 1px;
         transition: all 0.3s linear;
       
         &:nth-child(1) {
-            transform: ${({ open }) => open ? 'rotate(45deg)' : 'rotate(0)'};
+            transform: ${({ isSideMenuOpen }) => isSideMenuOpen ? 'rotate(45deg)' : 'rotate(0)'};
         }
         &:nth-child(2) {
-            transform: ${({ open }) => open ? 'translateX(100%)' : 'translateX(0)'};
-            opacity: ${({ open }) => open ? 0 : 1};
+            transform: ${({ isSideMenuOpen }) => isSideMenuOpen ? 'translateX(100%)' : 'translateX(0)'};
+            opacity: ${({ isSideMenuOpen }) => isSideMenuOpen ? 0 : 1};
         }
         &:nth-child(3) {
-            transform: ${({ open }) => open ? 'rotate(-45deg)' : 'rotate(0)'};
+            transform: ${({ isSideMenuOpen }) => isSideMenuOpen ? 'rotate(-45deg)' : 'rotate(0)'};
         }
     }
 `;
 
 export class Burger extends Component {
     state = {
-        open: false,
+        isSideMenuOpen: false,
     }
 
     componentDidMount() {
         this.setState({
-            open: this.props.open
+            isSideMenuOpen: this.props.isSideMenuOpen
         })
     }
 
     handleClick = () => {
-        this.props.mutateState(!this.open);
+        this.props.mutateSideMenu(!this.isSideMenuOpen);
         this.setState({
-            open: !this.state.open
+            isSideMenuOpen: !this.state.isSideMenuOpen
         })
     }
 
     close = () => {
         // this.props.mutateState(false);
         this.setState({
-            open: false
+            isSideMenuOpen: false
         })
     }
 
     render() {
         return (
             <>
-                <StyledBurger open={this.state.open} onClick={this.handleClick}>
+                <StyledBurger isSideMenuOpen={this.state.isSideMenuOpen} onClick={this.handleClick}>
                     <div/>
                     <div/>
                     <div/>

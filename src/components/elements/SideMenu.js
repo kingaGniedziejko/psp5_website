@@ -6,11 +6,11 @@ import {CSSTransition} from 'react-transition-group';
 
 export class SideMenu extends Component {
     state = {
-        open: false
+        isSideMenuOpen: false
     }
     componentDidMount() {
         this.setState({
-            open: this.props.open
+            isSideMenuOpen: this.props.isSideMenuOpen
         })
         document.addEventListener('click', this.handleClickOutside, true);
 
@@ -41,9 +41,9 @@ export class SideMenu extends Component {
 
     closeSideMenu = event => {
         this.setState({
-            open: false
+            isSideMenuOpen: false
         })
-        this.props.mutateState(false);
+        this.props.mutateSideMenu(false);
     }
 
     render() {
@@ -52,7 +52,7 @@ export class SideMenu extends Component {
 
         return (
             <>
-                <ul id={"side-menu"} style={this.state.open ? {animationName: 'slide-in'} : {animationName: 'slide-out'}}>
+                <ul id={"side-menu"} style={this.state.isSideMenuOpen ? {animationName: 'slide-in'} : {animationName: 'slide-out'}}>
                     <div id={"side-menu-container"}>
                         <div>
                             <li className={"side-menu-item"} >

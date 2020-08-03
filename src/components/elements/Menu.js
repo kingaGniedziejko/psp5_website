@@ -34,7 +34,7 @@ export class Menu extends Component {
                     })
                 }
 
-                <a href={"#"} onClick={console.log("search")}>
+                <a href={"#"} onClick={this.props.mutateSearchBar}>
                     <li className={"menu-item"}>
                         <div><IconSearch /></div>
                     </li>

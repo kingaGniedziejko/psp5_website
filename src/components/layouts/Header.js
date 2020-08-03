@@ -11,9 +11,10 @@ import { ReactComponent as IconPhone } from '../../images/phone.svg';
 import { ReactComponent as IconMail } from '../../images/mail.svg';
 import { ReactComponent as IconFacebook } from '../../images/facebook.svg';
 import { ReactComponent as IconYoutube } from '../../images/youtube.svg';
-import { ReactComponent as IconMenu } from '../../images/menu.svg';
 import { ReactComponent as IconSearch } from '../../images/search.svg';
-import { ReactComponent as IconLogo } from '../../images/logo.svg';
+import { ReactComponent as Logo } from '../../images/logo.svg';
+import { ReactComponent as IconCross } from '../../images/cross.svg';
+
 
 export class Header extends Component {
     constructor(props) {
@@ -22,19 +23,26 @@ export class Header extends Component {
     }
 
     state = {
-        open: false,
+        isSideMenuOpen: false,
+        isSearchBarOpen: false,
         width:  800
     }
 
-    setOpen = (open) => {
+    setSideMenuOpen = (isSideMenuOpen) => {
         this.setState({
-            open: open
+            isSideMenuOpen: isSideMenuOpen
         })
-        if(!open)this.burgerRef.current.close();
+        if(!isSideMenuOpen)this.burgerRef.current.close();
+    }
+
+    toggleSearchBar = () => {
+        this.setState({
+            isSearchBarOpen: !this.state.isSearchBarOpen
+        })
     }
 
     updateDimensions() {
-        let update_width  = window.innerWidth-100;
+        let update_width  = window.innerWidth;
         this.setState({ width: update_width});
     }
 
@@ -52,69 +60,89 @@ export class Header extends Component {
 
         return (
             <>
-            <div className={"header"}>
-                <div className={"header-container"}>
-                    <div id={"mobile-spacer"}/>
-                    <div id={"showcase"}>
-                        <a href={""}>
-                            <IconLogo/>
-                        </a>
-                        <ul id={"school-name"}>
-                            <li>Publiczna Szkoła Podstawowa nr 5</li>
-                            <li>z Oddziałami Integracyjnymi</li>
-                            <li>im. Karola Musioła w Opolu</li>
-                        </ul>
-                    </div>
-                    <div id={"short-showcase"}>PSP nr 5</div>
-
-                    <div id={"menu-container"}>
-                        <div id={"ribbon"}>
-                            <div id={"ribbon-contact"}>
-                                <div className={"ribbon-data"}>
-                                    <IconPhone/>
-                                    <a type={"tel"}>77 545 32 23</a>
-                                </div>
-
-                                <div className={"ribbon-data"}>
-                                    <IconPhone/>
-                                    <a type={"tel"}>77 545 32 24</a>
-                                </div>
-
-                                <div className={"ribbon-data"}>
-                                    <IconMail/>
-                                    <a type={"email"}>psp5@psp5.opole.pl</a>
-                                </div>
-                            </div>
-
-                            <div id={"ribbon-links"}>
-                                <a href={"https://www.facebook.com/psp5opole"} rel="noopener noreferrer"
-                                   target="_blank"><IconFacebook className={"image-button"}/></a>
-                                <IconYoutube className={"image-button"}/>
-                            </div>
+            <div id={"header"}>
+                <div id={"navigation-bar"}>
+                    <div className={"container"}>
+                        <div id={"mobile-spacer"}/>
+                        <div id={"showcase"}>
+                            <a href={""}>
+                                <Logo/>
+                            </a>
+                            <ul id={"school-name"}>
+                                <li>Publiczna Szkoła Podstawowa nr 5</li>
+                                <li>z Oddziałami Integracyjnymi</li>
+                                <li>im. Karola Musioła w Opolu</li>
+                            </ul>
                         </div>
-                        {
-                            this.state.width > 1020 ? <Menu menuItems={menuItems}/> : ""
-                        }
-                    </div>
+                        <div id={"short-showcase"}>PSP nr 5</div>
 
-                    <div id={"mobile-menu"}>
-                        <IconSearch/>
-                        <Burger open={this.state.open} mutateState={this.setOpen} menuItems={menuItems} ref={this.burgerRef}/>
+                        <div id={"menu-container"}>
+                            <div id={"ribbon"}>
+                                <div id={"ribbon-contact"}>
+                                    <div className={"ribbon-data"}>
+                                        <IconPhone/>
+                                        <a type={"tel"}>77 545 32 23</a>
+                                    </div>
+
+                                    <div className={"ribbon-data"}>
+                                        <IconPhone/>
+                                        <a type={"tel"}>77 545 32 24</a>
+                                    </div>
+
+                                    <div className={"ribbon-data"}>
+                                        <IconMail/>
+                                        <a type={"email"}>psp5@psp5.opole.pl</a>
+                                    </div>
+                                </div>
+
+                                <div id={"ribbon-links"}>
+                                    <a href={"https://www.facebook.com/psp5opole"} rel="noopener noreferrer"
+                                       target="_blank"><IconFacebook className={"image-button"}/></a>
+                                    <IconYoutube className={"image-button"}/>
+                                </div>
+                            </div>
+                            {
+                                this.state.width > 1130 ? <Menu menuItems={menuItems} mutateSearchBar={this.toggleSearchBar}/> : ""
+                            }
+                        </div>
+
+                        <div id={"mobile-menu"}>
+                            <IconSearch onClick={this.toggleSearchBar}/>
+                            <Burger open={this.state.isSideMenuOpen} mutateSideMenu={this.setSideMenuOpen} menuItems={menuItems} ref={this.burgerRef}/>
+                        </div>
                     </div>
                 </div>
-
+                <CSSTransition
+                    in={this.state.isSearchBarOpen}
+                    timeout={300}
+                    classNames="search-bar-anim"
+                    unmountOnExit
+                >
+                    <div id={"search-bar"}>
+                        <div className={"container"}>
+                            <div id={"spacer"}/>
+                            <div id={"form"}>
+                                <input id={"input"} type={"search"} placeholder={"Szukaj..."} />
+                                <button className={"button-accent-2"}>Szukaj</button>
+                            </div>
+                            <div id={"cross-container"}>
+                                <div id={"cross"}>
+                                    <IconCross onClick={this.toggleSearchBar}/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </CSSTransition>
             </div>
-            <div id={"searchbar"}>
 
-            </div>
             <CSSTransition
-                in={this.state.open}
+                in={this.state.isSideMenuOpen}
                 timeout={300}
                 classNames="side-menu-anim"
                 unmountOnExit
             >
             {
-                 <SideMenu menuItems={menuItems} mutateState={this.setOpen} open={this.state.open} />
+                 <SideMenu menuItems={menuItems} mutateSideMenu={this.setSideMenuOpen} isSideMenuOpen={this.state.isSideMenuOpen} />
             }
             </CSSTransition>
             </>
