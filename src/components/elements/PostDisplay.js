@@ -1,9 +1,12 @@
 import React, {Component} from "react";
 import Lottie from 'react-lottie';
 import spinner from '../../images/spinner';
-import Post from "../elements/Post"
 import axios from "axios";
+
+import '../../config';
 import "../../styles/posts_style.css"
+
+import Post from "../elements/Post"
 
 export class PostDisplay extends Component {
     state = {
@@ -13,8 +16,8 @@ export class PostDisplay extends Component {
     }
 
     componentDidMount() {
-        const getPosts = axios.get("/wp-json/wp/v2/news");
-        const getCategories = axios.get("/wp-json/wp/v2/categories");
+        const getPosts = axios.get(global.config.proxy + "/wp-json/wp/v2/news");
+        const getCategories = axios.get(global.config.proxy + "/wp-json/wp/v2/categories");
 
         Promise.all([getPosts, getCategories])
             .then(res => this.setState({

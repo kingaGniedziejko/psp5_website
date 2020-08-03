@@ -1,10 +1,12 @@
 import React, {Component} from "react";
 import {Route} from 'react-router-dom';
+import axios from "axios";
+import '../../config';
 import "../../styles/content_style.css"
+
 
 import HomePage from "../contents/HomePage";
 import SwimmingPool from "../contents/about_school/SwimmingPool";
-import axios from "axios";
 import AdditionalPage from "../elements/AdditionalPage";
 
 export class Content extends Component {
@@ -58,7 +60,7 @@ export class Content extends Component {
     }
 
     componentDidMount() {
-        axios.get("wp-json/wp/v2/additional_pages")
+        axios.get( global.config.proxy + "/wp-json/wp/v2/additional_pages")
             .then(res => this.setState({
                 additionalPages: res.data,
                 isAdditionalPagesLoaded: true
@@ -69,7 +71,7 @@ export class Content extends Component {
     render() {
         const {homePage, isAdditionalPagesLoaded} = this.state;
 
-        // if (isAdditionalPagesLoaded) {
+        if (isAdditionalPagesLoaded) {
             const menuItems = this.separateMenuItems();
             const additionalPagesFiltered = this.filterAdditionalPages(menuItems);
             const contentsFiltered = this.filterContents(menuItems, additionalPagesFiltered);
@@ -93,12 +95,12 @@ export class Content extends Component {
                     })}
                 </div>
             );
-        // } else {
-        //     return (
-        //         <div className={"content-container"}>
-        //             <Route key={homePage.title} path={homePage.path} exact component={homePage.component}/>
-        //         </div>
-        //     );
-        // }
+        } else {
+            return (
+                <div className={"content-container"}>
+                    <Route key={homePage.title} path={homePage.path} exact component={homePage.component}/>
+                </div>
+            );
+        }
     }
 }
