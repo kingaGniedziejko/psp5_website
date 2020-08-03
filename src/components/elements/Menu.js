@@ -12,7 +12,7 @@ export class Menu extends Component {
 
         return (
             <ul id={"menu"}>
-                <NavLink to={"/"} exact activeClassName={"menu-item-active"}>
+                <NavLink to={""} exact activeClassName={"menu-item-active"}>
                     <li className={"menu-item"} >
                         <div><IconHome /></div>
                     </li>

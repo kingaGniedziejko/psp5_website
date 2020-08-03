@@ -5,13 +5,16 @@
     top: 0;
     left: 0;
     right: 0;
-    position: fixed;
+    position: absolute;
 }
 
 #navigation-bar {
     background-color: var(--accent-1);
-    z-index: 10;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#navigation-bar, #navigation-bar * {
+    z-index: 10;
 }
 
 #wrapper {
@@ -28,6 +31,7 @@
 
 #navigation-bar .container {
     align-items: stretch;
+    z-index: 10;
 }
 
 #navigation-bar #mobile-menu, #short-showcase, #mobile-spacer {
@@ -120,23 +124,27 @@
 /* searchbar */
 
 .search-bar-anim-enter {
-    transform: translateY(0);
+    transform: translateY(var(--nav-bar-height));
+    z-index: 5;
     opacity: 1;
     transition: all 300ms linear;
 }
 .search-bar-anim-enter-active {
-    transform: translateY(100%);
+    transform: translateY(0);
+    z-index: 5;
     opacity: 1;
     transition: all 300ms linear;
 }
 .search-bar-anim-exit {
-    transform: translateY(100%);
+    transform: translateY(0);
+    z-index: 5;
     opacity: 1;
     transition: all 300ms linear;
 
 }
 .search-bar-anim-exit-active {
-    transform: translateY(0);
+    transform: translateY(var(--nav-bar-height));
+    z-index: 5;
     opacity: 1;
     transition: all 300ms linear;
 }
@@ -145,9 +153,15 @@
     background-color: var(--accent-1-light);
     padding: 0.5em;
     text-align: center;
-    position: relative;
-    z-index: 5;
+    position: absolute;
+    /*gut on mobile ^*/
+    left: 0;
+    right: 0;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#search-bar, #search-bar * {
+    z-index: 5;
 }
 
 #search-bar .container {
@@ -193,7 +207,7 @@
 
 #search-bar #cross>* {
     height: 1.2em;
-    padding-right: 0.4em;
+    /*padding-right: 0.4em;*/
 }
 
 #search-bar #cross:hover svg path {

@@ -17,6 +17,8 @@
     --min-width-wide-pc: 1200px;
     --min-width-pc: 1130px;
     --min-width-tablet: 600px;
+
+    --nav-bar-height: 0;
 }
 
 html {
@@ -154,7 +156,7 @@ div.attachment a div.attachment-download:hover{
     background-size: contain;
 }
 
-.menu-item-active {
+.menu-item-active, .menu-item-active *{
     color: var(--accent-2) !important;
     fill: var(--accent-2) !important;
 }

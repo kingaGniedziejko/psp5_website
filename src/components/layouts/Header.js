@@ -20,12 +20,13 @@ export class Header extends Component {
     constructor(props) {
         super(props);
         this.burgerRef = React.createRef();
+        this.navBar = React.createRef();
     }
 
     state = {
         isSideMenuOpen: false,
         isSearchBarOpen: false,
-        width:  800
+        width: 800,
     }
 
     setSideMenuOpen = (isSideMenuOpen) => {
@@ -43,7 +44,11 @@ export class Header extends Component {
 
     updateDimensions() {
         let update_width  = window.innerWidth;
-        this.setState({ width: update_width});
+        document.documentElement.style.setProperty('--nav-bar-height', `${0 - this.navBar.current.clientHeight}px`);
+        console.log(this.navBar.current.clientHeight);
+        this.setState({
+            width: update_width,
+        });
     }
 
     componentDidMount() {
@@ -57,11 +62,10 @@ export class Header extends Component {
 
     render() {
         const { menuItems } = this.props;
-
-        return (
+        return(
             <>
             <div id={"header"}>
-                <div id={"navigation-bar"}>
+                <div id={"navigation-bar"} ref={this.navBar}>
                     <div className={"container"}>
                         <div id={"mobile-spacer"}/>
                         <div id={"showcase"}>
@@ -102,13 +106,15 @@ export class Header extends Component {
                                 </div>
                             </div>
                             {
-                                this.state.width > 1130 ? <Menu menuItems={menuItems} mutateSearchBar={this.toggleSearchBar}/> : ""
+                                this.state.width > 1130 ?
+                                    <Menu menuItems={menuItems} mutateSearchBar={this.toggleSearchBar}/> : ""
                             }
                         </div>
 
                         <div id={"mobile-menu"}>
                             <IconSearch onClick={this.toggleSearchBar}/>
-                            <Burger open={this.state.isSideMenuOpen} mutateSideMenu={this.setSideMenuOpen} menuItems={menuItems} ref={this.burgerRef}/>
+                            <Burger open={this.state.isSideMenuOpen} mutateSideMenu={this.setSideMenuOpen}
+                                    menuItems={menuItems} ref={this.burgerRef}/>
                         </div>
                     </div>
                 </div>
@@ -122,7 +128,7 @@ export class Header extends Component {
                         <div className={"container"}>
                             <div id={"spacer"}/>
                             <div id={"form"}>
-                                <input id={"input"} type={"search"} placeholder={"Szukaj..."} />
+                                <input id={"input"} type={"search"} placeholder={"Szukaj..."}/>
                                 <button className={"button-accent-2"}>Szukaj</button>
                             </div>
                             <div id={"cross-container"}>
@@ -141,11 +147,12 @@ export class Header extends Component {
                 classNames="side-menu-anim"
                 unmountOnExit
             >
-            {
-                 <SideMenu menuItems={menuItems} mutateSideMenu={this.setSideMenuOpen} isSideMenuOpen={this.state.isSideMenuOpen} />
-            }
+                {
+                    <SideMenu menuItems={menuItems} mutateSideMenu={this.setSideMenuOpen}
+                              isSideMenuOpen={this.state.isSideMenuOpen}/>
+                }
             </CSSTransition>
-            </>
+        </>
         );
     }
 }
