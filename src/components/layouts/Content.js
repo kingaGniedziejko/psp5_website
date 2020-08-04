@@ -1,10 +1,10 @@
 import React, {Component} from "react";
-import {Route} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import axios from "axios";
 import '../../config';
 import "../../styles/content_style.css"
 
-
+import NotFoundPage from "../elements/NotFoundPage";
 import HomePage from "../contents/HomePage";
 import SwimmingPool from "../contents/about_school/SwimmingPool";
 import AdditionalPage from "../elements/AdditionalPage";
@@ -82,23 +82,29 @@ export class Content extends Component {
 
             return (
                 <div className={"content-container"}>
-                    <Route key={homePage.title} path={homePage.path} exact component={homePage.component}/>
-                    {contentsFiltered.map((elem, index) => {
-                        return <Route key={index} path={elem.path} exact component={elem.component}/>;
-                    })}
-                    {additionalPagesFiltered.map((page, index) => {
-                        return (
-                            <Route key={index} path={page.acf.path} exact>
-                                <AdditionalPage page={page}/>
-                            </Route>
-                        );
-                    })}
+                    <Switch>
+                        <Route key={homePage.title} path={homePage.path} exact component={homePage.component}/>
+                        {contentsFiltered.map((elem, index) => {
+                            return <Route key={index} path={elem.path} exact component={elem.component}/>;
+                        })}
+                        {additionalPagesFiltered.map((page, index) => {
+                            return (
+                                <Route key={index} path={page.acf.path} exact>
+                                    <AdditionalPage page={page}/>
+                                </Route>
+                            );
+                        })}
+                        <Route path={"/"} component={NotFoundPage}/>
+                    </Switch>
                 </div>
             );
         } else {
             return (
                 <div className={"content-container"}>
-                    <Route key={homePage.title} path={homePage.path} exact component={homePage.component}/>
+                    <Switch>
+                        <Route key={homePage.title} path={homePage.path} exact component={homePage.component}/>
+                        <Route path={"/"} component={NotFoundPage}/>
+                    </Switch>
                 </div>
             );
         }
