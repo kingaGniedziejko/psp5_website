@@ -46,6 +46,13 @@ export class PostDisplay extends Component {
         }
 
         if(isLoaded){
+            if (posts.length === 0){
+                return (
+                    <div className={"posts-container posts-container-empty"}>
+                        <h4><i>Brak aktualności</i></h4>
+                    </div>
+                )
+            }
             if (postsCount === -1) {
                 return (
                     <div className={"posts-container"}>

@@ -46,7 +46,7 @@ export class Header extends Component {
     updateDimensions() {
         let update_width  = window.innerWidth;
         document.documentElement.style.setProperty('--nav-bar-height', `${0 - this.navBar.current.clientHeight}px`);
-        console.log(this.navBar.current.clientHeight);
+        // console.log(this.navBar.current.clientHeight);
         this.setState({
             width: update_width,
         });
