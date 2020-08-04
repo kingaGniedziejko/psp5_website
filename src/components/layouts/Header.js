@@ -71,9 +71,8 @@ export class Header extends Component {
                     timeout={300}
                     classNames="search-bar-anim"
                     unmountOnExit
-
                 >
-                    <div id={"search-bar"} style={{order: 2}}>
+                    <div id={"search-bar"}>
                         <div className={"container"}>
                             <div id={"spacer"}/>
                             <div id={"form"}>
@@ -88,7 +87,7 @@ export class Header extends Component {
                         </div>
                     </div>
                 </CSSTransition>
-                <div id={"navigation-bar"} ref={this.navBar} style={{order: 1}}>
+                <div id={"navigation-bar"} ref={this.navBar}>
                     <div className={"container"}>
                         <div id={"mobile-spacer"}/>
                         <div id={"showcase"}>

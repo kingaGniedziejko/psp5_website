@@ -126,34 +126,35 @@ a:active {
     color: var(--accent-1);
 }
 
-div.attachment{
-    /*max-height: 20px;*/
+a.attachment{
     margin: 10px 0;
     padding: 5px 10px;
     background-color: var(--accent-2-light);
+    color: var(--font-dark);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    text-decoration: none;
 }
 
-div.attachment p{
+a.attachment p{
     font-size: 0.8em;
-    margin: 0;
-    margin-right: 10px;
+    margin: 0 10px 0 0;
     display: inline-block;
+    color: var(--font-dark);
+
 }
 
-div.attachment a div.attachment-download{
-    width: 10px;
-    height: 10px;
-    background: url(../images/icon_download.png) no-repeat;
-    background-size: contain;
+a.attachment svg {
+    height: 1.2em;
+    width: auto;
 }
 
-div.attachment a div.attachment-download:hover{
-    background: url(../images/icon_download_light.png) no-repeat;
-    background-size: contain;
+
+a.attachment:hover *{
+    color: var(--accent-1);
+    fill: var(--accent-1);
 }
 
 .menu-item-active, .menu-item-active *{
@@ -161,9 +162,3 @@ div.attachment a div.attachment-download:hover{
     fill: var(--accent-2) !important;
 }
 
-@media (max-width: 1020px) {
-    .menu-item-active, .menu-item-active>* {
-        color: var(--accent-1-light) !important;
-        fill: var(--accent-1-light) !important;
-    }
-}

@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import "../../config";
 
 import Attachment from "./Attachment"
+import {CSSTransition} from "react-transition-group";
 
 export class Post extends Component {
     state = {
@@ -54,16 +55,21 @@ export class Post extends Component {
 
         if (isLoaded){
             return (
+
                 <div className={"post " + (postDirection ? "post-left" : "post-right")}>
-                    <div>
-                        <img src={imgUrl} alt={title.rendered}/>
-                        { isExpanded ? <div>
-                            { attachments.map(att => {
-                                if (att) return <Attachment key={att.id} className={"post-attachment"} title={att.title} url={att.url}/>
-                                else return "";
-                            })}
-                        </div> : "" }
-                    </div>
+
+                        <div>
+                            <img src={imgUrl} alt={title.rendered}/>
+                            { isExpanded ?
+                                <div>
+                                    {
+                                        attachments.map(att => {
+                                            if (att) return <Attachment key={att.id} className={"post-attachment"} title={att.title} url={att.url}/>
+                                            else return "";
+                                        })
+                                    }
+                                </div> : "" }
+                        </div>
                     <div>
                         <h2 className={"post-title"}>{title.rendered}</h2>
                         <small className={"post-date"}>

@@ -58,7 +58,7 @@ export const Footer = () => (
                         <li><a href="http://www.kuratorium.opole.pl/" rel="noopener noreferrer" target="_blank">Kuratorium Oświaty w Opolu</a></li>
                         <li><a href="https://www.gov.pl/web/edukacja" rel="noopener noreferrer" target="_blank">Ministerstwo Edukacji Narodowej</a></li>
                         <li><a href="https://poczta22688.domeny.host/" rel="noopener noreferrer" target="_blank">Poczta pracownicza</a></li>
-                        <li><a href="" rel="noopener noreferrer" target="_blank">Administrator</a></li>
+                        <li><a href={global.config.proxy + "/wp-admin"} rel="noopener noreferrer" target="_blank">Administrator</a></li>
                         <li><a href="https://psp5-opole.ssdip.bip.gov.pl/" rel="noopener noreferrer" target="_blank">
                             <LogoBip />
                         </a></li>
