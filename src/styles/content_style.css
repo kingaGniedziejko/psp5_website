@@ -17,7 +17,6 @@ div.content div.photo {
     background-position: center;
     background-attachment: fixed;
     width: 100%;
-    margin-bottom: 20px;
 }
 
 div.content div.photo-1 {
@@ -32,6 +31,10 @@ div.content div.photo-main {
 div.content div.photo-2 {
     background-image: url(../images/photo_home_2.jpg);
     height: 200px;
+}
+
+div.content h1 {
+    margin-top: 30px;
 }
 
 div.content div#shortcut {
