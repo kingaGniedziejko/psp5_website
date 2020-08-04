@@ -31,34 +31,8 @@
     #side-menu-container {
         overflow-y: scroll;
         overflow-x: hidden;
-        height: 100%;
         padding-top: 4em;
     }
-
-    /*@keyframes growAndFadeInFontSize {*/
-    /*    0% {*/
-    /*        font-size: 0;*/
-    /*        opacity: 0;*/
-    /*    }*/
-    /*    100% {*/
-    /*        font-size: 1em;*/
-    /*        opacity: 1;*/
-    /*    }*/
-    /*}*/
-
-
-    /*details[open] .submenu {*/
-    /*    animation: growAndFadeInFontSize;*/
-    /*    animation-duration: 500ms, 200ms;*/
-    /*    animation-delay: 0ms, 500ms;*/
-    /*}*/
-
-    /*details:not([open]) .submenu {*/
-    /*    animation: growAndFadeInFontSize reverse;*/
-    /*    animation-duration: 500ms, 200ms;*/
-    /*    animation-delay: 0ms, 500ms;*/
-    /*}*/
-
 
     #side-menu-container, summary {
         font-family: Rowdies, cursive;

@@ -14,6 +14,7 @@ import { ReactComponent as IconYoutube } from '../../images/youtube.svg';
 import { ReactComponent as IconSearch } from '../../images/search.svg';
 import { ReactComponent as Logo } from '../../images/logo.svg';
 import { ReactComponent as IconCross } from '../../images/cross.svg';
+import { ReactComponent as IconArrow } from '../../images/arrow.svg';
 
 
 export class Header extends Component {
@@ -65,7 +66,29 @@ export class Header extends Component {
         return(
             <>
             <div id={"header"}>
-                <div id={"navigation-bar"} ref={this.navBar}>
+                <CSSTransition
+                    in={this.state.isSearchBarOpen}
+                    timeout={300}
+                    classNames="search-bar-anim"
+                    unmountOnExit
+
+                >
+                    <div id={"search-bar"} style={{order: 2}}>
+                        <div className={"container"}>
+                            <div id={"spacer"}/>
+                            <div id={"form"}>
+                                <input id={"input"} type={"search"} placeholder={"Szukaj..."}/>
+                                <button className={"button-accent-2"}> {this.state.width < 675 ? <IconArrow /> : "Szukaj"} </button>
+                            </div>
+                            <div id={"cross-container"}>
+                                <div id={"cross"}>
+                                    <IconCross onClick={this.toggleSearchBar}/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </CSSTransition>
+                <div id={"navigation-bar"} ref={this.navBar} style={{order: 1}}>
                     <div className={"container"}>
                         <div id={"mobile-spacer"}/>
                         <div id={"showcase"}>
@@ -118,27 +141,7 @@ export class Header extends Component {
                         </div>
                     </div>
                 </div>
-                <CSSTransition
-                    in={this.state.isSearchBarOpen}
-                    timeout={300}
-                    classNames="search-bar-anim"
-                    unmountOnExit
-                >
-                    <div id={"search-bar"}>
-                        <div className={"container"}>
-                            <div id={"spacer"}/>
-                            <div id={"form"}>
-                                <input id={"input"} type={"search"} placeholder={"Szukaj..."}/>
-                                <button className={"button-accent-2"}>Szukaj</button>
-                            </div>
-                            <div id={"cross-container"}>
-                                <div id={"cross"}>
-                                    <IconCross onClick={this.toggleSearchBar}/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </CSSTransition>
+
             </div>
 
             <CSSTransition

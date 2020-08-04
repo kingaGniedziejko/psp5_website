@@ -5,12 +5,15 @@
     top: 0;
     left: 0;
     right: 0;
-    position: absolute;
+    position: sticky;
+    display: flex;
+    flex-direction: column;
 }
 
 #navigation-bar {
     background-color: var(--accent-1);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /*order: 1;*/
 }
 
 #navigation-bar, #navigation-bar * {
@@ -153,16 +156,16 @@
     background-color: var(--accent-1-light);
     padding: 0.5em;
     text-align: center;
-    position: absolute;
-    /*gut on mobile ^*/
+    position: fixed;
+    top: calc(0px - var(--nav-bar-height));
     left: 0;
     right: 0;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-#search-bar, #search-bar * {
-    z-index: 5;
-}
+/*#search-bar, #search-bar * {*/
+/*    z-index: 5;*/
+/*}*/
 
 #search-bar .container {
     align-items: center;
@@ -181,6 +184,7 @@
 }
 
 #search-bar #input {
+    -webkit-appearance: none;
     border-style: none;
     border-radius: 50px;
     width: 30em;
@@ -236,13 +240,9 @@
         display: none;
     }
 
-    /*#navigation-bar {*/
-    /*    position: sticky;*/
-    /*    top: 0;*/
-    /*    left: 0;*/
-    /*    right: 0;*/
-    /*    overflow-x: hidden;*/
-    /*}*/
+    #navigation-bar {
+        overflow-x: hidden;
+    }
 
     #navigation-bar #showcase svg {
         width: 70px;
@@ -276,16 +276,32 @@
 /* phone */
 
 @media (max-width: 675px) {
+    #search-bar {
+        padding-left: 0.4em;
+        padding-right: 0.4em;
+    }
+
     #search-bar #form {
         flex: 1;
     }
 
     #search-bar #input {
         width: 100%;
+        margin-right: 0.4em;
     }
 
     #search-bar .button-accent-2 {
         padding: 8px 15px;
+        display: flex;
+        align-items: center;
+    }
+
+    #search-bar .button-accent-2>* {
+        height: auto;
+        width: 1.5em;
+        align-items: center;
+        align-self: center;
+
     }
 
     #search-bar #spacer {
