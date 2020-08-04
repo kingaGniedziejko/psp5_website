@@ -1,13 +1,14 @@
 import React, {Component} from "react";
-import {Route} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import axios from "axios";
 import '../../config';
 import "../../styles/content_style.css"
 
-
+import NotFoundPage from "../elements/NotFoundPage";
 import HomePage from "../contents/HomePage";
 import SwimmingPool from "../contents/about_school/SwimmingPool";
 import AdditionalPage from "../elements/AdditionalPage";
+import NewsPage from "../contents/news/NewsPage";
 
 export class Content extends Component {
     state = {
@@ -16,6 +17,7 @@ export class Content extends Component {
             path: "/",
             component: HomePage
         },
+        news: [],
         contents: [
             {
                 title: "basen",
@@ -59,6 +61,23 @@ export class Content extends Component {
         return filteredContents;
     }
 
+    filterNews(menuItems) {
+        let filteredNews = [];
+
+        menuItems.forEach(item => {
+            if (item.object === "category"){
+                filteredNews.push({
+                    title: item.title,
+                    path: "/aktualnosci/" + item.slug,
+                    postCategory: item.slug,
+                    postsCount: -1
+                })
+            }
+        });
+
+        return filteredNews;
+    }
+
     componentDidMount() {
         axios.get( global.config.proxy + "/wp-json/wp/v2/additional_pages")
             .then(res => this.setState({
@@ -75,6 +94,7 @@ export class Content extends Component {
             const menuItems = this.separateMenuItems();
             const additionalPagesFiltered = this.filterAdditionalPages(menuItems);
             const contentsFiltered = this.filterContents(menuItems, additionalPagesFiltered);
+            const newsFiltered = this.filterNews(menuItems);
 
             // console.log(menuItems);
             // console.log(additionalPagesFiltered);
@@ -82,23 +102,36 @@ export class Content extends Component {
 
             return (
                 <div className={"content-container"}>
-                    <Route key={homePage.title} path={homePage.path} exact component={homePage.component}/>
-                    {contentsFiltered.map((elem, index) => {
-                        return <Route key={index} path={elem.path} exact component={elem.component}/>;
-                    })}
-                    {additionalPagesFiltered.map((page, index) => {
-                        return (
-                            <Route key={index} path={page.acf.path} exact>
-                                <AdditionalPage page={page}/>
-                            </Route>
-                        );
-                    })}
+                    <Switch>
+                        <Route key={homePage.title} path={homePage.path} exact component={homePage.component}/>
+                        {contentsFiltered.map((elem, index) => {
+                            return <Route key={index} path={elem.path} exact component={elem.component}/>;
+                        })}
+                        {newsFiltered.map((elem, index) => {
+                            return (
+                                <Route key={index} path={elem.path} exact>
+                                    <NewsPage newsInfo={elem}/>
+                                </Route>
+                            )
+                        })}
+                        {additionalPagesFiltered.map((page, index) => {
+                            return (
+                                <Route key={index} path={page.acf.path} exact>
+                                    <AdditionalPage page={page}/>
+                                </Route>
+                            );
+                        })}
+                        <Route path={"/"} component={NotFoundPage}/>
+                    </Switch>
                 </div>
             );
         } else {
             return (
                 <div className={"content-container"}>
-                    <Route key={homePage.title} path={homePage.path} exact component={homePage.component}/>
+                    <Switch>
+                        <Route key={homePage.title} path={homePage.path} exact component={homePage.component}/>
+                        <Route path={"/"} component={NotFoundPage}/>
+                    </Switch>
                 </div>
             );
         }

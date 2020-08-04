@@ -7,7 +7,6 @@ export class AdditionalPage extends Component {
 
         return (
             <div className={"content"}>
-
                 <div className={"section section-1"}>
                     <div className={"photo photo-1"} style={{backgroundImage: `url(${image1.url})`}}/>
                     <h1>{title1}</h1>

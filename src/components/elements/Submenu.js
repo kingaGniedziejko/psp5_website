@@ -19,13 +19,23 @@ export class Submenu extends Component {
             <ul className={"submenu"}>
                 { child_items !== undefined ?
                     child_items.map((elem, index) => {
-                        return (
-                            <Link to={elem.url} key={index} onClick={this.handleItemClick}>
-                                <li className={"submenu-item"}>
-                                    {elem.title}
-                                </li>
-                            </Link>
-                        )
+                        if (elem.object === "category") {
+                            return (
+                                <Link to={"/aktualnosci/" + elem.slug} key={index} onClick={this.handleItemClick}>
+                                    <li className={"submenu-item"}>
+                                        {elem.title}
+                                    </li>
+                                </Link>
+                            )
+                        } else {
+                            return (
+                                <Link to={elem.url} key={index} onClick={this.handleItemClick}>
+                                    <li className={"submenu-item"}>
+                                        {elem.title}
+                                    </li>
+                                </Link>
+                            )
+                        }
                     })
                     : ""
                 }
