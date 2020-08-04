@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import Shortcut from "../elements/Shortcut";
 import PostDisplay from "../elements/PostDisplay";
+import {Link} from "react-router-dom";
 
 export class HomePage extends Component {
     state = {
@@ -21,7 +22,7 @@ export class HomePage extends Component {
                     <div className={"photo photo-2"}/>
                     <h1>Komunikaty</h1>
                     <PostDisplay postCategory={"komunikaty"} postsCount={postCount} />
-                    <button className={"button-accent-1"}>Czytaj więcej</button>
+                    <Link to={"/aktualnosci/komunikaty"}><button className={"button-accent-1"}>Czytaj więcej</button></Link>
                 </div>
             </div>
         );
