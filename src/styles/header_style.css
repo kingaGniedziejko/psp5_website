@@ -211,11 +211,11 @@
 
 #search-bar #cross>* {
     height: 1.2em;
-    /*padding-right: 0.4em;*/
+    padding-right: 0.4em;
 }
 
-#search-bar #cross:hover svg path {
-    fill: var(--accent-2-light);
+#search-bar #cross:hover svg * {
+    stroke: var(--accent-2-light);
 }
 /* smaller pc */
 
