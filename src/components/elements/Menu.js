@@ -34,11 +34,11 @@ export class Menu extends Component {
                     })
                 }
 
-                <a href={"#"} onClick={this.props.mutateSearchBar}>
+                <div className="image-button" onClick={this.props.mutateSearchBar}>
                     <li className={"menu-item"}>
                         <div><IconSearch /></div>
                     </li>
-                </a>
+                </div>
             </ul>
         );
     }

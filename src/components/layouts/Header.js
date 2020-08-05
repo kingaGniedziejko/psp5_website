@@ -30,23 +30,23 @@ export class Header extends Component {
         width: 800,
     }
 
-    setSideMenuOpen = (isSideMenuOpen) => {
+    toggleSideMenu = () => {
         this.setState({
-            isSideMenuOpen: isSideMenuOpen
-        })
-        if(!isSideMenuOpen)this.burgerRef.current.close();
+            isSideMenuOpen: !this.state.isSideMenuOpen
+        }, () => {
+            if(!this.state.isSideMenuOpen && this.burgerRef.current.state.isSideMenuOpen) this.burgerRef.current.close();
+        });
     }
 
     toggleSearchBar = () => {
         this.setState({
             isSearchBarOpen: !this.state.isSearchBarOpen
-        })
+        });
     }
 
     updateDimensions() {
         let update_width  = window.innerWidth;
-        document.documentElement.style.setProperty('--nav-bar-height', `${0 - this.navBar.current.clientHeight}px`);
-        // console.log(this.navBar.current.clientHeight);
+        document.documentElement.style.setProperty('--nav-bar-height', `${this.navBar.current.clientHeight}px`);
         this.setState({
             width: update_width,
         });
@@ -80,7 +80,7 @@ export class Header extends Component {
                                 <button className={"button-accent-2"}> {this.state.width < 675 ? <IconArrow /> : "Szukaj"} </button>
                             </div>
                             <div id={"cross-container"}>
-                                <div id={"cross"}>
+                                <div className="image-button" id={"cross"}>
                                     <IconCross onClick={this.toggleSearchBar}/>
                                 </div>
                             </div>
@@ -91,7 +91,7 @@ export class Header extends Component {
                     <div className={"container"}>
                         <div id={"mobile-spacer"}/>
                         <div id={"showcase"}>
-                            <a href={""}>
+                            <a href={"/"}>
                                 <Logo/>
                             </a>
                             <ul id={"school-name"}>
@@ -135,8 +135,8 @@ export class Header extends Component {
 
                         <div id={"mobile-menu"}>
                             <IconSearch onClick={this.toggleSearchBar}/>
-                            <Burger open={this.state.isSideMenuOpen} mutateSideMenu={this.setSideMenuOpen}
-                                    menuItems={menuItems} ref={this.burgerRef}/>
+                            <div id={"burger-spacer"}/>
+
                         </div>
                     </div>
                 </div>
@@ -150,10 +150,23 @@ export class Header extends Component {
                 unmountOnExit
             >
                 {
-                    <SideMenu menuItems={menuItems} mutateSideMenu={this.setSideMenuOpen}
-                              isSideMenuOpen={this.state.isSideMenuOpen}/>
+                    <SideMenu
+                        menuItems={menuItems}
+                        mutateSideMenu={this.toggleSideMenu}
+                        isSideMenuOpen={this.state.isSideMenuOpen}
+                        burger={this.burgerRef}
+                    />
                 }
             </CSSTransition>
+                {
+                    this.state.width <= 1130 ?
+                        <Burger
+                            isSideMenuOpen={this.state.isSideMenuOpen}
+                            mutateSideMenu={this.toggleSideMenu}
+                            menuItems={menuItems}
+                            ref={this.burgerRef}
+                        /> : ""
+                }
         </>
         );
     }

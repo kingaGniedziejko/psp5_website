@@ -6,12 +6,16 @@ import {CSSTransition} from 'react-transition-group';
 
 export class SideMenu extends Component {
     state = {
-        isSideMenuOpen: false
+        isSideMenuOpen: false,
     }
+
     componentDidMount() {
         this.setState({
-            isSideMenuOpen: this.props.isSideMenuOpen
+            isSideMenuOpen: this.props.isSideMenuOpen,
         })
+
+
+
         document.addEventListener('click', this.handleClickOutside, true);
 
         const details = document.querySelectorAll("details");
@@ -34,16 +38,20 @@ export class SideMenu extends Component {
 
     handleClickOutside = event => {
         const domNode = ReactDOM.findDOMNode(this);
-        if (!domNode || !domNode.contains(event.target)) {
+        const burgerNode = ReactDOM.findDOMNode(this.props.burger.current)
+
+        if ((!domNode || !domNode.contains(event.target)) && (!burgerNode || !burgerNode.contains(event.target))) {
             this.closeSideMenu()
         }
     }
 
-    closeSideMenu = event => {
+    closeSideMenu = () => {
         this.setState({
             isSideMenuOpen: false
+        }, () => {
+            console.log("tu2")
+            this.props.mutateSideMenu();
         })
-        this.props.mutateSideMenu(false);
     }
 
     render() {

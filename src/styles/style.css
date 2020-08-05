@@ -37,7 +37,9 @@ body {
     flex-direction: column;
     background-color: var(--white-1);
     color: var(--font-dark);
+
 }
+
 
 *:focus {
     outline-style: none;
@@ -64,6 +66,7 @@ button {
     white-space: nowrap;
     border: none;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
 }
 
 button.button-accent-1 {
@@ -162,3 +165,6 @@ a.attachment:hover *{
     fill: var(--accent-2) !important;
 }
 
+.image-button {
+    cursor: pointer;
+}
