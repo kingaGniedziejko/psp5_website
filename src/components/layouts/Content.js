@@ -4,7 +4,7 @@ import axios from "axios";
 import '../../config';
 import "../../styles/content_style.css"
 
-import NotFoundPage from "../elements/NotFoundPage";
+import ErrorNotFound from "../elements/ErrorNotFound";
 import HomePage from "../contents/HomePage";
 import SwimmingPool from "../contents/about_school/SwimmingPool";
 import AdditionalPage from "../elements/AdditionalPage";
@@ -121,7 +121,7 @@ export class Content extends Component {
                                 </Route>
                             );
                         })}
-                        <Route path={"/"} component={NotFoundPage}/>
+                        <Route path={"/"} component={ErrorNotFound}/>
                     </Switch>
                 </div>
             );
@@ -130,7 +130,7 @@ export class Content extends Component {
                 <div className={"content-container"}>
                     <Switch>
                         <Route key={homePage.title} path={homePage.path} exact component={homePage.component}/>
-                        <Route path={"/"} component={NotFoundPage}/>
+                        <Route path={"/"} component={ErrorNotFound}/>
                     </Switch>
                 </div>
             );
