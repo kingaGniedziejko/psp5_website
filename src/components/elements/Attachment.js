@@ -1,13 +1,15 @@
 import React, {Component} from "react";
+import { ReactComponent as IconDownload } from '../../images/download.svg';
+
 
 export class Attachment extends Component {
     render() {
         const { className, title, url } = this.props;
         return (
-            <div className={"attachment " + className}>
+            <a className={"attachment " + className} href={url} rel={"noopener noreferrer"} target={"_blank"}>
                 <p>{title}</p>
-                <a href={url} rel={"noopener noreferrer"} target={"_blank"}><div className={"attachment-download"}/></a>
-            </div>
+                 <IconDownload />
+            </a>
         );
     }
 }

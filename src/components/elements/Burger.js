@@ -4,13 +4,20 @@ import SideMenu from "./SideMenu";
 
 
 const StyledBurger = styled.div`
-    position: relative;
+
     display: flex;
     justify-content: space-around;
-    flex-flow: column nowrap;  
-    z-index: 20;
+    flex-flow: column nowrap;          
+    width: 1.7em;
+    height: 1.7em;
+    
+    @media (max-width: 1130px) {
+        height: 1.5em;
+        width: 1.5em;
+    }
+    
     div {
-        width: 1.7em;
+
         height: 0.2em;
         background-color: ${({ isSideMenuOpen }) => isSideMenuOpen ? 'var(--accent-1)' : 'var(--white-1)'};
         border-radius: 6px;
@@ -35,21 +42,16 @@ export class Burger extends Component {
         isSideMenuOpen: false,
     }
 
-    componentDidMount() {
-        this.setState({
-            isSideMenuOpen: this.props.isSideMenuOpen
-        })
-    }
-
     handleClick = () => {
-        this.props.mutateSideMenu(!this.isSideMenuOpen);
+
         this.setState({
-            isSideMenuOpen: !this.state.isSideMenuOpen
+            isSideMenuOpen: !(this.state.isSideMenuOpen)
+        }, () => {
+            this.props.mutateSideMenu();
         })
     }
 
     close = () => {
-        // this.props.mutateState(false);
         this.setState({
             isSideMenuOpen: false
         })
@@ -57,13 +59,16 @@ export class Burger extends Component {
 
     render() {
         return (
-            <>
-                <StyledBurger isSideMenuOpen={this.state.isSideMenuOpen} onClick={this.handleClick}>
+            <div id={"burger"}>
+                <StyledBurger
+                    onClick={this.handleClick}
+                    isSideMenuOpen={this.state.isSideMenuOpen}
+                >
                     <div/>
                     <div/>
                     <div/>
                 </StyledBurger>
-            </>
+            </div>
         );
     }
 }

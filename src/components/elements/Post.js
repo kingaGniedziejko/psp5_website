@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import "../../config";
 
 import Attachment from "./Attachment"
+import {CSSTransition} from "react-transition-group";
 
 export class Post extends Component {
     state = {
