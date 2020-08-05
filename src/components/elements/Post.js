@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import Moment from "react-moment";
 import "moment/locale/pl";
-import axios from "axios";
 import PropTypes from "prop-types";
 import "../../config";
 
@@ -17,16 +16,6 @@ export class Post extends Component {
     static propTypes = {
         post: PropTypes.object.isRequired,
         postNr: PropTypes.number
-    }
-
-    componentDidMount() {
-        // const {featured_media} = this.props.post;
-        // axios.get(global.config.proxy + `/wp-json/wp/v2/media/${featured_media}`)
-        //     .then(res => this.setState({
-        //         imgUrl: res.data.media_details.sizes.full.source_url,
-        //         isLoaded: true,
-        //         isExpanded: false
-        //     }));
     }
 
     extendButtonClick(){
