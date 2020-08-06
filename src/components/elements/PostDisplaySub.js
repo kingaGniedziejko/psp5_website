@@ -16,21 +16,22 @@ export class PostDisplaySub extends Component {
 
     loadPosts() {
         const {offset} = this.state;
-        const {postCategoryID, postsPerPage} = this.props;
+        const {postCategoryID, postsCount, postsPerPage} = this.props;
         let getPostsUrl = global.config.proxy + "/wp-json/wp/v2/news";
 
         if (postCategoryID !== undefined){
             getPostsUrl += "?categories=" + postCategoryID;
-            getPostsUrl += "&per_page=" + postsPerPage;
-            getPostsUrl += "&offset=" + offset;
+            if (postsCount === -1){
+                getPostsUrl += "&per_page=" + postsPerPage;
+                getPostsUrl += "&offset=" + offset;
+            }
         }
 
         axios.get(getPostsUrl)
             .then(res => this.setState({
                 posts: res.data,
                 isLoaded: true,
-                pageCount: Number(res.headers["x-wp-totalpages"]),
-                postCount: Number(res.headers["x-wp-total"])
+                pageCount: Number(res.headers["x-wp-totalpages"])
             }))
             .catch(err => console.log(err));
     }
@@ -76,8 +77,8 @@ export class PostDisplaySub extends Component {
                             return <Post key={post.id} post={post} postNr={index} />;
                         })}
                         <ReactPaginate
-                            previousLabel={'previous'}
-                            nextLabel={'next'}
+                            previousLabel={'<'}
+                            nextLabel={'>'}
                             breakLabel={'...'}
                             breakClassName={'break-me'}
                             pageCount={pageCount}
