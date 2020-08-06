@@ -33,7 +33,7 @@
     }
 
     #side-menu-container, summary {
-        font-family: Rowdies, cursive;
+        font-family: Rowdies, sans-serif;
         text-transform: uppercase;
         color: var(--accent-1)
     }

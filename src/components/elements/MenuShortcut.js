@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {Link} from "react-router-dom";
 // import axios from "axios";
 
-export class Shortcut extends Component {
+export class MenuShortcut extends Component {
     render() {
         return (
             <div id={"shortcut"}>
@@ -16,4 +16,4 @@ export class Shortcut extends Component {
 
 }
 
-export default Shortcut;
+export default MenuShortcut;

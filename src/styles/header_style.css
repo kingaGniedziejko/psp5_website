@@ -8,6 +8,8 @@
     position: sticky;
     display: flex;
     flex-direction: column;
+    flex: 0;
+    z-index: 2;
 }
 
 #navigation-bar {
@@ -59,7 +61,7 @@
 
 #navigation-bar #showcase ul#school-name{
     color: var(--white-1);
-    font-family: Rowdies, cursive;
+    font-family: Rowdies, sans-serif;
     font-weight: lighter;
     font-size: medium;
     align-self: center;

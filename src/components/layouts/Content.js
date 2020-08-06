@@ -6,6 +6,7 @@ import "../../styles/content_style.css"
 
 import ErrorNotFound from "../elements/ErrorNotFound";
 import HomePage from "../contents/HomePage";
+import Contact from "../contents/Contact";
 import SwimmingPool from "../contents/about_school/SwimmingPool";
 import AdditionalPage from "../elements/AdditionalPage";
 import NewsPage from "../contents/news/NewsPage";
@@ -23,7 +24,12 @@ export class Content extends Component {
                 title: "basen",
                 path: "",
                 component: SwimmingPool
-            }
+            },
+            {
+                title: "kontakt",
+                path: "",
+                component: Contact
+            },
         ],
         additionalPages: [],
         isAdditionalPagesLoaded: false
