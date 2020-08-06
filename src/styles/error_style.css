@@ -6,7 +6,7 @@
     height: auto;
 }
 
-div>a>button {
-    margin-top: 7em;
-    margin-bottom: 3em;
+#error div>a {
+    padding-top: 7em;
+    padding-bottom: 3em;
 }

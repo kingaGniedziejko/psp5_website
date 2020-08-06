@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import Shortcut from "../elements/Shortcut";
+import MenuShortcut from "../elements/MenuShortcut";
 import PostDisplay from "../elements/PostDisplay";
 import {Link} from "react-router-dom";
 
@@ -16,7 +16,7 @@ export class HomePage extends Component {
                 <div className={"section section-1"}>
                     <div className={"photo photo-1 photo-main"}/>
                     <h1>Na skróty</h1>
-                    <Shortcut />
+                    <MenuShortcut />
                 </div>
                 <div className={"section section-2"}>
                     <div className={"photo photo-2"}/>

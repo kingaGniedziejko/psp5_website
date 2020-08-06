@@ -5,6 +5,7 @@ import axios from "axios";
 import './styles/style.css';
 import './config';
 
+import ScrollToTop from './components/elements/ScrollToTop';
 import Header from './components/layouts/Header';
 import {Content} from './components/layouts/Content';
 import {Footer} from './components/layouts/Footer';
@@ -28,13 +29,15 @@ export class App extends Component {
         const { menuItems, isLoaded } = this.state;
         if (isLoaded){
             return (
-                <div className={"container"}>
-                    <BrowserRouter>
+                <BrowserRouter>
+                    <div className={"container"}>
+                        <ScrollToTop />
                         <Header menuItems={menuItems}/>
                         <Content menuItems={menuItems}/>
                         <Footer />
-                    </BrowserRouter>
-                </div>
+                    </div>
+
+                </BrowserRouter>
             );
         }
         return "";
