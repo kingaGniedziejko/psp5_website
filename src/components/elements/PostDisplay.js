@@ -33,10 +33,10 @@ export class PostDisplay extends Component {
 
     render() {
         const {category, isLoaded} = this.state;
-        const {postsCount} = this.props;
+        const {postsCount, postsPerPage} = this.props;
 
         if (isLoaded) {
-            return <PostDisplaySub postCategoryID={category} postsCount={postsCount}/>;
+            return <PostDisplaySub postCategoryID={category} postsCount={postsCount} postsPerPage={postsPerPage}/>;
         }
         return ""
     }

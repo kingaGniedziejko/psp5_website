@@ -7,6 +7,21 @@ div.posts-container{
     margin: 20px 5% 30px 5%;
 }
 
+div.posts-container ul.pagination {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+div.posts-container ul.pagination li {
+    margin: 5px;
+}
+
+div.posts-container ul.pagination li:first-of-type,
+div.posts-container ul.pagination li:last-of-type {
+    margin: 5px 20px;
+}
+
 div.post{
     display: flex;
     flex-wrap: wrap;
