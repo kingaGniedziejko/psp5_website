@@ -7,6 +7,9 @@ import axios from "axios";
 import "../../styles/posts_style.css"
 import "../../config";
 
+import { ReactComponent as IconArrowBack } from '../../images/icon_arrow_back.svg';
+import { ReactComponent as IconArrowForward } from '../../images/icon_arrow_forward.svg';
+
 export class PostDisplaySub extends Component {
     state = {
         posts: [],
@@ -77,8 +80,10 @@ export class PostDisplaySub extends Component {
                             return <Post key={post.id} post={post} postNr={index} />;
                         })}
                         <ReactPaginate
-                            previousLabel={'<'}
-                            nextLabel={'>'}
+                            // previousLabel={<IconArrowBack/>}
+                            // nextLabel={<IconArrowForward/>}
+                            previousLabel={"<"}
+                            nextLabel={">"}
                             breakLabel={'...'}
                             breakClassName={'break-me'}
                             pageCount={pageCount}
