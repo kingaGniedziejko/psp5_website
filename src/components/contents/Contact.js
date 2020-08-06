@@ -13,25 +13,29 @@ export class Contact extends Component {
     }
 
     componentDidMount() {
-        let contentUrl = global.config.proxy + "/wp-json/wp/v2/built_in_pages/contact"
+        let contentUrl = global.config.proxy + "/wp-json/wp/v2/built_in_pages?slug=kontakt"
+        //TODO: lepsze zabezpieczenie tego
 
         axios.get(contentUrl)
             .then(res => this.setState({
-                content: res.data,
+                content: res.data[0].acf,
                 isLoaded: true
             }))
             .catch(err => console.log(err));
     }
 
     render() {
-
+        console.log(this.props.path)
         if(this.state.isLoaded) {
             return (
                 <div className={"content"}>
                     <div className={"section"}>
-                        <div className={"photo"}>
+                        <img
+                            src={this.state.content.photo_1 !== undefined ? this.state.content.photo_1 : ""}
+                        />
 
-                        </div>
+                        <div dangerouslySetInnerHTML={{__html: this.state.content.text_styled_1 !== undefined ? this.state.content.text_styled_1 : ""}}/>
+
 
                     </div>
 
@@ -41,7 +45,6 @@ export class Contact extends Component {
                         </div>
                     </div>
 
-                    <div>{this.state.content.text_1}</div>
 
 
                 </div>
