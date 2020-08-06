@@ -54,7 +54,7 @@ export class Content extends Component {
         return additionalPages.filter(elem => menuItems.some(item => item.url.toLowerCase() === elem.acf.path.toLowerCase()));
     }
 
-    filterContents(menuItems, additionalPagesFiltered){
+    filterContents(menuItems, additionalPagesFiltered, builtInPagesFiltered){
         const {contents} = this.state;
         let filteredContents;
 
