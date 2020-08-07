@@ -1,10 +1,12 @@
 import React, {Component} from "react";
+import { Helmet } from 'react-helmet'
 import Shortcuts from "../elements/Shortcuts";
 import PostDisplay from "../elements/PostDisplay";
 import {Link} from "react-router-dom";
 
 export class HomePage extends Component {
     state = {
+        title: global.config.mainTitle + " Strona główna",
         postCategory: "komunikaty",
         postCount: 3,
         shortcutElements: [
@@ -25,14 +27,16 @@ export class HomePage extends Component {
                 path: "/uczen/kalendarz"
             }
         ]
-
     }
 
     render() {
-        const {postCategory, postCount, shortcutElements} = this.state;
+        const {title, postCategory, postCount, shortcutElements} = this.state;
 
         return (
             <div className={"content"}>
+                <Helmet>
+                    <title>{title}</title>
+                </Helmet>
                 <div className={"section section-1"}>
                     <div className={"photo photo-1 photo-main"}/>
                     <h1>Na skróty</h1>

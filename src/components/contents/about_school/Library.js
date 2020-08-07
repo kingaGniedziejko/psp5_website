@@ -4,10 +4,12 @@ import Attachment from "../../elements/Attachment"
 
 import "../../../styles/library_style.css"
 import axios from "axios";
+import Helmet from "react-helmet";
 
 
 export class Library extends Component {
     state = {
+        title: "Biblioteka",
         content: [],
         isLoaded: false
     }
@@ -52,6 +54,9 @@ export class Library extends Component {
         if(this.state.isLoaded) {
             return (
                 <div className={"content"}>
+                    <Helmet>
+                        <title>{global.config.mainTitle + " " + this.state.title}</title>
+                    </Helmet>
                     <div className={"section"}>
                         <div className={"photo-static"} style={{backgroundImage: `url(${photo1})`}}/>
 

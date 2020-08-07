@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import Helmet from "react-helmet";
 import PostDisplay from "../../elements/PostDisplay";
 import Shortcuts from "../../elements/Shortcuts";
 
@@ -24,6 +25,9 @@ export class News extends Component {
 
         return (
             <div className={"content"}>
+                <Helmet>
+                    <title>{global.config.mainTitle + " " + title}</title>
+                </Helmet>
                 <h1>{title}</h1>
                 <Shortcuts elements={shortcutElements}/>
                 <PostDisplay postsCount={-1} postsPerPage={postsPerPage}/>
