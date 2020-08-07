@@ -14,12 +14,38 @@ div.content div.section {
 .section-container {
     max-width: 1200px;
     z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.section img{
+.centered {
+    width: 60%;
+    text-align: center;
+    padding: 0.5em;
+}
+
+.multicolumn {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.text-content {
+    padding-left: 1em;
+}
+
+.open-hours>ul {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+div.content div.photo-static {
+    background-size: cover;
+    background-position: center;
     width: 100%;
     height: 300px;
-    object-fit: cover;
 }
 
 div.content div.photo {
@@ -27,7 +53,28 @@ div.content div.photo {
     background-position: center;
     background-attachment: fixed;
     width: 100%;
+    height: 300px;
 }
+
+@media (max-width: 600px) {
+    .centered {
+        width: auto;
+    }
+
+    div.content div.photo {
+        height: 200px;
+        background-attachment: local;
+    }
+
+    .multicolumn {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+    }
+
+}
+
+/* home page */
 
 div.content div.photo-1 {
     background-image: url(../images/photo_home_1.jpg);
@@ -41,10 +88,6 @@ div.content div.photo-main {
 div.content div.photo-2 {
     background-image: url(../images/photo_home_2.jpg);
     height: 200px;
-}
-
-div.content h1 {
-    margin-top: 30px;
 }
 
 div.content div#shortcut {
@@ -74,11 +117,12 @@ div.content div#shortcut a:hover {
     color: var(--white-1);
 }
 
-a:link, a:visited, a:active {
-    color: var(--white-1);
-}
+/*a:link, a:visited, a:active {*/
+/*    color: var(--white-1);*/
+/*}*/
 
 div.content div#shortcut a div h3 {
     text-align: center;
     white-space: nowrap;
 }
+

@@ -29,9 +29,7 @@ html {
 }
 body {
     font-family: "Nunito", sans-serif;
-    font-size: 17px;
     min-width: 360px;
-    /*min-height: 100%;*/
     height: 100vh;
     width: 100vw;
     margin: 0;
@@ -40,6 +38,7 @@ body {
     flex-direction: column;
     background-color: var(--white-1);
     color: var(--font-dark);
+    font-size: 0.9em;
 }
 
 #root {
@@ -100,6 +99,8 @@ button.button-accent-2:hover {
 
 div.post h2{
     font-family: "Nunito", sans-serif;
+    text-transform: none;
+
 }
 
 h1, h2, h3 {
@@ -109,6 +110,8 @@ h1, h2, h3 {
 
 h1 {
     font-size: 1.2em;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 h2 {
@@ -117,10 +120,6 @@ h2 {
 
 h3 {
     font-size: 1em;
-}
-
-p {
-    font-size: 0.9em;
 }
 
 small {

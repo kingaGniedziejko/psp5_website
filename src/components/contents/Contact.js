@@ -13,7 +13,7 @@ export class Contact extends Component {
     }
 
     componentDidMount() {
-        let contentUrl = global.config.proxy + "/wp-json/wp/v2/built_in_pages?slug=kontakt"
+        let contentUrl = global.config.proxy + "/wp-json/wp/v2/built_in_pages?slug=contact"
         //TODO: lepsze zabezpieczenie tego
 
         axios.get(contentUrl)
@@ -25,16 +25,20 @@ export class Contact extends Component {
     }
 
     render() {
+        const photo1 = this.state.content.photo_1 !== undefined ? this.state.content.photo_1 : "";
+        const hAdres = this.state.content.header_1 !== undefined ? this.state.content.header_1 : "";
+        const tAdres = this.state.content.text_1 !== undefined ? this.state.content.text_1 : "";
+
         console.log(this.props.path)
         if(this.state.isLoaded) {
             return (
                 <div className={"content"}>
                     <div className={"section"}>
-                        <img
-                            src={this.state.content.photo_1 !== undefined ? this.state.content.photo_1 : ""}
-                        />
+                        <div className={"photo-static"} style={{backgroundImage: `url(${photo1})`}}/>
 
-                        <div dangerouslySetInnerHTML={{__html: this.state.content.text_styled_1 !== undefined ? this.state.content.text_styled_1 : ""}}/>
+                        <div className={"section-container"} id={""}>
+                            <div dangerouslySetInnerHTML={{__html: tAdres}}/>
+                        </div>
 
 
                     </div>
@@ -53,9 +57,6 @@ export class Contact extends Component {
         return (
             <Spinner />
         );
-
-
-
     }
 }
 

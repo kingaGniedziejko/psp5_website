@@ -7,6 +7,7 @@ import "../../styles/content_style.css"
 import ErrorNotFound from "../elements/ErrorNotFound";
 import HomePage from "../contents/HomePage";
 import Contact from "../contents/Contact";
+import Library from "../contents/about_school/Library";
 import SwimmingPool from "../contents/about_school/SwimmingPool";
 import AdditionalPage from "../elements/AdditionalPage";
 import NewsPage from "../contents/news/NewsPage";
@@ -34,6 +35,11 @@ export class Content extends Component {
                 title: "kontakt",
                 path: "",
                 component: Contact
+            },
+            {
+                title: "biblioteka",
+                path: "",
+                component: Library
             },
         ],
         additionalPages: [],
