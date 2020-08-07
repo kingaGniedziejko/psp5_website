@@ -3,6 +3,7 @@ import ReactPaginate from 'react-paginate';
 import Lottie from 'react-lottie';
 import spinner from '../../images/spinner';
 import Post from "../elements/Post"
+import Spinner from "../elements/Spinner"
 import axios from "axios";
 import "../../styles/posts_style.css"
 import "../../config";
@@ -63,15 +64,6 @@ export class PostDisplaySub extends Component {
         let {posts, isLoaded, pageCount} = this.state;
         const {postsCount} = this.props;
 
-        const defaultOptions = {
-            loop: true,
-            autoplay: true,
-            animationData: spinner,
-            rendererSettings: {
-                preserveAspectRatio: "xMidYMid slice"
-            }
-        };
-
         if(isLoaded) {
             if (posts.length === 0){
                 return (
@@ -115,14 +107,7 @@ export class PostDisplaySub extends Component {
         }
 
         return(
-            <div>
-                <Lottie
-                    options={defaultOptions}
-                    height={50}
-                    width={50}
-                    style={{margin: "2em"}}
-                />
-            </div>
+            <Spinner />
         );
     }
 }
