@@ -12,7 +12,7 @@ export class PostDisplay extends Component {
     }
 
     findCategoryId(postCategory) {
-        if (postCategory !== "") {
+        if (postCategory !== undefined) {
             axios.get(global.config.proxy + "/wp-json/wp/v2/categories")
                 .then(res => this.setState({
                     category: res.data.find(cat => cat.slug.toLowerCase() === postCategory.toLowerCase()).id,

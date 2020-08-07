@@ -4,10 +4,12 @@ import Spinner from "../elements/Spinner"
 import {Link} from "react-router-dom";
 import "../../styles/contact_style.css"
 import axios from "axios";
+import Helmet from "react-helmet";
 
 
 export class Contact extends Component {
     state = {
+        title: "Kontakt",
         content: [],
         isLoaded: false
     }
@@ -33,6 +35,10 @@ export class Contact extends Component {
         if(this.state.isLoaded) {
             return (
                 <div className={"content"}>
+                    <Helmet>
+                        <title>{global.config.mainTitle + " " + this.state.title}</title>
+                    </Helmet>
+
                     <div className={"section"}>
                         <div className={"photo-static"} style={{backgroundImage: `url(${photo1})`}}/>
 

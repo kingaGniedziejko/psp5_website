@@ -18,10 +18,13 @@ export class App extends Component {
 
     componentDidMount() {
         axios.get(global.config.proxy + "/wp-json/menus/v1/menus/main-menu")
-            .then(res => this.setState({
-                menuItems: res.data.items,
-                isLoaded: true
-            }))
+            .then(res => {
+                this.setState({
+                    menuItems: res.data.items,
+                    isLoaded: true
+                });
+                global.config.menuItems = res.data.items;
+            })
             .catch(err => console.log(err));
     }
 
