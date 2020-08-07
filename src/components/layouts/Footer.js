@@ -2,6 +2,7 @@ import React from "react";
 import "../../styles/footer_style.css"
 import {ReactComponent as LogoBip } from '../../images/bip.svg';
 import {ReactComponent as IconLogo} from "../../images/logo.svg";
+import emblem from '../../images/emblem.png'
 
 
 export const Footer = () => (
@@ -46,7 +47,7 @@ export const Footer = () => (
 
                 <div id={"emblem"} className={"footer-column"}>
                     <img
-                        src={'../../images/emblem.png'}
+                        src={emblem}
                         alt={"Godło"}
                     />
                 </div>
@@ -76,7 +77,7 @@ export const Footer = () => (
         <div id="bottom">
             <div className={"footer-container"}>
                 <div id={"copyright"} className={"footer-column"}>
-                    <p>© Publiczna Szkoła Podstawowa nr 5 w Opolu</p>
+                    © Publiczna Szkoła Podstawowa nr 5 w Opolu
                 </div>
 
                 <ul id={"authors"} className={"footer-column"}>
