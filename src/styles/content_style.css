@@ -21,6 +21,7 @@ div.content div.section {
 
 .centered {
     width: 60%;
+    max-width: 800px;
     text-align: center;
     padding: 0.5em;
 }
