@@ -3,7 +3,7 @@
 
 
 
-@media (min-width: 1020px) {
+@media (min-width: 1130px) {
     #menu {
         height: 100%;
         display: flex;
@@ -39,7 +39,7 @@
         background-color: var(--white-1);
     }
 
-    .menu-item:link, .menu-item:visited, .menu-item:link path, .menu-item:visited path {
+    .menu-item a, .menu-item:visited a, .menu-item path, .menu-item:visited path {
         color: var(--white-1);
     }
 

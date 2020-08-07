@@ -15,7 +15,7 @@ export class Spinner extends Component {
         };
 
         return(
-            <div>
+            <div id={"spinner-container"}>
                 <Lottie
                     options={defaultOptions}
                     height={50}
