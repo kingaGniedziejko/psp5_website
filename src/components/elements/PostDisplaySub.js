@@ -12,6 +12,7 @@ import { ReactComponent as IconArrowBack } from '../../images/icon_arrow_back.sv
 import { ReactComponent as IconArrowForward } from '../../images/icon_arrow_forward.svg';
 
 export class PostDisplaySub extends Component {
+
     state = {
         posts: [],
         isLoaded: false,
@@ -51,10 +52,16 @@ export class PostDisplaySub extends Component {
 
     componentDidMount() {
         this.loadPosts();
+        this.timer = setInterval(() => this.loadPosts(), 5000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timer);
+        this.timer = null;
     }
 
     render() {
-        let {posts, isLoaded, pageCount, postCount, offset} = this.state;
+        let {posts, isLoaded, pageCount} = this.state;
         const {postsCount} = this.props;
 
         if(isLoaded) {
