@@ -1,3 +1,4 @@
 module.exports = global.config = {
-    proxy: "http://this.mind-the-web.com"
+    proxy: "http://this.mind-the-web.com",
+    menuItems: []
 };

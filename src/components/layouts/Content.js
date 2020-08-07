@@ -10,6 +10,7 @@ import Contact from "../contents/Contact";
 import SwimmingPool from "../contents/about_school/SwimmingPool";
 import AdditionalPage from "../elements/AdditionalPage";
 import NewsPage from "../contents/news/NewsPage";
+import News from "../contents/news/News";
 
 export class Content extends Component {
     state = {
@@ -20,6 +21,10 @@ export class Content extends Component {
         },
         news: [],
         contents: [
+            {
+                title: "aktualności",
+                component: News
+            },
             {
                 title: "basen",
                 path: "",
