@@ -41,6 +41,12 @@ body {
     font-size: 0.9em;
 }
 
+@media (max-width: 600px) {
+    body{
+        font-size: 1em;
+    }
+}
+
 @media (min-width: 1500px) {
     body{
         font-size: 1em;
@@ -148,7 +154,7 @@ a:active {
 a.attachment{
     margin: 10px 0;
     padding: 5px 10px;
-    background-color: var(--accent-2-light);
+    background-color: var(--accent-2-faded);
     color: var(--font-dark);
     display: flex;
     flex-direction: row;

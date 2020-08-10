@@ -1,7 +1,5 @@
 import React, {Component} from "react";
 import ReactPaginate from 'react-paginate';
-import Lottie from 'react-lottie';
-import spinner from '../../images/spinner';
 import Post from "../elements/Post"
 import Spinner from "../elements/Spinner"
 import axios from "axios";
