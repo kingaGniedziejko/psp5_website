@@ -10,6 +10,7 @@ import Contact from "../contents/Contact";
 import Library from "../contents/about_school/Library";
 import SwimmingPool from "../contents/about_school/SwimmingPool";
 import Documents from "../contents/about_school/Documents";
+import Anthem from "../contents/about_school/Anthem";
 import AdditionalPage from "../elements/AdditionalPage";
 import NewsPage from "../contents/news/NewsPage";
 import News from "../contents/news/News";
@@ -46,6 +47,11 @@ export class Content extends Component {
                 title: "dokumenty",
                 path: "",
                 component: Documents
+            },
+            {
+                title: "hymn szkoły",
+                path: "",
+                component: Anthem
             },
         ],
         additionalPages: [],
