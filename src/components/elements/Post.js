@@ -37,6 +37,10 @@ export class Post extends Component {
             acf.attachment5
         ];
 
+        // console.log(image_gallery);
+        // console.log(this.props.post);
+
+
         const {postNr} = this.props;
         const postDirection = postNr%2;
 

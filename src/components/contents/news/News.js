@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import Helmet from "react-helmet";
 import PostDisplay from "../../elements/PostDisplay";
 import Shortcuts from "../../elements/Shortcuts";
+import "../../../styles/news_style.css"
 
 export class News extends Component {
     state = {
@@ -24,12 +25,14 @@ export class News extends Component {
         })
 
         return (
-            <div className={"content"}>
+            <div className={"content menu-page"}>
                 <Helmet>
                     <title>{global.config.mainTitle + " " + title}</title>
                 </Helmet>
+                <div className={"shortcut-menu-page"}>
+                    <Shortcuts elements={shortcutElements}/>
+                </div>
                 <h1>{title}</h1>
-                <Shortcuts elements={shortcutElements}/>
                 <PostDisplay postsCount={-1} postsPerPage={postsPerPage}/>
             </div>
         );
