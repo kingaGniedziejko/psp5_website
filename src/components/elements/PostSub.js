@@ -58,7 +58,7 @@ export class PostSub extends Component {
 
     render() {
         const {title, date, acf} = this.props.post;
-        const {text, image} = acf;
+        const {text} = acf;
         const excerpt = text.substring(0, this.state.excerptLength)+"...";
         const {isExpanded, isGalleryLoaded, gallery} = this.state;
         const attachments = [
@@ -86,7 +86,6 @@ export class PostSub extends Component {
             <div className={"post " + (postDirection ? "post-left" : "post-right")}>
                 <div>
                     <ImageGallery items={images}/>
-                    {/*<img src={image.url} alt={title.rendered}/>*/}
                 </div>
                 <div>
                     <h2 className={"post-title"}>{title.rendered}</h2>

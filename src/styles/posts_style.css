@@ -133,6 +133,26 @@ div.post>div>div.image-gallery .fullscreen img.image-gallery-image {
 
 div.post>div>div.image-gallery div.image-gallery-thumbnails-container {
     display: flex;
+    max-height: 50px;
+    overflow: hidden;
+}
+
+div.post>div>div.image-gallery div.image-gallery-thumbnails-container button {
+    flex: 1;
+    max-height: 45px;
+    max-width: 45px;
+}
+
+
+.image-gallery-thumbnail .image-gallery-thumbnail-inner {
+    max-height: 45px;
+    max-width: 45px;
+}
+
+.image-gallery-thumbnail .image-gallery-thumbnail-image {
+    max-height: 45px;
+    max-width: 45px;
+    object-fit: cover;
 }
 
 /*icons*/
