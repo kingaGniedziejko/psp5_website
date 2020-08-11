@@ -126,6 +126,7 @@ div.post>div>div.image-gallery .fullscreen {
 }
 
 div.post>div>div.image-gallery .fullscreen img.image-gallery-image {
+    height: unset;
     max-height: 80vh;
     max-width: 90vw;
 }
