@@ -31,7 +31,6 @@ export class Anthem extends Component {
         const hAnthem = this.state.content.header_1 !== undefined ? this.state.content.header_1 : "";
         const tAnthem = this.state.content.text_1 !== undefined ? this.state.content.text_1 : "";
 
-        console.log(this.props.path)
         if(this.state.isLoaded) {
             return (
                 <div className={"content"}>
@@ -41,7 +40,7 @@ export class Anthem extends Component {
                     <div className={"section"}>
                         <div className={"photo-static"} style={{backgroundImage: `url(${photo1})`}}/>
 
-                        <div className={"section-container centered"} id={""}>
+                        <div className={"section-container centered"}>
                             <h1 dangerouslySetInnerHTML={{__html: hAnthem}}/>
                             <div dangerouslySetInnerHTML={{__html: tAnthem}}/>
                         </div>

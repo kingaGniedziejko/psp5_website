@@ -49,8 +49,6 @@ export class Library extends Component {
         // regulaminy
         const hRegulations = this.state.content.header_4 !== undefined ? this.state.content.header_4 : "";
 
-
-        console.log(this.props.path)
         if(this.state.isLoaded) {
             return (
                 <div className={"content"}>
