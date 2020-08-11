@@ -89,10 +89,13 @@ div.post:last-child{
 
 div.post>div:first-child{
     flex: 1;
+    /*max-width: 300px;*/
+    min-width: 250px;
+    overflow: hidden;
 }
 
 div.post>div:last-child{
-    flex: 3;
+    flex: 2;
     min-width: 200px;
 }
 
@@ -102,19 +105,104 @@ div.post>div {
     flex-direction: column;
 }
 
-div.post>div>img {
+
+
+div.post>div>div.image-gallery{
     width: 100%;
-    min-width: 250px;
-    height: 150px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+div.post>div>div.image-gallery img.image-gallery-image {
+    height: 100%;
+    max-height: 170px;
     object-fit: cover;
 }
 
-div.post>div>div>div.post-attachment:first-of-type {
-    margin-top: 20px;
+div.post>div>div.image-gallery .fullscreen {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-div.post div button{
+div.post>div>div.image-gallery .fullscreen img.image-gallery-image {
+    max-height: 80vh;
+    max-width: 90vw;
+}
+
+div.post>div>div.image-gallery div.image-gallery-thumbnails-container {
+    display: flex;
+}
+
+/*icons*/
+div.post>div>div.image-gallery .image-gallery-left-nav,
+div.post>div>div.image-gallery .image-gallery-right-nav{
+    padding: 0;
+}
+
+div.post>div>div.image-gallery .image-gallery-left-nav .image-gallery-svg,
+div.post>div>div.image-gallery .image-gallery-right-nav .image-gallery-svg{
+    height: 70px;
+    width: 35px;
+}
+
+div.post>div>div.image-gallery .image-gallery-fullscreen-button,
+div.post>div>div.image-gallery .image-gallery-play-button {
+    padding: 10px;
+}
+
+div.post>div>div.image-gallery .image-gallery-fullscreen-button .image-gallery-svg,
+div.post>div>div.image-gallery .image-gallery-play-button .image-gallery-svg {
+    height: 20px;
+    width: 20px;
+}
+
+/*icons fullscreen*/
+div.post>div>div.image-gallery .fullscreen .image-gallery-left-nav,
+div.post>div>div.image-gallery .fullscreen .image-gallery-right-nav{
+    padding: 10;
+}
+
+div.post>div>div.image-gallery .fullscreen .image-gallery-left-nav .image-gallery-svg,
+div.post>div>div.image-gallery .fullscreen .image-gallery-right-nav .image-gallery-svg{
+    height: 120px;
+    width: 60px;
+}
+
+div.post>div>div.image-gallery .fullscreen .image-gallery-fullscreen-button,
+div.post>div>div.image-gallery .fullscreen .image-gallery-play-button {
+    padding: 20px;
+}
+
+div.post>div>div.image-gallery .fullscreen .image-gallery-fullscreen-button .image-gallery-svg,
+div.post>div>div.image-gallery .fullscreen .image-gallery-play-button .image-gallery-svg {
+    height: 36px;
+    width: 36px;
+}
+
+
+
+div.post>div>div.image-gallery .image-gallery-icon:hover {
+    color: var(--accent-1);
+}
+div.post>div>div.image-gallery .image-gallery-thumbnail.active,
+div.post>div>div.image-gallery .image-gallery-thumbnail:hover,
+div.post>div>div.image-gallery .image-gallery-thumbnail:focus {
+    border-color: var(--accent-1);
+}
+
+
+
+div.post>div>div>a.post-attachment:first-of-type {
+    margin-top: 10px;
+}
+
+div.post>div>div>a.post-attachment:last-of-type {
+    margin-bottom: 20px;
+}
+
+div.post div button.post-button{
     align-self: flex-end;
     justify-self: flex-end;
     width: 10em;
@@ -149,7 +237,7 @@ div.post div:last-child h2{
 }
 
 @media only screen and (min-width: 1300px) {
-    div.post>div>img {
+    div.post>div>div.image-gallery {
         width: 100%;
         min-width: 200px;
     }
@@ -177,7 +265,7 @@ div.post div:last-child h2{
         flex: 1;
     }
 
-    div.post>div>img {
+    div.post>div>div.image-gallery {
         width: 100%;
         height: 250px;
         min-width: 200px;

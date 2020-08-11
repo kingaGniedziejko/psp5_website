@@ -7,6 +7,8 @@ import axios from "axios";
 
 import Attachment from "./Attachment"
 import {CSSTransition} from "react-transition-group";
+import "react-image-gallery/styles/css/image-gallery.css";
+import ImageGallery from "react-image-gallery";
 
 export class PostSub extends Component {
     state = {
@@ -72,16 +74,19 @@ export class PostSub extends Component {
 
         if (isGalleryLoaded) console.log(gallery);
 
+        let images = [];
+        gallery.forEach(elem => {
+            images.push({
+                original: elem.media_details.sizes.full.source_url,
+                thumbnail: elem.media_details.sizes.thumbnail.source_url
+            })
+        })
+
         return (
             <div className={"post " + (postDirection ? "post-left" : "post-right")}>
                 <div>
-                    <img src={image.url} alt={title.rendered}/>
-                    { isExpanded ? <div>
-                        { attachments.map(att => {
-                            if (att) return <Attachment key={att.id} className={"post-attachment"} title={att.title} url={att.url}/>
-                            else return "";
-                        })}
-                    </div> : "" }
+                    <ImageGallery items={images}/>
+                    {/*<img src={image.url} alt={title.rendered}/>*/}
                 </div>
                 <div>
                     <h2 className={"post-title"}>{title.rendered}</h2>
@@ -89,6 +94,12 @@ export class PostSub extends Component {
                         <Moment locale={"pl"} format="DD MMMM YYYYr. HH:mm">{date}</Moment>
                     </small>
                     <p className={"post-text"} dangerouslySetInnerHTML={{ __html: isExpanded ? text : excerpt}} />
+                    { isExpanded ? <div>
+                        { attachments.map(att => {
+                            if (att) return <Attachment key={att.id} className={"post-attachment"} title={att.title} url={att.url}/>
+                            else return "";
+                        })}
+                    </div> : "" }
                     <button className={"post-button button-accent-2"}
                             onClick={this.extendButtonClick.bind(this)}>{isExpanded ? "mniej" : "więcej"}
                     </button>
