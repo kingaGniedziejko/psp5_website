@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import Spinner from "../../elements/Spinner"
 import Attachment from "../../elements/Attachment"
 import axios from "axios";
+import Helmet from "react-helmet";
 
 
 export class Documents extends Component {
@@ -19,7 +20,6 @@ export class Documents extends Component {
         axios.get(contentUrl)
             .then(res => this.setState({
                 content: res.data[0].acf,
-                isLoaded: true
             }))
             .catch(err => console.log(err));
 
@@ -48,7 +48,8 @@ export class Documents extends Component {
                     documents.push({key: document.id, name: document.title.rendered, type: document.document_types[0], url: document.acf.document.url})
                 })
                 this.setState({
-                    documents: documents
+                    documents: documents,
+                    isLoaded: true
                 })
             })
             .catch(err => console.log(err));
@@ -60,6 +61,9 @@ export class Documents extends Component {
         if(this.state.isLoaded) {
             return (
                 <div className={"content"}>
+                    <Helmet>
+                        <title>{global.config.mainTitle + " " + this.state.title}</title>
+                    </Helmet>
                     <div className={"section"}>
                         <div className={"photo-static"} style={{backgroundImage: `url(${photo1})`}}/>
 

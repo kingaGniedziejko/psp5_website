@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {NavLink} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 
 import Submenu from "./Submenu"
 import { ReactComponent as IconHome } from '../../images/home.svg';
@@ -29,7 +29,6 @@ export class Menu extends Component {
                                     <Submenu menuItem={menuItem} type={"fullscreen"} />
                                 </li>
                             </div>
-
                         );
                     })
                 }

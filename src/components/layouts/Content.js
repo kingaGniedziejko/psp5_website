@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Route, Switch} from 'react-router-dom';
+import {Link, Route, Switch} from 'react-router-dom';
 import axios from "axios";
 import '../../config';
 import "../../styles/content_style.css"
@@ -11,6 +11,8 @@ import Library from "../contents/about_school/Library";
 import SwimmingPool from "../contents/about_school/SwimmingPool";
 import Documents from "../contents/about_school/Documents";
 import Anthem from "../contents/about_school/Anthem";
+import Calendar from "../contents/student/Calendar";
+// import LinkedPage from "../elements/LinkedPage";
 import AdditionalPage from "../elements/AdditionalPage";
 import NewsPage from "../contents/news/NewsPage";
 import News from "../contents/news/News";
@@ -53,11 +55,24 @@ export class Content extends Component {
                 path: "",
                 component: Anthem
             },
+            {
+                title: "kalendarz",
+                path: "",
+                component: Calendar
+            },
         ],
         additionalPages: [],
         isAdditionalPagesLoaded: false
     }
 
+    isValidUrl(string) {
+        try {
+            new URL(string);
+        } catch (_) {
+            return false;
+        }
+        return true;
+    }
     separateMenuItems() {
         const {menuItems} = this.props;
         let allItems = [];
@@ -77,7 +92,11 @@ export class Content extends Component {
         return additionalPages.filter(elem => menuItems.some(item => item.url.toLowerCase() === elem.acf.path.toLowerCase()));
     }
 
-    filterContents(menuItems, additionalPagesFiltered, builtInPagesFiltered){
+    filterLinkedPages(menuItems) {
+        return menuItems.filter(elem => this.isValidUrl(elem.url) && elem.object === "custom")
+    }
+
+    filterContents(menuItems, additionalPagesFiltered, linkedPagesFiltered) {
         const {contents} = this.state;
         let filteredContents;
 
@@ -86,6 +105,7 @@ export class Content extends Component {
             elem.path = menuItems.filter((item => item.title.toLowerCase() === elem.title.toLowerCase()))[0].url;
         });
         filteredContents = filteredContents.filter(elem => !(additionalPagesFiltered.some(item => item.acf.path.toLowerCase() === elem.path.toLowerCase())));
+        filteredContents = filteredContents.filter(elem => !linkedPagesFiltered.some(item => item.url === elem.url))
 
         return filteredContents;
     }
@@ -122,20 +142,19 @@ export class Content extends Component {
         if (isAdditionalPagesLoaded) {
             const menuItems = this.separateMenuItems();
             const additionalPagesFiltered = this.filterAdditionalPages(menuItems);
-            const contentsFiltered = this.filterContents(menuItems, additionalPagesFiltered);
+            const linkedPagesFiltered = this.filterLinkedPages(menuItems);
+            const contentsFiltered = this.filterContents(menuItems, additionalPagesFiltered, linkedPagesFiltered);
             const newsFiltered = this.filterNews(menuItems);
-
-            // console.log(menuItems);
-            // console.log(additionalPagesFiltered);
-            // console.log(contentsFiltered);
 
             return (
                 <div className={"content-container"}>
                     <Switch>
                         <Route key={homePage.title} path={homePage.path} exact component={homePage.component}/>
+
                         {contentsFiltered.map((elem, index) => {
                             return <Route key={index} path={elem.path} exact component={elem.component}/>;
                         })}
+
                         {newsFiltered.map((elem, index) => {
                             return (
                                 <Route key={index} path={elem.path} exact>
@@ -143,6 +162,7 @@ export class Content extends Component {
                                 </Route>
                             )
                         })}
+
                         {additionalPagesFiltered.map((page, index) => {
                             return (
                                 <Route key={index} path={page.acf.path} exact>
@@ -150,6 +170,7 @@ export class Content extends Component {
                                 </Route>
                             );
                         })}
+
                         <Route path={"/"} component={ErrorNotFound}/>
                     </Switch>
                 </div>
