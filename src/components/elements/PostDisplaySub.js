@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import ReactPaginate from 'react-paginate';
+import "../../styles/pagination_style.css"
 import Post from "../elements/Post"
 import Spinner from "../elements/Spinner"
 import axios from "axios";

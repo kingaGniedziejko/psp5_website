@@ -23,7 +23,7 @@ div.content div.section {
     width: 60%;
     max-width: 800px;
     text-align: center;
-    padding: 0.5em;
+    padding: 0.5em 0.5em 2.2em;
 }
 
 .multicolumn {
@@ -51,7 +51,7 @@ div.content div.photo-static {
 
 div.content div.photo {
     background-size: cover;
-    background-position: center center;
+    background-position: bottom;
     background-attachment: fixed;
     width: 100%;
     height: 300px;
