@@ -1,0 +1,62 @@
+ul.pagination {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+ul.pagination li {
+    margin: 5px;
+}
+
+ul.pagination li:first-of-type,
+ul.pagination li:last-of-type {
+    margin: 5px 20px;
+}
+
+ul.pagination li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    font-family: "Rowdies", sans-serif;
+    font-size: 1em;
+    text-transform: uppercase;
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+    background-color: var(--accent-1);
+    color: var(--white-1);
+}
+
+ul.pagination li.active a {
+    background-color: var(--accent-1-light);
+}
+
+ul.pagination li a:hover {
+    background-color: var(--accent-1-extra-light);
+}
+
+ul.pagination li:first-of-type a,
+ul.pagination li:last-of-type a {
+    width: 30px;
+    height: 30px;
+    font-family: "Nunito", sans-serif;
+    font-size: 1.3em;
+    font-weight: 1000;
+    background: none;
+    box-shadow: none;
+    color: var(--accent-1);
+}
+
+ul.pagination li.disabled a {
+    color: var(--accent-1-light);
+}
+
+ul.pagination li:first-of-type:not(.disabled) a:hover,
+ul.pagination li:last-of-type:not(.disabled) a:hover {
+    color: var(--accent-1-light);
+}
