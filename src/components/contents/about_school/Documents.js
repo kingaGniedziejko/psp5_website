@@ -21,6 +21,7 @@ export class Documents extends Component {
         axios.get(contentUrl)
             .then(res => this.setState({
                 content: res.data[0].acf,
+                isLoaded: true
             }))
             .catch(err => console.log(err));
 
@@ -47,8 +48,7 @@ export class Documents extends Component {
                     documents.push({key: document.id, name: document.title.rendered, type: document.document_types[0], url: document.acf.document.url})
                 })
                 this.setState({
-                    documents: documents,
-                    isLoaded: true
+                    documents: documents
                 })
             })
             .catch(err => console.log(err));

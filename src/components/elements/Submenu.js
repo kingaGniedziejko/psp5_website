@@ -25,39 +25,33 @@ export class Submenu extends Component {
         const {child_items} = menuItem;
 
         return (
-            <ul className={"submenu"}>
+            <div className={"submenu"}>
                 { child_items !== undefined ?
                     child_items.map((elem, index) => {
                         if (elem.object === "category") {
                             return (
-                                <Link to={"/aktualnosci/" + elem.slug} key={index} onClick={this.handleItemClick}>
-                                    <li className={"submenu-item"}>
-                                        {elem.title}
-                                    </li>
+                                <Link to={"/aktualnosci/" + elem.slug} key={index} onClick={this.handleItemClick} className={"submenu-item"}>
+                                    {elem.title}
                                 </Link>
                             )
                         }
                         else if(elem.object === "custom" && this.isValidUrl(elem.url)) {
                             return (
-                                <a href={elem.url} key={index} rel="noopener noreferrer" target="_blank" onClick={this.handleItemClick}>
-                                    <li className={"submenu-item"}>
-                                        {elem.title}
-                                    </li>
+                                <a href={elem.url} key={index} rel="noopener noreferrer" target="_blank" onClick={this.handleItemClick} className={"submenu-item"}>
+                                    {elem.title}
                                 </a>
                             )
                         } else {
                             return (
-                                <Link to={elem.url} key={index} onClick={this.handleItemClick}>
-                                    <li className={"submenu-item"}>
-                                        {elem.title}
-                                    </li>
+                                <Link to={elem.url} key={index} onClick={this.handleItemClick} className={"submenu-item"}>
+                                    {elem.title}
                                 </Link>
                             )
                         }
                     })
                     : ""
                 }
-            </ul> 
+            </div>
         );
     }
 }

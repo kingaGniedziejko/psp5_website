@@ -3,6 +3,7 @@ import Spinner from "../../elements/Spinner"
 import {Link} from "react-router-dom";
 import axios from "axios";
 import Helmet from "react-helmet";
+import Attachment from "../../elements/Attachment";
 
 
 export class MCard extends Component {
@@ -31,7 +32,22 @@ export class MCard extends Component {
 
             const photo = sections[0].images[0].url
 
-            const h = sections[0].lonely_headers[0].text
+            // mLegitymacja
+            const hCard = sections[0].modules[0].header
+            const tCard = sections[0].modules[0].text
+
+            // podstawa do zniżek
+            const hDiscount = sections[0].modules[1].header
+            const tDiscount = sections[0].modules[1].text
+
+            // zasady wydawania
+            const hRules = sections[0].modules[2].header
+            const tRules = sections[0].modules[2].text
+
+            const tSteps = sections[0].modules[3].text
+
+            const attachments = sections[0].attachments
+
 
             return (
                 <div className={"content"}>
@@ -42,11 +58,56 @@ export class MCard extends Component {
                     <div className={"section"}>
                         <div className={"photo-static"} style={{backgroundImage: `url(${photo})`}}/>
 
-                        <div className={"section-container"} id={""}>
-                            <div dangerouslySetInnerHTML={{__html: h}}/>
+                        <h1 dangerouslySetInnerHTML={{__html: hCard}}/>
+
+                        <div className={"section-container multicolumn"}>
+
+                            <div>
+                                <div dangerouslySetInnerHTML={{__html: tCard}}/>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div className={"section"} style={{backgroundColor: "var(--accent-3-light)"}}>
+
+                        <div className={"section-container centered"} >
+                            <h1 dangerouslySetInnerHTML={{__html: hDiscount}}/>
+                            <div dangerouslySetInnerHTML={{__html: tDiscount}}/>
                         </div>
 
+                    </div>
 
+
+                    <div className={"section"}>
+
+                        <div className={"section-container"}>
+
+                            <div className={"centered"}>
+                                <h1 dangerouslySetInnerHTML={{__html: hRules}}/>
+                            </div>
+
+                            <div className={"multicolumn wide"}>
+                                <div>
+                                    <div dangerouslySetInnerHTML={{__html: tRules}}/>
+                                </div>
+                                <div>
+                                    <div dangerouslySetInnerHTML={{__html: tSteps}}/>
+                                    <div>
+                                        {
+                                            attachments.map(att => {
+                                                if (att) return <Attachment key={att.file.id} className={"attachment"} title={att.file.title} url={att.file.url}/>
+                                                else return "";
+                                            })
+                                        }
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+                        </div>
                     </div>
 
 

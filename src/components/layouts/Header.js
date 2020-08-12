@@ -97,11 +97,11 @@ export class Header extends Component {
                             <a href={"/"}>
                                 <Logo/>
                             </a>
-                            <ul id={"school-name"}>
-                                <li>Publiczna Szkoła Podstawowa nr 5</li>
-                                <li>z Oddziałami Integracyjnymi</li>
-                                <li>im. Karola Musioła w Opolu</li>
-                            </ul>
+                            <div id={"school-name"}>
+                                <p>Publiczna Szkoła Podstawowa nr 5</p>
+                                <p>z Oddziałami Integracyjnymi</p>
+                                <p>im. Karola Musioła w Opolu</p>
+                            </div>
                         </div>
                         <div id={"short-showcase"}>PSP nr 5</div>
 

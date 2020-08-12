@@ -11,34 +11,28 @@ export class Menu extends Component {
         const {menuItems} = this.props;
 
         return (
-            <ul id={"menu"}>
-                <NavLink to={""} exact activeClassName={"menu-item-active"}>
-                    <li className={"menu-item"} >
-                        <div><IconHome /></div>
-                    </li>
+            <div id={"menu"}>
+                <NavLink to={""} exact activeClassName={"menu-item-active"} className={"image-button menu-item"}>
+                    <IconHome />
                 </NavLink>
 
                 {
                     menuItems.map((menuItem, index) => {
                         return (
-                            <div key={index}>
-                                <li className={"menu-item"}>
-                                    <NavLink to={menuItem.url} activeClassName={"menu-item-active"}>
-                                        <div>{menuItem.title}</div>
-                                    </NavLink>
-                                    <Submenu menuItem={menuItem} type={"fullscreen"} />
-                                </li>
+                            <div key={index} className={"menu-item"}>
+                                <NavLink to={menuItem.url} activeClassName={"menu-item-active"}>
+                                    {menuItem.title}
+                                </NavLink>
+                                <Submenu menuItem={menuItem} type={"fullscreen"} />
                             </div>
                         );
                     })
                 }
 
-                <div className="image-button" onClick={this.props.mutateSearchBar}>
-                    <li className={"menu-item"}>
-                        <div><IconSearch /></div>
-                    </li>
+                <div className="image-button menu-item" onClick={this.props.mutateSearchBar}>
+                    <IconSearch />
                 </div>
-            </ul>
+            </div>
         );
     }
 }

@@ -12,6 +12,7 @@
     --accent-1-faded: rgb(65, 111, 216);
     --accent-2: rgb(238, 204, 35);
     --accent-2-light: rgb(241, 218, 105);
+    --accent-2-lighter: rgb(238, 225, 160);
     --accent-2-faded: rgba(238, 204, 35, 0.27);
     --accent-3: rgba(112, 112, 112, 0.78);
     --accent-3-light: rgba(232, 232, 232, 1.0);
@@ -73,11 +74,10 @@ body {
     outline-style: none;
 }
 
-ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
+/*ul {*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*}*/
 
 button.button-accent-1, button.button-accent-2 {
     height: auto;

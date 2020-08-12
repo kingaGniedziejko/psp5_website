@@ -69,11 +69,6 @@
 
     }
 
-    #side-menu li {
-        list-style: none;
-        /*font-size: larger;*/
-    }
-
     #side-menu-container>div {
         display: flex;
         align-items: center;
@@ -95,13 +90,15 @@
         padding-bottom: 0.5em;
     }
 
-    .side-menu-item .submenu li {
+    .side-menu-item .submenu-item {
         color: var(--accent-1);
         padding: 0.5em 1em;
         width: 15em;
     }
 
-    .side-menu-item .submenu li:hover {
+
+
+    .side-menu-item .submenu-item:hover {
         color: var(--accent-1-light);
 
     }}

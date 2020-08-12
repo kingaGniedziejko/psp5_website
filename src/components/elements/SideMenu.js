@@ -60,14 +60,12 @@ export class SideMenu extends Component {
 
         return (
             <>
-                <ul id={"side-menu"} style={this.state.isSideMenuOpen ? {animationName: 'slide-in'} : {animationName: 'slide-out'}}>
+                <div id={"side-menu"} style={this.state.isSideMenuOpen ? {animationName: 'slide-in'} : {animationName: 'slide-out'}}>
                     <div id={"side-menu-container"}>
                         <div>
-                            <li className={"side-menu-item"} >
-                                <NavLink to={"/"} exact activeClassName={"menu-item-active"} onClick={this.closeSideMenu}>
-                                    <div>Strona główna</div>
-                                </NavLink>
-                            </li>
+                            <NavLink to={"/"} exact activeClassName={"menu-item-active"} onClick={this.closeSideMenu} className={"side-menu-item"}>
+                                <div>Strona główna</div>
+                            </NavLink>
                         </div>
 
                         {
@@ -75,28 +73,28 @@ export class SideMenu extends Component {
                                 const {child_items} = menuItem;
                                 // var req = require('details-polyfill');
                                 return (
-                                    <div key={index}>
-                                        <li className={"side-menu-item"}>
-                                            {
-                                                child_items !== undefined ?
-                                                    <details>
-                                                        <summary>
-                                                            {menuItem.title}
-                                                        </summary>
-                                                        <Submenu menuItem={menuItem} closeSideMenu={this.closeSideMenu} type={"mobile"} />
-                                                    </details>
-                                                    :
-                                                    <NavLink to={menuItem.url} activeClassName={"menu-item-active"} onClick={this.closeSideMenu}>
-                                                        {menuItem.title}
-                                                    </NavLink>
-                                            }
-                                        </li>
+                                    <div key={index} className={"side-menu-item"}>
+
+                                    {
+                                        child_items !== undefined ?
+                                            <details>
+                                                <summary>
+                                                    {menuItem.title}
+                                                </summary>
+                                                <Submenu menuItem={menuItem} closeSideMenu={this.closeSideMenu} type={"mobile"} />
+                                            </details>
+                                            :
+                                            <NavLink to={menuItem.url} activeClassName={"menu-item-active"} onClick={this.closeSideMenu}>
+                                                {menuItem.title}
+                                            </NavLink>
+                                    }
+
                                     </div>
                                 );
                             })
                         }
                 </div>
-            </ul>
+            </div>
         </>
         );
     }

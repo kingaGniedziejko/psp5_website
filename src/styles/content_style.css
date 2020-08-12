@@ -9,6 +9,7 @@ div.content div.section {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .section-container {
@@ -17,29 +18,54 @@ div.content div.section {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+}
+
+.section-container.centered{
+    padding: 0.5em 0.5em;
 }
 
 .centered {
     width: 60%;
     max-width: 800px;
     text-align: center;
-    padding: 0.5em 0.5em 2.2em;
+}
+
+.centered>div {
+    width: 100%;
 }
 
 .multicolumn {
-    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    padding: 0.5em 1em;
+    width: 95%;
+    align-items: flex-start;
+}
+
+.multicolumn.wide>div {
+    flex: 1;
+}
+
+.multicolumn>div {
+    height: 100%;
 }
 
 .text-content {
     padding-left: 1em;
 }
 
-.open-hours>ul {
+.open-hours {
     display: grid;
     grid-template-columns: auto auto;
+}
+
+.open-hours>p {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 0;
+    text-align: left;
 }
 
 div.content div.photo-static {

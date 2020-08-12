@@ -15,32 +15,32 @@ export const Footer = () => (
                     <div id={"showcase"}>
                         <IconLogo />
 
-                        <ul>
-                            <li>Publiczna Szkoła Podstawowa nr 5</li>
-                            <li>z Oddziałami Integracyjnymi</li>
-                            <li>im. Karola Musioła w Opolu</li>
-                        </ul>
+                        <div>
+                            <p>Publiczna Szkoła Podstawowa nr 5</p>
+                            <p>z Oddziałami Integracyjnymi</p>
+                            <p>im. Karola Musioła w Opolu</p>
+                        </div>
                     </div>
 
                    <h3>Kontakt</h3>
                    <div id={"contact"}>
 
 
-                        <ul id={"labels"}>
-                            <li className={"contact-label"}>Adres:</li>
-                            <li className={"contact-label"}>Telefon:</li>
-                            <li className={"contact-label"}>Fax:</li>
-                            <li className={"contact-label"}>Email:</li>
-                            <li className={"contact-label"}>NIP:</li>
-                        </ul>
+                        <div id={"labels"}>
+                            <p className={"contact-label"}>Adres:</p>
+                            <p className={"contact-label"}>Telefon:</p>
+                            <p className={"contact-label"}>Fax:</p>
+                            <p className={"contact-label"}>Email:</p>
+                            <p className={"contact-label"}>NIP:</p>
+                        </div>
 
-                        <ul id={"data"}>
-                            <li className={"contact-data"}><a className={"inline-label"}>(Adres) </a>ul. Majora Hubala 2, 45-267 Opole</li>
-                            <li className={"contact-data"}><a className={"inline-label"}>(Tel) </a><a type={"tel"}>77 545 32 23</a>, <a type={"tel"}>77 545 32 24</a></li>
-                            <li className={"contact-data"}><a className={"inline-label"}>(Fax) </a>77 40 30 850</li>
-                            <li className={"contact-data"}><a className={"inline-label"}>(Mail) </a><a type={"email"}>psp5@psp5.opole.pl</a></li>
-                            <li className={"contact-data"}><a className={"inline-label"}>(NIP) </a>754 315 63 13</li>
-                        </ul>
+                        <div id={"data"}>
+                            <p className={"contact-data"}><a className={"inline-label"}>(Adres) </a>ul. Majora Hubala 2, 45-267 Opole</p>
+                            <p className={"contact-data"}><a className={"inline-label"}>(Tel) </a><a type={"tel"}>77 545 32 23</a>, <a type={"tel"}>77 545 32 24</a></p>
+                            <p className={"contact-data"}><a className={"inline-label"}>(Fax) </a>77 40 30 850</p>
+                            <p className={"contact-data"}><a className={"inline-label"}>(Mail) </a><a type={"email"}>psp5@psp5.opole.pl</a></p>
+                            <p className={"contact-data"}><a className={"inline-label"}>(NIP) </a>754 315 63 13</p>
+                        </div>
                    </div>
 
                 </div>
@@ -54,17 +54,17 @@ export const Footer = () => (
 
                 <div id={"links"} className={"footer-column"}>
                     <h3>Linki</h3>
-                    <ul>
-                        <li><a href="" target="_blank">Kontakt</a></li>
-                        <li><a href="http://www.kuratorium.opole.pl/" rel="noopener noreferrer" target="_blank">Kuratorium Oświaty w Opolu</a></li>
-                        <li><a href="https://www.gov.pl/web/edukacja" rel="noopener noreferrer" target="_blank">Ministerstwo Edukacji Narodowej</a></li>
-                        <li><a href="https://poczta22688.domeny.host/" rel="noopener noreferrer" target="_blank">Poczta pracownicza</a></li>
-                        <li><a href={global.config.proxy + "/wp-admin"} rel="noopener noreferrer" target="_blank">Administrator</a></li>
-                        <li><a href="https://psp5-opole.ssdip.bip.gov.pl/" rel="noopener noreferrer" target="_blank">
+                    <div>
+                        <p><a href="" target="_blank">Kontakt</a></p>
+                        <p><a href="http://www.kuratorium.opole.pl/" rel="noopener noreferrer" target="_blank">Kuratorium Oświaty w Opolu</a></p>
+                        <p><a href="https://www.gov.pl/web/edukacja" rel="noopener noreferrer" target="_blank">Ministerstwo Edukacji Narodowej</a></p>
+                        <p><a href="https://poczta22688.domeny.host/" rel="noopener noreferrer" target="_blank">Poczta pracownicza</a></p>
+                        <p><a href={global.config.proxy + "/wp-admin"} rel="noopener noreferrer" target="_blank">Administrator</a></p>
+                        <p><a href="https://psp5-opole.ssdip.bip.gov.pl/" rel="noopener noreferrer" target="_blank">
                             <LogoBip />
-                        </a></li>
+                        </a></p>
 
-                    </ul>
+                    </div>
                 </div>
 
             </div>
@@ -76,15 +76,13 @@ export const Footer = () => (
 
         <div id="bottom">
             <div className={"footer-container"}>
-                <div id={"copyright"} className={"footer-column"}>
-                    © Publiczna Szkoła Podstawowa nr 5 w Opolu
-                </div>
+                <p>© Publiczna Szkoła Podstawowa nr 5 w Opolu</p>
 
-                <ul id={"authors"} className={"footer-column"}>
-                    <li>Designed by: K. Gniedziejko & I. Hupało</li>
-                    <li className={"email"}>gniedziejko.kinga@gmail.com</li>
-                    <li className={"email"}>iga.hupalo@gmail.com</li>
-                </ul>
+                <div id={"authors"} className={"footer-column"}>
+                    <p>Designed by: K. Gniedziejko & I. Hupało</p>
+                    <p className={"email"}>gniedziejko.kinga@gmail.com</p>
+                    <p className={"email"}>iga.hupalo@gmail.com</p>
+                </div>
             </div>
         </div>
 
