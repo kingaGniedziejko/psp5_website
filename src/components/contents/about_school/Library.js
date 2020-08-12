@@ -56,7 +56,7 @@ export class Library extends Component {
                         <title>{global.config.mainTitle + " " + this.state.title}</title>
                     </Helmet>
                     <div className={"section"}>
-                        <div className={"photo-static"} style={{backgroundImage: `url(${photo1})`}}/>
+                        <div className={"photo"} style={{backgroundImage: `url(${photo1})`}}/>
 
                         <div className={"section-container centered"} id={""}>
                             <h1 dangerouslySetInnerHTML={{__html: hLibrary}}/>
