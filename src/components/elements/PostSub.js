@@ -72,8 +72,6 @@ export class PostSub extends Component {
         const {postNr} = this.props;
         const postDirection = postNr%2;
 
-        if (isGalleryLoaded) console.log(gallery);
-
         let images = [];
         gallery.forEach(elem => {
             images.push({

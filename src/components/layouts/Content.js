@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Link, Route, Switch} from 'react-router-dom';
+import {Link, NavLink, Route, Switch} from 'react-router-dom';
 import axios from "axios";
 import '../../config';
 import "../../styles/content_style.css"
@@ -73,6 +73,7 @@ export class Content extends Component {
         }
         return true;
     }
+
     separateMenuItems() {
         const {menuItems} = this.props;
         let allItems = [];

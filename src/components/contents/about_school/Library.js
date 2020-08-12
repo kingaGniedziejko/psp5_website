@@ -27,29 +27,29 @@ export class Library extends Component {
     }
 
     render() {
-        const photo1 = this.state.content.photo_1 !== undefined ? this.state.content.photo_1 : "";
-        const photo2 = this.state.content.photo_2 !== undefined ? this.state.content.photo_2 : "";
-        const attachments = [
-            this.state.content.attachment_1,
-            this.state.content.attachment_2
-        ];
-
-        // opis biblioteki szkolnej
-        const hLibrary = this.state.content.header_1 !== undefined ? this.state.content.header_1 : "";
-        const tLibrary = this.state.content.text_1 !== undefined ? this.state.content.text_1 : "";
-
-        // godziny otwarcia
-        const hHours = this.state.content.header_2 !== undefined ? this.state.content.header_2 : "";
-        const tHours = this.state.content.text_2 !== undefined ? this.state.content.text_2 : "";
-
-        // nauczyciele bibliotekarze
-        const hTeachers = this.state.content.header_3 !== undefined ? this.state.content.header_3 : "";
-        const tTeachers = this.state.content.text_3 !== undefined ? this.state.content.text_3 : "";
-
-        // regulaminy
-        const hRegulations = this.state.content.header_4 !== undefined ? this.state.content.header_4 : "";
-
         if(this.state.isLoaded) {
+
+            const sections = this.state.content.sections
+
+            const photo1 = sections[0].photos[0].url
+            const photo2 = sections[1].photos[0].url
+            const regulations = sections[1].attachments
+
+            // opis biblioteki szkolnej
+            const hLibrary = sections[0].modules[0].header
+            const tLibrary = sections[0].modules[0].text
+
+            // godziny otwarcia
+            const hHours = sections[1].modules[0].header
+            const tHours = sections[1].modules[0].text
+
+            // nauczyciele bibliotekarze
+            const hTeachers = sections[1].modules[1].header
+            const tTeachers = sections[1].modules[1].text
+
+            // regulaminy
+            const hRegulations = sections[1].modules[2].header
+
             return (
                 <div className={"content"}>
                     <Helmet>
@@ -78,14 +78,13 @@ export class Library extends Component {
                                 <div>
                                     <h1 dangerouslySetInnerHTML={{__html: hRegulations}}/>
                                     <div className={"text-content"}>
-                                        { attachments.map(att => {
-                                            if (att) return <Attachment key={att.id} className={"attachment"} title={att.title} url={att.url}/>
+                                        { regulations.map(att => {
+                                            if (att) return <Attachment key={att.file.id} className={"attachment"} title={att.file.title} url={att.file.url}/>
                                             else return "";
                                         })}
                                     </div>
 
                                 </div>
-
                         </div>
                     </div>
                 </div>

@@ -11,6 +11,15 @@ export class Submenu extends Component {
         }
     }
 
+    isValidUrl(string) {
+        try {
+            new URL(string);
+        } catch (_) {
+            return false;
+        }
+        return true;
+    }
+
     render() {
         const {menuItem} = this.props;
         const {child_items} = menuItem;
@@ -26,6 +35,15 @@ export class Submenu extends Component {
                                         {elem.title}
                                     </li>
                                 </Link>
+                            )
+                        }
+                        else if(elem.object === "custom" && this.isValidUrl(elem.url)) {
+                            return (
+                                <a href={elem.url} key={index} rel="noopener noreferrer" target="_blank" onClick={this.handleItemClick}>
+                                    <li className={"submenu-item"}>
+                                        {elem.title}
+                                    </li>
+                                </a>
                             )
                         } else {
                             return (
