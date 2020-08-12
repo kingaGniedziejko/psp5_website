@@ -25,20 +25,24 @@ export class Anthem extends Component {
     }
 
     render() {
-        const photo1 = this.state.content.photo_1 !== undefined ? this.state.content.photo_1 : "";
 
-        // hymn szkoły
-        const hAnthem = this.state.content.header_1 !== undefined ? this.state.content.header_1 : "";
-        const tAnthem = this.state.content.text_1 !== undefined ? this.state.content.text_1 : "";
 
         if(this.state.isLoaded) {
+            const sections = this.state.content.sections
+
+            const photo = sections[0].images[0].url
+
+            // hymn szkoły szkolnej
+            const hAnthem = sections[0].modules[0].header
+            const tAnthem = sections[0].modules[0].text
+
             return (
                 <div className={"content"}>
                     <Helmet>
                         <title>{global.config.mainTitle + " " + this.state.title}</title>
                     </Helmet>
                     <div className={"section"}>
-                        <div className={"photo-static"} style={{backgroundImage: `url(${photo1})`}}/>
+                        <div className={"photo-static"} style={{backgroundImage: `url(${photo})`}}/>
 
                         <div className={"section-container centered"}>
                             <h1 dangerouslySetInnerHTML={{__html: hAnthem}}/>

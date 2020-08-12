@@ -12,10 +12,11 @@ import SwimmingPool from "../contents/about_school/SwimmingPool";
 import Documents from "../contents/about_school/Documents";
 import Anthem from "../contents/about_school/Anthem";
 import Calendar from "../contents/student/Calendar";
-// import LinkedPage from "../elements/LinkedPage";
 import AdditionalPage from "../elements/AdditionalPage";
 import NewsPage from "../contents/news/NewsPage";
 import News from "../contents/news/News";
+import ParentsCouncil from "../contents/parent/ParentsCouncil";
+import MCard from "../contents/student/MCard";
 
 export class Content extends Component {
     state = {
@@ -59,6 +60,16 @@ export class Content extends Component {
                 title: "kalendarz",
                 path: "",
                 component: Calendar
+            },
+            {
+                title: "rada rodziców",
+                path: "",
+                component: ParentsCouncil
+            },
+            {
+                title: "mlegitymacja",
+                path: "",
+                component: MCard
             },
         ],
         additionalPages: [],

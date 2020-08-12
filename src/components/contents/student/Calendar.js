@@ -29,17 +29,20 @@ export class Library extends Component {
     }
 
     render() {
-        const photo1 = this.state.content.photo_1 !== undefined ? this.state.content.photo_1 : "";
-        const hCalendar = this.state.content.header_1 !== undefined ? this.state.content.header_1 : "";
 
         if(this.state.isLoaded) {
+            const sections = this.state.content.sections
+
+            const photo = sections[0].images[0].url
+            const hCalendar = sections[0].lonely_headers[0].text
+
             return (
                 <div className={"content"}>
                     <Helmet>
                         <title>{global.config.mainTitle + " " + this.state.title}</title>
                     </Helmet>
                     <div className={"section"}>
-                        <div className={"photo-static"} style={{backgroundImage: `url(${photo1})`}}/>
+                        <div className={"photo-static"} style={{backgroundImage: `url(${photo})`}}/>
                         <div className={"section-container centered"}>
 
                         <h1 dangerouslySetInnerHTML={{__html: hCalendar}}/>

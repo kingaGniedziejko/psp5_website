@@ -1,21 +1,19 @@
 import React, {Component} from "react";
-import MapContainer from "../elements/MapContainer";
-import Spinner from "../elements/Spinner"
+import Spinner from "../../elements/Spinner"
 import {Link} from "react-router-dom";
-import "../../styles/contact_style.css"
 import axios from "axios";
 import Helmet from "react-helmet";
 
 
-export class Contact extends Component {
+export class MCard extends Component {
     state = {
-        title: "Kontakt",
+        title: "mLegitymacja",
         content: [],
         isLoaded: false
     }
 
     componentDidMount() {
-        let contentUrl = global.config.proxy + "/wp-json/wp/v2/built_in_pages?slug=contact"
+        let contentUrl = global.config.proxy + "/wp-json/wp/v2/built_in_pages?slug=mcard"
         //TODO: lepsze zabezpieczenie tego
 
         axios.get(contentUrl)
@@ -33,8 +31,7 @@ export class Contact extends Component {
 
             const photo = sections[0].images[0].url
 
-            const hAddress = sections[0].modules[0].header
-            const tAddress = sections[0].modules[0].text
+            const h = sections[0].lonely_headers[0].text
 
             return (
                 <div className={"content"}>
@@ -46,16 +43,10 @@ export class Contact extends Component {
                         <div className={"photo-static"} style={{backgroundImage: `url(${photo})`}}/>
 
                         <div className={"section-container"} id={""}>
-                            <div dangerouslySetInnerHTML={{__html: tAddress}}/>
+                            <div dangerouslySetInnerHTML={{__html: h}}/>
                         </div>
 
 
-                    </div>
-
-                    <div className={"section"} id={"map"}>
-                        <div className={"section-container"} id={"map"}>
-                            <MapContainer />
-                        </div>
                     </div>
 
 
@@ -69,4 +60,4 @@ export class Contact extends Component {
     }
 }
 
-export default Contact;
+export default MCard;

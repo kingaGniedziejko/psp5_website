@@ -7,10 +7,11 @@ import Helmet from "react-helmet";
 
 export class Documents extends Component {
     state = {
+        title: "Dokumenty",
         content: [],
         isLoaded: false,
         documents: [],
-        documentTypes: {}
+        documentTypes: {},
     }
 
     componentDidMount() {
@@ -23,9 +24,8 @@ export class Documents extends Component {
             }))
             .catch(err => console.log(err));
 
-        // get all document types
         let typesUrl = global.config.proxy + "/wp-json/wp/v2/document_types"
-        var documentTypes = {}
+        const documentTypes = {};
 
         axios.get(typesUrl)
             .then(res => {
@@ -38,7 +38,6 @@ export class Documents extends Component {
             })
             .catch(err => console.log(err));
 
-        // get all documents
         let documentsUrl = global.config.proxy + "/wp-json/wp/v2/documents"
 
         axios.get(documentsUrl)
@@ -56,16 +55,17 @@ export class Documents extends Component {
     }
 
     render() {
-        const photo1 = this.state.content.photo_1 !== undefined ? this.state.content.photo_1 : "";
-
         if(this.state.isLoaded) {
+            const sections = this.state.content.sections
+            const photo = sections[0].images[0].url
+
             return (
                 <div className={"content"}>
                     <Helmet>
                         <title>{global.config.mainTitle + " " + this.state.title}</title>
                     </Helmet>
                     <div className={"section"}>
-                        <div className={"photo-static"} style={{backgroundImage: `url(${photo1})`}}/>
+                        <div className={"photo-static"} style={{backgroundImage: `url(${photo})`}}/>
 
                         <div className={"section-container centered"}>
                             {

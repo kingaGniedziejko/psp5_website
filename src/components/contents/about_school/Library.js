@@ -31,8 +31,8 @@ export class Library extends Component {
 
             const sections = this.state.content.sections
 
-            const photo1 = sections[0].photos[0].url
-            const photo2 = sections[1].photos[0].url
+            const photo1 = sections[0].images[0].url
+            const photo2 = sections[1].images[0].url
             const regulations = sections[1].attachments
 
             // opis biblioteki szkolnej
