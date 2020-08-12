@@ -60,7 +60,7 @@ export class MCard extends Component {
 
                         <h1 dangerouslySetInnerHTML={{__html: hCard}}/>
 
-                        <div className={"section-container multicolumn"}>
+                        <div className={"section-container multicolumn justified"}>
 
                             <div>
                                 <div dangerouslySetInnerHTML={{__html: tCard}}/>
@@ -70,9 +70,9 @@ export class MCard extends Component {
                         </div>
                     </div>
                     <div className={"section"} style={{backgroundColor: "var(--accent-3-light)"}}>
+                        <h1 dangerouslySetInnerHTML={{__html: hDiscount}}/>
 
-                        <div className={"section-container centered"} >
-                            <h1 dangerouslySetInnerHTML={{__html: hDiscount}}/>
+                        <div className={"section-container multicolumn justified"} >
                             <div dangerouslySetInnerHTML={{__html: tDiscount}}/>
                         </div>
 
@@ -87,7 +87,7 @@ export class MCard extends Component {
                                 <h1 dangerouslySetInnerHTML={{__html: hRules}}/>
                             </div>
 
-                            <div className={"multicolumn wide"}>
+                            <div className={"multicolumn wide justified"}>
                                 <div>
                                     <div dangerouslySetInnerHTML={{__html: tRules}}/>
                                 </div>

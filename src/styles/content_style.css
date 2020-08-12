@@ -37,11 +37,16 @@ div.content div.section {
 
 .multicolumn {
     display: flex;
+    gap: 1em;
     flex-direction: row;
     justify-content: space-around;
     padding: 0.5em 1em;
     width: 95%;
     align-items: flex-start;
+}
+
+.justified{
+    text-align: justify;
 }
 
 .multicolumn.wide>div {
