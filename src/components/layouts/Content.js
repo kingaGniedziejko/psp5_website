@@ -16,6 +16,7 @@ import AdditionalPage from "../elements/AdditionalPage";
 import NewsPage from "../contents/news/NewsPage";
 import News from "../contents/news/News";
 import ParentsCouncil from "../contents/parent/ParentsCouncil";
+import ParentsMeetings from "../contents/parent/ParentsMeetings";
 import MCard from "../contents/student/MCard";
 
 export class Content extends Component {
@@ -65,6 +66,11 @@ export class Content extends Component {
                 title: "rada rodziców",
                 path: "",
                 component: ParentsCouncil
+            },
+            {
+                title: "spotkania z rodzicami",
+                path: "",
+                component: ParentsMeetings
             },
             {
                 title: "mlegitymacja",
