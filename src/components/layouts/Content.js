@@ -17,6 +17,7 @@ import NewsPage from "../contents/news/NewsPage";
 import News from "../contents/news/News";
 import ParentsCouncil from "../contents/parent/ParentsCouncil";
 import MCard from "../contents/student/MCard";
+import MenuPage from "../elements/MenuPage";
 
 export class Content extends Component {
     state = {
@@ -85,15 +86,18 @@ export class Content extends Component {
         return true;
     }
 
-    separateMenuItems() {
+    separateSubmenuMenuItems() {
         const {menuItems} = this.props;
         let allItems = [];
 
         menuItems.forEach(menuItem => {
             const {child_items} = menuItem;
-            allItems.push(menuItem);
-            if (child_items !== undefined)
+
+            if (child_items !== undefined) {
                 allItems = allItems.concat(child_items);
+            } else {
+                allItems.push(menuItem);
+            }
         });
 
         return allItems;
@@ -139,6 +143,21 @@ export class Content extends Component {
         return filteredNews;
     }
 
+    createMenuPages() {
+        const {menuItems} = global.config;
+        let menuPages = [];
+
+        menuItems.forEach(item => {
+            if (item.child_items !== undefined) {
+                if (item.child_items.length !== 0) {
+                    menuPages.push(item);
+                }
+            }
+        });
+
+        return menuPages;
+    }
+
     componentDidMount() {
         axios.get( global.config.proxy + "/wp-json/wp/v2/additional_pages")
             .then(res => this.setState({
@@ -149,14 +168,15 @@ export class Content extends Component {
     }
 
     render() {
-        const {homePage, isAdditionalPagesLoaded} = this.state;
+        const {homePage, isAdditionalPagesLoaded, contents} = this.state;
 
         if (isAdditionalPagesLoaded) {
-            const menuItems = this.separateMenuItems();
+            const menuItems = this.separateSubmenuMenuItems();
             const additionalPagesFiltered = this.filterAdditionalPages(menuItems);
             const linkedPagesFiltered = this.filterLinkedPages(menuItems);
             const contentsFiltered = this.filterContents(menuItems, additionalPagesFiltered, linkedPagesFiltered);
             const newsFiltered = this.filterNews(menuItems);
+            const menuPages = this.createMenuPages();
 
             return (
                 <div className={"content-container"}>
@@ -181,6 +201,19 @@ export class Content extends Component {
                                     <AdditionalPage page={page}/>
                                 </Route>
                             );
+                        })}
+
+                        {menuPages.map((elem, index) => {
+                            if (contents.some(element => element.title.toLowerCase() === elem.title.toLowerCase())) {
+                                var customElem = contents.find(contentElem => contentElem.title.toLowerCase() === elem.title.toLowerCase());
+                                return <Route key={index} path={elem.url} exact component={customElem.component}/>;
+                            } else {
+                                return (
+                                    <Route key={index} path={elem.url} exact>
+                                        <MenuPage menuItem={elem}/>
+                                    </Route>
+                                )
+                            }
                         })}
 
                         <Route path={"/"} component={ErrorNotFound}/>

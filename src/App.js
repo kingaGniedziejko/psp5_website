@@ -30,6 +30,8 @@ export class App extends Component {
 
     render (){
         const { menuItems, isLoaded } = this.state;
+
+        console.log(menuItems);
         if (isLoaded){
             return (
                 <BrowserRouter>
