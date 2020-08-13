@@ -42,13 +42,24 @@ div.post>div {
     flex-direction: column;
 }
 
-
 /*post gallery*/
 div.post>div>div.image-gallery{
     width: 100%;
 }
 
-div.post>div>div.image-gallery img.image-gallery-image {
+div.post>div>div.image-gallery.single .image-gallery-left-nav,
+div.post>div>div.image-gallery.single .image-gallery-right-nav,
+div.post>div>div.image-gallery.single .image-gallery-play-button,
+div.post>div>div.image-gallery.single .image-gallery-thumbnails-wrapper,
+div.post>div>div.image-gallery.single .image-gallery-thumbnails-wrapper *{
+    display: none !important;
+}
+
+.image-gallery-svg {
+    z-index: 0;
+}
+
+div.post>div>div.image-gallery img.image-gallery-image, div.post>div>img {
     height: 170px;
     object-fit: cover;
 }
@@ -56,6 +67,7 @@ div.post>div>div.image-gallery img.image-gallery-image {
 div.post>div>div.image-gallery .fullscreen {
     height: 100vh;
     width: 100vw;
+    position: fixed;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -103,6 +115,7 @@ div.post>div>div.image-gallery .image-gallery-right-nav .image-gallery-svg{
     width: 35px;
 }
 
+
 div.post>div>div.image-gallery .image-gallery-fullscreen-button,
 div.post>div>div.image-gallery .image-gallery-play-button {
     padding: 10px;
@@ -115,32 +128,43 @@ div.post>div>div.image-gallery .image-gallery-play-button .image-gallery-svg {
 }
 
 /*icons fullscreen*/
+
+
 div.post>div>div.image-gallery .fullscreen .image-gallery-left-nav,
 div.post>div>div.image-gallery .fullscreen .image-gallery-right-nav{
-    padding: 10;
+    padding: 10px;
 }
 
-div.post>div>div.image-gallery .fullscreen .image-gallery-left-nav .image-gallery-svg,
-div.post>div>div.image-gallery .fullscreen .image-gallery-right-nav .image-gallery-svg{
-    height: 120px;
-    width: 60px;
+@media screen and (min-width: 1130px) {
+    div.post>div>div.image-gallery .fullscreen .image-gallery-left-nav .image-gallery-svg,
+    div.post>div>div.image-gallery .fullscreen .image-gallery-right-nav .image-gallery-svg{
+        height: 120px;
+        width: 60px;
+    }
+
+    div.post>div>div.image-gallery .fullscreen .image-gallery-fullscreen-button .image-gallery-svg,
+    div.post>div>div.image-gallery .fullscreen .image-gallery-play-button .image-gallery-svg {
+        height: 36px;
+        width: 36px;
+    }
+
+    div.post>div>div.image-gallery .fullscreen .image-gallery-fullscreen-button,
+     div.post>div>div.image-gallery .fullscreen .image-gallery-play-button {
+         padding: 20px;
+     }
+
+    div.post>div>div.image-gallery .image-gallery-icon:hover {
+         color: var(--accent-2-light);
+     }
 }
 
-div.post>div>div.image-gallery .fullscreen .image-gallery-fullscreen-button,
-div.post>div>div.image-gallery .fullscreen .image-gallery-play-button {
-    padding: 20px;
-}
-
-div.post>div>div.image-gallery .fullscreen .image-gallery-fullscreen-button .image-gallery-svg,
-div.post>div>div.image-gallery .fullscreen .image-gallery-play-button .image-gallery-svg {
-    height: 36px;
-    width: 36px;
-}
 
 
-div.post>div>div.image-gallery .image-gallery-icon:hover {
-    color: var(--accent-1);
-}
+
+
+
+
+
 div.post>div>div.image-gallery .image-gallery-thumbnail.active,
 div.post>div>div.image-gallery .image-gallery-thumbnail:hover,
 div.post>div>div.image-gallery .image-gallery-thumbnail:focus {
@@ -224,7 +248,6 @@ div.post div:last-child h2{
 
     div.post>div>div.image-gallery {
         width: 100%;
-        height: 250px;
         min-width: 200px;
     }
 

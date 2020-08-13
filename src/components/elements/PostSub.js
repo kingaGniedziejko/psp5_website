@@ -83,7 +83,14 @@ export class PostSub extends Component {
         return (
             <div className={"post " + (postDirection ? "post-left" : "post-right")}>
                 <div>
-                    <ImageGallery items={images}/>
+                    {
+                        images.length === 1 ?
+                            // <img src={images[0].original} alt={"Zdjęcie"}/>
+                            <ImageGallery items={images} additionalClass={"single"}/>
+
+                            :
+                            <ImageGallery items={images}/>
+                    }
                 </div>
                 <div>
                     <h2 className={"post-title"}>{title.rendered}</h2>

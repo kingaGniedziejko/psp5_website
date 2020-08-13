@@ -67,7 +67,7 @@ body {
 
 .content-container {
     flex: 2;
-    z-index: 1;
+    /*z-index: 1;*/
 }
 
 *:focus {

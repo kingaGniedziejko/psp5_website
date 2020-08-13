@@ -40,7 +40,7 @@ div.content div.section {
     gap: 2em;
     flex-direction: row;
     justify-content: space-around;
-    padding: 0em 0.5em 1.5em 0.5em;
+    padding: 0 0.5em 1.5em 0.5em;
     width: 95%;
     align-items: flex-start;
 }
