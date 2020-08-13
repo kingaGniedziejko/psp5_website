@@ -9,6 +9,7 @@ import ScrollToTop from './components/elements/ScrollToTop';
 import Header from './components/layouts/Header';
 import {Content} from './components/layouts/Content';
 import {Footer} from './components/layouts/Footer';
+import Spinner from "./components/elements/Spinner";
 
 export class App extends Component {
     state = {
@@ -23,7 +24,6 @@ export class App extends Component {
                     menuItems: res.data.items,
                     isLoaded: true
                 });
-                global.config.menuItems = res.data.items;
             })
             .catch(err => console.log(err));
     }
@@ -31,8 +31,8 @@ export class App extends Component {
     render (){
         const { menuItems, isLoaded } = this.state;
 
-        console.log(menuItems);
         if (isLoaded){
+            global.config.menuItems = menuItems;
             return (
                 <BrowserRouter>
                     <div className={"container"}>
@@ -41,7 +41,6 @@ export class App extends Component {
                         <Content menuItems={menuItems}/>
                         <Footer />
                     </div>
-
                 </BrowserRouter>
             );
         }
