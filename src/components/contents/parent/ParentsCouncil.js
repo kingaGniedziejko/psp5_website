@@ -96,7 +96,7 @@ export class ParentsCouncil extends Component {
                         <div className={"photo-static"} style={{backgroundImage: `url(${photo2})`}}/>
 
                         <h1 dangerouslySetInnerHTML={{__html: hNews}}/>
-                        <PostDisplay postCategory={"rada-rodzicow"} postsCount={3} />
+                        <PostDisplay postCategories={["rada-rodzicow"]} postsCount={3} />
 
                     </div>
                 </div>

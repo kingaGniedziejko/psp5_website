@@ -16,12 +16,14 @@ export class News extends Component {
         const {menuItems} = global.config;
 
         let shortcutElements = [];
+        let postCategories = [];
 
-        menuItems.find(elem => elem.title === title).child_items.forEach(elem => {
+        menuItems.find(elem => elem.title === title).child_items.forEach(element => {
             shortcutElements.push({
-                title: elem.title,
-                path: "/" + slug + "/" + elem.slug
-            })
+                title: element.title,
+                path: "/" + slug + "/" + element.slug
+            });
+            postCategories.push(element.slug);
         })
 
         return (
@@ -33,7 +35,7 @@ export class News extends Component {
                     <Shortcuts elements={shortcutElements}/>
                 </div>
                 <h1>{title}</h1>
-                <PostDisplay postsCount={-1} postsPerPage={postsPerPage}/>
+                <PostDisplay postsCount={-1} postsPerPage={postsPerPage} postCategories={postCategories}/>
             </div>
         );
     }

@@ -7,36 +7,47 @@ import '../../config';
 
 export class PostDisplay extends Component {
     state = {
-        category: undefined,
+        categories: undefined,
         isLoaded: false
     }
 
-    findCategoryId(postCategory) {
-        if (postCategory !== undefined) {
+    findCategoryId(postCategories) {
+        if (postCategories !== undefined) {
             axios.get(global.config.proxy + "/wp-json/wp/v2/categories")
-                .then(res => this.setState({
-                    category: res.data.find(cat => cat.slug.toLowerCase() === postCategory.toLowerCase()).id,
-                    isLoaded: true
-                }))
+                .then(res => {
+                    let categoriesIDs = [];
+
+                    postCategories.forEach(elem => {
+                        let categoryID = res.data.find(cat => cat.slug.toLowerCase() === elem.toLowerCase()).id;
+                        if (categoryID !== undefined){
+                            categoriesIDs.push(categoryID);
+                        }
+                    })
+
+                    this.setState({
+                        categories: categoriesIDs,
+                        isLoaded: true
+                    })
+                })
                 .catch(err => console.log(err));
         } else {
             this.setState({
-                category: undefined,
+                categories: undefined,
                 isLoaded: true
             })
         }
     }
 
     componentDidMount() {
-        this.findCategoryId(this.props.postCategory);
+        this.findCategoryId(this.props.postCategories);
     }
 
     render() {
-        const {category, isLoaded} = this.state;
+        const {categories, isLoaded} = this.state;
         const {postsCount, postsPerPage} = this.props;
 
         if (isLoaded) {
-            return <PostDisplaySub postCategoryID={category} postsCount={postsCount} postsPerPage={postsPerPage}/>;
+            return <PostDisplaySub postCategoryIDs={categories} postsCount={postsCount} postsPerPage={postsPerPage}/>;
         }
         return ""
     }

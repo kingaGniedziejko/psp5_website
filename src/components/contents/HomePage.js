@@ -45,7 +45,7 @@ export class HomePage extends Component {
                 <div className={"section section-2"}>
                     <div className={"photo photo-2"}/>
                     <h1>Komunikaty</h1>
-                    <PostDisplay postCategory={postCategory} postsCount={postCount} />
+                    <PostDisplay postCategories={[postCategory]} postsCount={postCount} />
                     <Link to={"/aktualnosci/komunikaty"}><button className={"button-accent-1"}>Czytaj więcej</button></Link>
                 </div>
             </div>
