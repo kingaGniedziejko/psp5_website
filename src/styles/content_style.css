@@ -139,6 +139,12 @@ div.content div.shortcut-menu-page {
     margin-top: 2em;
 }
 
+@media (max-width: 700px) {
+    div.content div.shortcut-menu-page {
+        width: 90%;
+    }
+}
+
 div.content div.shortcut-menu-page div#shortcut {
     width: 100%;
 }
@@ -184,3 +190,25 @@ div.content div#shortcut a div h3 {
     white-space: nowrap;
 }
 
+div.content div.vertical-centered>div#shortcut{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div.content div.vertical-centered>div#shortcut>a{
+    width: 50%;
+    min-width: 200px;
+}
+
+@media (max-width: 800px) {
+    div.content div.vertical-centered>div#shortcut>a{
+        width: 70%;
+    }
+}
+
+@media (max-width: 400px) {
+    div.content div.vertical-centered>div#shortcut>a{
+        width: 85%;
+    }
+}
