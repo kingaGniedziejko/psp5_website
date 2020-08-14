@@ -74,18 +74,22 @@ div.content div.section {
     text-align: left;
 }
 
-div.content div.photo-static {
+.photo {
     background-size: cover;
     background-position: center;
     width: 100%;
+}
+
+:not(.thin).photo, :not(thick).photo {
     height: 300px;
 }
 
-div.content div.photo {
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    height: 300px;
+.thick.photo {
+    height: 400px;
+}
+
+.thin.photo {
+    height: 200px;
 }
 
 .spacer {
@@ -99,8 +103,6 @@ div.content div.photo {
 td {
     padding: 0.3em 0.7em
 }
-
-.
 
 @media (max-width: 600px) {
     .centered {

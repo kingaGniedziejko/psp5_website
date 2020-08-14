@@ -12,14 +12,14 @@ export class SectionImage extends Component {
 
     getImageUrl(width)  {
         const image = this.state.image
-        if(width < 768)
-            return image.sizes["medium_large"];
+        if(width < 512)
+            return image.sizes["header_small"];
         if(width < 1024)
-            return image.sizes["large"];
+            return image.sizes["header_medium"];
         if(width < 1536)
-            return image.sizes["1536x1536"];
+            return image.sizes["header_large"];
         if(width < 2048)
-            return image.sizes["2048x2048"];
+            return image.sizes["header_very_large"];
         return image
     }
 
@@ -41,7 +41,7 @@ export class SectionImage extends Component {
                         url: this.getImageUrl(windowSize.windowWidth)
                     })
                 }}>
-                    <div className={"photo"} style={{backgroundImage: `url(${url})`}}/>
+                    <div className={`photo ${this.props.type}`} style={{backgroundImage: `url(${url})`}}/>
                 </WindowSizeListener>
             )
         }

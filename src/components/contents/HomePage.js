@@ -72,7 +72,7 @@ export class HomePage extends Component {
                         <title>{title}</title>
                     </Helmet>
                     <div className={"section"}>
-                        <SectionImage image={photo1}/>
+                        <SectionImage image={photo1} type={"thick"}/>
                         <div className={"section-container"}>
                             <h1 dangerouslySetInnerHTML={{__html: hShortcut}}/>
                             <Shortcuts elements={shortcutElements}/>

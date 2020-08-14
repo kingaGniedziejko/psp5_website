@@ -1,7 +1,7 @@
-div.section-container {
-    width: 50%;
-    margin-top: 4em;
-}
+/*div.section-container {*/
+/*    width: 50%;*/
+/*    margin-top: 4em;*/
+/*}*/
 
 div.image-gallery-container>div.image-gallery img.image-gallery-image,
 div.image-gallery-container>img {
@@ -28,9 +28,9 @@ div.post-content-container div.post-attachments {
 }
 
 @media only screen and (max-width: 900px) {
-    div.section-container {
-        width: 70%;
-    }
+    /*div.section-container {*/
+    /*    width: 70%;*/
+    /*}*/
 }
 
 @media only screen and (max-width: 600px) {
@@ -41,7 +41,7 @@ div.post-content-container div.post-attachments {
 }
 
 @media only screen and (max-width: 500px) {
-    div.section-container {
-        width: 80%;
-    }
+    /*div.section-container {*/
+    /*    width: 80%;*/
+    /*}*/
 }
