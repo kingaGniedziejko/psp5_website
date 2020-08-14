@@ -9,6 +9,7 @@ import Attachment from "./Attachment"
 import {CSSTransition} from "react-transition-group";
 import "react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from "react-image-gallery";
+import {Link} from "react-router-dom";
 
 export class PostSub extends Component {
     state = {
@@ -57,7 +58,7 @@ export class PostSub extends Component {
     }
 
     render() {
-        const {title, date, acf} = this.props.post;
+        const {id, title, slug, date, acf} = this.props.post;
         const {text} = acf;
         const excerpt = text.substring(0, this.state.excerptLength)+"...";
         const {isExpanded, isGalleryLoaded, gallery} = this.state;
@@ -93,7 +94,7 @@ export class PostSub extends Component {
                     }
                 </div>
                 <div>
-                    <h2 className={"post-title"}>{title.rendered}</h2>
+                    <Link to={"/aktualnosci/" + id + "/" + slug}><h2 className={"post-title"}>{title.rendered}</h2></Link>
                     <small className={"post-date"}>
                         <Moment locale={"pl"} format="DD MMMM YYYYr. HH:mm">{date}</Moment>
                     </small>

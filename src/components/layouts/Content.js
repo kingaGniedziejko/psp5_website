@@ -20,6 +20,7 @@ import ParentsMeetings from "../contents/parent/ParentsMeetings";
 import MCard from "../contents/student/MCard";
 import MenuPage from "../elements/MenuPage";
 import Spinner from "../elements/Spinner";
+import PostPage from "../elements/PostPage";
 
 export class Content extends Component {
     state = {
@@ -222,6 +223,8 @@ export class Content extends Component {
                                 )
                             }
                         })}
+
+                        <Route path="/aktualnosci/:newsID/:newsSlug" component={PostPage}/>
 
                         <Route path={"/"} component={ErrorNotFound}/>
                     </Switch>
