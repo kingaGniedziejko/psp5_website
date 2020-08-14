@@ -1,11 +1,8 @@
 import React, {Component} from "react";
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import axios from "axios";
 import Spinner from "../elements/Spinner";
 import {ReactComponent as IconCross} from "../../images/cross.svg";
-import {NavLink} from "react-router-dom";
 
 export class FullscreenModal extends Component {
     state = {

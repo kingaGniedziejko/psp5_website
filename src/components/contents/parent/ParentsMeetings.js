@@ -1,9 +1,8 @@
 import React, {Component} from "react";
 import Spinner from "../../elements/Spinner"
-import {Link, NavLink} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import axios from "axios";
 import Helmet from "react-helmet";
-import Attachment from "../../elements/Attachment";
 import Moment from "react-moment";
 import SectionImage from "../../elements/SectionImage";
 

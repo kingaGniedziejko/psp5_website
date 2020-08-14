@@ -1,9 +1,9 @@
 import React, {Component} from "react";
-import {Link, NavLink} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 import Submenu from "./Submenu"
-import { ReactComponent as IconHome } from '../../images/home.svg';
-import { ReactComponent as IconSearch } from '../../images/search.svg';
+import {ReactComponent as IconHome} from '../../images/home.svg';
+import {ReactComponent as IconSearch} from '../../images/search.svg';
 
 export class Menu extends Component {
 

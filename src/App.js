@@ -9,7 +9,6 @@ import ScrollToTop from './components/elements/ScrollToTop';
 import Header from './components/layouts/Header';
 import {Content} from './components/layouts/Content';
 import {Footer} from './components/layouts/Footer';
-import Spinner from "./components/elements/Spinner";
 
 export class App extends Component {
     state = {

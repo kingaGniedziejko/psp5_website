@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { ReactComponent as IconDownload } from '../../images/download.svg';
+import {ReactComponent as IconDownload} from '../../images/download.svg';
 
 
 export class Attachment extends Component {

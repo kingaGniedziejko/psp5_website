@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import "../../styles/error_style.css";
 
-import { ReactComponent as ImageNotFound } from '../../images/404.svg';
+import {ReactComponent as ImageNotFound} from '../../images/404.svg';
 
 
 export class ErrorNotFound extends Component {

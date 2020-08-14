@@ -85,7 +85,7 @@ export class AchievementsGallery extends Component {
                     <Slider {...settings}>
                         {
                             achievements.map(achievement => { return(
-                                <div>
+                                <div key={achievement.id}>
                                     <div className={"slider-object-container"}>
                                         <img className={"slider-object"} src={achievement.acf.image.sizes.medium} onClick={() => this.openFullscreen(achievement)}/>
                                     </div>

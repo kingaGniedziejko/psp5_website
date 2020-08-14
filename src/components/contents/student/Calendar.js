@@ -1,13 +1,11 @@
 import React, {Component} from "react";
 import Spinner from "../../elements/Spinner"
-import Attachment from "../../elements/Attachment"
 
 import "../../../styles/library_style.css"
 import axios from "axios";
 import Helmet from "react-helmet";
 import '../../../config';
 import SectionImage from "../../elements/SectionImage";
-
 
 
 export class Library extends Component {

@@ -4,7 +4,7 @@ import "../../styles/header_style.css";
 import "../../styles/menu_style.css";
 import "../../styles/sidemenu_style.css";
 import '../../config';
-
+import WindowSizeListener from 'react-window-size-listener'
 import Menu from "../elements/Menu";
 import SideMenu from "../elements/SideMenu";
 import Burger from "../elements/Burger";
@@ -28,6 +28,8 @@ export class Header extends Component {
     state = {
         isSideMenuOpen: false,
         isSearchBarOpen: false,
+        isBurgerVisible: false,
+        isFullMenuVisible: true,
         width: 800,
     }
 
@@ -45,30 +47,40 @@ export class Header extends Component {
         });
     }
 
-    updateDimensions() {
-        let update_width  = window.innerWidth;
-
-        global.config.isMobile = update_width < 1130
-        if(global.config.isMobile && this.state.isSideMenuOpen) this.toggleSideMenu()
-        document.documentElement.style.setProperty('--nav-bar-height', `${this.navBar.current.clientHeight}px`);
-        this.setState({
-            width: update_width,
-        });
-    }
-
-    componentDidMount() {
-        this.updateDimensions();
-        window.addEventListener("resize", this.updateDimensions.bind(this));
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener("resize", this.updateDimensions.bind(this));
-    }
-
     render() {
-        const { menuItems } = this.props;
+        const {menuItems} = this.props;
+        const {isFullMenuVisible, isBurgerVisible} = this.state
         return(
             <>
+            <WindowSizeListener onResize={windowSize => {
+                let update_width  = windowSize.windowWidth;
+                global.config.isMobile = update_width < 1130
+
+                if(update_width <= 1130) {
+                    this.setState({
+                        isFullMenuVisible: false
+                    }, () => {
+                        document.documentElement.style.setProperty('--nav-bar-height', `${this.navBar.current.clientHeight}px`);
+                        this.setState({
+                            isBurgerVisible: true
+                        })
+                    })
+                } else if(update_width > 1130) {
+                    document.documentElement.style.setProperty('--nav-bar-height', `${this.navBar.current.clientHeight}px`);
+                    this.setState({
+                        isBurgerVisible: false,
+                        isFullMenuVisible: true
+                    })
+                }
+
+                if(global.config.isMobile && this.state.isSideMenuOpen) {
+                    this.toggleSideMenu();
+                }
+
+                this.setState({
+                    width: update_width,
+                });
+            }}/>
             <div id={"header"}>
                 <CSSTransition
                     in={this.state.isSearchBarOpen}
@@ -132,7 +144,7 @@ export class Header extends Component {
                                 </div>
                             </div>
                             {
-                                this.state.width > 1130 ?
+                                isFullMenuVisible ?
                                     <Menu menuItems={menuItems} mutateSearchBar={this.toggleSearchBar}/> : ""
                             }
                         </div>
@@ -162,15 +174,16 @@ export class Header extends Component {
                     />
                 }
             </CSSTransition>
-                {
-                    this.state.width <= 1130 ?
-                        <Burger
-                            isSideMenuOpen={this.state.isSideMenuOpen}
-                            mutateSideMenu={this.toggleSideMenu}
-                            menuItems={menuItems}
-                            ref={this.burgerRef}
-                        /> : ""
-                }
+            {
+                isBurgerVisible ?
+                    <Burger
+                        isSideMenuOpen={this.state.isSideMenuOpen}
+                        mutateSideMenu={this.toggleSideMenu}
+                        menuItems={menuItems}
+                        ref={this.burgerRef}
+                    />
+                : ""
+            }
         </>
         );
     }

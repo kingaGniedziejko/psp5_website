@@ -109,10 +109,6 @@ td {
         width: auto;
     }
 
-    div.content div.photo {
-        height: 200px;
-    }
-
     .multicolumn {
         display: flex;
         flex-direction: column;

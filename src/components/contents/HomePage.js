@@ -1,16 +1,14 @@
 import React, {Component} from "react";
-import { Helmet } from 'react-helmet'
+import {Helmet} from 'react-helmet'
 import Shortcuts from "../elements/Shortcuts";
 import PostDisplay from "../elements/PostDisplay";
 import {Link} from "react-router-dom";
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
 import Spinner from "../elements/Spinner";
 import AchievementsGallery from "../elements/AchievementsGallery";
 import SectionImage from "../elements/SectionImage";
-
 
 
 export class HomePage extends Component {

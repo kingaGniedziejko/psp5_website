@@ -6,7 +6,6 @@ import "../../config";
 import axios from "axios";
 
 import Attachment from "./Attachment"
-import {CSSTransition} from "react-transition-group";
 import "react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from "react-image-gallery";
 import {Link} from "react-router-dom";

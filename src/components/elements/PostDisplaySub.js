@@ -8,9 +8,6 @@ import "../../styles/posts_style.css"
 import "../../styles/image_gallery_style.css"
 import "../../config";
 
-import { ReactComponent as IconArrowBack } from '../../images/icon_arrow_back.svg';
-import { ReactComponent as IconArrowForward } from '../../images/icon_arrow_forward.svg';
-
 export class PostDisplaySub extends Component {
 
     state = {

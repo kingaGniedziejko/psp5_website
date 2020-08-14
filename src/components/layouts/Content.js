@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Link, NavLink, Route, Switch} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import axios from "axios";
 import '../../config';
 import "../../styles/content_style.css"
@@ -19,7 +19,6 @@ import ParentsCouncil from "../contents/parent/ParentsCouncil";
 import ParentsMeetings from "../contents/parent/ParentsMeetings";
 import MCard from "../contents/student/MCard";
 import MenuPage from "../elements/MenuPage";
-import Spinner from "../elements/Spinner";
 import PostPage from "../elements/PostPage";
 
 export class Content extends Component {

@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import {NavLink} from "react-router-dom";
 import ReactDOM from 'react-dom';
 import Submenu from "./Submenu"
-import {CSSTransition} from 'react-transition-group';
 
 export class SideMenu extends Component {
     state = {

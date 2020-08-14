@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import axios from "axios";
-import PostSub from "./PostSub";
 import PostPageSub from "./PostPageSub";
 import Spinner from "./Spinner";
 

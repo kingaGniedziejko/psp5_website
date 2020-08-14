@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import MapContainer from "../elements/MapContainer";
 import Spinner from "../elements/Spinner"
-import {Link} from "react-router-dom";
 import "../../styles/contact_style.css"
 import axios from "axios";
 import Helmet from "react-helmet";
