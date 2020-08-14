@@ -7,6 +7,7 @@ import Spinner from "../../elements/Spinner";
 import WaterExamine from "../../elements/WaterExamine";
 
 import "../../../styles/swimmingpool_style.css"
+import SectionImage from "../../elements/SectionImage";
 
 export class SwimmingPool extends Component {
     state = {
@@ -66,11 +67,11 @@ export class SwimmingPool extends Component {
         if (isLoaded){
             const sections = content.sections;
 
-            const photo1 = sections[0].images[0].url;
+            const photo1 = sections[0].images[0].image;
             const title1 = sections[0].modules[0].header;
             const text1 = sections[0].modules[0].text;
 
-            const photo2 = sections[1].images[0].url;
+            const photo2 = sections[1].images[0].image;
             const title2 = sections[1].modules[0].header;
             const text2 = sections[1].modules[0].text;
 
@@ -105,14 +106,14 @@ export class SwimmingPool extends Component {
                         <title>{global.config.mainTitle + " " + title}</title>
                     </Helmet>
                     <div className={"section section-1"}>
-                        <div className={"photo photo-1"} style={{backgroundImage: `url(${photo1})`}}/>
+                        <SectionImage image={photo1}/>
                         <div className={"section-container centered"} id={""}>
                             <h1 dangerouslySetInnerHTML={{__html: title1}}/>
                             <div dangerouslySetInnerHTML={{__html: text1}}/>
                         </div>
                     </div>
                     <div className={"section section-2"}>
-                        <div className={"photo photo-1"} style={{backgroundImage: `url(${photo2})`}}/>
+                        <SectionImage image={photo2}/>
                         <div className={"section-container centered"} id={""}>
                             <h1 dangerouslySetInnerHTML={{__html: title2}}/>
                             <div dangerouslySetInnerHTML={{__html: text2}}/>

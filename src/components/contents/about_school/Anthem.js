@@ -3,6 +3,7 @@ import Spinner from "../../elements/Spinner"
 import Attachment from "../../elements/Attachment"
 import axios from "axios";
 import Helmet from "react-helmet";
+import SectionImage from "../../elements/SectionImage";
 
 
 export class Anthem extends Component {
@@ -30,7 +31,7 @@ export class Anthem extends Component {
         if(this.state.isLoaded) {
             const sections = this.state.content.sections
 
-            const photo = sections[0].images[0].url
+            const photo = sections[0].images[0].image
 
             // hymn szkoły szkolnej
             const hAnthem = sections[0].modules[0].header
@@ -42,8 +43,7 @@ export class Anthem extends Component {
                         <title>{global.config.mainTitle + " " + this.state.title}</title>
                     </Helmet>
                     <div className={"section"}>
-                        <div className={"photo-static"} style={{backgroundImage: `url(${photo})`}}/>
-
+                        <SectionImage image={photo}/>
                         <div className={"section-container centered"}>
                             <h1 dangerouslySetInnerHTML={{__html: hAnthem}}/>
                             <div dangerouslySetInnerHTML={{__html: tAnthem}}/>

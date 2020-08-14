@@ -47,6 +47,7 @@ export class Header extends Component {
 
     updateDimensions() {
         let update_width  = window.innerWidth;
+
         global.config.isMobile = update_width < 1130
         if(global.config.isMobile && this.state.isSideMenuOpen) this.toggleSideMenu()
         document.documentElement.style.setProperty('--nav-bar-height', `${this.navBar.current.clientHeight}px`);

@@ -24,9 +24,6 @@ export class AchievementsGallery extends Component {
             .then(res => this.setState({
                 achievements: res.data,
                 isLoaded: true
-            }, () => {
-                console.log(this.state.achievements)
-
             }))
             .catch(err => console.log(err));
     }
@@ -53,7 +50,6 @@ export class AchievementsGallery extends Component {
             autoplaySpeed: 3000,
             slidesToShow: 7,
             slidesToScroll: 7,
-            centerMode: true,
             autoplay: true,
             swipeToSlide: true,
             arrows: false,
@@ -66,7 +62,7 @@ export class AchievementsGallery extends Component {
                     }
                 },
                 {
-                    breakpoint: 1000,
+                    breakpoint: 700,
                     settings: {
                         slidesToShow: 3,
                         slidesToScroll: 3,

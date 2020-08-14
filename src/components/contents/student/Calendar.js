@@ -6,6 +6,7 @@ import "../../../styles/library_style.css"
 import axios from "axios";
 import Helmet from "react-helmet";
 import '../../../config';
+import SectionImage from "../../elements/SectionImage";
 
 
 
@@ -33,7 +34,7 @@ export class Library extends Component {
         if(this.state.isLoaded) {
             const sections = this.state.content.sections
 
-            const photo = sections[0].images[0].url
+            const photo = sections[0].images[0].image
             const hCalendar = sections[0].lonely_headers[0].text
 
             return (
@@ -42,7 +43,7 @@ export class Library extends Component {
                         <title>{global.config.mainTitle + " " + this.state.title}</title>
                     </Helmet>
                     <div className={"section"}>
-                        <div className={"photo-static"} style={{backgroundImage: `url(${photo})`}}/>
+                        <SectionImage image={photo}/>
                         <div className={"section-container centered"}>
 
                         <h1 dangerouslySetInnerHTML={{__html: hCalendar}}/>

@@ -5,6 +5,7 @@ import Attachment from "../../elements/Attachment"
 import "../../../styles/library_style.css"
 import axios from "axios";
 import Helmet from "react-helmet";
+import SectionImage from "../../elements/SectionImage";
 
 
 export class Library extends Component {
@@ -31,8 +32,8 @@ export class Library extends Component {
 
             const sections = this.state.content.sections
 
-            const photo1 = sections[0].images[0].url
-            const photo2 = sections[1].images[0].url
+            const photo1 = sections[0].images[0].image
+            const photo2 = sections[1].images[0].image
             const regulations = sections[1].attachments
 
             // opis biblioteki szkolnej
@@ -56,7 +57,7 @@ export class Library extends Component {
                         <title>{global.config.mainTitle + " " + this.state.title}</title>
                     </Helmet>
                     <div className={"section"}>
-                        <div className={"photo"} style={{backgroundImage: `url(${photo1})`}}/>
+                        <SectionImage image={photo1}/>
 
                         <div className={"section-container centered"} id={""}>
                             <h1 dangerouslySetInnerHTML={{__html: hLibrary}}/>
@@ -65,7 +66,7 @@ export class Library extends Component {
                     </div>
 
                     <div className={"section"}>
-                        <div className={"photo"} style={{backgroundImage: `url(${photo2})`}}/>
+                        <SectionImage image={photo2}/>
                         <div className={"section-container multicolumn"}>
                                 <div>
                                     <h1 dangerouslySetInnerHTML={{__html: hHours}}/>

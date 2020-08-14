@@ -6,6 +6,7 @@ import Helmet from "react-helmet";
 import Moment from "react-moment";
 import Attachment from "../../elements/Attachment";
 import PostDisplay from "../../elements/PostDisplay";
+import SectionImage from "../../elements/SectionImage";
 
 
 export class ParentsCouncil extends Component {
@@ -32,8 +33,8 @@ export class ParentsCouncil extends Component {
         if(this.state.isLoaded) {
             const sections = this.state.content.sections
 
-            const photo1 = sections[0].images[0].url
-            const photo2 = sections[1].images[0].url
+            const photo1 = sections[0].images[0].image
+            const photo2 = sections[1].images[0].image
 
             const header = sections[0].lonely_headers[0].text
 
@@ -60,7 +61,7 @@ export class ParentsCouncil extends Component {
                     </Helmet>
 
                     <div className={"section"}>
-                        <div className={"photo-static"} style={{backgroundImage: `url(${photo1})`}}/>
+                        <SectionImage image={photo1}/>
                         <h1 dangerouslySetInnerHTML={{__html: header}}/>
 
                         <div className={"section-container multicolumn"}>
@@ -93,7 +94,7 @@ export class ParentsCouncil extends Component {
                     </div>
 
                     <div className={"section"}>
-                        <div className={"photo-static"} style={{backgroundImage: `url(${photo2})`}}/>
+                        <SectionImage image={photo2}/>
 
                         <h1 dangerouslySetInnerHTML={{__html: hNews}}/>
                         <PostDisplay postCategories={["rada-rodzicow"]} postsCount={3} />

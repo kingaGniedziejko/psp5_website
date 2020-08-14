@@ -73,9 +73,11 @@ export class PostSub extends Component {
         const postDirection = postNr%2;
 
         let images = [];
+
         gallery.forEach(elem => {
             images.push({
-                original: elem.media_details.sizes.full.source_url,
+                fullscreen: elem.media_details.sizes.full.source_url,
+                original: elem.media_details.sizes.medium.source_url,
                 thumbnail: elem.media_details.sizes.thumbnail.source_url
             })
         })
@@ -84,12 +86,7 @@ export class PostSub extends Component {
             <div className={"post " + (postDirection ? "post-left" : "post-right")}>
                 <div>
                     {
-                        images.length === 1 ?
-                            // <img src={images[0].original} alt={"Zdjęcie"}/>
-                            <ImageGallery items={images} additionalClass={"single"}/>
-
-                            :
-                            <ImageGallery items={images}/>
+                        <ImageGallery items={images} additionalClass={images.length === 1 ? "single" : ""} useBrowserFullscreen={false}/>
                     }
                 </div>
                 <div>

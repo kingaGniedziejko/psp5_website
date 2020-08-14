@@ -5,6 +5,7 @@ import axios from "axios";
 import Helmet from "react-helmet";
 import Attachment from "../../elements/Attachment";
 import Moment from "react-moment";
+import SectionImage from "../../elements/SectionImage";
 
 
 export class ParentsCouncil extends Component {
@@ -31,7 +32,7 @@ export class ParentsCouncil extends Component {
         if(this.state.isLoaded) {
             const sections = this.state.content.sections
 
-            const photo = sections[0].images[0].url
+            const photo = sections[0].images[0].image
 
             const hMeetings = sections[0].modules[0].header
             const tMeetings = sections[0].modules[0].text
@@ -50,7 +51,7 @@ export class ParentsCouncil extends Component {
                     </Helmet>
 
                     <div className={"section"}>
-                        <div className={"photo-static"} style={{backgroundImage: `url(${photo})`}}/>
+                        <SectionImage image={photo}/>
 
                         <div className={"section-container centered"} id={""}>
                             <h1 dangerouslySetInnerHTML={{__html: hMeetings}}/>

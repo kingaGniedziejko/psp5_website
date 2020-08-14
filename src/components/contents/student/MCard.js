@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import axios from "axios";
 import Helmet from "react-helmet";
 import Attachment from "../../elements/Attachment";
+import SectionImage from "../../elements/SectionImage";
 
 
 export class MCard extends Component {
@@ -30,7 +31,7 @@ export class MCard extends Component {
         if(this.state.isLoaded) {
             const sections = this.state.content.sections
 
-            const photo = sections[0].images[0].url
+            const photo = sections[0].images[0].image
 
             // mLegitymacja
             const hCard = sections[0].modules[0].header
@@ -56,7 +57,7 @@ export class MCard extends Component {
                     </Helmet>
 
                     <div className={"section"}>
-                        <div className={"photo-static"} style={{backgroundImage: `url(${photo})`}}/>
+                        <SectionImage image={photo}/>
 
                         <h1 dangerouslySetInnerHTML={{__html: hCard}}/>
 
@@ -69,7 +70,7 @@ export class MCard extends Component {
 
                         </div>
                     </div>
-                    <div className={"section"} style={{backgroundColor: "var(--accent-3-light)"}}>
+                    <div className={"section grey"}>
                         <h1 dangerouslySetInnerHTML={{__html: hDiscount}}/>
 
                         <div className={"section-container multicolumn justified"} >

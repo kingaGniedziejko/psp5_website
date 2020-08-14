@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 import "../../styles/contact_style.css"
 import axios from "axios";
 import Helmet from "react-helmet";
+import SectionImage from "../elements/SectionImage";
 
 
 export class Contact extends Component {
@@ -31,7 +32,7 @@ export class Contact extends Component {
         if(this.state.isLoaded) {
             const sections = this.state.content.sections
 
-            const photo = sections[0].images[0].url
+            const photo = sections[0].images[0].image
 
             const hAddress = sections[0].modules[0].header
             const tAddress = sections[0].modules[0].text
@@ -43,7 +44,7 @@ export class Contact extends Component {
                     </Helmet>
 
                     <div className={"section"}>
-                        <div className={"photo-static"} style={{backgroundImage: `url(${photo})`}}/>
+                        <SectionImage image={photo}/>
 
                         <div className={"section-container"} id={""}>
                             <div dangerouslySetInnerHTML={{__html: tAddress}}/>

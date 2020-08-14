@@ -9,6 +9,9 @@ import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
 import Spinner from "../elements/Spinner";
 import AchievementsGallery from "../elements/AchievementsGallery";
+import SectionImage from "../elements/SectionImage";
+
+
 
 export class HomePage extends Component {
     state = {
@@ -16,6 +19,7 @@ export class HomePage extends Component {
         title: global.config.mainTitle + " Strona główna",
         postCategory: "komunikaty",
         postCount: 3,
+        width: 0,
         achievements: [],
         shortcutElements: [
             {
@@ -38,43 +42,53 @@ export class HomePage extends Component {
     }
 
     componentDidMount() {
-        let achievementsUrl = global.config.proxy + "/wp-json/wp/v2/achievements"
+        let contentUrl = global.config.proxy + "/wp-json/wp/v2/built_in_pages?slug=home-page"
         //TODO: lepsze zabezpieczenie tego
 
-        axios.get(achievementsUrl)
+        axios.get(contentUrl)
             .then(res => this.setState({
-                achievements: res.data,
+                content: res.data[0].acf,
                 isLoaded: true
-            }, () => {
-                console.log(this.state.achievements)
-
             }))
             .catch(err => console.log(err));
     }
 
 
     render() {
-        const {isLoaded, title, postCategory, postCount, shortcutElements} = this.state;
+        const {isLoaded, width, title, postCategory, postCount, shortcutElements} = this.state;
 
         if(isLoaded) {
+            const sections = this.state.content.sections
+            const photo1 = sections[0].images[0].image
+            const photo2 = sections[1].images[0].image
+            const hShortcut = sections[0].lonely_headers[0].text
+            const hAnnouncements= sections[1].lonely_headers[0].text
+
+
             return (
                 <div className={"content"}>
+                    {/*<WindowSizeListener onResize={(windowSize) => this.setState({width: windowSize.windowWidth})} />*/}
                     <Helmet>
                         <title>{title}</title>
                     </Helmet>
-                    <div className={"section section-1"}>
-                        <div className={"photo photo-1 photo-main"}/>
-                        <h1>Na skróty</h1>
-                        <Shortcuts elements={shortcutElements}/>
+                    <div className={"section"}>
+                        <SectionImage image={photo1}/>
+                        <div className={"section-container"}>
+                            <h1 dangerouslySetInnerHTML={{__html: hShortcut}}/>
+                            <Shortcuts elements={shortcutElements}/>
+                        </div>
                     </div>
                     <div className={"section section-2"}>
-                        <div className={"photo photo-2"}/>
-                        <h1>Komunikaty</h1>
-                        <PostDisplay postCategories={[postCategory]} postsCount={postCount} />
-                        <Link to={"/aktualnosci/komunikaty"}><button className={"button-accent-1"}>Czytaj więcej</button></Link>
+                        <SectionImage image={photo2}/>
+                        <div className={"section-container"}>
+                            <h1 dangerouslySetInnerHTML={{__html: hAnnouncements}}/>
+                            <PostDisplay postCategories={[postCategory]} postsCount={postCount} />
+                            <Link to={"/aktualnosci/komunikaty"}><button className={"button-accent-1"}>Czytaj więcej</button></Link>
+                        </div>
+
                     </div>
 
-                    <div className={"section"}>
+                    <div className={"section grey"}>
                         <h1>Nasze osiągnięcia</h1>
                         <div className={"slider-container"}>
                             <AchievementsGallery />

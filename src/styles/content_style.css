@@ -10,6 +10,7 @@ div.content div.section {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding-bottom: 2em;
 }
 
 .section-container {
@@ -82,8 +83,7 @@ div.content div.photo-static {
 
 div.content div.photo {
     background-size: cover;
-    background-position: bottom;
-    background-attachment: fixed;
+    background-position: center;
     width: 100%;
     height: 300px;
 }
@@ -92,10 +92,15 @@ div.content div.photo {
     height: 3em;
 }
 
+.grey {
+    background-color: var(--accent-3-light);
+}
+
 td {
     padding: 0.3em 0.7em
 }
 
+.
 
 @media (max-width: 600px) {
     .centered {
@@ -104,7 +109,6 @@ td {
 
     div.content div.photo {
         height: 200px;
-        background-attachment: local;
     }
 
     .multicolumn {
@@ -126,13 +130,13 @@ div.slick-slide {
     display: flex !important;
     align-items: center;
     justify-content: center;
-    height: 11em;
+    height: 175px;
 }
 
 .slider-object-container {
-    max-height: 10em;
+    max-height: 150px;
     padding-top: 0.5em;
-    padding-bottom: 1em;
+    padding-bottom: 0.5em;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -144,6 +148,7 @@ div.slick-slide {
     max-height: 150px;
     max-width: 130px;
     cursor: pointer;
+    background-color: var(--white-1);
 }
 
 .fullscreen-container {
@@ -175,20 +180,6 @@ div.slick-slide {
     top: 0;
     right: 0;
     padding: 1.2em;
-}
-
-div.content div.photo-1 {
-    background-image: url(../images/photo_home_1.jpg);
-    height: 300px;
-}
-
-div.content div.photo-main {
-    height: 400px;
-}
-
-div.content div.photo-2 {
-    background-image: url(../images/photo_home_2.jpg);
-    height: 200px;
 }
 
 div.content div.shortcut-menu-page {
