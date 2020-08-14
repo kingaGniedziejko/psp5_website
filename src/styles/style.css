@@ -192,6 +192,17 @@ a.attachment:hover *{
     cursor: pointer;
 }
 
+.image-button svg {
+    height: 1.2em;
+    width: auto;
+}
+.image-button:hover * {
+    color: var(--accent-2);
+    fill: var(--accent-2);
+    stroke: var(--accent-2);
+}
+
+
 #spinner-container {
     width: 100%;
     height: 100%;

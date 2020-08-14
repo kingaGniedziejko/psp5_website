@@ -96,6 +96,7 @@ td {
     padding: 0.3em 0.7em
 }
 
+
 @media (max-width: 600px) {
     .centered {
         width: auto;
@@ -115,6 +116,66 @@ td {
 }
 
 /* home page */
+
+.slider-container {
+    margin: 2em 0;
+    width: 100%;
+}
+
+div.slick-slide {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    height: 11em;
+}
+
+.slider-object-container {
+    max-height: 10em;
+    padding-top: 0.5em;
+    padding-bottom: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slider-object {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    object-fit: contain;
+    max-height: 150px;
+    max-width: 130px;
+    cursor: pointer;
+}
+
+.fullscreen-container {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    background-color: black;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.fullscreen-container>img {
+    max-height: 80%;
+    max-width: 80%;
+    object-fit: contain;
+    padding-bottom: 5%;
+}
+
+.fullscreen-container>a {
+    max-height: 10%
+}
+
+#close-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1.2em;
+}
 
 div.content div.photo-1 {
     background-image: url(../images/photo_home_1.jpg);
@@ -181,9 +242,6 @@ div.content div#shortcut a:hover {
     color: var(--white-1);
 }
 
-/*a:link, a:visited, a:active {*/
-/*    color: var(--white-1);*/
-/*}*/
 
 div.content div#shortcut a div h3 {
     text-align: center;

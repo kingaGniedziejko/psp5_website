@@ -130,12 +130,14 @@ div.post>div>div.image-gallery .image-gallery-play-button .image-gallery-svg {
 /*icons fullscreen*/
 
 
-div.post>div>div.image-gallery .fullscreen .image-gallery-left-nav,
-div.post>div>div.image-gallery .fullscreen .image-gallery-right-nav{
-    padding: 10px;
-}
+
 
 @media screen and (min-width: 1130px) {
+    div.post>div>div.image-gallery .fullscreen .image-gallery-left-nav,
+    div.post>div>div.image-gallery .fullscreen .image-gallery-right-nav{
+        padding: 10px;
+    }
+
     div.post>div>div.image-gallery .fullscreen .image-gallery-left-nav .image-gallery-svg,
     div.post>div>div.image-gallery .fullscreen .image-gallery-right-nav .image-gallery-svg{
         height: 120px;
@@ -157,13 +159,6 @@ div.post>div>div.image-gallery .fullscreen .image-gallery-right-nav{
          color: var(--accent-2-light);
      }
 }
-
-
-
-
-
-
-
 
 div.post>div>div.image-gallery .image-gallery-thumbnail.active,
 div.post>div>div.image-gallery .image-gallery-thumbnail:hover,
