@@ -3,6 +3,9 @@ module.exports = global.config = {
     proxy: "http://this.mind-the-web.com",
     menuItems: [],
     isMobile: false,
-    width: 0,
-    func: () => {console.log(5)}
+
+    // currentPost: {
+    //     post: undefined,
+    //     images: []
+    // }
 };

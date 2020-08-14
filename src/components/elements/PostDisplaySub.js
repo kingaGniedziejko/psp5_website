@@ -5,6 +5,7 @@ import Post from "../elements/Post"
 import Spinner from "../elements/Spinner"
 import axios from "axios";
 import "../../styles/posts_style.css"
+import "../../styles/image_gallery_style.css"
 import "../../config";
 
 import { ReactComponent as IconArrowBack } from '../../images/icon_arrow_back.svg';
