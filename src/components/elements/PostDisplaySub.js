@@ -20,11 +20,12 @@ export class PostDisplaySub extends Component {
 
     loadPosts() {
         const {offset} = this.state;
-        const {postCategoryID, postsCount, postsPerPage} = this.props;
+        const {postCategoryIDs, postsCount, postsPerPage} = this.props;
         let getPostsUrl = global.config.proxy + "/wp-json/wp/v2/news";
 
-        if (postCategoryID !== undefined){
-            getPostsUrl += "?categories=" + postCategoryID;
+        if (postCategoryIDs !== undefined){
+            getPostsUrl += "?categories=" + postCategoryIDs.toString();
+
             if (postsCount === -1){
                 getPostsUrl += "&per_page=" + postsPerPage;
                 getPostsUrl += "&offset=" + offset;

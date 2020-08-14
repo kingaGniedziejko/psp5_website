@@ -19,6 +19,7 @@ import ParentsCouncil from "../contents/parent/ParentsCouncil";
 import ParentsMeetings from "../contents/parent/ParentsMeetings";
 import MCard from "../contents/student/MCard";
 import MenuPage from "../elements/MenuPage";
+import Spinner from "../elements/Spinner";
 
 export class Content extends Component {
     state = {
@@ -231,7 +232,6 @@ export class Content extends Component {
                 <div className={"content-container"}>
                     <Switch>
                         <Route key={homePage.title} path={homePage.path} exact component={homePage.component}/>
-                        <Route path={"/"} component={ErrorNotFound}/>
                     </Switch>
                 </div>
             );

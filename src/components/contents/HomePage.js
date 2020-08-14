@@ -56,17 +56,6 @@ export class HomePage extends Component {
     render() {
         const {isLoaded, title, postCategory, postCount, shortcutElements} = this.state;
 
-        var settings = {
-            dots: true,
-            infinite: true,
-            speed: 500,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            centerMode: true,
-            // autoplay: true,
-            arrows: true
-        };
-
         if(isLoaded) {
             return (
                 <div className={"content"}>
@@ -81,10 +70,8 @@ export class HomePage extends Component {
                     <div className={"section section-2"}>
                         <div className={"photo photo-2"}/>
                         <h1>Komunikaty</h1>
-                        <PostDisplay postCategory={postCategory} postsCount={postCount} />
+                        <PostDisplay postCategories={[postCategory]} postsCount={postCount} />
                         <Link to={"/aktualnosci/komunikaty"}><button className={"button-accent-1"}>Czytaj więcej</button></Link>
-
-
                     </div>
 
                     <div className={"section"}>
@@ -93,6 +80,7 @@ export class HomePage extends Component {
                             <AchievementsGallery />
                         </div>
                     </div>
+
                 </div>
             );
 

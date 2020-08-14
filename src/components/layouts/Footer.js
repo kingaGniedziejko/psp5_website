@@ -3,6 +3,7 @@ import "../../styles/footer_style.css"
 import {ReactComponent as LogoBip } from '../../images/bip.svg';
 import {ReactComponent as IconLogo} from "../../images/logo.svg";
 import emblem from '../../images/emblem.png'
+import {Link} from "react-router-dom";
 
 
 export const Footer = () => (
@@ -55,7 +56,7 @@ export const Footer = () => (
                 <div id={"links"} className={"footer-column"}>
                     <h3>Linki</h3>
                     <div>
-                        <p><a href="" target="_blank">Kontakt</a></p>
+                        <p><Link to={"/kontakt"}>Kontakt</Link></p>
                         <p><a href="http://www.kuratorium.opole.pl/" rel="noopener noreferrer" target="_blank">Kuratorium Oświaty w Opolu</a></p>
                         <p><a href="https://www.gov.pl/web/edukacja" rel="noopener noreferrer" target="_blank">Ministerstwo Edukacji Narodowej</a></p>
                         <p><a href="https://poczta22688.domeny.host/" rel="noopener noreferrer" target="_blank">Poczta pracownicza</a></p>
