@@ -10,7 +10,7 @@ div.content div.section {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-bottom: 2em;
+    padding-bottom: 3em;
 }
 
 .section-container {
@@ -120,7 +120,7 @@ td {
 /* home page */
 
 .slider-container {
-    margin: 2em 0;
+    margin: 1em 0 2em 0;
     width: 100%;
 }
 
@@ -186,7 +186,7 @@ div.content div.shortcut-menu-page {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 2em;
+    margin: 2em 0;
 }
 
 @media (max-width: 700px) {
@@ -205,12 +205,12 @@ div.content div.shortcut-menu-page div#shortcut a {
 }
 
 div.content div#shortcut {
-    width: 90%;
+    width: 100%;
     max-width: 1200px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    margin: 5px 0 20px 0;
+    margin: 0 15px;
 }
 
 div.content div#shortcut a{
