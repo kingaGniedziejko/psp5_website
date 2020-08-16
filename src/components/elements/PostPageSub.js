@@ -60,7 +60,7 @@ export class PostPageSub extends Component {
         })
 
         return (
-            <div className={"content"}>
+            <div className={"content post-page"}>
                 <Helmet>
                     <title>{global.config.mainTitle + " " + title.rendered}</title>
                 </Helmet>
