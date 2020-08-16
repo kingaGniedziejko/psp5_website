@@ -9,13 +9,15 @@ import Attachment from "./Attachment"
 import "react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from "react-image-gallery";
 import {Link} from "react-router-dom";
+import {CSSTransition} from "react-transition-group";
 
 export class PostSub extends Component {
     state = {
         isExpanded: false,
         excerptLength: 150,
         isGalleryLoaded: false,
-        gallery: []
+        gallery: [],
+        isLoaded: false
     }
 
     static propTypes = {
@@ -49,7 +51,8 @@ export class PostSub extends Component {
                     })
                     this.setState({
                         gallery: galleryImages,
-                        isGalleryLoaded: true
+                        isGalleryLoaded: true,
+                        isLoaded: true
                     })
                 })).catch(err => console.log(err));
             }
@@ -58,16 +61,10 @@ export class PostSub extends Component {
 
     render() {
         const {id, title, slug, date, acf} = this.props.post;
-        const {text} = acf;
-        const excerpt = text.substring(0, this.state.excerptLength)+"...";
-        const {isExpanded, isGalleryLoaded, gallery} = this.state;
-        const attachments = [
-            acf.attachment1,
-            acf.attachment2,
-            acf.attachment3,
-            acf.attachment4,
-            acf.attachment5
-        ];
+        const {text, attachments} = acf;
+        console.log(attachments)
+        // const excerpt = text.substring(0, this.state.excerptLength)+"...";
+        const {isExpanded, isGalleryLoaded, gallery, isLoaded} = this.state;
 
         const {postNr} = this.props;
         const postDirection = postNr%2;
@@ -82,31 +79,53 @@ export class PostSub extends Component {
             })
         })
 
-        return (
-            <div className={"post " + (postDirection ? "post-left" : "post-right")}>
-                <div>
-                    {
-                        <ImageGallery items={images} additionalClass={images.length === 1 ? "single" : ""} useBrowserFullscreen={false}/>
-                    }
+        if(isLoaded) {
+            return (
+                    <div className={"post " + (postDirection ? "post-left" : "post-right")}>
+                        <div>
+                            {
+                                <ImageGallery items={images} additionalClass={images.length === 1 ? "single" : ""} useBrowserFullscreen={false}/>
+                            }
+                        </div>
+                        <div className={"post-content-container"}>
+                            <div>
+                                <Link to={"/aktualnosci/" + id + "/" + slug}><h2 className={"post-title"}>{title.rendered}</h2></Link>
+                                <small className={"post-date"}>
+                                    <Moment locale={"pl"} format="DD MMMM YYYYr. HH:mm">{date}</Moment>
+                                </small>
+
+                                <CSSTransition
+                                    in={isExpanded}
+                                    timeout={300}
+                                    classNames="post-expand-anim"
+                                    appear
+                                    // enter={true}
+                                >
+                                    <div className={"post-text"}>
+                                        <div dangerouslySetInnerHTML={{ __html: text}} />
+                                        <div>
+                                            {
+                                                attachments !== undefined ?
+                                                    attachments.map(att => {
+                                                        if (att) return <Attachment key={att.attachment.id} className={"post-attachment"} title={att.attachment.title} url={att.attachment.url}/>
+                                                        else return "";
+                                                    }) : ""
+                                            }
+                                        </div>
+                                    </div>
+
+                                </CSSTransition>
+                            </div>
+                            <button className={"post-button button-accent-2"}
+                                    onClick={this.extendButtonClick.bind(this)}>{isExpanded ? "mniej" : "więcej"}
+                            </button>
+                        </div>
                 </div>
-                <div>
-                    <Link to={"/aktualnosci/" + id + "/" + slug}><h2 className={"post-title"}>{title.rendered}</h2></Link>
-                    <small className={"post-date"}>
-                        <Moment locale={"pl"} format="DD MMMM YYYYr. HH:mm">{date}</Moment>
-                    </small>
-                    <p className={"post-text"} dangerouslySetInnerHTML={{ __html: isExpanded ? text : excerpt}} />
-                    { isExpanded ? <div>
-                        { attachments.map(att => {
-                            if (att) return <Attachment key={att.id} className={"post-attachment"} title={att.title} url={att.url}/>
-                            else return "";
-                        })}
-                    </div> : "" }
-                    <button className={"post-button button-accent-2"}
-                            onClick={this.extendButtonClick.bind(this)}>{isExpanded ? "mniej" : "więcej"}
-                    </button>
-                </div>
-            </div>
-        );
+
+            );
+        }
+        return ""
+
     }
 }
 

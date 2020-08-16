@@ -11,9 +11,47 @@ div.post{
     display: flex;
     flex-wrap: wrap;
     width: 70%;
+    height: auto;
     margin-bottom: 30px;
     padding: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.post-text {
+    max-height: 3.5em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    overflow: hidden
+}
+
+.post-content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.post-expand-anim-appear, .post-expand-anim-enter {
+    max-height: 3.5em;
+    transition: all 300ms linear;
+}
+
+.post-expand-anim-appear-active, .post-expand-anim-enter-active {
+    max-height: 100%;
+    transition: all 300ms linear;
+}
+
+.post-expand-anim-enter-done {
+    max-height: 100%;
+}
+
+.post-expand-anim-exit {
+    max-height: 100%;
+    transition: all 300ms linear;
+}
+
+.post-expand-anim-exit-active {
+    max-height: 3.5em;
+    transition: all 300ms linear;
 }
 
 div.post.post-left {
@@ -60,11 +98,11 @@ div.post.post-left div button {
     align-self: flex-start;
 }
 
-div.post div:last-child>p{
+div.post div:last-child p{
     flex: 2;
 }
 
-div.post div:last-child>p>p{
+div.post div:last-child p{
     margin: 0;
     /*display: inline;*/
 }
@@ -81,6 +119,13 @@ div.post div:last-child h2{
 @media only screen and (min-width: 1600px) {
     div.post>div:last-child{
         flex: 4;
+    }
+}
+
+@media only screen and (max-width: 1130px) {
+    .news{
+        padding-top: 4em;
+        padding-bottom: 4em;
     }
 }
 

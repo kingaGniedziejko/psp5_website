@@ -1,0 +1,39 @@
+.interactive-photo-container {
+    margin: 2em 0;
+    width: 90%;
+    position: relative;
+    height: auto
+}
+
+.interactive-photo-container>img {
+    width: 100%;
+    object-fit: contain;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    z-index: 1;
+}
+
+.interactive-photo-container svg {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: auto;
+    z-index: 2;
+}
+
+.interactive-photo-container svg path {
+    stroke-width: 0;
+    fill: transparent;
+    cursor: pointer;
+
+}
+
+.interactive-photo-container svg path:hover {
+    stroke-width: 30;
+    fill: var(--accent-2-faded);
+    stroke: var(--accent-2-light);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+

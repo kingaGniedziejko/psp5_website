@@ -20,6 +20,7 @@ import ParentsMeetings from "../contents/parent/ParentsMeetings";
 import MCard from "../contents/student/MCard";
 import MenuPage from "../elements/MenuPage";
 import PostPage from "../elements/PostPage";
+import Walk from "../contents/about_school/Walk";
 
 export class Content extends Component {
     state = {
@@ -55,6 +56,11 @@ export class Content extends Component {
                 component: Documents
             },
             {
+                title: "spacer po szkole",
+                path: "",
+                component: Walk
+            },
+            {
                 title: "hymn szkoły",
                 path: "",
                 component: Anthem
@@ -73,6 +79,11 @@ export class Content extends Component {
                 title: "spotkania z rodzicami",
                 path: "",
                 component: ParentsMeetings
+            },
+            {
+                title: "mlegitymacja",
+                path: "",
+                component: MCard
             },
             {
                 title: "mlegitymacja",

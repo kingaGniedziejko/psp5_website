@@ -8,7 +8,14 @@ export class News extends Component {
     state = {
         title: "Aktualności",
         slug: "aktualnosci",
+        isLoaded: false,
         postsPerPage: 5
+    }
+
+    componentDidMount() {
+        this.setState({
+            isLoaded: true
+        })
     }
 
     render() {
@@ -26,18 +33,21 @@ export class News extends Component {
             postCategories.push(element.slug);
         })
 
-        return (
-            <div className={"content menu-page"}>
-                <Helmet>
-                    <title>{global.config.mainTitle + " " + title}</title>
-                </Helmet>
-                <div className={"shortcut-menu-page"}>
-                    <Shortcuts elements={shortcutElements}/>
+        if(this.state.isLoaded) {
+            return (
+                <div className={"content menu-page"}>
+                    <Helmet>
+                        <title>{global.config.mainTitle + " " + title}</title>
+                    </Helmet>
+                    <div className={"shortcut-menu-page"}>
+                        <Shortcuts elements={shortcutElements}/>
+                    </div>
+                    <h1>{title}</h1>
+                    <PostDisplay postsCount={-1} postsPerPage={postsPerPage} postCategories={postCategories}/>
                 </div>
-                <h1>{title}</h1>
-                <PostDisplay postsCount={-1} postsPerPage={postsPerPage} postCategories={postCategories}/>
-            </div>
-        );
+            );
+        }
+        return ""
     }
 }
 

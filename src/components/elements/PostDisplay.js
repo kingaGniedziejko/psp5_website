@@ -3,6 +3,7 @@ import axios from "axios";
 import PostDisplaySub from "./PostDisplaySub"
 
 import '../../config';
+import Spinner from "./Spinner";
 
 
 export class PostDisplay extends Component {
@@ -49,7 +50,7 @@ export class PostDisplay extends Component {
         if (isLoaded) {
             return <PostDisplaySub postCategoryIDs={categories} postsCount={postsCount} postsPerPage={postsPerPage}/>;
         }
-        return ""
+        return <Spinner />
     }
 }
 

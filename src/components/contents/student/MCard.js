@@ -95,10 +95,11 @@ export class MCard extends Component {
                                     <div dangerouslySetInnerHTML={{__html: tSteps}}/>
                                     <div>
                                         {
+                                            attachments !== undefined ?
                                             attachments.map(att => {
                                                 if (att) return <Attachment key={att.file.id} className={"attachment"} title={att.file.title} url={att.file.url}/>
                                                 else return "";
-                                            })
+                                            }) : ""
                                         }
                                     </div>
 

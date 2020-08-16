@@ -13,8 +13,11 @@ export class NewsPage extends Component {
                 <Helmet>
                     <title>{global.config.mainTitle + " " + newsInfo.title}</title>
                 </Helmet>
-                <h1>{newsInfo.title}</h1>
-                <PostDisplay postCategories={[newsInfo.postCategory]} postsCount={newsInfo.postsCount} postsPerPage={postsPerPage}/>
+                <div className={"section news"}>
+                    <h1>{newsInfo.title}</h1>
+                    <PostDisplay postCategories={[newsInfo.postCategory]} postsCount={newsInfo.postsCount} postsPerPage={postsPerPage}/>
+                </div>
+
             </div>
         );
     }

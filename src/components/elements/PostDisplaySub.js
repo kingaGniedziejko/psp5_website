@@ -35,7 +35,9 @@ export class PostDisplaySub extends Component {
                 posts: res.data,
                 isLoaded: true,
                 pageCount: Number(res.headers["x-wp-totalpages"])
-            }))
+            }, () => {
+                console.log(this.state.posts)
+        }))
             .catch(err => console.log(err));
     }
 
@@ -104,9 +106,7 @@ export class PostDisplaySub extends Component {
             }
         }
 
-        return(
-            <Spinner />
-        );
+        return ""
     }
 }
 

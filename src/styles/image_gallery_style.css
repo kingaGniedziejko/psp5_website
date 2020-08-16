@@ -2,6 +2,10 @@ div>div.image-gallery{
     width: 100%;
 }
 
+div>div.image-gallery * {
+    outline: none !important;
+}
+
 div>div.image-gallery.single .image-gallery-left-nav,
 div>div.image-gallery.single .image-gallery-right-nav,
 div>div.image-gallery.single .image-gallery-play-button,

@@ -13,7 +13,7 @@
     --accent-2: rgb(238, 204, 35);
     --accent-2-light: rgb(241, 218, 105);
     --accent-2-lighter: rgb(238, 225, 160);
-    --accent-2-faded: rgba(238, 204, 35, 0.27);
+    --accent-2-faded: rgba(238, 204, 35, 0.38);
     --accent-3: rgba(112, 112, 112, 0.78);
     --accent-3-light: rgba(232, 232, 232, 1.0);
 
@@ -209,4 +209,7 @@ a.attachment:hover *{
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-top: 4em;
+    padding-bottom: 4em;
+
 }

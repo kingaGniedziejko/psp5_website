@@ -48,15 +48,8 @@ export class PostPageSub extends Component {
 
     render() {
         const {title, date, acf} = this.props.post;
-        const {text} = acf;
+        const {text, attachments} = acf;
         const {isGalleryLoaded, gallery} = this.state;
-        const attachments = [
-            acf.attachment1,
-            acf.attachment2,
-            acf.attachment3,
-            acf.attachment4,
-            acf.attachment5
-        ];
 
         let images = [];
         gallery.forEach(elem => {
@@ -87,10 +80,13 @@ export class PostPageSub extends Component {
                         </small>
                         <p className={"post-text"} dangerouslySetInnerHTML={{ __html: text}} />
                         <div className={"post-attachments"}>
-                            { attachments.map(att => {
-                                if (att) return <Attachment key={att.id} className={"post-attachment"} title={att.title} url={att.url}/>
-                                else return "";
-                            })}
+                            {
+                                attachments !== undefined ?
+                                attachments.map(att => {
+                                    if (att) return <Attachment key={att.id} className={"post-attachment"} title={att.title} url={att.url}/>
+                                    else return "";
+                                }) : ""
+                            }
                         </div>
                     </div>
                     <Link to={"/"}><button className={"button-accent-2"}>Powrót do strony głównej</button></Link>

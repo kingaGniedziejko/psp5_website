@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="3071" height="2128" viewBox="0 0 3071 2128">
+  <defs>
+    <clipPath id="clip-photo_school_outlines">
+      <rect width="3071" height="2128"/>
+    </clipPath>
+  </defs>
+  <g id="photo_school_outlines" clip-path="url(#clip-photo_school_outlines)">
+    <path id="stolowka" d="M6.889-.61,446.218-32.845l25.8,576.522-477.8,6.773Z" transform="translate(1747.691 1101.436) rotate(30)" fill="rgba(255,245,198,0.36)" stroke="#f1da69" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/>
+    <path id="tartan" d="M152.643-119.662,470.394-12.449,514.447,327.9,254.1,268.588l-35.948,49.727-34.765.834Z" transform="matrix(0.485, -0.875, 0.875, 0.485, 472.805, 446.542)" fill="rgba(255,245,198,0.36)" stroke="#f1da69" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/>
+    <path id="sala_gimnastyczna" d="M6.889-.61l313.7-38.022L268.925,283.4l64.262,45.811L-8.3,347.42l-51.2-37.346Z" transform="translate(1042.691 115.436) rotate(30)" fill="rgba(255,245,198,0.36)" stroke="#f1da69" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/>
+    <path id="basen" d="M5.275-83.529l-14.663-25.4L40.484-227.618,353.541-271.3,313.761-160.11l12.43,37.523L287.244,199.782l46.914,49.228-193.438,21.6L134.554,327,.094,351.8l-59.6-41.731Z" transform="translate(1341.691 268.436) rotate(30)" fill="rgba(255,245,198,0.36)" stroke="#f1da69" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/>
+    <path id="amfiteatr" d="M6.889-.61l853.624-14.7L825.974,397.4,519.637,378.2s-42.37,326.487-290.39,302.3S40.982,354.415,40.982,354.415l-81.925-7.573Z" transform="translate(642.691 1325.436) rotate(30)" fill="rgba(255,245,198,0.36)" stroke="#f1da69" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/>
+    <path id="boisko" d="M6.889-.61,585.7-37.783l-268.965,1192.4L-122.411,393.992Z" transform="translate(310.691 277.436) rotate(30)" fill="rgba(255,245,198,0.36)" stroke="#f1da69" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/>
+    <path id="sale_lekcyjne" d="M3604.225,21858.477l258.05,153.174,171.541-213.447-276.538-144.9Z" transform="translate(-2989 -20672)" fill="rgba(255,245,198,0.36)" stroke="#f1da69" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/>
+    <path id="sale_lekcyjne-2" data-name="sale_lekcyjne" d="M3597.578,21865.957l298.59,178.477,155.251-243.3L3757.279,21653.3Z" transform="translate(-2585 -20447)" fill="rgba(255,245,198,0.36)" stroke="#f1da69" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/>
+    <path id="sale_lekcyjne-3" data-name="sale_lekcyjne" d="M3604.225,21858.477l291.648,134.668,135.526-212.893L3757.279,21653.3Z" transform="translate(-2343 -20776)" fill="rgba(255,245,198,0.36)" stroke="#f1da69" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/>
+    <path id="sale_lekcyjne-4" data-name="sale_lekcyjne" d="M3604.819,21832.555l267.072,135.795,152.943-192.227L3757.279,21653.3Z" transform="translate(-2734 -20966)" fill="rgba(255,245,198,0.36)" stroke="#f1da69" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/>
+    <path id="swietlica" d="M6.889-.61l343.2-43.4-4.544,227.54L-3.511,221.2Z" transform="translate(2004.691 798.436) rotate(30)" fill="rgba(255,245,198,0.36)" stroke="#f1da69" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/>
+    <path id="aula" d="M6.889-.61l157.24-23.417L156.1,168.012,5.41,193.419Z" transform="translate(2066.691 622.436) rotate(30)" fill="rgba(255,245,198,0.36)" stroke="#f1da69" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/>
+    <path id="biblioteka" d="M6.889-.61l157.24-23.417L156.1,168.012-2.01,193.964Z" transform="translate(2249.691 690.436) rotate(30)" fill="rgba(255,245,198,0.36)" stroke="#f1da69" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/>
+  </g>
+</svg>
