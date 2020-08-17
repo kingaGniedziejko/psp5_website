@@ -81,47 +81,42 @@ export class PostSub extends Component {
 
         if(isLoaded) {
             return (
+                <CSSTransition
+                in={isExpanded}
+                timeout={500}
+                classNames="post-expand-anim">
                     <div className={"post " + (postDirection ? "post-left" : "post-right")}>
-                        <div>
+                        <div className={"post-image-container"}>
                             {
                                 <ImageGallery items={images} additionalClass={images.length === 1 ? "single" : ""} useBrowserFullscreen={false}/>
                             }
                         </div>
+
                         <div className={"post-content-container"}>
                             <div>
                                 <Link to={"/aktualnosci/" + id + "/" + slug}><h2 className={"post-title"}>{title.rendered}</h2></Link>
                                 <small className={"post-date"}>
                                     <Moment locale={"pl"} format="DD MMMM YYYYr. HH:mm">{date}</Moment>
                                 </small>
-
-                                <CSSTransition
-                                    in={isExpanded}
-                                    timeout={300}
-                                    classNames="post-expand-anim"
-                                    appear
-                                    // enter={true}
-                                >
-                                    <div className={"post-text"}>
-                                        <div dangerouslySetInnerHTML={{ __html: text}} />
-                                        <div>
-                                            {
-                                                attachments !== undefined ?
-                                                    attachments.map(att => {
-                                                        if (att) return <Attachment key={att.attachment.id} className={"post-attachment"} title={att.attachment.title} url={att.attachment.url}/>
-                                                        else return "";
-                                                    }) : ""
-                                            }
-                                        </div>
+                                <div className={"post-text"}>
+                                    <div dangerouslySetInnerHTML={{ __html: text}} />
+                                    <div>
+                                        {
+                                            attachments !== undefined ?
+                                                attachments.map(att => {
+                                                    if (att) return <Attachment key={att.attachment.id} className={"post-attachment"} title={att.attachment.title} url={att.attachment.url}/>
+                                                    else return "";
+                                                }) : ""
+                                        }
                                     </div>
-
-                                </CSSTransition>
+                                </div>
                             </div>
-                            <button className={"post-button button-accent-2"}
-                                    onClick={this.extendButtonClick.bind(this)}>{isExpanded ? "mniej" : "więcej"}
-                            </button>
                         </div>
-                </div>
-
+                        <button className={"post-button button-accent-2"}
+                                onClick={this.extendButtonClick.bind(this)}>{isExpanded ? "mniej" : "więcej"}
+                        </button>
+                    </div>
+                </CSSTransition>
             );
         }
         return ""
