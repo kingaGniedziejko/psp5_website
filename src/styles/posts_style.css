@@ -22,6 +22,11 @@ div.post{
     transition-delay: 0s;
 }
 
+div.post.post-empty {
+    height: 210px;
+    width: 70%;
+}
+
 .post-text div.after {
     position: absolute;
     bottom: 0;

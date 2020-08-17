@@ -78,7 +78,7 @@ export class HomePage extends Component {
                     </div>
                     <div className={"section section-2"}>
                         <SectionImage image={photo2}/>
-                        <div className={"section-container"}>
+                        <div className={"section"}>
                             <h1 dangerouslySetInnerHTML={{__html: hAnnouncements}}/>
                             <PostDisplay postCategories={[postCategory]} postsCount={postCount} />
                             <Link to={"/aktualnosci/komunikaty"}><button className={"button-accent-1"}>Czytaj więcej</button></Link>

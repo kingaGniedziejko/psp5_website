@@ -106,7 +106,7 @@ export class PostDisplaySub extends Component {
             }
         }
 
-        return ""
+        return <Spinner/>
     }
 }
 
