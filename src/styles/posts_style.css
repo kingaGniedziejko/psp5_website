@@ -18,7 +18,6 @@ div.post{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     box-sizing: border-box;
     overflow: hidden;
-
     transition: max-height 0.3s ease-in-out;
     transition-delay: 0s;
 }
@@ -35,61 +34,14 @@ div.post{
     );
     pointer-events: none; /* so the text is still selectable */
     opacity: 1;
-
     transition: opacity 0.3s ease-in-out;
 }
-
-/*!* enter animation *!*/
-/*div.post-expand-anim-enter-active {*/
-/*    max-height: 100000px;*/
-/*    transition: all 3000ms ease-in-out;*/
-/*}*/
-/*div.post-expand-anim-enter-active div.post-text:after {*/
-/*    opacity: 0;*/
-/*    transition: all 100ms ease-in-out;*/
-/*}*/
-
-/*div.post-expand-anim-enter-done {*/
-/*    max-height: 100000px;*/
-/*}*/
-/*div.post-expand-anim-enter-done div.post-text:after {*/
-/*    opacity: 0;*/
-/*}*/
-
-/*!* exit animation - nie działa :( *!*/
-/*div.post-expand-anim-exit {*/
-/*    max-height: 100000px;*/
-/*}*/
-/*div.post-expand-anim-exit div.post-text:after {*/
-/*    opacity: 0;*/
-/*}*/
-
-/*div.post-expand-anim-exit-active {*/
-/*    max-height: 210px;*/
-/*    transition: all 100ms ease-in-out;*/
-/*}*/
-/*div.post-expand-anim-exit-active div.post-text:after{*/
-/*    opacity: 1;*/
-/*    transition: all 100ms ease-in-out;*/
-/*}*/
-
-/*zak*/
-/*div.post-expand-anim-exit-done {*/
-/*    max-height: 210px;*/
-/*}*/
-
-/*div.post-expand-anim-exit-done div.post-text:after {*/
-/*    opacity: 1;*/
-/*}*/
-
 
 .post-text {
     margin-top: 1em;
     margin-bottom: 3em;
     overflow: hidden;
 }
-
-
 
 .post-content-container {
     display: flex;
@@ -114,7 +66,7 @@ div.post div.post-image-container{
 
 div.post div.post-content-container{
     flex: 2;
-    min-width: 200px;
+    min-width: 250px;
 }
 
 div.post>div {
@@ -203,9 +155,19 @@ div.post div.post-content-container h2{
 
 }
 
-@media only screen and (max-width: 543px) {
-    div.post.post-left div button {
-        align-self: flex-end;
+@media only screen and (max-width: 636px) {
+    div.post{
+        max-height: 420px;
+    }
+
+    .post-text div.after {
+        background: linear-gradient(to top, var(--white-1) 20%, rgba(255,255,255, 0) 80%);
+        height: 60%;
+    }
+
+    div.post.post-left button.post-button {
+        right: 0;
+        left: unset;
     }
 }
 

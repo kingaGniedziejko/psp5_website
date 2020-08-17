@@ -9,11 +9,14 @@ import Attachment from "./Attachment"
 import "react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from "react-image-gallery";
 import {Link} from "react-router-dom";
-import {CSSTransition} from "react-transition-group";
 
 export class PostSub extends Component {
     state = {
         isExpanded: false,
+        isMobile: false,
+        mobileHeight: 420 + "px",
+        descHeight: 210 + "px",
+        shortHeight: 210 + "px",
         expandedHeight: 1000 + "px",
         isGalleryLoaded: false,
         gallery: [],
@@ -25,15 +28,34 @@ export class PostSub extends Component {
         postNr: PropTypes.number
     }
 
-    extendButtonClick(e){
+    extendButtonClick(){
+        let textHeight = document.getElementById(this.props.post.id).scrollHeight;
+
+        if (document.body.offsetWidth <= 636){
+            textHeight += 220;
+        } else {
+            textHeight += 40;
+        }
+
         this.setState({
-            expandedHeight: document.getElementById(this.props.post.id).scrollHeight + 40 + "px",
+            expandedHeight: textHeight + "px",
             isExpanded: !this.state.isExpanded
         });
     }
 
-    componentDidMount() {
+    updateHeight(){
+        if (document.body.offsetWidth <= 636){
+            this.setState({
+                shortHeight: this.state.mobileHeight
+            })
+        } else {
+            this.setState({
+                shortHeight: this.state.descHeight
+            })
+        }
+    }
 
+    componentDidMount() {
         const {image_gallery} = this.props.gallery;
 
         if (image_gallery !== null){
@@ -59,28 +81,20 @@ export class PostSub extends Component {
                 })).catch(err => console.log(err));
             }
         }
+        this.updateHeight();
     }
-    //
-    // handleImageLoaded(e){
-    //     this.setState({ imageStatus: 'loaded' });
-    //     console.log(e.target.scrollHeight);
-    // }
-    //
-    // handleImageErrored() {
-    //     this.setState({ imageStatus: 'failed to load' });
-    // }
-
 
     render() {
         const {id, title, slug, date, acf} = this.props.post;
         const {text, attachments} = acf;
-        const {isExpanded, expandedHeight, isGalleryLoaded, gallery, isLoaded} = this.state;
+        const {isExpanded, shortHeight, expandedHeight, isGalleryLoaded, gallery, isLoaded} = this.state;
 
         const {postNr} = this.props;
         const postDirection = postNr%2;
 
-        let images = [];
+        window.addEventListener('resize', this.updateHeight.bind(this));
 
+        let images = [];
         gallery.forEach(elem => {
             images.push({
                 fullscreen: elem.media_details.sizes.full.source_url,
@@ -91,47 +105,42 @@ export class PostSub extends Component {
 
         if(isLoaded) {
             return (
-                // <CSSTransition
-                // in={isExpanded}
-                // timeout={500}
-                // classNames="post-expand-anim">
-                    <div className={"post " + (postDirection ? "post-left" : "post-right")} style={isExpanded? {maxHeight: expandedHeight} : {maxHeight:"210px"} }>
-                        <div className={"post-image-container"}>
-                            {
-                                <ImageGallery items={images} additionalClass={images.length === 1 ? "single" : ""} useBrowserFullscreen={false}/>
-                            }
-                        </div>
+                <div className={"post " + (postDirection ? "post-left" : "post-right")} style={isExpanded? {maxHeight: expandedHeight} : {maxHeight: shortHeight} }>
+                    <div className={"post-image-container"}>
+                        <ImageGallery items={images} additionalClass={images.length === 1 ? "single" : ""} useBrowserFullscreen={false}/>
+                    </div>
 
-                        <div className={"post-content-container"} id={id}>
-                            <div>
-                                <Link to={"/aktualnosci/" + id + "/" + slug}><h2 className={"post-title"}>{title.rendered}</h2></Link>
-                                <small className={"post-date"}>
-                                    <Moment locale={"pl"} format="DD MMMM YYYYr. HH:mm">{date}</Moment>
-                                </small>
-                                <div className={"post-text"}>
-                                    <div dangerouslySetInnerHTML={{ __html: text}}/>
-                                    <div>
-                                        {
-                                            attachments !== undefined ?
-                                                attachments.map(att => {
-                                                    if (att) return <Attachment key={att.attachment.id} className={"post-attachment"} title={att.attachment.title} url={att.attachment.url}/>
-                                                    else return "";
-                                                }) : ""
-                                        }
-                                    </div>
-                                    <div className={"after"} style={isExpanded? {opacity:"0"} : {opacity:"1"}} />
+                    <div className={"post-content-container"} id={id}>
+                        <div>
+                            <Link to={"/aktualnosci/" + id + "/" + slug}><h2 className={"post-title"}>{title.rendered}</h2></Link>
+                            <small className={"post-date"}>
+                                <Moment locale={"pl"} format="DD MMMM YYYYr. HH:mm">{date}</Moment>
+                            </small>
+                            <div className={"post-text"}>
+                                <div dangerouslySetInnerHTML={{ __html: text}}/>
+                                <div>
+                                    {
+                                        attachments !== undefined ?
+                                            attachments.map(att => {
+                                                if (att) return <Attachment key={att.attachment.id}
+                                                                            className={"post-attachment"}
+                                                                            title={att.attachment.title}
+                                                                            url={att.attachment.url}/>
+                                                else return "";
+                                            }) : ""
+                                    }
                                 </div>
+                                <div className={"after"} style={isExpanded? {opacity:"0"} : {opacity:"1"}} />
                             </div>
                         </div>
-                        <button className={"post-button button-accent-2"}
-                                onClick={this.extendButtonClick.bind(this)}>{isExpanded ? "mniej" : "więcej"}
-                        </button>
                     </div>
-                // </CSSTransition>
+                    <button className={"post-button button-accent-2"}
+                            onClick={this.extendButtonClick.bind(this)}>{isExpanded ? "mniej" : "więcej"}
+                    </button>
+                </div>
             );
         }
         return ""
-
     }
 }
 
