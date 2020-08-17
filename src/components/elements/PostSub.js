@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 import Moment from "react-moment";
+import WindowSizeListener from 'react-window-size-listener'
+import {Link} from "react-router-dom";
 import "moment/locale/pl";
 import PropTypes from "prop-types";
 import "../../config";
@@ -8,7 +10,6 @@ import axios from "axios";
 import Attachment from "./Attachment"
 import "react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from "react-image-gallery";
-import {Link} from "react-router-dom";
 
 export class PostSub extends Component {
     state = {
@@ -43,8 +44,8 @@ export class PostSub extends Component {
         });
     }
 
-    updateHeight(){
-        if (document.body.offsetWidth <= 636){
+    updateHeight(windowWidth){
+        if (windowWidth <= 636){
             this.setState({
                 shortHeight: this.state.mobileHeight
             })
@@ -82,6 +83,7 @@ export class PostSub extends Component {
             }
         }
         this.updateHeight();
+        // document.body.offsetWidth
     }
 
     render() {
@@ -105,6 +107,7 @@ export class PostSub extends Component {
 
         if(isLoaded) {
             return (
+                <WindowSizeListener onResize={(windowSize) => {this.updateHeight(windowSize.windowWidth)}}>
                 <div className={"post " + (postDirection ? "post-left" : "post-right")} style={isExpanded? {maxHeight: expandedHeight} : {maxHeight: shortHeight} }>
                     <div className={"post-image-container"}>
                         <ImageGallery items={images} additionalClass={images.length === 1 ? "single" : ""} useBrowserFullscreen={false}/>
@@ -138,6 +141,7 @@ export class PostSub extends Component {
                             onClick={this.extendButtonClick.bind(this)}>{isExpanded ? "mniej" : "więcej"}
                     </button>
                 </div>
+                </WindowSizeListener>
             );
         }
         return ""
