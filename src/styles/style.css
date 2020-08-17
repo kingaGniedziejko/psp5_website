@@ -9,7 +9,7 @@
     /*--accent-1: rgb(0, 82, 165);// <- podoba mi sie ten */
     --accent-1-light: rgb(122, 158, 239);
     --accent-1-extra-light: rgb(164, 190, 238);
-    --accent-1-faded: rgb(65, 111, 216);
+    --accent-1-faded: rgba(65, 111, 216, 0.82);
     --accent-2: rgb(238, 204, 35);
     --accent-2-light: rgb(241, 218, 105);
     --accent-2-lighter: rgb(238, 225, 160);

@@ -265,5 +265,9 @@ div.content div.vertical-centered>div#shortcut>a{
         padding-top: 4em;
         padding-bottom: 4em;
     }
+
+    .photoless-content {
+        padding-top: 4em;
+    }
 }
 

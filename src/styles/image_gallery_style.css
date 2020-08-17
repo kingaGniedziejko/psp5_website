@@ -128,14 +128,14 @@ div>div.image-gallery .image-gallery-thumbnail:focus {
 
 
 @media only screen and (min-width: 1300px) {
-    div>div.image-gallery {
+    .post div>div.image-gallery {
         width: 100%;
         min-width: 200px;
     }
 }
 
 @media only screen and (max-width: 666px) {
-    div > div.image-gallery {
+    .post div > div.image-gallery {
         width: 100%;
         min-width: 200px;
     }
