@@ -14,7 +14,7 @@ import {CSSTransition} from "react-transition-group";
 export class PostSub extends Component {
     state = {
         isExpanded: false,
-        excerptLength: 150,
+        expandedHeight: 1000 + "px",
         isGalleryLoaded: false,
         gallery: [],
         isLoaded: false
@@ -25,13 +25,15 @@ export class PostSub extends Component {
         postNr: PropTypes.number
     }
 
-    extendButtonClick(){
+    extendButtonClick(e){
         this.setState({
+            expandedHeight: document.getElementById(this.props.post.id).scrollHeight + 40 + "px",
             isExpanded: !this.state.isExpanded
         });
     }
 
     componentDidMount() {
+
         const {image_gallery} = this.props.gallery;
 
         if (image_gallery !== null){
@@ -58,13 +60,21 @@ export class PostSub extends Component {
             }
         }
     }
+    //
+    // handleImageLoaded(e){
+    //     this.setState({ imageStatus: 'loaded' });
+    //     console.log(e.target.scrollHeight);
+    // }
+    //
+    // handleImageErrored() {
+    //     this.setState({ imageStatus: 'failed to load' });
+    // }
+
 
     render() {
         const {id, title, slug, date, acf} = this.props.post;
         const {text, attachments} = acf;
-        console.log(attachments)
-        // const excerpt = text.substring(0, this.state.excerptLength)+"...";
-        const {isExpanded, isGalleryLoaded, gallery, isLoaded} = this.state;
+        const {isExpanded, expandedHeight, isGalleryLoaded, gallery, isLoaded} = this.state;
 
         const {postNr} = this.props;
         const postDirection = postNr%2;
@@ -79,49 +89,45 @@ export class PostSub extends Component {
             })
         })
 
-
         if(isLoaded) {
             return (
-                    <div className={"post " + (postDirection ? "post-left" : "post-right")}>
-                        <div>
+                // <CSSTransition
+                // in={isExpanded}
+                // timeout={500}
+                // classNames="post-expand-anim">
+                    <div className={"post " + (postDirection ? "post-left" : "post-right")} style={isExpanded? {maxHeight: expandedHeight} : {maxHeight:"210px"} }>
+                        <div className={"post-image-container"}>
                             {
                                 <ImageGallery items={images} additionalClass={images.length === 1 ? "single" : ""} useBrowserFullscreen={false}/>
                             }
                         </div>
-                        <div className={"post-content-container"}>
+
+                        <div className={"post-content-container"} id={id}>
                             <div>
                                 <Link to={"/aktualnosci/" + id + "/" + slug}><h2 className={"post-title"}>{title.rendered}</h2></Link>
                                 <small className={"post-date"}>
                                     <Moment locale={"pl"} format="DD MMMM YYYYr. HH:mm">{date}</Moment>
                                 </small>
-
-                                <CSSTransition
-                                    in={isExpanded}
-                                    timeout={300}
-                                    classNames="post-expand-anim"
-                                    appear
-                                >
-                                    <div className={"post-text"}>
-                                        <div dangerouslySetInnerHTML={{ __html: text}} />
-                                        <div>
-                                            {
-                                                attachments !== undefined ?
-                                                    attachments.map(att => {
-                                                        if (att) return <Attachment key={att.attachment.id} className={"post-attachment"} title={att.attachment.title} url={att.attachment.url}/>
-                                                        else return "";
-                                                    }) : ""
-                                            }
-                                        </div>
+                                <div className={"post-text"}>
+                                    <div dangerouslySetInnerHTML={{ __html: text}}/>
+                                    <div>
+                                        {
+                                            attachments !== undefined ?
+                                                attachments.map(att => {
+                                                    if (att) return <Attachment key={att.attachment.id} className={"post-attachment"} title={att.attachment.title} url={att.attachment.url}/>
+                                                    else return "";
+                                                }) : ""
+                                        }
                                     </div>
-
-                                </CSSTransition>
+                                    <div className={"after"} style={isExpanded? {opacity:"0"} : {opacity:"1"}} />
+                                </div>
                             </div>
-                            <button className={"post-button button-accent-2"}
-                                    onClick={this.extendButtonClick.bind(this)}>{isExpanded ? "mniej" : "więcej"}
-                            </button>
                         </div>
-                </div>
-
+                        <button className={"post-button button-accent-2"}
+                                onClick={this.extendButtonClick.bind(this)}>{isExpanded ? "mniej" : "więcej"}
+                        </button>
+                    </div>
+                // </CSSTransition>
             );
         }
         return ""

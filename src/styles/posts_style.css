@@ -18,9 +18,12 @@ div.post{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     box-sizing: border-box;
     overflow: hidden;
+
+    transition: max-height 0.3s ease-in-out;
+    transition-delay: 0s;
 }
 
-.post-text:after {
+.post-text div.after {
     position: absolute;
     bottom: 0;
     height: 100%;
@@ -32,42 +35,45 @@ div.post{
     );
     pointer-events: none; /* so the text is still selectable */
     opacity: 1;
+
+    transition: opacity 0.3s ease-in-out;
 }
 
-/* enter animation */
-div.post-expand-anim-enter-active {
-    max-height: 100000px;
-    transition: all 3000ms ease-in-out;
-}
-div.post-expand-anim-enter-active div.post-text:after {
-    opacity: 0;
-    transition: all 100ms ease-in-out;
-}
+/*!* enter animation *!*/
+/*div.post-expand-anim-enter-active {*/
+/*    max-height: 100000px;*/
+/*    transition: all 3000ms ease-in-out;*/
+/*}*/
+/*div.post-expand-anim-enter-active div.post-text:after {*/
+/*    opacity: 0;*/
+/*    transition: all 100ms ease-in-out;*/
+/*}*/
 
-div.post-expand-anim-enter-done {
-    max-height: 100000px;
-}
-div.post-expand-anim-enter-done div.post-text:after {
-    opacity: 0;
-}
+/*div.post-expand-anim-enter-done {*/
+/*    max-height: 100000px;*/
+/*}*/
+/*div.post-expand-anim-enter-done div.post-text:after {*/
+/*    opacity: 0;*/
+/*}*/
 
-/* exit animation - nie działa :( */
-div.post-expand-anim-exit {
-    max-height: 100000px;
-}
-div.post-expand-anim-exit div.post-text:after {
-    opacity: 0;
-}
+/*!* exit animation - nie działa :( *!*/
+/*div.post-expand-anim-exit {*/
+/*    max-height: 100000px;*/
+/*}*/
+/*div.post-expand-anim-exit div.post-text:after {*/
+/*    opacity: 0;*/
+/*}*/
 
-div.post-expand-anim-exit-active {
-    max-height: 210px;
-    transition: all 100ms ease-in-out;
-}
-div.post-expand-anim-exit-active div.post-text:after{
-    opacity: 1;
-    transition: all 100ms ease-in-out;
-}
+/*div.post-expand-anim-exit-active {*/
+/*    max-height: 210px;*/
+/*    transition: all 100ms ease-in-out;*/
+/*}*/
+/*div.post-expand-anim-exit-active div.post-text:after{*/
+/*    opacity: 1;*/
+/*    transition: all 100ms ease-in-out;*/
+/*}*/
 
+/*zak*/
 /*div.post-expand-anim-exit-done {*/
 /*    max-height: 210px;*/
 /*}*/
