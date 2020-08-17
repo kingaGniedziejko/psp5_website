@@ -79,6 +79,7 @@ export class PostSub extends Component {
             })
         })
 
+
         if(isLoaded) {
             return (
                     <div className={"post " + (postDirection ? "post-left" : "post-right")}>
@@ -99,7 +100,6 @@ export class PostSub extends Component {
                                     timeout={300}
                                     classNames="post-expand-anim"
                                     appear
-                                    // enter={true}
                                 >
                                     <div className={"post-text"}>
                                         <div dangerouslySetInnerHTML={{ __html: text}} />

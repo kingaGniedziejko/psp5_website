@@ -18,7 +18,7 @@ div>div.image-gallery.single .image-gallery-thumbnails-wrapper *{
     z-index: 0;
 }
 
-div>div.image-gallery img.image-gallery-image, div.post>div>img {
+.post div>div.image-gallery img.image-gallery-image, div.post>div>img {
     height: 170px;
     object-fit: cover;
 }
@@ -123,14 +123,14 @@ div>div.image-gallery .image-gallery-thumbnail:focus {
 
 
 @media only screen and (min-width: 1300px) {
-    div>div.image-gallery {
+    .post div>div.image-gallery {
         width: 100%;
         min-width: 200px;
     }
 }
 
 @media only screen and (max-width: 666px) {
-    div > div.image-gallery {
+    .post div > div.image-gallery {
         width: 100%;
         min-width: 200px;
     }

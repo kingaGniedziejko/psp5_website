@@ -1,8 +1,9 @@
 .interactive-photo-container {
-    margin: 2em 0;
-    width: 90%;
+    margin: 1em 0 2em 0;
+    width: 100%;
     position: relative;
-    height: auto
+    height: auto;
+    max-height: 100vh;
 }
 
 .interactive-photo-container>img {
@@ -22,11 +23,47 @@
     z-index: 2;
 }
 
+.interactive-photo-container .dim {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    background-color: var(--accent-1-faded);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-animation: fadeOut 5s;
+    animation: fadeOut 5s;
+    animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes fadeOut {
+    0% { opacity: 1;}
+    50% { opacity: 1;}
+    99% { opacity: 0.01; width: 100%; height: 100%;}
+    100% { opacity: 0; width: 0; height: 0;}
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1;}
+    50% { opacity: 1;}
+    99% { opacity: 0.01; width: 100%; height: 100%;}
+    100% { opacity: 0; width: 0; height: 0;}
+}
+
+.dim>h1 {
+    color:var(--white-1);
+    font-weight: normal;
+    margin: 0;
+}
+
 .interactive-photo-container svg path {
     stroke-width: 0;
     fill: transparent;
     cursor: pointer;
-
 }
 
 .interactive-photo-container svg path:hover {
@@ -35,5 +72,34 @@
     stroke: var(--accent-2-light);
     stroke-linecap: round;
     stroke-linejoin: round;
+}
+
+.hovered-area {
+    height: 3em;
+    width: 20em;
+}
+
+.hovered-area>h1 {
+    margin: 0;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--accent-2-light);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+}
+
+
+.area-info div>div.image-gallery img.image-gallery-image, div.area-info>div>img {
+    height: 250px;
+    object-fit: cover;
+}
+
+.image-gallery-content {
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
