@@ -8,50 +8,45 @@ div.posts-container{
 }
 
 div.post{
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     width: 70%;
-    height: auto;
+    max-height: 210px;
     margin-bottom: 30px;
     padding: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-sizing: border-box;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+    transition-delay: 0s;
+}
+
+.post-text div.after {
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    content: "";
+    background: linear-gradient(to top,
+    var(--white-1) 30%,
+    rgba(255,255,255, 0) 70%
+    );
+    pointer-events: none; /* so the text is still selectable */
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
 }
 
 .post-text {
-    max-height: 3.5em;
     margin-top: 1em;
-    margin-bottom: 1em;
-    overflow: hidden
+    margin-bottom: 3em;
+    overflow: hidden;
 }
 
 .post-content-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-
-.post-expand-anim-appear, .post-expand-anim-enter {
-    max-height: 3.5em;
-    transition: all 300ms linear;
-}
-
-.post-expand-anim-appear-active, .post-expand-anim-enter-active {
-    max-height: 100%;
-    transition: all 300ms linear;
-}
-
-.post-expand-anim-enter-done {
-    max-height: 100%;
-}
-
-.post-expand-anim-exit {
-    max-height: 100%;
-    transition: all 300ms linear;
-}
-
-.post-expand-anim-exit-active {
-    max-height: 3.5em;
-    transition: all 300ms linear;
 }
 
 div.post.post-left {
@@ -62,16 +57,16 @@ div.post:last-child{
     margin-bottom: 0;
 }
 
-div.post>div:first-child{
+div.post div.post-image-container{
     flex: 1;
-    /*max-width: 300px;*/
+    z-index: 1;
     min-width: 250px;
     overflow: hidden;
 }
 
-div.post>div:last-child{
+div.post div.post-content-container{
     flex: 2;
-    min-width: 200px;
+    min-width: 250px;
 }
 
 div.post>div {
@@ -88,36 +83,39 @@ div.post>div>div>a.post-attachment:last-of-type {
     margin-bottom: 20px;
 }
 
-div.post div button.post-button{
-    align-self: flex-end;
-    justify-self: flex-end;
+div.post button.post-button{
+    position: absolute;
+    bottom: 0;
+    right: 0;
     width: 10em;
+    margin: 20px;
 }
 
-div.post.post-left div button {
-    align-self: flex-start;
+div.post.post-left button.post-button {
+    right: unset;
+    left: 0;
 }
 
-div.post div:last-child p{
+div.post div.post-content-container p{
     flex: 2;
 }
 
-div.post div:last-child p{
+div.post div.post-content-container p{
     margin: 0;
     /*display: inline;*/
 }
 
-div.post div:last-child>p * {
+div.post div.post-content-container>p * {
     font-size: 14px;
 }
 
-div.post div:last-child h2{
+div.post div.post-content-container h2{
     margin: 0;
     margin-bottom: 5px;
 }
 
 @media only screen and (min-width: 1600px) {
-    div.post>div:last-child{
+    div.post div.post-content-container {
         flex: 4;
     }
 }
@@ -147,24 +145,34 @@ div.post div:last-child h2{
 }
 
 @media only screen and (max-width: 666px) {
-    div.post>div:first-child>div{
+    div.post div.post-image-container>div{
         flex: 1;
     }
 
-    div.post>div:first-child>div{
+    div.post div.post-image-container>div{
         min-width: 70px;
     }
 
 }
 
-@media only screen and (max-width: 543px) {
-    div.post.post-left div button {
-        align-self: flex-end;
+@media only screen and (max-width: 636px) {
+    div.post{
+        max-height: 420px;
+    }
+
+    .post-text div.after {
+        background: linear-gradient(to top, var(--white-1) 20%, rgba(255,255,255, 0) 80%);
+        height: 60%;
+    }
+
+    div.post.post-left button.post-button {
+        right: 0;
+        left: unset;
     }
 }
 
 @media only screen and (max-width: 370px) {
-    div.post>div:last-child{
+    div.post div.post-content-container {
         min-width: 200px;
     }
 }
