@@ -15,7 +15,6 @@ import {isMobile} from 'react-device-detect';
 export class Walk extends Component {
     constructor(props) {
         super(props)
-        const outlines = React.createRef
     }
     state = {
         title: "Spacer po szkole",
@@ -23,7 +22,7 @@ export class Walk extends Component {
         hoveredName: "",
         hoveredId: "",
         areas: [],
-        selectedArea: {},
+        selectedArea: "",
         images: [],
         isLoaded: false
     }
@@ -48,6 +47,9 @@ export class Walk extends Component {
     }
 
     handleClicked = (e) => {
+        if(this.state.selectedArea !== "" && this.state.selectedArea.id !== e.target.getAttribute('id')) {
+            document.getElementById(this.state.selectedArea.id).classList.remove("clicked");
+        }
         let selected = this.state.areas.find(area => area.id === e.target.getAttribute('id'))
         if(!selected) return
         if(selected === this.state.selectedArea) return
@@ -64,6 +66,9 @@ export class Walk extends Component {
             selectedArea: selected,
             images: images
         })
+        if(true) {
+            document.getElementById(selected.id).classList.add("clicked");
+        }
     }
 
     handleMouseOut = () => {
@@ -76,17 +81,14 @@ export class Walk extends Component {
 
 
     render() {
-        const {images, selectedArea, hoveredId, hoveredName} = this.state
+        const {images, selectedArea, hoveredName} = this.state
 
         if(this.state.isLoaded) {
             const sections = this.state.content.sections
 
-            const photo = sections[0].images[0].image
             const interactivePhoto = sections[0].images[1].image
 
             const header = sections[0].lonely_headers[0].text
-
-            console.log(selectedArea)
 
             return (
                 <div className={"content photoless-content"}>
@@ -94,14 +96,12 @@ export class Walk extends Component {
                         <title>{global.config.mainTitle + " " + this.state.title}</title>
                     </Helmet>
                     <div className={"section"}>
-                        {/*<SectionImage image={photo}/>*/}
                         <div className={"section-container"}>
                             <h1 dangerouslySetInnerHTML={{__html: header}}/>
                             <div className={"interactive-photo-container"}>
                                 <img src={interactivePhoto.url}/>
 
-                                <svg id="outlines" width="3071" height="2128" viewBox="0 0 3071 2128"
-                                     ref={this.outlines}>
+                                <svg id="outlines" width="3071" height="2128" viewBox="0 0 3071 2128">
                                         <path id="stolowka" onClick={(e) => this.handleClicked(e)}
                                               onMouseOver={(e) => this.handleMouseOver(e)}
                                               onMouseOut={() => this.handleMouseOut()} name={"Stołówka"}
@@ -172,8 +172,10 @@ export class Walk extends Component {
                                               transform="translate(2249.691 690.436) rotate(30)"/>
                                 </svg>
 
+                                <a href={"https://www.youtube.com/watch?v=gsaEFiQmigs"} className={"source"} rel="noopener noreferrer" target="_blank">źródło</a>
+
                                 <div className={"dim"}>
-                                    <h1>Wybierz<br/>budynek</h1>
+                                    <h1>Kliknij<br/>budynek</h1>
                                 </div>
 
                             </div>
@@ -194,7 +196,7 @@ export class Walk extends Component {
                     </div>
 
                     {
-                        selectedArea !== {} ?
+                        selectedArea !== "" ?
                             <div className={"section grey"}>
                                 <div key={selectedArea.id} className={"section-container area-info"}>
                                     <h1 dangerouslySetInnerHTML={{__html: selectedArea.name}}/>
