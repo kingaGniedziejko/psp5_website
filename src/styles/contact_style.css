@@ -1,19 +1,36 @@
-
-
 #map {
     width: 100%;
     height: 20em;
-    background-color: var(--accent-3-light);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
 }
 
-
-#map>.section-container {
+.map-container {
+    position: relative;
+    height: 20em;
     width: 100%;
-    height: 100%;
-    /*box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2)*/
-
+    max-width: 1200px;
 }
 
 #info-window {
     padding: 1em;
+}
+
+.section-container #logo-container {
+    margin-top: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+#logo-container>img {
+    height: 150px;
+
+    object-fit: contain;
 }

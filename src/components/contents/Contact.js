@@ -32,10 +32,18 @@ export class Contact extends Component {
             const sections = this.state.content.sections
 
             const photo = sections[0].images[0].image
+            const logo = sections[0].images[1].image
 
             const hAddress = sections[0].modules[0].header
             const tAddress = sections[0].modules[0].text
 
+            const hData = sections[0].modules[1].header
+            const tData = sections[0].modules[1].text
+            const hMembers = sections[0].lonely_headers[0].text
+
+            const members = this.state.content.members
+
+            var key = 0;
             return (
                 <div className={"content"}>
                     <Helmet>
@@ -45,23 +53,40 @@ export class Contact extends Component {
                     <div className={"section"}>
                         <SectionImage image={photo}/>
 
-                        <div className={"section-container"} id={""}>
-                            <div dangerouslySetInnerHTML={{__html: tAddress}}/>
+                        <div className={"section-container multicolumn"}>
+                            <div>
+                                <h1 dangerouslySetInnerHTML={{__html: hMembers}}/>
+                                <table>
+                                    <tbody>
+                                    {
+                                        members.map(member => {return <tr key={key++}><td><strong>{member.position}</strong></td><td>{member.name}</td></tr>})
+                                    }
+                                    </tbody>
+
+                                </table>
+                                <h1 dangerouslySetInnerHTML={{__html: hData}}/>
+                                <div dangerouslySetInnerHTML={{__html: tData}} className={"text-content"}/>
+                            </div>
+                            <div>
+                                <h1 dangerouslySetInnerHTML={{__html: hAddress}}/>
+                                <div dangerouslySetInnerHTML={{__html: tAddress}} className={"text-content grid"}/>
+
+                            </div>
+
+
                         </div>
 
 
                     </div>
+                    <div className={"section grey"} style={{paddingBottom: "0"}}>
+                            <div className={"map-container"}>
+                                <MapContainer />
+                            </div>
 
-                    <div className={"section"} id={"map"}>
-                        <div className={"section-container"} id={"map"}>
-                            <MapContainer />
-                        </div>
                     </div>
-
-
-
                 </div>
-            );
+
+        );
         }
         return (
             <Spinner />

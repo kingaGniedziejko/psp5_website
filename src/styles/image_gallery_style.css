@@ -18,12 +18,12 @@ div>div.image-gallery.single .image-gallery-thumbnails-wrapper *{
     z-index: 0;
 }
 
-div>div.image-gallery img.image-gallery-image {
+.post div>div.image-gallery img.image-gallery-image {
     height: 130px;
     object-fit: cover;
 }
 
-div>div.image-gallery.single img.image-gallery-image {
+.post div>div.image-gallery.single img.image-gallery-image {
     height: 170px;
     object-fit: cover;
 }

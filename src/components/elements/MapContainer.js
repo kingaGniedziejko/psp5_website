@@ -51,7 +51,7 @@ export class MapContainer extends Component {
                         marker={this.state.activeMarker}
                         visible={this.state.showingInfoWindow}
                         onClose={this.onClose}
-                        google={this.props.google}>
+                        google={this.props.google} >
                         <div id={"info-window"}>
                             {this.state.selectedPlace.name}
                         </div>

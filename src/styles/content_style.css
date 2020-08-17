@@ -62,16 +62,18 @@ div.content div.section {
     padding-left: 1em;
 }
 
-.open-hours {
+.grid {
     display: grid;
     grid-template-columns: auto auto;
+    column-gap: 0.5em;
 }
 
-.open-hours>p {
-    margin-top: auto;
+.grid>p {
+    margin-top: 0;
     margin-bottom: auto;
     margin-left: 0;
     text-align: left;
+    padding: 0.3em 0.7em
 }
 
 .photo {

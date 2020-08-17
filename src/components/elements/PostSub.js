@@ -92,7 +92,7 @@ export class PostSub extends Component {
         const {postNr} = this.props;
         const postDirection = postNr%2;
 
-        window.addEventListener('resize', this.updateHeight.bind(this));
+        // window.addEventListener('resize', this.updateHeight.bind(this));
 
         let images = [];
         gallery.forEach(elem => {

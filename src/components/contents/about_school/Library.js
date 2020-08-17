@@ -70,7 +70,7 @@ export class Library extends Component {
                         <div className={"section-container multicolumn"}>
                                 <div>
                                     <h1 dangerouslySetInnerHTML={{__html: hHours}}/>
-                                    <div className={"text-content open-hours"} dangerouslySetInnerHTML={{__html: tHours}}/>
+                                    <div className={"text-content grid"} dangerouslySetInnerHTML={{__html: tHours}}/>
 
                                     <h1 dangerouslySetInnerHTML={{__html: hTeachers}}/>
                                     <div className={"text-content"} dangerouslySetInnerHTML={{__html: tTeachers}}/>
