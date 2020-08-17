@@ -144,7 +144,7 @@ export class PostSub extends Component {
                 </WindowSizeListener>
             );
         }
-        return ""
+        return <div className={"post post-empty"}/>
     }
 }
 
