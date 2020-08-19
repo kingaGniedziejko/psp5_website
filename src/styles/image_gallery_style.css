@@ -24,47 +24,63 @@ div>div.image-gallery.single .image-gallery-thumbnails-wrapper *{
 }
 
 .post div>div.image-gallery.single img.image-gallery-image {
-    height: 170px;
+    height: 175px;
     object-fit: cover;
 }
 
 div>div.image-gallery .fullscreen {
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    /*height: 100vh;*/
+    /*width: 100vw;*/
+    /*position: fixed;*/
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
 }
 
 div>div.image-gallery .fullscreen img.image-gallery-image {
-    height: auto !important;
+    /*height: auto !important;*/
+    height: 45vw !important;
+    width: 80vw;
     max-height: 80vh;
     max-width: 90vw;
 }
 
 div>div.image-gallery div.image-gallery-thumbnails-container {
     display: flex;
-    max-height: 50px;
     overflow: hidden;
     justify-content: center;
 }
 
 div>div.image-gallery div.image-gallery-thumbnails-container button {
     flex: 1;
+    height: 6vw;
+    width: 6vw;
     max-height: 45px;
     max-width: 45px;
 }
 
+div>div.image-gallery .fullscreen div.image-gallery-thumbnails-container button {
+    flex: 1;
+    height: unset;
+    width: unset;
+    max-height: 6vw;
+    max-width: 6vw;
+}
+
+/*div>div.image-gallery .fullscreen div.image-gallery-thumbnails-container button {*/
+/*    max-height: 70px;*/
+/*    max-width: 70px;*/
+/*}*/
+
 .image-gallery-thumbnail .image-gallery-thumbnail-inner {
-    max-height: 45px;
-    max-width: 45px;
+    max-height: inherit;
+    max-width: inherit;
 }
 
 .image-gallery-thumbnail .image-gallery-thumbnail-image {
-    max-height: 45px;
-    max-width: 45px;
+    max-height: inherit;
+    max-width: inherit;
     object-fit: cover;
 }
 
@@ -76,14 +92,15 @@ div>div.image-gallery .image-gallery-right-nav{
 
 div>div.image-gallery .image-gallery-left-nav .image-gallery-svg,
 div>div.image-gallery .image-gallery-right-nav .image-gallery-svg{
-    height: 70px;
-    width: 35px;
+    height: 60px;
+    width: 30px;
+    margin: 0 4px;
 }
 
 
 div>div.image-gallery .image-gallery-fullscreen-button,
 div>div.image-gallery .image-gallery-play-button {
-    padding: 10px;
+    padding: 5px 10px;
 }
 
 div>div.image-gallery .image-gallery-fullscreen-button .image-gallery-svg,
@@ -112,7 +129,7 @@ div>div.image-gallery .image-gallery-play-button .image-gallery-svg {
 
     div>div.image-gallery .fullscreen .image-gallery-fullscreen-button,
     div>div.image-gallery .fullscreen .image-gallery-play-button {
-        padding: 20px;
+        padding: 20px 30px;
     }
 
     div>div.image-gallery .image-gallery-icon:hover {

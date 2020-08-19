@@ -15,10 +15,12 @@ export class PostSub extends Component {
     state = {
         isExpanded: false,
         isMobile: false,
+        mobileMaxWidth: 636,
         mobileHeight: 420 + "px",
-        descHeight: 210 + "px",
-        shortHeight: 210 + "px",
+        descHeight: 215 + "px",
+        shortHeight: 215 + "px",
         expandedHeight: 1000 + "px",
+        contentWidth: 68 + "%",
         isGalleryLoaded: false,
         gallery: [],
         isLoaded: false
@@ -32,7 +34,7 @@ export class PostSub extends Component {
     extendButtonClick(){
         let textHeight = document.getElementById(this.props.post.id).scrollHeight;
 
-        if (document.body.offsetWidth <= 636){
+        if (document.body.offsetWidth <= this.state.mobileMaxWidth){
             textHeight += 220;
         } else {
             textHeight += 40;
@@ -44,16 +46,23 @@ export class PostSub extends Component {
         });
     }
 
-    updateHeight(windowWidth){
-        if (windowWidth <= 636){
-            this.setState({
-                shortHeight: this.state.mobileHeight
-            })
+    updateDimensions(windowWidth){
+        let shortHeight;
+
+        if (windowWidth <= this.state.mobileMaxWidth){
+            shortHeight = this.state.mobileHeight;
         } else {
-            this.setState({
-                shortHeight: this.state.descHeight
-            })
+            shortHeight = this.state.descHeight;
         }
+
+        // console.log(document.getElementById(this.props.post.id));
+
+        this.setState({
+            shortHeight: shortHeight,
+            contentWidth: document.getElementById(this.props.post.id) !== null ?
+                                document.getElementById(this.props.post.id).offsetWidth + "px"
+                                : 68 + "%"
+        })
     }
 
     componentDidMount() {
@@ -82,14 +91,13 @@ export class PostSub extends Component {
                 })).catch(err => console.log(err));
             }
         }
-        this.updateHeight();
-        // document.body.offsetWidth
+        this.updateDimensions();
     }
 
     render() {
         const {id, title, slug, date, acf} = this.props.post;
         const {text, attachments} = acf;
-        const {isExpanded, shortHeight, expandedHeight, isGalleryLoaded, gallery, isLoaded} = this.state;
+        const {isExpanded, shortHeight, expandedHeight, contentWidth, isGalleryLoaded, gallery, isLoaded} = this.state;
 
         const {postNr} = this.props;
         const postDirection = postNr%2;
@@ -107,7 +115,10 @@ export class PostSub extends Component {
 
         if(isLoaded) {
             return (
-                <WindowSizeListener onResize={(windowSize) => {this.updateHeight(windowSize.windowWidth)}}>
+                <WindowSizeListener
+                    onResize={(windowSize) => {
+                        this.updateDimensions(windowSize.windowWidth)
+                    }}>
                 <div className={"post " + (postDirection ? "post-left" : "post-right")} style={isExpanded? {maxHeight: expandedHeight} : {maxHeight: shortHeight} }>
                     <div className={"post-image-container"}>
                         <ImageGallery items={images} additionalClass={images.length === 1 ? "single" : ""} useBrowserFullscreen={false}/>
@@ -119,7 +130,7 @@ export class PostSub extends Component {
                             <small className={"post-date"}>
                                 <Moment locale={"pl"} format="DD MMMM YYYYr. HH:mm">{date}</Moment>
                             </small>
-                            <div className={"post-text"}>
+                            <div className={"post-text" + (isExpanded? "" : " disabled-content")}>
                                 <div dangerouslySetInnerHTML={{ __html: text}}/>
                                 <div>
                                     {
@@ -133,7 +144,7 @@ export class PostSub extends Component {
                                             }) : ""
                                     }
                                 </div>
-                                <div className={"after"} style={isExpanded? {opacity:"0"} : {opacity:"1"}} />
+                                <div className={"after"} style={isExpanded? {opacity:"0", width: contentWidth} : {opacity:"1", width: contentWidth} } />
                             </div>
                         </div>
                     </div>

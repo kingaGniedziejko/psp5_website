@@ -26,13 +26,11 @@
 
 html {
     min-height: 100vh;
-    width: 100vw;
 }
 body {
     font-family: "Nunito", sans-serif;
     min-width: 360px;
     height: 100vh;
-    width: 100vw;
     margin: 0;
     padding: 0;
     display: flex;
@@ -40,6 +38,7 @@ body {
     background-color: var(--white-1);
     color: var(--font-dark);
     font-size: 0.9em;
+    overflow: auto;
 }
 
 @media (max-width: 600px) {
