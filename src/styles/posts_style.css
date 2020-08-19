@@ -105,11 +105,6 @@ div.post div.post-content-container p{
     flex: 2;
 }
 
-div.post div.post-content-container p{
-    margin: 0;
-    /*display: inline;*/
-}
-
 div.post div.post-content-container>p * {
     font-size: 14px;
 }

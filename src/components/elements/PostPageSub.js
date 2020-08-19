@@ -81,7 +81,7 @@ export class PostPageSub extends Component {
                         <p className={"post-text"} dangerouslySetInnerHTML={{ __html: text}} />
                         <div className={"post-attachments"}>
                             {
-                                attachments !== undefined ?
+                                attachments !== undefined && attachments !== false?
                                 attachments.map(att => {
                                     if (att) return <Attachment key={att.id} className={"post-attachment"} title={att.title} url={att.url}/>
                                     else return "";

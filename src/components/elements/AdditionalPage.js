@@ -7,7 +7,7 @@ export class AdditionalPage extends Component {
     render() {
         // const {image1, title1, text1, image2, title2, text2} = this.props.page.acf;
 
-        const sections = this.props.page.acf.section;
+        const sections = this.props.page.acf.sections;
 
         const sectionImage = (section) => {
             if(section.section_image)
@@ -17,34 +17,33 @@ export class AdditionalPage extends Component {
         }
 
         const content = (section) => {
-            console.log(section)
-            if(section.content !== undefined)
-                if(section.config.layout.toString() == "centered")
-                    section.content.module.map( module => {
-                        if(module !== undefined)
-                            return (
-                                <div>
-                                    <h1 dangerouslySetInnerHTML={{__html: module.header}}/>
-                                    <div dangerouslySetInnerHTML={{__html: module.text}}/>
-                                </div>
-                            )
-                        }
-                    )
+            if(section.config.layout === "centered")
+                section.one_column_content.modules.map( module => {
+                    if(module)
+                        return (
+                            <div>
+                                <h1 dangerouslySetInnerHTML={{__html: module.header}}/>
+                                <div dangerouslySetInnerHTML={{__html: module.text}}/>
+                            </div>
+                        )
+                })
 
         }
 
+        let key = 0
+
         return (
-            <div className={""}>
+            <div>
                 {
                     sections.map(section => {
                             return (
-                                <div>
-
+                                <div className={"section"} key={key++}>
                                     {sectionImage(section)}
-                                    {content(section)}
+                                    <div className={"section-container"}>
+                                        {content(section)}
+                                    </div>
                                 </div>
                             )
-
                         }
                     )
                 }

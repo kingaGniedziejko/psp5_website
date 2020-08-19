@@ -3,9 +3,11 @@ div.post-page>div.section-container {
     margin: 4em 0;
 }
 
+
 div.image-gallery-container>div.image-gallery img.image-gallery-image,
 div.image-gallery-container>img {
     height: 400px;
+    object-fit: cover;
 }
 
 div.post-content-container {
