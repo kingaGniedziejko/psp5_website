@@ -17,7 +17,7 @@ export class App extends Component {
     }
 
     componentDidMount() {
-        axios.get(global.config.proxy + "/wp-json/menus/v1/menus/main-menu")
+        axios.get(global.config.proxy + "/wp-json/menus/v1/menus/menu-glowne")
             .then(res => {
                 this.setState({
                     menuItems: res.data.items,

@@ -120,21 +120,26 @@ path.clicked {
     border-radius: 10px;
 }
 
+.area-info .image-gallery {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 .area-info div>div.image-gallery img.image-gallery-image, div.area-info>div>img {
-    max-height: 250px;
-
-    object-fit: scale-down;
+    object-fit: contain;
 
 }
 
 .area-info .image-gallery-content {
     margin-top: 1em;
     margin-bottom: 1em;
+    max-width: 90%;
 }
 
 .area-info .image-gallery-slides img{
-    height: 500px;
     object-fit: cover;
     object-position: center;
+    max-height: 50vw;
 }
