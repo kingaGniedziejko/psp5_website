@@ -70,7 +70,7 @@ export class AdditionalPage extends Component {
             }
             else {
                 return (
-                    <div>
+                    <div className={"center"}>
                         <img src={column.image.url} alt={column.image.alt}/>
                     </div>
                 )
@@ -119,23 +119,25 @@ export class AdditionalPage extends Component {
 
         let key = 0
 
-        return (
-            <div>
-                {
-                    sections.map(section => {
-                            return (
-                                <section key={key++} className={section.config.background}>
-                                    {sectionImage(section)}
-                                    <div className={"section-content"}>
-                                        {sectionContent(section)}
-                                    </div>
-                                </section>
-                            )
-                        }
-                    )
-                }
-            </div>
-        );
+        if(sections)
+            return (
+                <div>
+                    {
+                        sections.map(section => {
+                                return (
+                                    <section key={key++} className={section.config.background}>
+                                        {sectionImage(section)}
+                                        <div className={"section-content"}>
+                                            {sectionContent(section)}
+                                        </div>
+                                    </section>
+                                )
+                            }
+                        )
+                    }
+                </div>
+            );
+        return ""
     }
 }
 
