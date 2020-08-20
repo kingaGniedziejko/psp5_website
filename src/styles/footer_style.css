@@ -143,6 +143,10 @@
         text-align: center;
     }
 
+    .footer #data {
+        width: 100%;
+    }
+
     .footer #top #contact #labels  {
         display: none;
     }

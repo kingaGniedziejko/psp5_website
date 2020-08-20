@@ -80,7 +80,6 @@ export class Documents extends Component {
                                                     filteredDocuments.map(filteredDocument => {
                                                     return (
                                                         <Attachment key={filteredDocument.key}
-                                                                    className={"post-attachment"}
                                                                     title={filteredDocument.name}
                                                                     url={filteredDocument.url}/>
                                                     )})

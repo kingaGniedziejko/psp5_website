@@ -8,7 +8,7 @@ export class Attachment extends Component {
         return (
             <a className={"attachment " + className} href={url} rel={"noopener noreferrer"} target={"_blank"}>
                 <p>{title}</p>
-                 <IconDownload />
+                <IconDownload />
             </a>
         );
     }

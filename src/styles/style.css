@@ -8,8 +8,8 @@
     --accent-1: rgb(65, 111, 216);
     /*--accent-1: rgb(0, 82, 165);// <- podoba mi sie ten */
     --accent-1-light: rgb(122, 158, 239);
-    --accent-1-extra-light: rgb(164, 190, 238);
-    --accent-1-faded: rgba(65, 111, 216, 0.82);
+    --accent-1-extra-light: rgb(195, 215, 252);
+    --accent-1-faded: rgba(65, 111, 216, 0.36);
     --accent-2: rgb(238, 204, 35);
     --accent-2-light: rgb(241, 218, 105);
     --accent-2-lighter: rgb(238, 225, 160);
@@ -26,6 +26,7 @@
 
 html {
     min-height: 100vh;
+    -webkit-text-size-adjust: 100%;
 }
 body {
     font-family: "Nunito", sans-serif;
@@ -163,21 +164,56 @@ a.attachment{
     text-decoration: none;
 }
 
+
 a.attachment p{
     font-size: smaller;
     margin: 0 10px 0 0;
     display: inline-block;
+    text-align: left;
     color: var(--font-dark);
 
 }
 
 a.attachment svg {
     height: 1.2em;
-    width: auto;
+    width: 1.2em;
 }
 
 
 a.attachment:hover *{
+    color: var(--accent-1);
+    fill: var(--accent-1);
+}
+
+a.link {
+    margin: 10px 0;
+    padding: 5px 10px;
+    background-color: var(--accent-1-extra-light);
+    color: var(--font-dark);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+}
+
+a.link p{
+    font-size: smaller;
+    margin: 0 10px 0 0;
+    display: inline-block;
+    text-align: left;
+    color: var(--font-dark);
+    text-decoration: underline;
+
+}
+
+a.link svg {
+    height: 1.2em;
+    width: 1.2em;
+}
+
+
+a.link:hover *{
     color: var(--accent-1);
     fill: var(--accent-1);
 }
@@ -195,12 +231,12 @@ a.attachment:hover *{
     height: 1.2em;
     width: auto;
 }
+
 .image-button:hover * {
     color: var(--accent-2);
     fill: var(--accent-2);
     stroke: var(--accent-2);
 }
-
 
 #spinner-container {
     width: 100%;

@@ -36,11 +36,11 @@ export const Footer = () => (
                         </div>
 
                         <div id={"data"}>
-                            <p className={"contact-data"}><a className={"inline-label"}>(Adres) </a>ul. Majora Hubala 2, 45-267 Opole</p>
-                            <p className={"contact-data"}><a className={"inline-label"}>(Tel) </a><a type={"tel"}>77 545 32 23</a>, <a type={"tel"}>77 545 32 24</a></p>
-                            <p className={"contact-data"}><a className={"inline-label"}>(Fax) </a>77 40 30 850</p>
-                            <p className={"contact-data"}><a className={"inline-label"}>(Mail) </a><a type={"email"}>psp5@psp5.opole.pl</a></p>
-                            <p className={"contact-data"}><a className={"inline-label"}>(NIP) </a>754 315 63 13</p>
+                            <p className={"contact-data"}><span className={"inline-label"}>(Adres) </span>ul. Majora Hubala 2, 45-267 Opole</p>
+                            <p className={"contact-data"}><span className={"inline-label"}>(Tel) </span><a type={"tel"}>77 545 32 23</a>, <a type={"tel"}>77 545 32 24</a></p>
+                            <p className={"contact-data"}><span className={"inline-label"}>(Fax) </span>77 40 30 850</p>
+                            <p className={"contact-data"}><span className={"inline-label"}>(Mail) </span><a type={"email"}>psp5@psp5.opole.pl</a></p>
+                            <p className={"contact-data"}><span className={"inline-label"}>(NIP) </span>754 315 63 13</p>
                         </div>
                    </div>
 
@@ -81,8 +81,8 @@ export const Footer = () => (
 
                 <div id={"authors"} className={"footer-column"}>
                     <p>Designed by: K. Gniedziejko & I. Hupało</p>
-                    <p className={"email"}>gniedziejko.kinga@gmail.com</p>
-                    <p className={"email"}>iga.hupalo@gmail.com</p>
+                    <p>gniedziejko.kinga@gmail.com</p>
+                    <p>iga.hupalo@gmail.com</p>
                 </div>
             </div>
         </div>

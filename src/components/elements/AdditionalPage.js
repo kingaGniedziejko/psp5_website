@@ -2,15 +2,18 @@ import React, {Component} from "react";
 import Helmet from "react-helmet";
 import SectionImage from "./SectionImage";
 import Attachment from "./Attachment";
+import Link from "./Link";
 import "../../styles/additional_page_style.css"
+import PostDisplay from "./PostDisplay";
 
 export class AdditionalPage extends Component {
 
     render() {
         const sections = this.props.page.acf.sections;
+        const hasPostDisplay = this.props.page.acf.has_post_display;
 
         const sectionImage = (section) => {
-            if(section.section_image)
+            if(section.section_image && section.section_image !== "")
                 return (
                     <SectionImage image={section.section_image} />
                 )
@@ -20,7 +23,7 @@ export class AdditionalPage extends Component {
             let key = 0
             return (
                 modules.map((module) => {
-                    if (module)
+                    if (module && module !== "")
                         return (
                             <div key={key++}>
                                 <h1 dangerouslySetInnerHTML={{__html: module.header}}/>
@@ -33,28 +36,22 @@ export class AdditionalPage extends Component {
 
         const attachments = (attachments) => {
             return (
-                <div className={"attachments"}>
-                    {
-                        attachments.map((attachment) => {
-                        if (attachment)
-                            return (
-                                <Attachment key={attachment.attachment.id} className={"attachment"}
-                                            title={attachment.attachment.title} url={attachment.attachment.url}/>
-                            )
-                        })
-                    }
-                </div>
-
+                attachments.map((attachment) => {
+                    if (attachment && attachment.attachment !== "")
+                        return (
+                            <Attachment key={attachment.attachment.id} className={"attachment"}
+                                        title={attachment.attachment.title} url={attachment.attachment.url}/>
+                        )
+                })
             )
         }
 
         const links = (links) => {
             return (
                 links.map((link) => {
-                    if (link)
+                    if (link && link.link !== "")
                         return (
-                            <div></div>
-                            // <Link key={link.link.id} className={"attachment"} title={link.link.title} url={link.link.url}/>
+                            <Link key={link.link.id} className={"attachment"} title={link.link.title} url={link.link.url}/>
                         )
                 })
             )
@@ -81,8 +78,11 @@ export class AdditionalPage extends Component {
             return(
                 <div className={"text-container"}>
                     {content.modules ? modules(content.modules) : ""}
-                    {content.attachments ? attachments(content.attachments) : ""}
-                    {content.links ? links(content.links) : ""}
+                    <div className={"additions"}>
+                        {content.attachments ? attachments(content.attachments) : ""}
+                        {content.links ? links(content.links) : ""}
+                    </div>
+
                 </div>
 
             )
@@ -90,12 +90,14 @@ export class AdditionalPage extends Component {
 
         const sectionContent = (section) => {
             if(section.config.layout.toString() === "one_column") {
+                console.log("tu")
                 return (
                     <div className={"one-column"}>
                         {content(section.one_column_content)}
                     </div>
                 )
-            } else {
+            }
+            if(section.config.layout.toString() === "two_column") {
                 return (
                     <div className={`two-column ${columnClass(section.two_column_content)}`}>
                         {column(section.two_column_content.left_column)}
@@ -124,6 +126,7 @@ export class AdditionalPage extends Component {
                 <div>
                     {
                         sections.map(section => {
+                            console.log(section)
                                 return (
                                     <section key={key++} className={section.config.background}>
                                         {sectionImage(section)}
@@ -135,6 +138,15 @@ export class AdditionalPage extends Component {
                             }
                         )
                     }
+                    {
+                        hasPostDisplay !== undefined && hasPostDisplay ?
+                            <section key={key++}>
+                                <h1 dangerouslySetInnerHTML={{__html: this.props.page.acf.posts.header}}/>
+                                <PostDisplay postCategories={[this.props.page.acf.posts.post_category.slug]} postsCount={3} />
+                            </section>
+                         : ""
+                    }
+
                 </div>
             );
         return ""
