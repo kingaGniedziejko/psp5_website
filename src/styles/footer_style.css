@@ -21,6 +21,7 @@
     background-color: var(--accent-1-light);
     color: var(--white-1);
     padding: 20px;
+    box-sizing: border-box;
 }
 
 .footer-container {
@@ -28,7 +29,6 @@
     margin: 0 auto;
     display: flex;
     flex-direction: row;
-    vertical-align: center;
 }
 
 .footer .footer-column {
