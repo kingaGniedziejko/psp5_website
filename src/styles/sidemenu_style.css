@@ -88,6 +88,7 @@
         flex-direction: column;
         padding-top: 0.3em;
         padding-bottom: 0.5em;
+        font-size: 0.9em;
     }
 
     .side-menu-item .submenu-item {
