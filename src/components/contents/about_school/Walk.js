@@ -99,7 +99,10 @@ export class Walk extends Component {
                         <div className={"section-container"}>
                             <h1 dangerouslySetInnerHTML={{__html: header}}/>
                             <div className={"interactive-photo-container"}>
-                                <img src={interactivePhoto.url}/>
+                                <figure>
+                                    <img src={interactivePhoto.url}/>
+
+
 
                                 <svg id="outlines" width="3071" height="2128" viewBox="0 0 3071 2128">
                                         <path id="stolowka" onClick={(e) => this.handleClicked(e)}
@@ -177,6 +180,7 @@ export class Walk extends Component {
                                 <div className={"dim"}>
                                     <h1>Kliknij<br/>budynek</h1>
                                 </div>
+                                </figure>
 
                             </div>
 

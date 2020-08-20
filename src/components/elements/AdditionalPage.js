@@ -23,7 +23,7 @@ export class AdditionalPage extends Component {
             let key = 0
             return (
                 modules.map((module) => {
-                    if (module && module !== "")
+                    if (module)
                         return (
                             <div key={key++}>
                                 <h1 dangerouslySetInnerHTML={{__html: module.header}}/>
@@ -47,11 +47,12 @@ export class AdditionalPage extends Component {
         }
 
         const links = (links) => {
+            let key = 0
             return (
                 links.map((link) => {
                     if (link && link.link !== "")
                         return (
-                            <Link key={link.link.id} className={"attachment"} title={link.link.title} url={link.link.url}/>
+                            <Link key={key++} className={"attachment"} title={link.link.title} url={link.link.url}/>
                         )
                 })
             )
