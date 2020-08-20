@@ -29,8 +29,6 @@ export class App extends Component {
 
     render (){
         const { menuItems, isLoaded } = this.state;
-        // const BrowserHistory = require('react-router/lib/BrowserHistory').default;
-
 
         if (isLoaded){
             global.config.menuItems = menuItems;

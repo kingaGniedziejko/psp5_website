@@ -1,11 +1,12 @@
 import React, {Component} from "react";
-import axios from "axios";
 import Moment from "react-moment";
-import Attachment from "./Attachment";
 import ImageGallery from "react-image-gallery";
 import Helmet from "react-helmet";
+import {withRouter} from 'react-router-dom'
+
+import axios from "axios";
 import Spinner from "./Spinner";
-import {BrowserRouter, Link} from "react-router-dom";
+import Attachment from "./Attachment";
 
 import "../../styles/image_gallery_style.css";
 import "../../styles/post_page_style.css";
@@ -50,7 +51,6 @@ export class PostPageSub extends Component {
         const {title, date, acf} = this.props.post;
         const {text, attachments} = acf;
         const {isGalleryLoaded, gallery} = this.state;
-        // const BrowserHistory = require('react-router/lib/BrowserHistory').default;
 
         let images = [];
         gallery.forEach(elem => {
@@ -59,8 +59,6 @@ export class PostPageSub extends Component {
                 thumbnail: elem.media_details.sizes.thumbnail.source_url
             })
         })
-
-        console.log(this);
 
         return (
             <div className={"content post-page photoless-content"}>
@@ -95,12 +93,11 @@ export class PostPageSub extends Component {
                             </div>
                         </div>
                     </div>
-                    {/*<Link to={"/"}><button className={"button-accent-2"}>Powrót do strony głównej</button></Link>*/}
-                    {/*<button className={"button-accent-2"} onClick={this.props.history}>Powrót</button>*/}
+                    <button className={"button-accent-2"} onClick={this.props.history.goBack}>Powrót</button>
                 </div>
             </div>
         );
     }
 }
 
-export default PostPageSub;
+export default withRouter(PostPageSub);

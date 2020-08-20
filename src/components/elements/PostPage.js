@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import axios from "axios";
 import PostPageSub from "./PostPageSub";
 import Spinner from "./Spinner";
-import {Redirect} from "react-router-dom";
 import ErrorNotFound from "./ErrorNotFound";
 
 
