@@ -3,6 +3,7 @@ import axios from "axios";
 import PostPageSub from "./PostPageSub";
 import Spinner from "./Spinner";
 import {Redirect} from "react-router-dom";
+import ErrorNotFound from "./ErrorNotFound";
 
 
 export class PostPage extends Component {
@@ -46,7 +47,7 @@ export class PostPage extends Component {
             if (isLoaded) {
                 return <PostPageSub post={post} gallery={gallery}/>;
             } else
-                return <Redirect to={"/404/"}/>;
+                return <ErrorNotFound/>;
         }
         return <Spinner/>;
     }
