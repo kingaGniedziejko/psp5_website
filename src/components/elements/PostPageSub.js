@@ -60,16 +60,14 @@ export class PostPageSub extends Component {
         })
 
         return (
-            <div className={"content post-page"}>
+            <div className={"content post-page photoless-content"}>
                 <Helmet>
                     <title>{global.config.mainTitle + " " + title.rendered}</title>
                 </Helmet>
                 <div className={"section-container"}>
                     <div className={"image-gallery-container"}>
-                        { isGalleryLoaded?
-                            (images.length === 1 ?
-                                <ImageGallery items={images} additionalClass={"single"}/>
-                                : <ImageGallery items={images}/>)
+                        { isGalleryLoaded ?
+                            <ImageGallery items={images} additionalClass={images.length === 1 ? "single" : ""} useBrowserFullscreen={false}/>
                             : <Spinner/>
                         }
                     </div>

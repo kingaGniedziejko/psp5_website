@@ -26,6 +26,7 @@ div>div.image-gallery .fullscreen {
     /*flex-direction: column;*/
     /*align-items: center;*/
     /*justify-content: center;*/
+    /*z-index: 20;*/
 }
 
 div>div.image-gallery .fullscreen img.image-gallery-image {

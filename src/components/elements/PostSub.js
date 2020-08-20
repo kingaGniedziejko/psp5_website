@@ -55,8 +55,6 @@ export class PostSub extends Component {
             shortHeight = this.state.descHeight;
         }
 
-        // console.log(document.getElementById(this.props.post.id));
-
         this.setState({
             shortHeight: shortHeight,
             contentWidth: document.getElementById(this.props.post.id) !== null ?
