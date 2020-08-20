@@ -22,17 +22,6 @@ div>div.image-gallery.single .image-gallery-thumbnails-wrapper *{
     z-index: 0;
 }
 
-div>div.image-gallery .fullscreen {
-    /*height: 100vh;*/
-    /*width: 100vw;*/
-    /*position: fixed;*/
-    /*display: flex;*/
-    /*flex-direction: column;*/
-    /*align-items: center;*/
-    /*justify-content: center;*/
-    /*z-index: 20;*/
-}
-
 div>div.image-gallery .fullscreen img.image-gallery-image {
 
     /*height: auto !important;*/

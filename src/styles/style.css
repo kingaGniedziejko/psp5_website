@@ -38,7 +38,6 @@ body {
     background-color: var(--white-1);
     color: var(--font-dark);
     font-size: 0.9em;
-    /*overflow: auto;*/
 }
 
 @media (max-width: 600px) {
@@ -174,6 +173,7 @@ a.attachment p{
 a.attachment svg {
     height: 1.2em;
     width: auto;
+    margin-left: 10px;
 }
 
 
