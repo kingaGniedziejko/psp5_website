@@ -2,13 +2,15 @@ import React, {Component} from "react";
 import axios from "axios";
 import PostPageSub from "./PostPageSub";
 import Spinner from "./Spinner";
+import ErrorNotFound from "./ErrorNotFound";
 
 
 export class PostPage extends Component {
     state = {
         post: undefined,
         gallery: "",
-        isLoaded: false
+        isLoaded: false,
+        firstLoad: true,
     }
 
     componentDidMount() {
@@ -24,16 +26,27 @@ export class PostPage extends Component {
             .then(res => this.setState({
                 post: res[0].data,
                 gallery: res[1].data,
-                isLoaded: true
+                isLoaded: true,
+                firstLoad: false
             }))
-            .catch(err => console.log(err));
+            .catch(err => {
+                console.log(err);
+                if (this.state.firstLoad) {
+                    this.setState({
+                        firstLoad: false
+                    })
+                }
+            });
     }
 
     render() {
-        const {post, gallery, isLoaded} = this.state;
+        const {post, gallery, isLoaded, firstLoad} = this.state;
 
-        if (isLoaded) {
-            return <PostPageSub post={post} gallery={gallery}/>;
+        if (!firstLoad){
+            if (isLoaded) {
+                return <PostPageSub post={post} gallery={gallery}/>;
+            } else
+                return <ErrorNotFound/>;
         }
         return <Spinner/>;
     }

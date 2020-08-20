@@ -157,7 +157,6 @@ export class Content extends Component {
                 })
             }
         });
-
         return filteredNews;
     }
 
@@ -172,7 +171,6 @@ export class Content extends Component {
                 }
             }
         });
-
         return menuPages;
     }
 
@@ -235,7 +233,6 @@ export class Content extends Component {
                         })}
 
                         <Route path="/aktualnosci/:newsID/:newsSlug" component={PostPage}/>
-
                         <Route path={"/"} component={ErrorNotFound}/>
                     </Switch>
                 </div>
