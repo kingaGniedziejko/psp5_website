@@ -16,7 +16,7 @@ export class PostSub extends Component {
         isExpanded: false,
         isMobile: false,
         mobileMaxWidth: 636,
-        mobileHeight: 420 + "px",
+        mobileHeight: 490 + "px",
         descHeight: 215 + "px",
         shortHeight: 215 + "px",
         expandedHeight: 1000 + "px",
@@ -35,7 +35,7 @@ export class PostSub extends Component {
         let textHeight = document.getElementById(this.props.post.id).scrollHeight;
 
         if (document.body.offsetWidth <= this.state.mobileMaxWidth){
-            textHeight += 220;
+            textHeight += 350;
         } else {
             textHeight += 40;
         }
@@ -55,13 +55,11 @@ export class PostSub extends Component {
             shortHeight = this.state.descHeight;
         }
 
-        // console.log(document.getElementById(this.props.post.id));
-
         this.setState({
             shortHeight: shortHeight,
             contentWidth: document.getElementById(this.props.post.id) !== null ?
-                                document.getElementById(this.props.post.id).offsetWidth + "px"
-                                : 68 + "%"
+                (document.getElementById(this.props.post.id).offsetWidth + 2) + "px"
+                : 68 + "%"
         })
     }
 

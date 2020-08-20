@@ -60,16 +60,14 @@ export class PostPageSub extends Component {
         })
 
         return (
-            <div className={"content post-page"}>
+            <div className={"content post-page photoless-content"}>
                 <Helmet>
                     <title>{global.config.mainTitle + " " + title.rendered}</title>
                 </Helmet>
                 <div className={"section-container"}>
                     <div className={"image-gallery-container"}>
-                        { isGalleryLoaded?
-                            (images.length === 1 ?
-                                <ImageGallery items={images} additionalClass={"single"}/>
-                                : <ImageGallery items={images}/>)
+                        { isGalleryLoaded ?
+                            <ImageGallery items={images} additionalClass={images.length === 1 ? "single" : ""} useBrowserFullscreen={false}/>
                             : <Spinner/>
                         }
                     </div>
@@ -78,16 +76,34 @@ export class PostPageSub extends Component {
                         <small className={"post-date"}>
                             <Moment locale={"pl"} format="DD MMMM YYYYr. HH:mm">{date}</Moment>
                         </small>
-                        <p className={"post-text"} dangerouslySetInnerHTML={{ __html: text}} />
-                        <div className={"post-attachments"}>
-                            {
-                                attachments !== undefined && attachments !== false?
-                                attachments.map(att => {
-                                    if (att) return <Attachment key={att.id} className={"post-attachment"} title={att.title} url={att.url}/>
-                                    else return "";
-                                }) : ""
-                            }
+                        <div className={"post-text"}>
+                            <div dangerouslySetInnerHTML={{ __html: text}}/>
+                            <div className={"post-attachments"}>
+                                {
+                                    attachments !== undefined && attachments !== false ?
+                                        attachments.map(att => {
+                                            if (att) return <Attachment key={att.attachment.id}
+                                                                        className={"post-attachment"}
+                                                                        title={att.attachment.title}
+                                                                        url={att.attachment.url}/>
+                                            else return "";
+                                        }) : ""
+                                }
+                            </div>
                         </div>
+                        {/*<p className={"post-text"} dangerouslySetInnerHTML={{ __html: text}} />*/}
+                        {/*<div className={"post-attachments"}>*/}
+                        {/*    {*/}
+                        {/*        attachments !== undefined && attachments !== false?*/}
+                        {/*        attachments.map(att => {*/}
+                        {/*            if (att) return <Attachment key={att.attachment.id}*/}
+                        {/*                                        className={"post-attachment"}*/}
+                        {/*                                        title={att.attachment.title}*/}
+                        {/*                                        url={att.attachment.url}/>*/}
+                        {/*            else return "";*/}
+                        {/*        }) : ""*/}
+                        {/*    }*/}
+                        {/*</div>*/}
                     </div>
                     <Link to={"/"}><button className={"button-accent-2"}>Powrót do strony głównej</button></Link>
                 </div>

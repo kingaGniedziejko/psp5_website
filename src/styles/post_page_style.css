@@ -1,31 +1,49 @@
 div.post-page>div.section-container {
     width: 50%;
-    margin: 4em 0;
+    margin: 3em 0;
+}
+div.post-page div.image-gallery-container {
+    width: 100%;
 }
 
-
-div.image-gallery-container>div.image-gallery img.image-gallery-image,
-div.image-gallery-container>img {
+div.post-page div.image-gallery-container>div.image-gallery img.image-gallery-image,
+div.post-page div.image-gallery-container>div.image-gallery.single img.image-gallery-image {
     height: 400px;
     object-fit: cover;
 }
 
-div.post-content-container {
+div.post-page div.post-content-container {
     width: 100%;
-    margin: 30px 0;
+    margin: 1em 0;
 }
 
-div.post-content-container h2.post-title {
+div.post-page div.post-content-container h2.post-title {
+    margin-bottom: 5px;
+}
+
+div.post-page div.post-content-container div.post-text {
     margin-bottom: 0;
 }
 
-div.post-content-container div.post-attachments {
-    margin: 20px 0;
+div.post-page div.post-content-container div.post-text>div:first-of-type>* {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
 }
 
+div.post-page div.post-content-container div.post-attachments {
+    margin: 2.5em 0;
+}
+
+/*div.post-page div.post-content-container div.post-text div.post-attachments a.post-attachment:first-of-type {*/
+/*    margin-top: 1.5em;*/
+/*}*/
+
 @media only screen and (max-width: 1130px) {
-    div.image-gallery-container>div.image-gallery img.image-gallery-image,
-    div.image-gallery-container>img {
+    div.post-page div.image-gallery-container>div.image-gallery img.image-gallery-image,
+    div.post-page div.image-gallery-container>div.image-gallery.single img.image-gallery-image {
         height: 300px;
     }
 }
@@ -37,8 +55,8 @@ div.post-content-container div.post-attachments {
 }
 
 @media only screen and (max-width: 600px) {
-    div.image-gallery-container>div.image-gallery img.image-gallery-image,
-    div.image-gallery-container>img {
+    div.post-page div.image-gallery-container>div.image-gallery img.image-gallery-image,
+    div.post-page div.image-gallery-container>div.image-gallery.single img.image-gallery-image {
         height: 200px;
     }
 }
