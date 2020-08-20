@@ -39,7 +39,7 @@ div>div.image-gallery .fullscreen {
 }
 
 div>div.image-gallery .fullscreen img.image-gallery-image {
-    height: auto !important;
+    height: auto;
     max-height: 80vh;
     max-width: 90vw;
 }

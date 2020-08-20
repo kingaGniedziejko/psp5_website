@@ -1,12 +1,12 @@
 import React, {Component} from "react";
 import Helmet from "react-helmet";
 import SectionImage from "./SectionImage";
+import Attachment from "./Attachment";
+import "../../styles/additional_page_style.css"
 
 export class AdditionalPage extends Component {
 
     render() {
-        // const {image1, title1, text1, image2, title2, text2} = this.props.page.acf;
-
         const sections = this.props.page.acf.sections;
 
         const sectionImage = (section) => {
@@ -16,19 +16,106 @@ export class AdditionalPage extends Component {
                 )
         }
 
-        const content = (section) => {
-            if(section.config.layout === "centered")
-                section.one_column_content.modules.map( module => {
-                    if(module)
+        const modules = (modules) => {
+            let key = 0
+            return (
+                modules.map((module) => {
+                    if (module)
                         return (
-                            <div>
+                            <div key={key++}>
                                 <h1 dangerouslySetInnerHTML={{__html: module.header}}/>
                                 <div dangerouslySetInnerHTML={{__html: module.text}}/>
                             </div>
                         )
                 })
+            )
+        }
+
+        const attachments = (attachments) => {
+            return (
+                <div className={"attachments"}>
+                    {
+                        attachments.map((attachment) => {
+                        if (attachment)
+                            return (
+                                <Attachment key={attachment.attachment.id} className={"attachment"}
+                                            title={attachment.attachment.title} url={attachment.attachment.url}/>
+                            )
+                        })
+                    }
+                </div>
+
+            )
+        }
+
+        const links = (links) => {
+            return (
+                links.map((link) => {
+                    if (link)
+                        return (
+                            <div></div>
+                            // <Link key={link.link.id} className={"attachment"} title={link.link.title} url={link.link.url}/>
+                        )
+                })
+            )
+        }
+
+        const column = (column) => {
+            if(column.config.toString() === "text") {
+                return (
+                    <div>
+                        {content(column)}
+                    </div>
+                )
+            }
+            else {
+                return (
+                    <div>
+                        <img src={column.image.url} alt={column.image.alt}/>
+                    </div>
+                )
+            }
+        }
+
+        const content = (content) => {
+            return(
+                <div className={"text-container"}>
+                    {content.modules ? modules(content.modules) : ""}
+                    {content.attachments ? attachments(content.attachments) : ""}
+                    {content.links ? links(content.links) : ""}
+                </div>
+
+            )
+        }
+
+        const sectionContent = (section) => {
+            if(section.config.layout.toString() === "one_column") {
+                return (
+                    <div className={"one-column"}>
+                        {content(section.one_column_content)}
+                    </div>
+                )
+            } else {
+                return (
+                    <div className={`two-column ${columnClass(section.two_column_content)}`}>
+                        {column(section.two_column_content.left_column)}
+                        {column(section.two_column_content.right_column)}
+                    </div>
+                )
+            }
 
         }
+
+        const columnClass = (content) => {
+            let classNames = "";
+            if(content.left_column.config.toString() === "text" && content.left_column.config.toString() === "text") {
+                classNames += "text-text"
+            }
+
+            return classNames
+        }
+
+
 
         let key = 0
 
@@ -37,42 +124,16 @@ export class AdditionalPage extends Component {
                 {
                     sections.map(section => {
                             return (
-                                <div className={"section"} key={key++}>
+                                <section key={key++} className={section.config.background}>
                                     {sectionImage(section)}
-                                    <div className={"section-container"}>
-                                        {content(section)}
+                                    <div className={"section-content"}>
+                                        {sectionContent(section)}
                                     </div>
-                                </div>
+                                </section>
                             )
                         }
                     )
                 }
-
-
-
-
-
-                {/*<Helmet>*/}
-                {/*    <title>{global.config.mainTitle + " " + title1}</title>*/}
-                {/*</Helmet>*/}
-                {/*<div className={"section section-1"}>*/}
-                {/*    <div className={"photo photo-1"} style={{backgroundImage: `url(${image1.url})`}}/>*/}
-                {/*    <h1>{title1}</h1>*/}
-                {/*    <div dangerouslySetInnerHTML={{__html: text1}}></div>*/}
-                {/*</div>*/}
-
-                {/*{image2 ? (*/}
-                {/*    <div className={"section section-2"}>*/}
-                {/*        <div className={"photo photo-2"} style={{backgroundImage: `url(${image2.url})`}}/>*/}
-                {/*        <h1>{title2}</h1>*/}
-                {/*        <div dangerouslySetInnerHTML={{__html: text2}}></div>*/}
-                {/*    </div>*/}
-                {/*    ): ""*/}
-                {/*}*/}
-
-
-
-
             </div>
         );
     }
