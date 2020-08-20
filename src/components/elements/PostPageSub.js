@@ -5,7 +5,7 @@ import Attachment from "./Attachment";
 import ImageGallery from "react-image-gallery";
 import Helmet from "react-helmet";
 import Spinner from "./Spinner";
-import {Link} from "react-router-dom";
+import {BrowserRouter, Link} from "react-router-dom";
 
 import "../../styles/image_gallery_style.css";
 import "../../styles/post_page_style.css";
@@ -50,6 +50,7 @@ export class PostPageSub extends Component {
         const {title, date, acf} = this.props.post;
         const {text, attachments} = acf;
         const {isGalleryLoaded, gallery} = this.state;
+        // const BrowserHistory = require('react-router/lib/BrowserHistory').default;
 
         let images = [];
         gallery.forEach(elem => {
@@ -58,6 +59,8 @@ export class PostPageSub extends Component {
                 thumbnail: elem.media_details.sizes.thumbnail.source_url
             })
         })
+
+        console.log(this);
 
         return (
             <div className={"content post-page photoless-content"}>
@@ -91,21 +94,9 @@ export class PostPageSub extends Component {
                                 }
                             </div>
                         </div>
-                        {/*<p className={"post-text"} dangerouslySetInnerHTML={{ __html: text}} />*/}
-                        {/*<div className={"post-attachments"}>*/}
-                        {/*    {*/}
-                        {/*        attachments !== undefined && attachments !== false?*/}
-                        {/*        attachments.map(att => {*/}
-                        {/*            if (att) return <Attachment key={att.attachment.id}*/}
-                        {/*                                        className={"post-attachment"}*/}
-                        {/*                                        title={att.attachment.title}*/}
-                        {/*                                        url={att.attachment.url}/>*/}
-                        {/*            else return "";*/}
-                        {/*        }) : ""*/}
-                        {/*    }*/}
-                        {/*</div>*/}
                     </div>
-                    <Link to={"/"}><button className={"button-accent-2"}>Powrót do strony głównej</button></Link>
+                    {/*<Link to={"/"}><button className={"button-accent-2"}>Powrót do strony głównej</button></Link>*/}
+                    {/*<button className={"button-accent-2"} onClick={this.props.history}>Powrót</button>*/}
                 </div>
             </div>
         );
