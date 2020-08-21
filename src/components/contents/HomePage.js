@@ -13,6 +13,8 @@ import SectionImage from "../elements/SectionImage";
 
 export class HomePage extends Component {
     state = {
+        content: undefined,
+        shortcut: undefined,
         isLoaded: false,
         title: global.config.mainTitle + " Strona główna",
         postCategory: "komunikaty",
@@ -40,12 +42,17 @@ export class HomePage extends Component {
     }
 
     componentDidMount() {
-        let contentUrl = global.config.proxy + "/wp-json/wp/v2/built_in_pages?slug=home-page"
+        let contentUrl = global.config.proxy + "/wp-json/wp/v2/built_in_pages?slug=home-page";
+        let shortcutUrl = global.config.proxy + "/wp-json/menus/v1/menus/na-skroty";
         //TODO: lepsze zabezpieczenie tego
 
-        axios.get(contentUrl)
+        let getContent = axios.get(contentUrl);
+        let getShortcut = axios.get(shortcutUrl);
+
+        axios.all([getContent, getShortcut])
             .then(res => this.setState({
-                content: res.data[0].acf,
+                content: res[0].data[0].acf,
+                shortcut: res[1].data.items,
                 isLoaded: true
             }))
             .catch(err => console.log(err));
@@ -53,15 +60,25 @@ export class HomePage extends Component {
 
 
     render() {
-        const {isLoaded, width, title, postCategory, postCount, shortcutElements} = this.state;
+        const {shortcut, isLoaded, width, title, postCategory, postCount} = this.state;
 
         if(isLoaded) {
-            const sections = this.state.content.sections
-            const photo1 = sections[0].images[0].image
-            const photo2 = sections[1].images[0].image
-            const hShortcut = sections[0].lonely_headers[0].text
-            const hAnnouncements= sections[1].lonely_headers[0].text
+            const sections = this.state.content.sections;
+            const photo1 = sections[0].images[0].image;
+            const photo2 = sections[1].images[0].image;
+            const hShortcut = sections[0].lonely_headers[0].text;
+            const hAnnouncements= sections[1].lonely_headers[0].text;
 
+            let shortcutElements = [];
+
+            shortcut.forEach(elem => {
+                shortcutElements.push({
+                    title: elem.title,
+                    url: elem.url,
+                    type: elem.type
+                });
+            })
+            console.log(shortcutElements);
 
             return (
                 <div className={"content"}>
