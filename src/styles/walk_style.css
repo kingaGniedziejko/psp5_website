@@ -141,5 +141,5 @@ path.clicked {
 .area-info .image-gallery-slides img{
     object-fit: cover;
     object-position: center;
-    max-height: 50vw;
+    max-height: 50vh;
 }

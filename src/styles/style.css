@@ -6,7 +6,6 @@
     --white-1: rgb(246, 246, 246);
     --white-2: rgb(242, 242, 242);
     --accent-1: rgb(65, 111, 216);
-    /*--accent-1: rgb(0, 82, 165);// <- podoba mi sie ten */
     --accent-1-light: rgb(122, 158, 239);
     --accent-1-extra-light: rgb(195, 215, 252);
     --accent-1-faded: rgba(65, 111, 216, 0.36);
@@ -67,17 +66,11 @@ body {
 
 .content-container {
     flex: 2;
-    /*z-index: 1;*/
 }
 
 *:focus {
     outline-style: none;
 }
-
-/*ul {*/
-/*    margin: 0;*/
-/*    padding: 0;*/
-/*}*/
 
 button.button-accent-1, button.button-accent-2 {
     height: auto;
@@ -152,10 +145,9 @@ a:active {
     color: var(--accent-1);
 }
 
-a.attachment{
-    margin: 10px 0;
-    padding: 5px 10px;
-    background-color: var(--accent-2-lighter);
+a.attachment, a.link{
+    margin: 0.5em 0;
+    padding: 0.5em 1em;
     color: var(--font-dark);
     display: flex;
     flex-direction: row;
@@ -164,60 +156,42 @@ a.attachment{
     text-decoration: none;
 }
 
+a.link {
+    background-color: var(--accent-1-extra-light);
+}
 
-a.attachment p{
+a.attachment{
+    background-color: var(--accent-2-lighter);
+}
+
+
+a.attachment p, a.link p {
     font-size: smaller;
-    margin: 0 10px 0 0;
+    margin: 0 1em 0 0;
     display: inline-block;
     text-align: left;
     color: var(--font-dark);
 
 }
 
-a.attachment svg {
+a.attachment svg, a.link svg {
     height: 1.2em;
     width: 1.2em;
     margin-left: 10px;
 }
 
-
-a.attachment:hover *{
-    color: var(--accent-1);
-    fill: var(--accent-1);
-}
-
-a.link {
-    margin: 10px 0;
-    padding: 5px 10px;
-    background-color: var(--accent-1-extra-light);
-    color: var(--font-dark);
+a.attachment div, a.link div {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     align-items: center;
-    text-decoration: none;
-}
-
-a.link p{
-    font-size: smaller;
-    margin: 0 10px 0 0;
-    display: inline-block;
-    text-align: left;
-    color: var(--font-dark);
-    text-decoration: underline;
-
-}
-
-a.link svg {
-    height: 1.2em;
-    width: 1.2em;
+    justify-content: center;
 }
 
 
-a.link:hover *{
+a.attachment:hover *, a.link:hover * {
     color: var(--accent-1);
     fill: var(--accent-1);
 }
+
 
 .menu-item-active, .menu-item-active *{
     color: var(--accent-2) !important;

@@ -23,12 +23,11 @@ div>div.image-gallery.single .image-gallery-thumbnails-wrapper *{
 }
 
 div>div.image-gallery .fullscreen img.image-gallery-image {
-
-    /*height: auto !important;*/
-    height: 45vw !important;
-    width: 80vw;
-    max-height: 80vh;
-    max-width: 90vw;
+    /*height: initial !important;*/
+    max-height: 90vh;
+    width: auto !important;
+    max-width: 100%;
+    height: auto !important;
 }
 
 div>div.image-gallery div.image-gallery-thumbnails-wrapper {
@@ -92,6 +91,7 @@ div>div.image-gallery .image-gallery-play-button .image-gallery-svg {
     height: 20px;
     width: 20px;
 }
+
 
 @media screen and (min-width: 500px) {
     div>div.image-gallery .fullscreen .image-gallery-left-nav,

@@ -104,7 +104,7 @@ export class PostSub extends Component {
         gallery.forEach(elem => {
             images.push({
                 fullscreen: elem.media_details.sizes.full.source_url,
-                original: elem.media_details.sizes.medium.source_url,
+                original: elem.media_details.sizes.full.source_url,
                 thumbnail: elem.media_details.sizes.thumbnail.source_url
             })
         })

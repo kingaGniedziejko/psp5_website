@@ -23,15 +23,19 @@ section {
     padding: 1em;
     box-sizing: border-box;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .section-content h1 {
     margin: 1em 0;
 }
 
-.one-column h1 {
+.one-column h1, .two-column>.center h1 {
     text-align: center;
 }
+
 
 .two-column {
     display: flex;
@@ -57,6 +61,11 @@ section {
     width: 100%;
 }
 
+.justify {
+    text-align: justify;
+}
+
+
 .two-column>.center>img {
     object-fit: cover;
     height:auto;
@@ -67,6 +76,33 @@ section {
     display: flex;
     align-items: center;
     flex-direction: column;
+}
+
+table {
+    margin: auto
+}
+
+.alignleft {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.alignright {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.aligncenter {
+    margin: 0;
+}
+
+.alignjustify {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.text-container>div>div {
+    margin-bottom: 1em;
 }
 
 .section-content .additions {
@@ -86,10 +122,23 @@ section {
     .two-column>*:last-child {
         padding-left: 1em;
     }
+
+    .one-column.center {
+        max-width: 60%
+    }
+
+    .one-column:not(.center) .image-gallery {
+        max-width: 60%;
+    }
 }
 
-
 @media (max-width: 600px) {
+    .two-column>*:first-child {
+        padding-bottom: 0.5em;
+    }
+    .two-column>*:last-child {
+        padding-top: 0.5em;
+    }
     .two-column {
         flex-direction: column;
     }
