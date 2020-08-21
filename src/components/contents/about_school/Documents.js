@@ -17,40 +17,33 @@ export class Documents extends Component {
 
     componentDidMount() {
         let contentUrl = global.config.proxy + "/wp-json/wp/v2/built_in_pages?slug=documents"
+        let typesUrl = global.config.proxy + "/wp-json/wp/v2/document_types"
+        let documentsUrl = global.config.proxy + "/wp-json/wp/v2/documents"
         //TODO: lepsze zabezpieczenie tego
 
-        axios.get(contentUrl)
-            .then(res => this.setState({
-                content: res.data[0].acf,
-                isLoaded: true
-            }))
-            .catch(err => console.log(err));
+        let getContent = axios.get(contentUrl);
+        let getTypes = axios.get(typesUrl);
+        let getDocuments = axios.get(documentsUrl);
 
-        let typesUrl = global.config.proxy + "/wp-json/wp/v2/document_types"
-        const documentTypes = {};
-
-        axios.get(typesUrl)
+        axios.all([getContent, getTypes, getDocuments])
             .then(res => {
-                res.data.map(type => {
+                let documentTypes = {};
+                let documents = [];
+
+                res[1].data.forEach(type => {
                     documentTypes[type.id] = type.name;
-                })
-                this.setState({
-                    documentTypes: documentTypes
-                })
-            })
-            .catch(err => console.log(err));
+                });
 
-        let documentsUrl = global.config.proxy + "/wp-json/wp/v2/documents"
-
-        axios.get(documentsUrl)
-            .then(res => {
-                let documents = []
-                res.data.map(document => {
+                res[2].data.forEach(document => {
                     documents.push({key: document.id, name: document.title.rendered, type: document.document_types[0], url: document.acf.document.url})
                 })
+
                 this.setState({
-                    documents: documents
-                })
+                    content: res[0].data[0].acf,
+                    documentTypes: documentTypes,
+                    documents: documents,
+                    isLoaded: true
+                });
             })
             .catch(err => console.log(err));
     }

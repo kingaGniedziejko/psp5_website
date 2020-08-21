@@ -123,7 +123,11 @@ export class Content extends Component {
 
     filterAdditionalPages(menuItems) {
         const {additionalPages} = this.state;
-        return additionalPages.filter(elem => menuItems.some(item => item.url.toLowerCase() === elem.acf.path.toLowerCase()));
+
+        //filter - pages only in menu
+        // return additionalPages.filter(elem => menuItems.some(item => item.url.toLowerCase() === elem.acf.path.toLowerCase()));
+
+        return additionalPages;
     }
 
     filterLinkedPages(menuItems) {
