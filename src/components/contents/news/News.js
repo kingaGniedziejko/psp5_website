@@ -28,7 +28,8 @@ export class News extends Component {
         menuItems.find(elem => elem.title === title).child_items.forEach(element => {
             shortcutElements.push({
                 title: element.title,
-                path: "/" + slug + "/" + element.slug
+                url: "/" + slug + "/" + element.slug,
+                type: "custom"
             });
             postCategories.push(element.slug);
         })

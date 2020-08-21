@@ -24,7 +24,7 @@ export class Documents extends Component {
         let getContent = axios.get(contentUrl);
         let getTypes = axios.get(typesUrl);
         let getDocuments = axios.get(documentsUrl);
-        
+
         axios.all([getContent, getTypes, getDocuments])
             .then(res => {
                 let documentTypes = {};
