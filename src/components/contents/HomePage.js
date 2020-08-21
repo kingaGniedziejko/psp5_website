@@ -20,25 +20,7 @@ export class HomePage extends Component {
         postCategory: "komunikaty",
         postCount: 3,
         width: 0,
-        achievements: [],
-        shortcutElements: [
-            {
-                title: "Kontakt",
-                path: "/kontakt"
-            },
-            {
-                title: "Rekrutacja",
-                path: "/rekrutacja"
-            },
-            {
-                title: "Spacer po szkole",
-                path: "/o-szkole/spacer-po-szkole"
-            },
-            {
-                title: "Kalendarz",
-                path: "/uczen/kalendarz"
-            }
-        ]
+        achievements: []
     }
 
     componentDidMount() {
