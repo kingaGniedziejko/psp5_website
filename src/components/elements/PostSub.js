@@ -122,7 +122,7 @@ export class PostSub extends Component {
 
                     <div className={"post-content-container"} id={id}>
                         <div>
-                            <Link to={"/aktualnosci/" + id + "/" + slug}><h2 className={"post-title"}>{title.rendered}</h2></Link>
+                            <Link to={"/aktualnosci/" + id + "/" + slug}><h2 className={"post-title"} dangerouslySetInnerHTML={{__html: title.rendered}}/></Link>
                             <small className={"post-date"}>
                                 <Moment locale={"pl"} format="DD MMMM YYYYr. HH:mm">{date}</Moment>
                             </small>

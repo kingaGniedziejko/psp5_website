@@ -171,7 +171,7 @@ export class AdditionalPage extends Component {
                         hasPostDisplay !== undefined && hasPostDisplay ?
                             <section>
                                 <h1 dangerouslySetInnerHTML={{__html: this.props.page.acf.posts.header}}/>
-                                <PostDisplay postCategories={[this.props.page.acf.posts.post_category.slug]} postsCount={3} />
+                                <PostDisplay postCategories={[this.props.page.acf.posts.post_category.slug]} postsCount={-1} postsPerPage={3}/>
                             </section>
                          : ""
                     }
