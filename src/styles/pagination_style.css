@@ -28,7 +28,8 @@ ul.pagination li a {
     font-size: 1em;
     text-transform: uppercase;
     border: none;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+    box-shadow: 0 4px 8px 0 rgba(15, 49, 126, 0.2), 0 6px 20px 0 rgba(15, 49, 126, 0.19);
     cursor: pointer;
     background-color: var(--accent-1);
     color: var(--white-1);

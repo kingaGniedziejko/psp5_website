@@ -66,7 +66,7 @@ export class ParentsCouncil extends Component {
                             <div>
                                 <h1 dangerouslySetInnerHTML={{__html: hMembers}}/>
 
-                                <table>
+                                <table className={"no-border-table"}>
                                     <tbody>
                                     {
                                         members.map(member => {return <tr key={key++}><td><strong>{member.position}</strong></td><td>{member.name}</td></tr>})

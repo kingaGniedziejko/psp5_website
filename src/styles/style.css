@@ -88,6 +88,7 @@ button.button-accent-1, button.button-accent-2 {
 
 button.button-accent-1 {
     background-color: var(--accent-1);
+    box-shadow: 0 4px 8px 0 rgba(15, 49, 126, 0.2), 0 6px 20px 0 rgba(15, 49, 126, 0.19);
     color: var(--white-1);
 }
 
@@ -97,6 +98,7 @@ button.button-accent-1:hover {
 
 button.button-accent-2 {
     background-color: var(--accent-2);
+    box-shadow: 0 4px 8px 0 rgba(105, 89, 5, 0.2), 0 6px 20px 0 rgba(105, 89, 5, 0.19);
     color: var(--font-dark);
 }
 
@@ -163,6 +165,7 @@ a.link {
 
 a.attachment{
     background-color: var(--accent-2-lighter);
+    z-index: 1;
 }
 
 

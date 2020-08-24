@@ -221,7 +221,8 @@ div.content div#shortcut a{
     padding: 5px 20px;
     flex: 1;
     background-color: var(--accent-1);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+    box-shadow: 0 4px 8px 0 rgba(15, 49, 126, 0.2), 0 6px 20px 0 rgba(15, 49, 126, 0.19);
     border-radius: 10px;
     color: var(--white-1);
     text-decoration: none;
@@ -229,7 +230,8 @@ div.content div#shortcut a{
 
 div.content div#shortcut a:hover {
     background-color: var(--accent-1-light);
-    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
+    /*box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);*/
+    box-shadow: 0 6px 10px 0 rgba(15, 49, 126, 0.2), 0 8px 22px 0 rgba(15, 49, 126, 0.19);
     color: var(--white-1);
 }
 
@@ -275,7 +277,8 @@ div.content div.vertical-centered>div#shortcut>a{
 
 /* table styling */
 table {
-    overflow-x: auto;
+    /*max-width: 100%;*/
+    margin: 4px;
 }
 
 table,
@@ -284,7 +287,7 @@ table td {
 }
 
 table td {
-    padding: 0.5em 0.7em;
+    padding: 0.3em 0.7em;
 }
 
 table thead {
@@ -300,14 +303,25 @@ table td * {
     margin: 0;
 }
 
-@media (max-width: 560px) {
+@media (max-width: 600px) {
     table,
     table td {
         padding: 0.3em;
         border-width: 2px;
     }
 
-    table td * {
+    table {
+        max-width: 95%;
+        width: 95% !important;
         font-size: 0.7em;
     }
+}
+
+table.no-border-table {
+    font-size: 1em;
+    border: none;
+}
+
+table.no-border-table td {
+    border: none;
 }
