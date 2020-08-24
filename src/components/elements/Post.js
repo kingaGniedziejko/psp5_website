@@ -30,7 +30,7 @@ export class Post extends Component {
             console.log(post)
             return <PostSub post={post} postNr={postNr} gallery={gallery}/>;
         }
-        return "";
+        return <div className={"post post-empty"}/>;
     }
 }
 

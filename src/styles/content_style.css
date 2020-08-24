@@ -273,3 +273,41 @@ div.content div.vertical-centered>div#shortcut>a{
     }
 }
 
+/* table styling */
+table {
+    overflow-x: auto;
+}
+
+table,
+table td {
+    border: 3px solid var(--accent-1-light);
+}
+
+table td {
+    padding: 0.5em 0.7em;
+}
+
+table thead {
+    font-family: "Rowdies", sans-serif;
+    text-align: center;
+}
+
+table thead td{
+    border-color: var(--accent-1);
+}
+
+table td * {
+    margin: 0;
+}
+
+@media (max-width: 560px) {
+    table,
+    table td {
+        padding: 0.3em;
+        border-width: 2px;
+    }
+
+    table td * {
+        font-size: 0.7em;
+    }
+}

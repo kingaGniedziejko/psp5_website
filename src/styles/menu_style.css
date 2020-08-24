@@ -89,6 +89,10 @@
         padding-bottom: 0.5em;
     }
 
+    .submenu-item {
+        white-space: pre-wrap;
+    }
+
     .menu-item:hover:not(:focus) .submenu-item {
         color: var(--accent-1);
         padding: 0.4em 0.7em;
