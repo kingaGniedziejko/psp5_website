@@ -275,7 +275,8 @@ div.content div.vertical-centered>div#shortcut>a{
 
 /* table styling */
 table {
-    overflow-x: auto;
+    max-width: 100%;
+    margin: 2px;
 }
 
 table,
@@ -307,7 +308,8 @@ table td * {
         border-width: 2px;
     }
 
-    table td * {
+    table {
+        max-width: 95%;
         font-size: 0.7em;
     }
 }
