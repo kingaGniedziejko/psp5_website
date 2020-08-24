@@ -15,7 +15,8 @@
         bottom: 0;
         width: 18em;
         background-color: var(--accent-2-light);
-        box-shadow: -10px 0 8px 0 rgba(0, 0, 0, 0.2);
+        /*box-shadow: -10px 0 8px 0 rgba(0, 0, 0, 0.2);*/
+        box-shadow: -8px 0 8px 0 rgba(105, 89, 5, 0.2), -20px 0 20px 0 rgba(105, 89, 5, 0.19);
         z-index: 5;
         padding-top: var(--nav-bar-height);
         overflow-y: scroll;
