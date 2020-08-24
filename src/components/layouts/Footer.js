@@ -25,8 +25,6 @@ export const Footer = () => (
 
                    <h3>Kontakt</h3>
                    <div id={"contact"}>
-
-
                         <div id={"labels"}>
                             <p className={"contact-label"}>Adres:</p>
                             <p className={"contact-label"}>Telefon:</p>
@@ -43,6 +41,7 @@ export const Footer = () => (
                             <p className={"contact-data"}><span className={"inline-label"}>(NIP) </span>754 315 63 13</p>
                         </div>
                    </div>
+                   <h3>Inspektor Ochrony Danych Osobowych</h3>
 
                 </div>
 

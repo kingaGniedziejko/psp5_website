@@ -1,6 +1,6 @@
 .interactive-photo-container {
     margin: 1em 0 1em 0;
-    width: 90%;
+    width: 80%;
     position: relative;
     height: auto;
     max-height: 100vh;
@@ -90,21 +90,21 @@
 }
 
 
-.interactive-photo-container svg path:hover, path.clicked {
+.interactive-photo-container svg path:hover:not(.clicked) {
     stroke-width: 30;
     fill: var(--accent-2-faded);
     stroke: var(--accent-2-light);
 }
 
-path.clicked {
+path.clicked, .interactive-photo-container svg path:active, .interactive-photo-container svg path:focus{
     stroke-width: 30;
+    fill: var(--accent-2-lightly-faded);
     stroke: var(--accent-2-light);
-    fill: var(--accent-2-faded);
 }
 
 .hovered-area {
     height: 3em;
-    width: 20em;
+    width: 23em;
 }
 
 .hovered-area>h1 {

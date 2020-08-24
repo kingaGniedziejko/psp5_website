@@ -179,7 +179,7 @@ export class Content extends Component {
     }
 
     componentDidMount() {
-        axios.get( global.config.proxy + "/wp-json/wp/v2/additional_pages")
+        axios.get( global.config.proxy + "/wp-json/wp/v2/additional_pages?per_page=100")
             .then(res => this.setState({
                 additionalPages: res.data,
                 isAdditionalPagesLoaded: true
