@@ -10,6 +10,7 @@ import Contact from "../contents/Contact";
 import Library from "../contents/about_school/Library";
 import SwimmingPool from "../contents/about_school/SwimmingPool";
 import Documents from "../contents/about_school/Documents";
+import Canteen from "../contents/about_school/Canteen";
 import Anthem from "../contents/about_school/Anthem";
 import Calendar from "../contents/student/Calendar";
 import AdditionalPage from "../elements/AdditionalPage";
@@ -86,9 +87,9 @@ export class Content extends Component {
                 component: MCard
             },
             {
-                title: "mlegitymacja",
+                title: "stołówka",
                 path: "",
-                component: MCard
+                component: Canteen
             },
         ],
         additionalPages: [],

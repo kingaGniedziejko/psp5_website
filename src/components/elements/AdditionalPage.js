@@ -154,6 +154,9 @@ export class AdditionalPage extends Component {
         if(sections)
             return (
                 <div>
+                    <Helmet>
+                        <title>{global.config.mainTitle + " " + this.props.page.title.rendered}</title>
+                    </Helmet>
                     {
                         sections.map((section, index) => {
                                 return (

@@ -112,9 +112,6 @@ export class Walk extends Component {
                                     <path id="sala_gimnastyczna" name="Sala gimnastyczna" onClick={(e) => this.handleClicked(e)}
                                           onMouseOver={(e) => this.handleMouseOver(e)}
                                           onMouseOut={() => this.handleMouseOut()} d="M6.889-.61l313.7-38.022L268.925,283.4l64.262,45.811L-8.3,347.42l-51.2-37.346Z" transform="translate(1042.691 115.436) rotate(30)" fill="rgba(255,245,198,0.39)"/>
-                                    <path id="basen" name="Basen" onClick={(e) => this.handleClicked(e)}
-                                          onMouseOver={(e) => this.handleMouseOver(e)}
-                                          onMouseOut={() => this.handleMouseOut()} d="M5.275-83.529l-14.663-25.4L40.484-227.618,353.541-271.3,313.761-160.11l12.43,37.523L287.244,199.782l40.375,51.492L146.276,267.406,134.554,327,.094,351.8l-59.6-41.731Z" transform="translate(1341.691 268.436) rotate(30)" fill="rgba(255,245,198,0.39)"/>
                                     <path id="amfiteatr" name="Amfiteatr" onClick={(e) => this.handleClicked(e)}
                                           onMouseOver={(e) => this.handleMouseOver(e)}
                                           onMouseOut={() => this.handleMouseOut()} d="M6.889-.61l853.624-14.7L825.974,397.4,519.637,378.2s-42.37,326.487-290.39,302.3S40.982,354.415,40.982,354.415l-81.925-7.573Z" transform="translate(642.691 1325.436) rotate(30)" fill="rgba(255,245,198,0.39)"/>
@@ -130,9 +127,6 @@ export class Walk extends Component {
                                     <path id="biblioteka" name="Biblioteka" onClick={(e) => this.handleClicked(e)}
                                           onMouseOver={(e) => this.handleMouseOver(e)}
                                           onMouseOut={() => this.handleMouseOut()} d="M3.862,7.718,162.517-10.957l11.294,180.48L-2.01,193.964Z" transform="translate(2249.691 690.436) rotate(30)" fill="rgba(255,245,198,0.39)"/>
-                                    <path id="forum" name="Forum" onClick={(e) => this.handleClicked(e)}
-                                          onMouseOver={(e) => this.handleMouseOver(e)}
-                                          onMouseOut={() => this.handleMouseOut()} d="M4383.938,21454.977l76.84,37.068v19.268l120.209,57.3-30.264,46.182,134.093,61.531,14.687,34.008,107.145,54.244,172.192-272.531L4935.658,21464l91.58-154.713-394.922-161.318-237.921,327.709" transform="translate(-2989 -20672)"/>
                                     <path id="pracownie_informatyczne" name="Pracownie informatyczne" onClick={(e) => this.handleClicked(e)}
                                           onMouseOver={(e) => this.handleMouseOver(e)}
                                           onMouseOut={() => this.handleMouseOut()} d="M4937.965,20795.088l-186.784,231.621,59.341,17.252-59.341,73.2,15.909,74.82,183.744,74.379v-62.176l24.751-52.223,52.325,20.07,65.807-110.678-105.968-34.645,68.609-106.43,95.339,34.383,69.176-92.432-33.781-12,33.781-41.453-192.962-68.467-52.325,68.467Z" transform="translate(-2989 -20672)"/>
@@ -151,6 +145,15 @@ export class Walk extends Component {
                                     <path id="pracownie_jezykowe" name="Pracownie językowe" onClick={(e) => this.handleClicked(e)}
                                           onMouseOver={(e) => this.handleMouseOver(e)}
                                           onMouseOut={() => this.handleMouseOut()} d="M5448.552,21337.953l38.959,14.705-29.542,56.072-21.95,83.5,372.3,154.652,26.333-47.248,79.987-184.437-79.987-30.9-34.943-13.434-21.681-43.7-88.478-36.148-175.621-67.336Z" transform="translate(-2992 -20664)"/>
+                                    <path id="forum" name="Forum"  onClick={(e) => this.handleClicked(e)}
+                                          onMouseOver={(e) => this.handleMouseOver(e)}
+                                          onMouseOut={() => this.handleMouseOut()} d="M4634.475,21168.738l377.4,152.41-85.758,147.768,28.484,12.377L4848.784,21651.7l10.517,73.6-31.3,63.336-128.7-63.336v-63.988l-124.609-55.906,27.458-42.189-130.112-56.91-11.487-25.018-36.319-21.324Z" transform="translate(-2989 -20672)"/>
+                                    <path id="blok_sportowy" name="Blok sportowy"  onClick={(e) => this.handleClicked(e)}
+                                          onMouseOver={(e) => this.handleMouseOver(e)}
+                                          onMouseOut={() => this.handleMouseOut()} d="M-9.121-21.585l323.948-37.76L287.244,199.782l40.375,51.492L146.276,267.406,134.554,327,.094,351.8l-59.6-41.731Z" transform="translate(1341.691 268.436) rotate(30)" fill="rgba(255,245,198,0.39)"/>
+                                    <path id="basen" name="Basen"  onClick={(e) => this.handleClicked(e)}
+                                          onMouseOver={(e) => this.handleMouseOver(e)}
+                                          onMouseOut={() => this.handleMouseOut()} d="M5.275-83.529l-14.663-25.4L40.484-227.618,353.09-276.334,313.761-160.11l12.43,37.523L316.124-71.7-4.989-31.661Z" transform="translate(1341.691 268.436) rotate(30)"/>
                                 </svg>
 
                                 <a href={"https://www.youtube.com/watch?v=gsaEFiQmigs"} className={"source"} rel="noopener noreferrer" target="_blank">źródło</a>

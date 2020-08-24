@@ -42,7 +42,12 @@ export const Footer = () => (
                         </div>
                    </div>
                    <h3>Inspektor Ochrony Danych Osobowych</h3>
-
+                   <div id={"contact"}>
+                       <div id={"data"}>
+                           <p className={"contact-data"}>Agnieszka Halupczok</p>
+                           <p className={"contact-data"}><a type={"email"}>iod@psp5.opole.pl</a></p>
+                       </div>
+                   </div>
                 </div>
 
                 <div id={"emblem"} className={"footer-column"}>

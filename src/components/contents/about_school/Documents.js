@@ -19,7 +19,6 @@ export class Documents extends Component {
         let contentUrl = global.config.proxy + "/wp-json/wp/v2/built_in_pages?slug=documents"
         let typesUrl = global.config.proxy + "/wp-json/wp/v2/document_types"
         let documentsUrl = global.config.proxy + "/wp-json/wp/v2/documents"
-        //TODO: lepsze zabezpieczenie tego
 
         let getContent = axios.get(contentUrl);
         let getTypes = axios.get(typesUrl);

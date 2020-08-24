@@ -54,6 +54,12 @@
     flex-direction: row;
 }
 
+#showcase>a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #navigation-bar #showcase svg{
     margin: 0.5em;
     width: 100px;
@@ -326,11 +332,16 @@
 @media (max-width: 600px) {
 
     #navigation-bar #showcase svg {
-        display: none;
+        margin: 0;
+    }
+
+    #navigation-bar #showcase #school-name {
+        margin-left: 0.6em;
+        font-size: x-small;
+
     }
 
     #navigation-bar #showcase {
-        font-size: x-small;
         margin: 0.5em;
     }
 
