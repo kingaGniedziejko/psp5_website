@@ -3,6 +3,8 @@ import Spinner from "../../elements/Spinner"
 import axios from "axios";
 import Helmet from "react-helmet";
 import SectionImage from "../../elements/SectionImage";
+import ReactHtmlParser from 'react-html-parser';
+import Moment from "react-moment";
 
 
 export class Canteen extends Component {
@@ -39,20 +41,24 @@ export class Canteen extends Component {
 
     fixText(originalText) {
         let text = originalText.toString()
-        text = text.replace(/\s+:/g, ':')
-        text = text.replace(/\s+/g, ' ')
-        text = text.replace(/\s*\(\s/g, ' (')
-        text = text.replace(/[,\s]\)\s*/g, ') ')
-        text = text.replace(/\s*,(?=[^\s])/g, ', ')
-        text = text.replace(/\s*-(?=[^\s])/g, ' - ')
+        console.log(text)
+        text = text.replace(/[ \t]+:/g, ':')
+        text = text.replace(/[ \t]+/g, ' ')
+        text = text.replace(/[ \t]*\([ \t]/g, ' (')
+        text = text.replace(/[, \t]*\)[ \t]*/g, ') ')
+        text = text.replace(/[ \t]*,(?=[^ \t])/g, ', ')
+        text = text.replace(/[ \t]*-(?=[^ \t])/g, ' - ')
+        text = text.replace(/\r\n /g, '\r\n')
 
-        let weekdays = ["PONIEDZIAŁEK", "WTOREK", "ŚRODA", "CZWARTEK", "PIĄTEK"]
+        let weekdays = [new RegExp("poniedziałek.*", 'gi'), new RegExp("wtorek.*", 'gi'), new RegExp("środa.*", 'gi'), new RegExp("czwartek.*", 'gi'), new RegExp("piątek.*", 'gi')]
         let dayMenus = []
+        // text = JSON.stringify(text)
         text = text.split(weekdays[0])
         text = text[1]
 
         for(let day=1; day<6; day++ ) {
             text = text.split(weekdays[day])
+            text[0] = text[0].trim()
             dayMenus.push(text[0])
             if(text.length > 1)
                 text = text[1]
@@ -65,7 +71,7 @@ export class Canteen extends Component {
 
 
         if(this.state.isLoaded) {
-            let weekdays = ["PONIEDZIAŁEK", "WTOREK", "ŚRODA", "CZWARTEK", "PIĄTEK"]
+            let weekdays = ['PONIEDZIAŁEK', 'WTOREK', 'ŚRODA', 'CZWARTEK', 'PIĄTEK']
 
             const {menus} = this.state
 
@@ -83,16 +89,27 @@ export class Canteen extends Component {
                     </Helmet>
                     <div className={"section"}>
                         <SectionImage image={photo}/>
-                        <div className={"section-container centered"}>
+                        <div className={"section-container"}>
                             {
-                                menus.map(menu =>
-                                    menu.content.map((day, index) =>
-                                        <div>
-                                            <h1>{weekdays[index]}</h1>
-                                            <div dangerouslySetInnerHTML={{__html: day}}/>
+                                menus.map((menu) => {
+                                        return (
+                                            <details>
+                                                <summary>
+                                                    <Moment locale={"pl"} format="DD MMMM">{menu.startingDate}</Moment> - <Moment locale={"pl"} format="DD MMMM">{menu.startingDate}</Moment>
+                                                </summary>
+                                                {
+                                                    menu.content.map((day, index) =>
+                                                        <div>
 
-                                        </div>
-                                    )
+                                                            <h1><Moment locale={"pl"} format="dddd" add={{days: index}}>{menu.startingDate}</Moment></h1>
+                                                            <div style={{whiteSpace: "pre-wrap"}}
+                                                                 dangerouslySetInnerHTML={{__html: day}}/>
+                                                        </div>
+                                                    )}
+                                            </details>
+                                        )
+                                    }
+
                                 )
                             }
                         </div>
