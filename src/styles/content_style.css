@@ -318,6 +318,7 @@ table td * {
 }
 
 table.no-border-table {
+    font-size: 1em;
     border: none;
 }
 
