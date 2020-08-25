@@ -54,7 +54,7 @@ export class AdditionalPage extends Component {
                 links.map((link) => {
                     if (link && link.link !== "")
                         return (
-                            <Link key={key++} className={"attachment"} title={link.link.title} url={link.link.url}/>
+                            <Link key={key++} title={link.link.title} url={link.link.url}/>
                         )
                 })
             )
@@ -123,8 +123,6 @@ export class AdditionalPage extends Component {
 
         const sectionContent = (section) => {
             if(section.config.layout.toString() === "one_column") {
-                console.log("tu")
-                console.log(section.config.formatting.map(att => att))
                 return (
                     <div className={`one-column ${section.config.formatting.toString().replace(',',' ')}`}>
                         {content(section.one_column_content)}
@@ -133,10 +131,15 @@ export class AdditionalPage extends Component {
             }
             if(section.config.layout.toString() === "two_column") {
                 return (
-                    <div className={`two-column ${columnClass(section.two_column_content)} ${section.config.formatting.toString().replace(',',' ')}`}>
-                        {column(section.two_column_content.left_column)}
-                        {column(section.two_column_content.right_column)}
+                    <div>
+                        {section.two_column_content.header ? <h1 className={"center"} dangerouslySetInnerHTML={{__html: section.two_column_content.header}}/> : ""}
+                        <div className={`two-column ${columnClass(section.two_column_content)} ${section.config.formatting.toString().replace(',',' ')}`}>
+                            {column(section.two_column_content.left_column)}
+                            {column(section.two_column_content.right_column)}
+                        </div>
                     </div>
+
+
                 )
             }
 

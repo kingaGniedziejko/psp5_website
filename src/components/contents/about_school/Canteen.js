@@ -5,6 +5,8 @@ import Helmet from "react-helmet";
 import SectionImage from "../../elements/SectionImage";
 import ReactHtmlParser from 'react-html-parser';
 import Moment from "react-moment";
+import Attachment from "../../elements/Attachment";
+import Link from "../../elements/Link";
 
 
 export class Canteen extends Component {
@@ -17,7 +19,7 @@ export class Canteen extends Component {
 
     componentDidMount() {
         let contentUrl = global.config.proxy + "/wp-json/wp/v2/built_in_pages?slug=canteen"
-        let menusUrl = global.config.proxy + "/wp-json/wp/v2/menus"
+        let menusUrl = global.config.proxy + "/wp-json/wp/v2/menus?per_page=5"
 
         let getContent = axios.get(contentUrl);
         let getMenus = axios.get(menusUrl);
@@ -26,8 +28,9 @@ export class Canteen extends Component {
             .then(res => {
                 let menus = []
 
+                if(res[1])
                 res[1].data.forEach(menu => {
-                    menus.push({key: menu.id, startingDate: menu.acf.starting_date, content: this.fixText(menu.acf.content)})
+                    menus.push({key: menu.acf.file.id, name: menu.title.rendered, url: menu.acf.file.url})
                 })
 
                 this.setState({
@@ -39,48 +42,20 @@ export class Canteen extends Component {
             .catch(err => console.log(err));
     }
 
-    fixText(originalText) {
-        let text = originalText.toString()
-        console.log(text)
-        text = text.replace(/[ \t]+:/g, ':')
-        text = text.replace(/[ \t]+/g, ' ')
-        text = text.replace(/[ \t]*\([ \t]/g, ' (')
-        text = text.replace(/[, \t]*\)[ \t]*/g, ') ')
-        text = text.replace(/[ \t]*,(?=[^ \t])/g, ', ')
-        text = text.replace(/[ \t]*-(?=[^ \t])/g, ' - ')
-        text = text.replace(/\r\n /g, '\r\n')
-
-        let weekdays = [new RegExp("poniedziałek.*", 'gi'), new RegExp("wtorek.*", 'gi'), new RegExp("środa.*", 'gi'), new RegExp("czwartek.*", 'gi'), new RegExp("piątek.*", 'gi')]
-        let dayMenus = []
-        // text = JSON.stringify(text)
-        text = text.split(weekdays[0])
-        text = text[1]
-
-        for(let day=1; day<6; day++ ) {
-            text = text.split(weekdays[day])
-            text[0] = text[0].trim()
-            dayMenus.push(text[0])
-            if(text.length > 1)
-                text = text[1]
-        }
-        return dayMenus
-    }
-
-
     render() {
 
 
         if(this.state.isLoaded) {
-            let weekdays = ['PONIEDZIAŁEK', 'WTOREK', 'ŚRODA', 'CZWARTEK', 'PIĄTEK']
-
             const {menus} = this.state
-
             const sections = this.state.content.sections
+            const photo1 = sections[0].images[0].image
+            const photo2 = sections[1].images[0].image
+            const header1 = sections[0].lonely_headers[0].text
+            const header2 = sections[1].lonely_headers[0].text
+            const links = sections[0].links
 
-            const photo = sections[0].images[0].image
-
-            const hAllergens = sections[0].modules[0].header
-            const tAllergens = sections[0].modules[0].text
+            const tCanteen = sections[0].modules[0].text;
+            const tMobileSystem = sections[0].modules[1].text;
 
             return (
                 <div className={"content"}>
@@ -88,30 +63,42 @@ export class Canteen extends Component {
                         <title>{global.config.mainTitle + " " + this.state.title}</title>
                     </Helmet>
                     <div className={"section"}>
-                        <SectionImage image={photo}/>
+                        <SectionImage image={photo1}/>
                         <div className={"section-container"}>
-                            {
-                                menus.map((menu) => {
-                                        return (
-                                            <details>
-                                                <summary>
-                                                    <Moment locale={"pl"} format="DD MMMM">{menu.startingDate}</Moment> - <Moment locale={"pl"} format="DD MMMM">{menu.startingDate}</Moment>
-                                                </summary>
-                                                {
-                                                    menu.content.map((day, index) =>
-                                                        <div>
-
-                                                            <h1><Moment locale={"pl"} format="dddd" add={{days: index}}>{menu.startingDate}</Moment></h1>
-                                                            <div style={{whiteSpace: "pre-wrap"}}
-                                                                 dangerouslySetInnerHTML={{__html: day}}/>
-                                                        </div>
-                                                    )}
-                                            </details>
-                                        )
+                           <h1 dangerouslySetInnerHTML={{__html: header1}}/>
+                            <div className={"multicolumn wide"}>
+                                <div>
+                                    <div dangerouslySetInnerHTML={{__html: tCanteen}}/>
+                                    {
+                                        links.map((link, index) => {
+                                            if (link && link.link !== "")
+                                                return (
+                                                    <Link key={index} title={link.link.title}
+                                                          url={link.link.url}/>
+                                                )
+                                        })
                                     }
+                                </div>
+                                <div dangerouslySetInnerHTML={{__html: tMobileSystem}}/>
 
-                                )
-                            }
+                            </div>
+                        </div>
+                    </div>
+                    <div className={"section"}>
+                        <SectionImage image={photo2}/>
+                        <div className={"section-container"} style={{minWidth: "40%"}}>
+                            <h1 dangerouslySetInnerHTML={{__html: header2}}/>
+                            <div style={{width: "100%"}}>
+                                {
+                                    menus.length > 0 ?
+                                        menus.map((menu, index) =>
+                                            <Attachment key={index}
+                                                        title={menu.name}
+                                                        url={menu.url}/>
+                                        ) : ""
+                                }
+                            </div>
+
                         </div>
                     </div>
                 </div>

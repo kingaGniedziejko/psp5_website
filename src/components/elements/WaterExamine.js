@@ -5,8 +5,6 @@ export class WaterExamine extends Component {
 
     render() {
         const {examine} = this.props;
-        console.log(examine);
-
         return (
             <div className={"water-examine-element"}>
                 <h3>{examine.title.rendered}</h3>

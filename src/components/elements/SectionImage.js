@@ -20,7 +20,7 @@ export class SectionImage extends Component {
             return image.sizes["header_large"];
         if(width < 2048)
             return image.sizes["header_very_large"];
-        return image
+        return image.url
     }
 
     componentDidMount() {

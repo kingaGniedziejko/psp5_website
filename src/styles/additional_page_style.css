@@ -28,6 +28,10 @@ section {
     align-items: center;
 }
 
+.section-content>div {
+    width: 100%;
+}
+
 .section-content h1 {
     margin: 1em 0;
 }
@@ -44,7 +48,7 @@ section {
 }
 
 .two-column.text-text {
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .two-column>* {

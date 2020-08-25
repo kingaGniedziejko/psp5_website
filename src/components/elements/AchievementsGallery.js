@@ -46,10 +46,10 @@ export class AchievementsGallery extends Component {
     render() {
         var settings = {
             infinite: true,
-            speed: 1000,
-            autoplaySpeed: 3000,
+            speed: 700,
+            autoplaySpeed: 4000,
             slidesToShow: 7,
-            slidesToScroll: 7,
+            slidesToScroll: 1,
             autoplay: true,
             swipeToSlide: true,
             arrows: false,
@@ -58,21 +58,18 @@ export class AchievementsGallery extends Component {
                     breakpoint: 1500,
                     settings: {
                         slidesToShow: 5,
-                        slidesToScroll: 5,
                     }
                 },
                 {
                     breakpoint: 700,
                     settings: {
                         slidesToShow: 3,
-                        slidesToScroll: 3,
                     }
                 },
                 {
                     breakpoint: 600,
                     settings: {
                         slidesToShow: 2,
-                        slidesToScroll: 2
                     }
                 }
             ]

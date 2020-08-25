@@ -48,7 +48,6 @@ export class SideMenu extends Component {
         this.setState({
             isSideMenuOpen: false
         }, () => {
-            console.log("tu2")
             this.props.mutateSideMenu();
         })
     }

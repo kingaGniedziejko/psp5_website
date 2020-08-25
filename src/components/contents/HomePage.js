@@ -60,7 +60,6 @@ export class HomePage extends Component {
                     type: elem.type
                 });
             })
-            console.log(shortcutElements);
 
             return (
                 <div className={"content"}>

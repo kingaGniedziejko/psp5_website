@@ -7,11 +7,9 @@ import "../../styles/content_style.css"
 import ErrorNotFound from "../elements/ErrorNotFound";
 import HomePage from "../contents/HomePage";
 import Contact from "../contents/Contact";
-import Library from "../contents/about_school/Library";
 import SwimmingPool from "../contents/about_school/SwimmingPool";
 import Documents from "../contents/about_school/Documents";
 import Canteen from "../contents/about_school/Canteen";
-import Anthem from "../contents/about_school/Anthem";
 import Calendar from "../contents/student/Calendar";
 import AdditionalPage from "../elements/AdditionalPage";
 import NewsPage from "../contents/news/NewsPage";
@@ -47,11 +45,6 @@ export class Content extends Component {
                 component: Contact
             },
             {
-                title: "biblioteka",
-                path: "",
-                component: Library
-            },
-            {
                 title: "dokumenty",
                 path: "",
                 component: Documents
@@ -60,11 +53,6 @@ export class Content extends Component {
                 title: "spacer po szkole",
                 path: "",
                 component: Walk
-            },
-            {
-                title: "hymn szkoły",
-                path: "",
-                component: Anthem
             },
             {
                 title: "kalendarz",

@@ -27,7 +27,6 @@ export class Post extends Component {
         const {post, postNr} = this.props;
 
         if (isLoaded) {
-            console.log(post)
             return <PostSub post={post} postNr={postNr} gallery={gallery}/>;
         }
         return <div className={"post post-empty"}/>;
