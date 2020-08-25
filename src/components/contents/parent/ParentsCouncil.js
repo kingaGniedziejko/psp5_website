@@ -95,7 +95,7 @@ export class ParentsCouncil extends Component {
                         <SectionImage image={photo2}/>
 
                         <h1 dangerouslySetInnerHTML={{__html: hNews}}/>
-                        <PostDisplay postCategories={["rada-rodzicow"]} postsCount={3} />
+                        <PostDisplay postCategories={["rada-rodzicow"]} postsCount={-1} postsPerPage={3}/>
 
                     </div>
                 </div>
