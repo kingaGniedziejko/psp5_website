@@ -63,53 +63,60 @@ export class PostSub extends Component {
         })
     }
 
-    componentDidMount() {
-        const {image_gallery} = this.props.gallery;
-
-        if (image_gallery !== null){
-            let galleryArray = image_gallery.split(",");
-
-            if(galleryArray.length !== 0) {
-                let getGalleryArray = [];
-                let galleryImages = [];
-
-                galleryArray.forEach(elem => {
-                    getGalleryArray.push(axios.get(global.config.proxy + "/wp-json/wp/v2/media/" + elem));
-                })
-
-                axios.all(getGalleryArray).then(axios.spread((...responses) => {
-                    responses.forEach(elem => {
-                        galleryImages.push(elem.data);
-                    })
-                    this.setState({
-                        gallery: galleryImages,
-                        isGalleryLoaded: true,
-                        isLoaded: true
-                    })
-                })).catch(err => console.log(err));
-            }
-        }
-        this.updateDimensions();
-    }
+    // componentDidMount() {
+    //     const {image_gallery} = this.props.gallery;
+    //
+    //     if (image_gallery !== null){
+    //         let galleryArray = image_gallery.split(",");
+    //
+    //         if(galleryArray.length !== 0) {
+    //             let getGalleryArray = [];
+    //             let galleryImages = [];
+    //
+    //             galleryArray.forEach(elem => {
+    //                 getGalleryArray.push(axios.get(global.config.proxy + "/wp-json/wp/v2/media/" + elem));
+    //             })
+    //
+    //             axios.all(getGalleryArray).then(axios.spread((...responses) => {
+    //                 responses.forEach(elem => {
+    //                     galleryImages.push(elem.data);
+    //                 })
+    //                 this.setState({
+    //                     gallery: galleryImages,
+    //                     isGalleryLoaded: true,
+    //                     isLoaded: true
+    //                 })
+    //             })).catch(err => console.log(err));
+    //         }
+    //     }
+    //     this.updateDimensions();
+    // }
 
     render() {
         const {id, title, slug, date, acf} = this.props.post;
-        const {text, attachments} = acf;
-        const {isExpanded, shortHeight, expandedHeight, contentWidth, isGalleryLoaded, gallery, isLoaded} = this.state;
+        const {text, image_gallery, attachments} = acf;
+        const {isExpanded, shortHeight, expandedHeight, contentWidth} = this.state;
 
         const {postNr} = this.props;
         const postDirection = postNr%2;
 
-        let images = [];
-        gallery.forEach(elem => {
-            images.push({
-                fullscreen: elem.media_details.sizes.full.source_url,
-                original: elem.media_details.sizes.full.source_url,
-                thumbnail: elem.media_details.sizes.thumbnail.source_url
-            })
-        })
+        console.log(image_gallery);
 
-        if(isLoaded) {
+        let images = [];
+
+        if (image_gallery !== undefined) {
+            image_gallery.forEach(elem => {
+                if (elem.image) {
+                    images.push({
+                        fullscreen: elem.image.url,
+                        original: elem.image.url,
+                        thumbnail: elem.image.sizes.thumbnail
+                    })
+                }
+            })
+        }
+
+        // if(isLoaded) {
             return (
                 <WindowSizeListener
                     onResize={(windowSize) => {
@@ -150,8 +157,8 @@ export class PostSub extends Component {
                 </div>
                 </WindowSizeListener>
             );
-        }
-        return <div className={"post post-empty"}/>
+        // }
+        // return <div className={"post post-empty"}/>
     }
 }
 
