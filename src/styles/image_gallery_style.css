@@ -47,6 +47,7 @@ div>div.image-gallery div.image-gallery-thumbnails-container button {
     width: 6vw;
     max-height: 45px;
     max-width: 45px;
+    min-width: 40px;
 }
 
 div>div.image-gallery .fullscreen div.image-gallery-thumbnails-container button {

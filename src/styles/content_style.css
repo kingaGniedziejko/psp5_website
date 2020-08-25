@@ -106,6 +106,20 @@ td {
     padding: 0.3em 0.7em
 }
 
+@media (max-width: 1130px) {
+    :not(.thin).photo, :not(thick).photo {
+        height: 200px;
+    }
+
+    .thick.photo {
+        height: 300px;
+    }
+
+    .thin.photo {
+        height: 100px;
+    }
+}
+
 @media (max-width: 600px) {
     .centered {
         width: auto;
@@ -261,17 +275,6 @@ div.content div.vertical-centered>div#shortcut>a{
 @media (max-width: 400px) {
     div.content div.vertical-centered>div#shortcut>a{
         width: 85%;
-    }
-}
-
-@media (max-width: 1130px) {
-    .shortcut-menu-page {
-        padding-top: 4em;
-        padding-bottom: 4em;
-    }
-
-    .photoless-content {
-        padding-top: 4em;
     }
 }
 

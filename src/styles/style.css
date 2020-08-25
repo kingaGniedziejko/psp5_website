@@ -69,6 +69,12 @@ body {
     flex: 2;
 }
 
+@media (max-width: 1130px) {
+    .content-container {
+        margin-top: 4em;
+    }
+}
+
 *:focus {
     outline-style: none;
 }
