@@ -22,6 +22,10 @@ div>div.image-gallery.single .image-gallery-thumbnails-wrapper *{
     z-index: 0;
 }
 
+div>div.image-gallery.fullscreen-modal {
+    padding: 0.5em 0;
+}
+
 div>div.image-gallery .fullscreen img.image-gallery-image {
     /*height: initial !important;*/
     max-height: 85vh;
@@ -48,24 +52,25 @@ div>div.image-gallery div.image-gallery-thumbnails-container button {
     max-height: 45px;
     max-width: 45px;
     min-width: 40px;
+    min-height: 40px;
 }
 
 div>div.image-gallery .fullscreen div.image-gallery-thumbnails-container button {
     flex: 1;
     height: unset;
     width: unset;
-    max-height: 6vw;
-    max-width: 6vw;
+    /*max-height: 6vw;*/
+    /*max-width: 6vw;*/
 }
 
 .image-gallery-thumbnail .image-gallery-thumbnail-inner {
-    max-height: inherit;
-    max-width: inherit;
+    max-height: 100%;
+    max-width: 100%;
 }
 
 .image-gallery-thumbnail .image-gallery-thumbnail-image {
-    max-height: inherit;
-    max-width: inherit;
+    max-height: 100%;
+    max-width: 100%;
     object-fit: cover;
 }
 
