@@ -146,8 +146,7 @@ div.post.post-left button.post-button {
 
 @media only screen and (max-width: 1130px) {
     .news{
-        padding-top: 4em;
-        padding-bottom: 4em;
+        /*padding-bottom: 4em;*/
     }
 }
 
