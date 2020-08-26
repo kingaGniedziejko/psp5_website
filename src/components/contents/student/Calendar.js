@@ -2,10 +2,8 @@ import React, {Component} from "react";
 import Spinner from "../../elements/Spinner"
 
 import "../../../styles/library_style.css"
-import axios from "axios";
 import Helmet from "react-helmet";
 import '../../../config';
-import SectionImage from "../../elements/SectionImage";
 import WindowSizeListener from "react-window-size-listener";
 import PageContent from "../../elements/PageContent";
 

@@ -14,17 +14,18 @@ export class FullscreenModal extends Component {
         this.setState({
             image: this.props.image,
             url: this.props.url,
+            alt: this.props.alt,
             isLoaded: true
         })
     }
 
     render() {
-        const {image, url, isLoaded} = this.state;
+        const {image, url, alt, isLoaded} = this.state;
 
         if (isLoaded) {
             return (
                 <div className={"fullscreen-container"}>
-                    <img src={image}/>
+                    <img src={image} alt={alt}/>
                     <div className="image-button" id={"close-button"}>
                         <IconCross onClick={this.props.closeFullscreen}/>
                     </div>

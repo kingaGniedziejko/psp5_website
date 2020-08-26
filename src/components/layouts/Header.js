@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { withRouter } from "react-router-dom";
+import {withRouter} from "react-router-dom";
 import {CSSTransition} from 'react-transition-group';
 import "../../styles/header_style.css";
 import "../../styles/menu_style.css";
@@ -9,14 +9,14 @@ import WindowSizeListener from 'react-window-size-listener'
 import Menu from "../elements/Menu";
 import SideMenu from "../elements/SideMenu";
 import Burger from "../elements/Burger";
-import { ReactComponent as IconPhone } from '../../images/phone.svg';
-import { ReactComponent as IconMail } from '../../images/mail.svg';
-import { ReactComponent as IconFacebook } from '../../images/facebook.svg';
-import { ReactComponent as IconYoutube } from '../../images/youtube.svg';
-import { ReactComponent as IconSearch } from '../../images/search.svg';
-import { ReactComponent as Logo } from '../../images/logo.svg';
-import { ReactComponent as IconCross } from '../../images/cross.svg';
-import { ReactComponent as IconArrow } from '../../images/arrow.svg';
+import {ReactComponent as IconPhone} from '../../images/phone.svg';
+import {ReactComponent as IconMail} from '../../images/mail.svg';
+import {ReactComponent as IconFacebook} from '../../images/facebook.svg';
+import {ReactComponent as IconYoutube} from '../../images/youtube.svg';
+import {ReactComponent as IconSearch} from '../../images/search.svg';
+import {ReactComponent as Logo} from '../../images/logo.svg';
+import {ReactComponent as IconCross} from '../../images/cross.svg';
+import {ReactComponent as IconArrow} from '../../images/arrow.svg';
 
 
 export class Header extends Component {
@@ -147,17 +147,17 @@ export class Header extends Component {
                                         <div id={"ribbon-contact"}>
                                             <div className={"ribbon-data"}>
                                                 <IconPhone/>
-                                                <a type={"tel"}>77 545 32 23</a>
+                                                <a type={"tel"} href={"tel: 77 545 32 23"}>77 545 32 23</a>
                                             </div>
 
                                             <div className={"ribbon-data"}>
                                                 <IconPhone/>
-                                                <a type={"tel"}>77 545 32 24</a>
+                                                <a type={"tel"} href={"tel: 77 545 32 24"}>77 545 32 24</a>
                                             </div>
 
                                             <div className={"ribbon-data"}>
                                                 <IconMail/>
-                                                <a type={"email"}>psp5@psp5.opole.pl</a>
+                                                <a type={"email"} href={"mailto: psp5@psp5.opole.pl"}>psp5@psp5.opole.pl</a>
                                             </div>
                                         </div>
 

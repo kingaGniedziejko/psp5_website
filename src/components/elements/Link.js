@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import {ReactComponent as IconLink} from '../../images/link.svg';
-import {ReactComponent as IconDownload} from "../../images/download.svg";
 
 
 export class Link extends Component {

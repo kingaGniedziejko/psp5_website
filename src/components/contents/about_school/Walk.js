@@ -1,10 +1,7 @@
 import React, {Component} from "react";
 import Spinner from "../../elements/Spinner"
-import axios from "axios";
 import Helmet from "react-helmet";
-import SectionImage from "../../elements/SectionImage";
 import "../../../styles/walk_style.css"
-import {CSSTransition} from "react-transition-group";
 import "react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from "react-image-gallery";
 import {NavLink} from "react-router-dom";
@@ -13,11 +10,8 @@ import schoolPhoto from '../../../images/photo_school.jpeg'
 import PageContent from "../../elements/PageContent";
 
 
-
 export class Walk extends Component {
-    constructor(props) {
-        super(props)
-    }
+
     state = {
         title: "Spacer po szkole",
         page: undefined,
@@ -53,13 +47,12 @@ export class Walk extends Component {
         if(selected === this.state.selectedArea) return
         let images = []
         if(selected.images)
-            selected.images.map(image => {
+            selected.images.map(image =>
                 images.push({
                     fullscreen: image.image.url,
                     original: image.image.sizes.large,
                     thumbnail: image.image.sizes.thumbnail
-                })
-            })
+                }))
         this.setState({
             selectedArea: selected,
             images: images
@@ -75,8 +68,6 @@ export class Walk extends Component {
             hoveredId: ""
         })
     }
-
-
 
     render() {
         const {images, selectedArea, hoveredName, page} = this.state
@@ -94,7 +85,7 @@ export class Walk extends Component {
                             <div className={"centered"}>
                                 <div className={"interactive-photo-container"}>
                                     <figure>
-                                        <img src={schoolPhoto}/>
+                                        <img src={schoolPhoto} alt={"Zdjęcie szkoły z lotu ptaka"}/>
 
                                         <svg id="outlines" width="3071" height="2128" viewBox="0 0 3071 2128">
                                             <path id="stolowka" name="Stołówka" onClick={(e) => this.handleClicked(e)}

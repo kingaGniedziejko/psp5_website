@@ -179,7 +179,7 @@ export class Content extends Component {
     }
 
     render() {
-        const {isPagesLoaded, pages} = this.state;
+        const {isPagesLoaded} = this.state;
 
         if (isPagesLoaded) {
             const menuItems = this.separateSubmenuMenuItems();

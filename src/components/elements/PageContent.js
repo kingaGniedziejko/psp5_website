@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import Helmet from "react-helmet";
 import SectionImage from "./SectionImage";
 import Attachment from "./Attachment";
 import Link from "./Link";
@@ -32,6 +31,7 @@ export class PageContent extends Component {
                                 <div dangerouslySetInnerHTML={{__html: module.text}}/>
                             </div>
                         )
+                    return ""
                 })
             )
         }
@@ -44,6 +44,7 @@ export class PageContent extends Component {
                             <Attachment key={attachment.attachment.id} className={"attachment"}
                                         title={attachment.attachment.title} url={attachment.attachment.url}/>
                         )
+                    return ""
                 })
             )
         }
@@ -56,6 +57,7 @@ export class PageContent extends Component {
                         return (
                             <Link key={key++} title={link.link.title} url={link.link.url}/>
                         )
+                    return ""
                 })
             )
         }
@@ -65,13 +67,13 @@ export class PageContent extends Component {
                 if(gallery.length !== 0)
                 {
                     let images = []
-                    gallery.map(image => {
+                    gallery.map(image =>
                         images.push({
                             fullscreen: image.image.url,
                             original: image.image.sizes.large,
                             thumbnail: image.image.sizes.thumbnail
                         })
-                    })
+                    )
 
                     return (
                         <div className={"center"}>

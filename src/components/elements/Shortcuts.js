@@ -37,6 +37,7 @@ export class Shortcuts extends Component {
                             <div><h3>{elem.title}</h3></div>
                         </Link>;
                     }
+                    return ""
                 })}
             </div>
         );

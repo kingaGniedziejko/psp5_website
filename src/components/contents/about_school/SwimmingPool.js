@@ -7,7 +7,6 @@ import Spinner from "../../elements/Spinner";
 import WaterExamine from "../../elements/WaterExamine";
 
 import "../../../styles/swimmingpool_style.css"
-import SectionImage from "../../elements/SectionImage";
 import PageContent from "../../elements/PageContent";
 
 export class SwimmingPool extends Component {

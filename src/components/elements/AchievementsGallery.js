@@ -13,12 +13,12 @@ export class AchievementsGallery extends Component {
         achievements: [],
         isFullscreenOpen: false,
         image: 0,
+        alt: "",
         url: ""
     }
 
     componentDidMount() {
         let achievementsUrl = global.config.proxy + "/wp-json/wp/v2/achievements"
-        //TODO: lepsze zabezpieczenie tego
 
         axios.get(achievementsUrl)
             .then(res => this.setState({
@@ -32,6 +32,7 @@ export class AchievementsGallery extends Component {
         this.setState({
             isFullscreenOpen: true,
             image: achievement.acf.image.sizes.large,
+            alt: achievement.acf.image.alt,
             url: achievement.acf.url
         })
     }
@@ -84,7 +85,7 @@ export class AchievementsGallery extends Component {
                             achievements.map(achievement => { return(
                                 <div key={achievement.id}>
                                     <div className={"slider-object-container"}>
-                                        <img className={"slider-object"} src={achievement.acf.image.sizes.medium} onClick={() => this.openFullscreen(achievement)}/>
+                                        <img className={"slider-object"} alt={achievement.acf.image.alt} src={achievement.acf.image.sizes.medium} onClick={() => this.openFullscreen(achievement)}/>
                                     </div>
                                 </div>
                             )})
@@ -95,6 +96,7 @@ export class AchievementsGallery extends Component {
                             isOpen={isFullscreenOpen}
                             image={this.state.image}
                             url={this.state.url}
+                            alt={this.state.alt}
                             closeFullscreen={this.closeFullscreen}/>
                         : ""
                     }

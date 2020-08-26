@@ -3,7 +3,6 @@ import Spinner from "../../elements/Spinner"
 import Attachment from "../../elements/Attachment"
 import axios from "axios";
 import Helmet from "react-helmet";
-import SectionImage from "../../elements/SectionImage";
 import PageContent from "../../elements/PageContent";
 
 
@@ -28,9 +27,7 @@ export class Documents extends Component {
                 let documentTypes = {};
                 let documents = [];
 
-                console.log(res)
                 res[0].data.forEach(type => {
-                    console.log(type)
                     return(documentTypes[type.id] = type.name)
 
                 });
@@ -84,6 +81,7 @@ export class Documents extends Component {
                                                     </div>
                                                 )
                                             }
+                                            return ""
                                         })
                                     }
                                 </div>

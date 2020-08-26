@@ -9,7 +9,6 @@ import axios from "axios";
 import Spinner from "../elements/Spinner";
 import AchievementsGallery from "../elements/AchievementsGallery";
 import SectionImage from "../elements/SectionImage";
-import PageContent from "../elements/PageContent";
 
 
 export class HomePage extends Component {

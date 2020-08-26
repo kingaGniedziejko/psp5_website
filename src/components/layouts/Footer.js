@@ -1,6 +1,6 @@
 import React from "react";
 import "../../styles/footer_style.css"
-import {ReactComponent as LogoBip } from '../../images/bip.svg';
+import {ReactComponent as LogoBip} from '../../images/bip.svg';
 import {ReactComponent as IconLogo} from "../../images/logo.svg";
 import emblem from '../../images/emblem.png'
 import {Link} from "react-router-dom";
@@ -35,9 +35,9 @@ export const Footer = () => (
 
                         <div id={"data"}>
                             <p className={"contact-data"}><span className={"inline-label"}>(Adres) </span>ul. Majora Hubala 2, 45-267 Opole</p>
-                            <p className={"contact-data"}><span className={"inline-label"}>(Tel) </span><a type={"tel"}>77 545 32 23</a>, <a type={"tel"}>77 545 32 24</a></p>
+                            <p className={"contact-data"}><span className={"inline-label"}>(Tel) </span><a type={"tel"} href={"tel: 77 545 32 23"}>77 545 32 23</a>, <a type={"tel"} href={"tel: 77 545 32 24"}>77 545 32 24</a></p>
                             <p className={"contact-data"}><span className={"inline-label"}>(Fax) </span>77 40 30 850</p>
-                            <p className={"contact-data"}><span className={"inline-label"}>(Mail) </span><a type={"email"}>psp5@psp5.opole.pl</a></p>
+                            <p className={"contact-data"}><span className={"inline-label"}>(Mail) </span><a  href={"mailto: psp5@psp5.opole.pl"} type={"email"}>psp5@psp5.opole.pl</a></p>
                             <p className={"contact-data"}><span className={"inline-label"}>(NIP) </span>754 315 63 13</p>
                         </div>
                    </div>
@@ -45,7 +45,7 @@ export const Footer = () => (
                    <div id={"contact"}>
                        <div id={"data"}>
                            <p className={"contact-data"}>Agnieszka Halupczok</p>
-                           <p className={"contact-data"}><a type={"email"}>iod@psp5.opole.pl</a></p>
+                           <p className={"contact-data"}><a href={"mailto: iod@psp5.opole.pl"} type={"email"}>iod@psp5.opole.pl</a></p>
                        </div>
                    </div>
                 </div>

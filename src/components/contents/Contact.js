@@ -2,9 +2,7 @@ import React, {Component} from "react";
 import MapContainer from "../elements/MapContainer";
 import Spinner from "../elements/Spinner"
 import "../../styles/contact_style.css"
-import axios from "axios";
 import Helmet from "react-helmet";
-import SectionImage from "../elements/SectionImage";
 import PageContent from "../elements/PageContent";
 
 
