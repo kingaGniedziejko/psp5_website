@@ -13,8 +13,6 @@ import Canteen from "../contents/about_school/Canteen";
 import Calendar from "../contents/student/Calendar";
 import NewsPage from "../contents/news/NewsPage";
 import News from "../contents/news/News";
-import ParentsCouncil from "../contents/parent/ParentsCouncil";
-import ParentsMeetings from "../contents/parent/ParentsMeetings";
 import MenuPage from "../elements/MenuPage";
 import PostPage from "../elements/PostPage";
 import Walk from "../contents/about_school/Walk";
@@ -179,7 +177,7 @@ export class Content extends Component {
     }
 
     render() {
-        const {isPagesLoaded} = this.state;
+        const {isPagesLoaded, pages} = this.state;
 
         if (isPagesLoaded) {
             const menuItems = this.separateSubmenuMenuItems();
@@ -188,9 +186,11 @@ export class Content extends Component {
             const menuPages = this.createMenuPages();
             const newsPages = this.filterNews(menuItems);
 
-            // console.log(pages);
-            // console.log(loadedPages);
-            // console.log(loadedContents);
+            console.log(pages);
+            console.log(loadedPages);
+            console.log(loadedContents);
+            console.log(menuPages);
+            console.log(newsPages);
 
             return (
                 <div className={"content-container"}>

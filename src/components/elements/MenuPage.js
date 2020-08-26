@@ -3,9 +3,6 @@ import Helmet from "react-helmet";
 import Shortcuts from "./Shortcuts";
 
 export class MenuPage extends Component {
-
-
-
     render() {
         const {menuItem} = this.props;
         const {title} = menuItem;

@@ -9,7 +9,7 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from "react-image-gallery";
 import {NavLink} from "react-router-dom";
 import {isMobile} from 'react-device-detect';
-import schoolPhoto from '../../images/photo_school.png'
+// import schoolPhoto from '../../images/photo_school.png'
 import PageContent from "../../elements/PageContent";
 
 
@@ -93,7 +93,7 @@ export class Walk extends Component {
                         <div className={"section-container"}>
                             <div className={"interactive-photo-container"}>
                                 <figure>
-                                    <img src={schoolPhoto}/>
+                                    {/*<img src={schoolPhoto}/>*/}
 
                                     <svg id="outlines" width="3071" height="2128" viewBox="0 0 3071 2128">
                                         <path id="stolowka" name="Stołówka" onClick={(e) => this.handleClicked(e)}

@@ -32,6 +32,11 @@ export class Shortcuts extends Component {
                             </Link>;
                         }
                     }
+                    if (elem.type === "post_type"){
+                        return <Link to={new URL(elem.url).pathname} key={index}>
+                            <div><h3>{elem.title}</h3></div>
+                        </Link>;
+                    }
                 })}
             </div>
         );
