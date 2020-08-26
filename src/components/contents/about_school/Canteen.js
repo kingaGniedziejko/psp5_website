@@ -27,13 +27,13 @@ export class Canteen extends Component {
             .then(res => {
                 let menus = []
 
-                if(res[1])
-                    res[1].data.forEach(menu => {
+                if(res[0])
+                    res[0].data.forEach(menu => {
                         menus.push({key: menu.acf.file.id, name: menu.title.rendered, url: menu.acf.file.url})
                     })
 
                 this.setState({
-                    content: this.props.page,
+                    page: this.props.page,
                     menus: menus,
                     isLoaded: true
                 });
@@ -55,20 +55,23 @@ export class Canteen extends Component {
 
                     <PageContent page={page}/>
 
-                    <div className={"section"}>
-                        <div className={"section-container"} style={{minWidth: "40%"}}>
-                            <div style={{width: "100%"}}>
-                                {
-                                    menus.length > 0 ?
-                                        menus.map((menu, index) =>
-                                            <Attachment key={index}
-                                                        title={menu.name}
-                                                        url={menu.url}/>
-                                        ) : ""
-                                }
+                    <section>
+                        <div className={"section-content"}>
+                            <div className={"one-column center"}>
+                                <div className={"text-container"} style={{width: "100%"}}>
+                                    {
+                                        menus.length > 0 ?
+                                            menus.map((menu, index) =>
+                                                <Attachment key={index}
+                                                            title={menu.name}
+                                                            url={menu.url}/>
+                                            ) : ""
+                                    }
+                                </div>
+
                             </div>
                         </div>
-                    </div>
+                    </section>
                 </div>
             );
         }

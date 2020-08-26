@@ -11,7 +11,7 @@ export class SectionImage extends Component {
     }
 
     getImageUrl(width)  {
-        const image = this.state.image
+        const image = this.props.image
         if(width < 512)
             return image.sizes["header_small"];
         if(width < 1024)

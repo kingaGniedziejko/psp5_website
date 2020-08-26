@@ -181,7 +181,6 @@ export class Content extends Component {
         const {isPagesLoaded, pages} = this.state;
 
         if (isPagesLoaded) {
-            console.log(pages);
             const menuItems = this.separateSubmenuMenuItems();
 
             const [loadedPages, loadedContents] = this.loadContents();

@@ -22,7 +22,7 @@ export class App extends Component {
                 this.setState({
                     menuItems: res.data.items,
                     isLoaded: true
-                });
+                })
             })
             .catch(err => console.log(err));
     }
