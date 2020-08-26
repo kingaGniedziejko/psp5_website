@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import { withRouter } from "react-router-dom";
 import {CSSTransition} from 'react-transition-group';
 import "../../styles/header_style.css";
 import "../../styles/menu_style.css";
@@ -54,6 +55,19 @@ export class Header extends Component {
         });
     }
 
+    onSearchClick() {
+        let searchPhrase = document.getElementById("input").value;
+        searchPhrase = searchPhrase.replace(/\s+/g, '+');
+
+        this.props.history.push("/szukaj/" + searchPhrase);
+    }
+
+    handleKeyPress = (event) => {
+        if(event.key === 'Enter'){
+            this.onSearchClick();
+        }
+    }
+
     render() {
         const {menuItems} = this.props;
         const {isFullMenuVisible, isBurgerVisible, isLoaded} = this.state
@@ -102,8 +116,8 @@ export class Header extends Component {
                                 <div className={"container"}>
                                     <div id={"spacer"}/>
                                     <div id={"form"}>
-                                        <input id={"input"} type={"search"} placeholder={"Szukaj..."}/>
-                                        <button className={"button-accent-2"}> {this.state.width < 675 ? <IconArrow /> : "Szukaj"} </button>
+                                        <input id={"input"} type={"search"} placeholder={"Szukaj..."} onKeyDown={this.handleKeyPress.bind(this)}/>
+                                        <button className={"button-accent-2"} onClick={this.onSearchClick.bind(this)}> {this.state.width < 675 ? <IconArrow /> : "Szukaj"} </button>
                                     </div>
                                     <div id={"cross-container"}>
                                         <div className="image-button" id={"cross"}>
@@ -202,4 +216,4 @@ export class Header extends Component {
     }
 }
 
-export default Header;
+export default withRouter(Header);
