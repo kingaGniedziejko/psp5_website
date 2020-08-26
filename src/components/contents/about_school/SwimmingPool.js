@@ -58,7 +58,6 @@ export class SwimmingPool extends Component {
         const {title, isLoaded, waterExamine, isExamineLoaded, pageCount, page} = this.state;
 
         if (isLoaded){
-
             let examineContent = <Spinner/>;
 
             if (isExamineLoaded) {

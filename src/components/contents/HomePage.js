@@ -26,12 +26,11 @@ export class HomePage extends Component {
 
     componentDidMount() {
         let shortcutUrl = global.config.proxy + "/wp-json/menus/v1/menus/na-skroty";
-        let getShortcut = axios.get(shortcutUrl);
 
-        axios.all([getShortcut])
+        axios.get(shortcutUrl)
             .then(res => this.setState({
                 content: this.props.page.acf,
-                shortcut: res[1].data.items,
+                shortcut: res.data.items,
                 isLoaded: true
             }))
             .catch(err => console.log(err));

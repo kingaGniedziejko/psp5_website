@@ -24,7 +24,8 @@ export class Content extends Component {
         contents: [
             {
                 path: "/strona-glowna/",
-                component: HomePage
+                component: HomePage,
+                type: "main-page"
             },
             {
                 path: "/aktualnosci/",
@@ -124,7 +125,7 @@ export class Content extends Component {
         let filteredPages = pages;
 
         contents.forEach(content => {
-            if (content.type === undefined) {
+            if (content.type !== "other") {
                 content.page = pages.find(page => (new URL(page.link)).pathname === content.path);
 
                 let index = filteredPages.indexOf(content.page);
@@ -180,13 +181,13 @@ export class Content extends Component {
         const {isPagesLoaded, pages} = this.state;
 
         if (isPagesLoaded) {
+            console.log(pages);
             const menuItems = this.separateSubmenuMenuItems();
 
             const [loadedPages, loadedContents] = this.loadContents();
             const menuPages = this.createMenuPages();
             const newsPages = this.filterNews(menuItems);
 
-            console.log(pages);
             console.log(loadedPages);
             console.log(loadedContents);
             console.log(menuPages);
@@ -197,14 +198,23 @@ export class Content extends Component {
                     <Switch>
 
                         {loadedContents.map((elem, index) => {
-                            if (elem.type !== "other")
-                                return (
-                                    <Route key={index} path={elem.path} exact>
-                                        <elem.component page={elem.page}/>
-                                    </Route>
-                                );
-                            else
-                                return <Route key={index} path={elem.path} exact component={elem.component}/>
+                            switch (elem.type) {
+                                case "main-page":
+                                    return (
+                                        <Route key={index} path={"/"} exact>
+                                            <elem.component page={elem.page}/>
+                                        </Route>
+                                    );
+                                case "other":
+                                    return <Route key={index} path={elem.path} exact component={elem.component}/>
+                                default:
+                                    return (
+                                        <Route key={index} path={elem.path} exact>
+                                            <elem.component page={elem.page}/>
+                                        </Route>
+                                    );
+                            }
+
                         })}
 
                         {loadedPages.map((page, index) => {
