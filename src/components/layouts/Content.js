@@ -19,19 +19,19 @@ import MenuPage from "../elements/MenuPage";
 import PostPage from "../elements/PostPage";
 import Walk from "../contents/about_school/Walk";
 import PageContent from "../elements/PageContent";
+import Spinner from "../elements/Spinner";
 
 export class Content extends Component {
     state = {
-        // homePage: {
-        //     title: "strona główna",
-        //     path: "/strona-glowna/",
-        //     component: HomePage
-        // },
-        news: [],
         contents: [
             {
-                title: "aktualności",
-                component: News
+                path: "/strona-glowna/",
+                component: HomePage
+            },
+            {
+                path: "/aktualności/",
+                component: News,
+                type: "other"
             },
             {
                 path: "/o-szkole/basen/",
@@ -54,18 +54,11 @@ export class Content extends Component {
                 component: Calendar
             },
             {
-                path: "/rodzic/rada-rodzicow/",
-                component: ParentsCouncil
-            },
-            {
-                path: "/rodzic/spotkania-z-rodzicami/",
-                component: ParentsMeetings
-            },
-            {
                 path: "/o-szkole/stolowka/",
                 component: Canteen
             },
         ],
+        news: [],
         pages: [],
         isPagesLoaded: false
     }
@@ -80,7 +73,7 @@ export class Content extends Component {
     }
 
     separateSubmenuMenuItems() {
-        const {menuItems} = this.props;
+        const {menuItems} = global.config;
         let allItems = [];
 
         menuItems.forEach(menuItem => {
@@ -96,67 +89,88 @@ export class Content extends Component {
         return allItems;
     }
 
-    filterPages(menuItems) {
-        const {pages} = this.state;
-
-        //filter - pages only in menu
-        // return additionalPages.filter(elem => menuItems.some(item => item.url.toLowerCase() === elem.acf.path.toLowerCase()));
-
-        return pages;
-    }
-
-    filterLinkedPages(menuItems) {
-        return menuItems.filter(elem => this.isValidUrl(elem.url) && elem.object === "custom")
-    }
-
-    filterContents(menuItems) {
-        const {contents} = this.state;
-        let filteredContents;
-
-        filteredContents = menuItems.filter(item => contents.find(content => content.path === (new URL(item.url)).pathname))
-
-        // filteredContents = contents.filter(elem => menuItems.some(item => item.title.toLowerCase() === elem.title.toLowerCase()));
-        // filteredContents.forEach(elem => {
-        //     elem.path = menuItems.filter((item => item.title.toLowerCase() === elem.title.toLowerCase()))[0].url;
-        // });
-        // filteredContents = filteredContents.filter(elem => !(pagesFiltered.some(item => item.acf.path.toLowerCase() === elem.path.toLowerCase())));
-        // filteredContents = filteredContents.filter(elem => !linkedPagesFiltered.some(item => item.url === elem.url))
-
-        return filteredContents;
-    }
-
-    // filterNews(menuItems) {
-    //     let filteredNews = [];
+    // filterPages(menuItems) {
+    //     const {pages} = this.state;
     //
-    //     menuItems.forEach(item => {
-    //         if (item.object === "category"){
-    //             filteredNews.push({
-    //                 title: item.title,
-    //                 path: "/aktualnosci/" + item.slug,
-    //                 postCategory: item.slug,
-    //                 postsCount: -1
-    //             })
-    //         }
-    //     });
-    //     return filteredNews;
+    //     //filter - pages only in menu
+    //     // return additionalPages.filter(elem => menuItems.some(item => item.url.toLowerCase() === elem.acf.path.toLowerCase()));
+    //
+    //     return pages;
     // }
 
-    // createMenuPages() {
-    //     const {menuItems} = global.config;
-    //     let menuPages = [];
-    //
-    //     menuItems.forEach(item => {
-    //         if (item.child_items !== undefined) {
-    //             if (item.child_items.length !== 0) {
-    //                 menuPages.push(item);
-    //             }
-    //         }
-    //     });
-    //     return menuPages;
+    // filterLinkedPages(menuItems) {
+    //     return menuItems.filter(elem => this.isValidUrl(elem.url) && elem.object === "custom");
     // }
+
+    // filterContents(menuItems) {
+    //     const {contents} = this.state;
+    //     let filteredContents;
+    //
+    //
+    //
+    //     // filteredContents = menuItems.filter(item => contents.find(content => content.path === (new URL(item.url)).pathname))
+    //
+    //     // filteredContents = contents.filter(elem => menuItems.some(item => item.title.toLowerCase() === elem.title.toLowerCase()));
+    //     // filteredContents.forEach(elem => {
+    //     //     elem.path = menuItems.filter((item => item.title.toLowerCase() === elem.title.toLowerCase()))[0].url;
+    //     // });
+    //     // filteredContents = filteredContents.filter(elem => !(pagesFiltered.some(item => item.acf.path.toLowerCase() === elem.path.toLowerCase())));
+    //     // filteredContents = filteredContents.filter(elem => !linkedPagesFiltered.some(item => item.url === elem.url))
+    //
+    //     return filteredContents;
+    // }
+
+    loadContents() {
+        const {contents, pages} = this.state;
+        let filteredContents = [];
+        let filteredPages = pages;
+
+        contents.forEach(content => {
+            if (content.type === undefined) {
+                content.page = pages.find(page => (new URL(page.link)).pathname === content.path);
+
+                let index = filteredPages.indexOf(content.page);
+                if (index !== -1) filteredPages.splice(index, 1);
+            }
+
+            filteredContents.push(content);
+        });
+
+        return [filteredPages, filteredContents];
+    }
+
+    filterNews(menuItems) {
+        let filteredNews = [];
+
+        menuItems.forEach(item => {
+            if (item.object === "category"){
+                filteredNews.push({
+                    title: item.title,
+                    path: "/aktualnosci/" + item.slug,
+                    postCategory: item.slug,
+                    postsCount: -1
+                })
+            }
+        });
+        return filteredNews;
+    }
+
+    createMenuPages() {
+        const {menuItems} = global.config;
+        let menuPages = [];
+
+        menuItems.forEach(item => {
+            if (item.child_items !== undefined) {
+                if (item.child_items.length !== 0) {
+                    menuPages.push(item);
+                }
+            }
+        });
+        return menuPages;
+    }
 
     componentDidMount() {
-        axios.get( global.config.proxy + "/wp-json/wp/v2/subpages")
+        axios.get( global.config.proxy + "/wp-json/wp/v2/subpages?per_page=100")
             .then(res => this.setState({
                 pages: res.data,
                 isPagesLoaded: true
@@ -165,23 +179,35 @@ export class Content extends Component {
     }
 
     render() {
-        const {homePage, isPagesLoaded, contents, pages} = this.state;
+        const {isPagesLoaded} = this.state;
 
         if (isPagesLoaded) {
             const menuItems = this.separateSubmenuMenuItems();
-            // const additionalPagesFiltered = this.filterAdditionalPages(menuItems);
-            // const linkedPagesFiltered = this.filterLinkedPages(menuItems);
-            const contentsFiltered = this.filterContents(menuItems);
-            console.log(contentsFiltered)
-            // const pagesFiltered = menuItems.filter(contentsFiltered)
-            // const newsFiltered = this.filterNews(menuItems);
-            // const menuPages = this.createMenuPages();
+
+            const [loadedPages, loadedContents] = this.loadContents();
+            const menuPages = this.createMenuPages();
+            const newsPages = this.filterNews(menuItems);
+
+            // console.log(pages);
+            // console.log(loadedPages);
+            // console.log(loadedContents);
+
             return (
                 <div className={"content-container"}>
                     <Switch>
-                        {/*<Route key={homePage.title} path={homePage.link} exact component={homePage.component}/>*/}
 
-                        {pages.map((page, index) => {
+                        {loadedContents.map((elem, index) => {
+                            if (elem.type !== "other")
+                                return (
+                                    <Route key={index} path={elem.path} exact>
+                                        <elem.component page={elem.page}/>
+                                    </Route>
+                                );
+                            else
+                                return <Route key={index} path={elem.path} exact component={elem.component}/>
+                        })}
+
+                        {loadedPages.map((page, index) => {
                             return (
                                 <Route key={index} path={(new URL(page.link)).pathname} exact>
                                     <PageContent page={page}/>
@@ -189,32 +215,25 @@ export class Content extends Component {
                             );
                         })}
 
-                        {/*{contentsFiltered.map((elem, index) => {*/}
-                        {/*    return <Route key={index} path={elem.path} exact component={elem.component}/>;*/}
-                        {/*})}*/}
+                        {menuPages.map((elem, index) => {
+                            if (!loadedContents.some(element => element.path === elem.url)) {
+                                return (
+                                    <Route key={index} path={elem.url} exact>
+                                        <MenuPage menuItem={elem}/>
+                                    </Route>
+                                )
+                            }
+                            return "";
+                        })}
 
-                        {/*{newsFiltered.map((elem, index) => {*/}
-                        {/*    return (*/}
-                        {/*        <Route key={index} path={elem.path} exact>*/}
-                        {/*            <NewsPage newsInfo={elem}/>*/}
-                        {/*        </Route>*/}
-                        {/*    )*/}
-                        {/*})}*/}
+                        {newsPages.map((elem, index) => {
+                            return (
+                                <Route key={index} path={elem.path} exact>
+                                    <NewsPage newsInfo={elem}/>
+                                </Route>
+                            )
+                        })}
 
-
-
-                        {/*{menuPages.map((elem, index) => {*/}
-                        {/*    if (contents.some(element => element.title.toLowerCase() === elem.title.toLowerCase())) {*/}
-                        {/*        var customElem = contents.find(contentElem => contentElem.title.toLowerCase() === elem.title.toLowerCase());*/}
-                        {/*        return <Route key={index} path={elem.url} exact component={customElem.component}/>;*/}
-                        {/*    } else {*/}
-                        {/*        return (*/}
-                        {/*            <Route key={index} path={elem.url} exact>*/}
-                        {/*                <MenuPage menuItem={elem}/>*/}
-                        {/*            </Route>*/}
-                        {/*        )*/}
-                        {/*    }*/}
-                        {/*})}*/}
 
                         <Route path="/aktualnosci/:newsID/:newsSlug" component={PostPage}/>
                         <Route path={"/"} component={ErrorNotFound}/>
@@ -224,9 +243,7 @@ export class Content extends Component {
         } else {
             return (
                 <div className={"content-container"}>
-                    {/*<Switch>*/}
-                    {/*    <Route key={homePage.title} path={homePage.path} exact component={homePage.component}/>*/}
-                    {/*</Switch>*/}
+                    <Spinner/>
                 </div>
             );
         }
