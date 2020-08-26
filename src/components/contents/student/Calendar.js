@@ -38,32 +38,35 @@ export class Library extends Component {
 
                     <PageContent page={page}/>
 
-                    <div className={"section"}>
+                    <section>
                         <WindowSizeListener onResize={(windowSize) => {
                             this.setState({
                                 width: windowSize.windowWidth
                             })
                         }}/>
+                        <div className={"section-content centered"}>
                             {
                                 this.state.width > 700 ?
 
-                                <iframe
-                                    src="https://calendar.google.com/calendar/embed?&amp;wkst=2&amp;bgcolor=%23ffffff&amp;ctz=Europe%2FWarsaw&amp;src=a2FsZW5kYXJ6LnBzcC41QGdtYWlsLmNvbQ&amp;src=cGwucG9saXNoI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%234285F4&amp;color=%23D81B60&amp;showCalendars=0&amp;showTitle=0&amp;showDate=1&amp;showPrint=0&amp;showTabs=0&amp;showTz=0&amp;mode=MONTH"
-                                    frameBorder="0"
-                                    style={{border: "solid 3px", borderRadius: ".5em", margin: "1em"}}
-                                    height={"800px"}
-                                    width={"90%"}
-                                    scrolling="no"/>
-                                :
-                                <iframe
-                                    src="https://calendar.google.com/calendar/embed?&amp;wkst=2&amp;bgcolor=%23ffffff&amp;ctz=Europe%2FWarsaw&amp;src=a2FsZW5kYXJ6LnBzcC41QGdtYWlsLmNvbQ&amp;src=cGwucG9saXNoI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%234285F4&amp;color=%23D81B60&amp;showCalendars=0&amp;showTitle=0&amp;showDate=1&amp;showPrint=0&amp;showTabs=0&amp;showTz=0&amp;mode=AGENDA"
-                                    frameBorder="0"
-                                    style={{border: "solid 3px", borderRadius: ".5em", margin: "1em"}}
-                                    height={"800px"}
-                                    width={"90%"}
-                                    scrolling="no"/>
+                                    <iframe
+                                        src="https://calendar.google.com/calendar/embed?&amp;wkst=2&amp;bgcolor=%23ffffff&amp;ctz=Europe%2FWarsaw&amp;src=a2FsZW5kYXJ6LnBzcC41QGdtYWlsLmNvbQ&amp;src=cGwucG9saXNoI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%234285F4&amp;color=%23D81B60&amp;showCalendars=0&amp;showTitle=0&amp;showDate=1&amp;showPrint=0&amp;showTabs=0&amp;showTz=0&amp;mode=MONTH"
+                                        title={"Month Calendar"}
+                                        frameBorder="0"
+                                        style={{border: "solid 3px", borderRadius: ".5em", margin: "1em"}}
+                                        height={"800px"}
+                                        scrolling="no"/>
+                                    :
+                                    <iframe
+                                        src="https://calendar.google.com/calendar/embed?&amp;wkst=2&amp;bgcolor=%23ffffff&amp;ctz=Europe%2FWarsaw&amp;src=a2FsZW5kYXJ6LnBzcC41QGdtYWlsLmNvbQ&amp;src=cGwucG9saXNoI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%234285F4&amp;color=%23D81B60&amp;showCalendars=0&amp;showTitle=0&amp;showDate=1&amp;showPrint=0&amp;showTabs=0&amp;showTz=0&amp;mode=AGENDA"
+                                        title={"Agenda Calendar"}
+                                        frameBorder="0"
+                                        style={{border: "solid 3px", borderRadius: ".5em", margin: "1em"}}
+                                        height={"800px"}
+                                        scrolling="no"/>
                             }
-                    </div>
+                        </div>
+
+                    </section>
                 </div>
             );
         }

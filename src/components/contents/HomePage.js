@@ -64,14 +64,14 @@ export class HomePage extends Component {
                         <title>{title}</title>
                     </Helmet>
 
-                    <div className={"section"}>
+                    <section>
                         <SectionImage image={photo1} type={"thick"}/>
                         <div className={"section-container"}>
                             <h1 dangerouslySetInnerHTML={{__html: hShortcut}}/>
                             <Shortcuts elements={shortcutElements}/>
                         </div>
-                    </div>
-                    <div className={"section section-2"}>
+                    </section>
+                    <section>
                         <SectionImage image={photo2}/>
                         <div className={"section"}>
                             <h1 dangerouslySetInnerHTML={{__html: hAnnouncements}}/>
@@ -79,14 +79,14 @@ export class HomePage extends Component {
                             <Link to={"/aktualnosci/komunikaty"}><button className={"button-accent-1"}>Czytaj więcej</button></Link>
                         </div>
 
-                    </div>
+                    </section>
 
-                    <div className={"section grey"}>
+                    <section className={"grey"}>
                         <h1 dangerouslySetInnerHTML={{__html: hAchievements}}/>
                         <div className={"slider-container"}>
                             <AchievementsGallery />
                         </div>
-                    </div>
+                    </section>
                 </div>
             );
 

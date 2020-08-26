@@ -6,6 +6,17 @@ section {
     align-items: center;
 }
 
+.content-container>*:last-child:not(.content), .content-container>.content>*:last-child{
+    padding-bottom: 3em;
+}
+
+.centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
 .grey {
     background-color: var(--accent-3-light);
 }

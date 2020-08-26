@@ -8,6 +8,13 @@ div.content {
     width: 100%
 }
 
+.centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
 div.content div.section {
     width: 100%;
     display: flex;
@@ -29,15 +36,9 @@ div.content div.section {
     padding: 0.5em 0.5em;
 }
 
-.centered {
-    width: 60%;
-    max-width: 800px;
-    text-align: center;
-}
-
-.centered>div {
-    width: 100%;
-}
+/*.centered>div {*/
+/*    width: 100%;*/
+/*}*/
 
 .multicolumn {
     display: flex;
@@ -225,7 +226,7 @@ div.content div#shortcut {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    margin: 0 15px;
+    margin: 2em 1em;
 }
 
 div.content div#shortcut a{
@@ -323,10 +324,15 @@ table.no-border-table {
     font-size: 1em;
     border: none;
     width: auto;
+    white-space: pre;
 }
 
 table.no-border-table td {
     border: none;
     width: auto;
-    padding: 0.3em 0;
+    height: auto !important;
+
+    padding: 0.3em 0.5em 0.3em 0;
+    vertical-align: top;
+
 }

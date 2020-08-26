@@ -34,12 +34,12 @@ export class Contact extends Component {
 
                     <PageContent page={page} />
 
-                    <div className={"section grey"} style={{paddingBottom: "0"}}>
+                    <section className={"grey"} style={{paddingBottom: 0}}>
                             <div className={"map-container"}>
                                 <MapContainer />
                             </div>
 
-                    </div>
+                    </section>
                 </div>
             );
         }

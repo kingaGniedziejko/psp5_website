@@ -89,9 +89,11 @@ export class SwimmingPool extends Component {
                         <title>{global.config.mainTitle + " " + title}</title>
                     </Helmet>
                     <PageContent page={page}/>
-                    <div className={"section"}>
-                        {examineContent}
-                    </div>
+                    <section>
+                        <div className={"section-content centered"}>
+                            {examineContent}
+                        </div>
+                    </section>
                 </div>
             );
         }
