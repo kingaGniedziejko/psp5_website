@@ -27,7 +27,7 @@ export class Content extends Component {
                 component: HomePage
             },
             {
-                path: "/aktualności/",
+                path: "/aktualnosci/",
                 component: News,
                 type: "other"
             },
@@ -216,7 +216,7 @@ export class Content extends Component {
                         })}
 
                         {menuPages.map((elem, index) => {
-                            if (!loadedContents.some(element => element.path === elem.url)) {
+                            if (!loadedContents.some(element => element.path.slice(0, -1) === elem.url)) {
                                 return (
                                     <Route key={index} path={elem.url} exact>
                                         <MenuPage menuItem={elem}/>
