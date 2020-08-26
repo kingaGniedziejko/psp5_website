@@ -143,3 +143,11 @@ path.clicked, .interactive-photo-container svg path:active, .interactive-photo-c
     object-position: center;
     max-height: 50vh;
 }
+
+
+.area-info .oembed-container {
+    margin: 1em 0;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+}

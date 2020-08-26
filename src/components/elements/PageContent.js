@@ -8,9 +8,10 @@ import PostDisplay from "./PostDisplay";
 import "react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from "react-image-gallery";
 
-export class AdditionalPage extends Component {
+export class PageContent extends Component {
 
     render() {
+        console.log(this.props.page)
         const sections = this.props.page.acf.sections;
         const hasPostDisplay = this.props.page.acf.has_post_display;
 
@@ -82,7 +83,6 @@ export class AdditionalPage extends Component {
 
                     )
                 }
-
         }
 
         const column = (column) => {
@@ -105,12 +105,18 @@ export class AdditionalPage extends Component {
                     gallery(column.gallery)
                 )
             }
+            else if(column.config.toString() === "oembed") {
+                return (
+                    <div dangerouslySetInnerHTML={{__html: column.oembed}}/>
+                )
+            }
         }
 
         const content = (content) => {
             return(
                 <div className={"text-container"}>
                     {content.modules ? modules(content.modules) : ""}
+                    {content.oembed ? <div dangerouslySetInnerHTML={{__html: content.oembed}}/> : ""}
                     {gallery(content.gallery)}
                     <div className={"additions"}>
                         {content.attachments ? attachments(content.attachments) : ""}
@@ -138,8 +144,6 @@ export class AdditionalPage extends Component {
                             {column(section.two_column_content.right_column)}
                         </div>
                     </div>
-
-
                 )
             }
 
@@ -148,8 +152,9 @@ export class AdditionalPage extends Component {
         const columnClass = (content) => {
             let classNames = "";
             if(content.left_column.config.toString() === "text" && content.left_column.config.toString() === "text") {
-                classNames += "text-text"
+                classNames += "text-text "
             }
+            classNames += content.config
 
             return classNames
         }
@@ -157,9 +162,9 @@ export class AdditionalPage extends Component {
         if(sections)
             return (
                 <div>
-                    <Helmet>
-                        <title>{global.config.mainTitle + " " + this.props.page.title.rendered}</title>
-                    </Helmet>
+                    {/*<Helmet>*/}
+                    {/*    <title>{global.config.mainTitle + " " + this.props.page.title.rendered}</title>*/}
+                    {/*</Helmet>*/}
                     {
                         sections.map((section, index) => {
                                 return (
@@ -179,7 +184,7 @@ export class AdditionalPage extends Component {
                                 <h1 dangerouslySetInnerHTML={{__html: this.props.page.acf.posts.header}}/>
                                 <PostDisplay postCategories={[this.props.page.acf.posts.post_category.slug]} postsCount={-1} postsPerPage={3}/>
                             </section>
-                         : ""
+                            : ""
                     }
 
                 </div>
@@ -188,4 +193,4 @@ export class AdditionalPage extends Component {
     }
 }
 
-export default AdditionalPage;
+export default PageContent;

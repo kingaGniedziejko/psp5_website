@@ -7,6 +7,7 @@ import ReactHtmlParser from 'react-html-parser';
 import Moment from "react-moment";
 import Attachment from "../../elements/Attachment";
 import Link from "../../elements/Link";
+import PageContent from "../../elements/PageContent";
 
 
 export class Canteen extends Component {
@@ -47,47 +48,28 @@ export class Canteen extends Component {
 
         if(this.state.isLoaded) {
             const {menus} = this.state
-            const sections = this.state.content.sections
-            const photo1 = sections[0].images[0].image
-            const photo2 = sections[1].images[0].image
-            const header1 = sections[0].lonely_headers[0].text
-            const header2 = sections[1].lonely_headers[0].text
-            const links = sections[0].links
-
-            const tCanteen = sections[0].modules[0].text;
-            const tMobileSystem = sections[0].modules[1].text;
+            // const sections = this.state.content.sections
+            // const photo1 = sections[0].images[0].image
+            // const photo2 = sections[1].images[0].image
+            // const header1 = sections[0].lonely_headers[0].text
+            // const header2 = sections[1].lonely_headers[0].text
+            // const links = sections[0].links
+            //
+            // const tCanteen = sections[0].modules[0].text;
+            // const tMobileSystem = sections[0].modules[1].text;
 
             return (
                 <div className={"content"}>
                     <Helmet>
                         <title>{global.config.mainTitle + " " + this.state.title}</title>
                     </Helmet>
-                    <div className={"section"}>
-                        <SectionImage image={photo1}/>
-                        <div className={"section-container"}>
-                           <h1 dangerouslySetInnerHTML={{__html: header1}}/>
-                            <div className={"multicolumn wide"}>
-                                <div>
-                                    <div dangerouslySetInnerHTML={{__html: tCanteen}}/>
-                                    {
-                                        links.map((link, index) => {
-                                            if (link && link.link !== "")
-                                                return (
-                                                    <Link key={index} title={link.link.title}
-                                                          url={link.link.url}/>
-                                                )
-                                        })
-                                    }
-                                </div>
-                                <div dangerouslySetInnerHTML={{__html: tMobileSystem}}/>
 
-                            </div>
-                        </div>
-                    </div>
+                    <PageContent/>
+
                     <div className={"section"}>
-                        <SectionImage image={photo2}/>
+                        {/*<SectionImage image={photo2}/>*/}
                         <div className={"section-container"} style={{minWidth: "40%"}}>
-                            <h1 dangerouslySetInnerHTML={{__html: header2}}/>
+                            {/*<h1 dangerouslySetInnerHTML={{__html: header2}}/>*/}
                             <div style={{width: "100%"}}>
                                 {
                                     menus.length > 0 ?

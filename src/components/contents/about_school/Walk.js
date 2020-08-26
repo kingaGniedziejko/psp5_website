@@ -185,7 +185,7 @@ export class Walk extends Component {
                             <div className={"section grey"}>
                                 <div key={selectedArea.id} className={"section-container area-info"}>
                                     <h1 dangerouslySetInnerHTML={{__html: selectedArea.name}}/>
-                                    {
+                                    {selectedArea.oembed ? <div dangerouslySetInnerHTML={{__html: selectedArea.oembed}} className={"oembed-container"}/> : "" }                                    {
                                         images.length !== 0 ?
                                             <ImageGallery items={images}
                                                           additionalClass={images.length === 1 ? "single" : ""}

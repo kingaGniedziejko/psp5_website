@@ -1,11 +1,19 @@
 import React, {Component} from "react";
-import {NavLink} from "react-router-dom";
+import {NavLink, Link} from "react-router-dom";
 
 import Submenu from "./Submenu"
 import {ReactComponent as IconHome} from '../../images/home.svg';
 import {ReactComponent as IconSearch} from '../../images/search.svg';
 
 export class Menu extends Component {
+    isValidUrl(string) {
+        try {
+            new URL(string);
+        } catch (_) {
+            return false;
+        }
+        return true;
+    }
 
     render() {
         const {menuItems} = this.props;
@@ -20,7 +28,7 @@ export class Menu extends Component {
                     menuItems.map((menuItem, index) => {
                         return (
                             <div key={index} className={"menu-item"}>
-                                <NavLink to={menuItem.url} activeClassName={"menu-item-active"}>
+                                <NavLink to={this.isValidUrl(menuItem.url) ? (new URL(menuItem.url).pathname) : menuItem.url} activeClassName={"menu-item-active"}>
                                     {menuItem.title}
                                 </NavLink>
                                 <Submenu menuItem={menuItem} type={"fullscreen"} />

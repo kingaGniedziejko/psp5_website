@@ -43,7 +43,8 @@ export class Submenu extends Component {
                             )
                         } else {
                             return (
-                                <Link to={elem.url} key={index} onClick={this.handleItemClick} className={"submenu-item"}>
+                                // docelowo można wywalić tego ifa
+                                <Link to={this.isValidUrl(elem.url) ? (new URL(elem.url).pathname) : elem.url} key={index} onClick={this.handleItemClick} className={"submenu-item"}>
                                     {elem.title}
                                 </Link>
                             )

@@ -142,6 +142,10 @@ small {
     font-weight: 300;
 }
 
+iframe {
+    width: 100%
+}
+
 a:link, a:visited {
     color: var(--accent-1);
 }
