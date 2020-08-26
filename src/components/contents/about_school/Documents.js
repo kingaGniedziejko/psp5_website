@@ -4,28 +4,26 @@ import Attachment from "../../elements/Attachment"
 import axios from "axios";
 import Helmet from "react-helmet";
 import SectionImage from "../../elements/SectionImage";
+import PageContent from "../../elements/PageContent";
 
 
 export class Documents extends Component {
     state = {
         title: "Dokumenty",
-        content: [],
+        page: undefined,
         isLoaded: false,
         documents: [],
         documentTypes: {},
     }
 
     componentDidMount() {
-        let contentUrl = global.config.proxy + "/wp-json/wp/v2/built_in_pages?slug=documents"
         let typesUrl = global.config.proxy + "/wp-json/wp/v2/document_types"
         let documentsUrl = global.config.proxy + "/wp-json/wp/v2/documents"
-        //TODO: lepsze zabezpieczenie tego
 
-        let getContent = axios.get(contentUrl);
         let getTypes = axios.get(typesUrl);
         let getDocuments = axios.get(documentsUrl);
 
-        axios.all([getContent, getTypes, getDocuments])
+        axios.all([getTypes, getDocuments])
             .then(res => {
                 let documentTypes = {};
                 let documents = [];
@@ -39,7 +37,7 @@ export class Documents extends Component {
                 })
 
                 this.setState({
-                    content: res[0].data[0].acf,
+                    page: this.props.page,
                     documentTypes: documentTypes,
                     documents: documents,
                     isLoaded: true
@@ -50,16 +48,17 @@ export class Documents extends Component {
 
     render() {
         if(this.state.isLoaded) {
-            const sections = this.state.content.sections
-            const photo = sections[0].images[0].image
+            const {page} = this.state
 
             return (
                 <div className={"content"}>
                     <Helmet>
                         <title>{global.config.mainTitle + " " + this.state.title}</title>
                     </Helmet>
+
+                    <PageContent page={page}/>
+
                     <div className={"section"}>
-                        <SectionImage image={photo}/>
                         <div className={"section-container centered"}>
                             {
                                 Object.keys(this.state.documentTypes).map(documentType => {

@@ -7,51 +7,43 @@ import Helmet from "react-helmet";
 import '../../../config';
 import SectionImage from "../../elements/SectionImage";
 import WindowSizeListener from "react-window-size-listener";
+import PageContent from "../../elements/PageContent";
 
 
 export class Library extends Component {
     state = {
         title: "Kalendarz",
-        content: [],
+        page: undefined,
         width: 2048,
         isLoaded: false
     }
 
     componentDidMount() {
-        let contentUrl = global.config.proxy + "/wp-json/wp/v2/built_in_pages?slug=calendar"
-        //TODO: lepsze zabezpieczenie tego
-
-        axios.get(contentUrl)
-            .then(res => this.setState({
-                content: res.data[0].acf,
-                isLoaded: true
-            }))
-            .catch(err => console.log(err));
+        this.setState({
+            page: this.props.page,
+            isLoaded: true
+        })
     }
 
     render() {
+        const {isLoaded, page} = this.state
 
-        if(this.state.isLoaded) {
-            const sections = this.state.content.sections
-
-            const photo = sections[0].images[0].image
-            const hCalendar = sections[0].lonely_headers[0].text
+        if(isLoaded) {
 
             return (
                 <div className={"content"}>
                     <Helmet>
                         <title>{global.config.mainTitle + " " + this.state.title}</title>
                     </Helmet>
+
+                    <PageContent page={page}/>
+
                     <div className={"section"}>
-                        <SectionImage image={photo}/>
-                        <div className={"section-container centered"}>
                         <WindowSizeListener onResize={(windowSize) => {
                             this.setState({
                                 width: windowSize.windowWidth
                             })
                         }}/>
-                        <h1 dangerouslySetInnerHTML={{__html: hCalendar}}/>
-
                             {
                                 this.state.width > 700 ?
 
@@ -71,8 +63,6 @@ export class Library extends Component {
                                     width={"90%"}
                                     scrolling="no"/>
                             }
-
-                        </div>
                     </div>
                 </div>
             );

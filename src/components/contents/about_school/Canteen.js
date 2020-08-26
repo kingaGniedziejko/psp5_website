@@ -13,29 +13,27 @@ import PageContent from "../../elements/PageContent";
 export class Canteen extends Component {
     state = {
         title: "Stołówka",
-        content: [],
+        page: undefined,
         menus: [],
         isLoaded: false
     }
 
     componentDidMount() {
-        let contentUrl = global.config.proxy + "/wp-json/wp/v2/built_in_pages?slug=canteen"
         let menusUrl = global.config.proxy + "/wp-json/wp/v2/menus?per_page=5"
 
-        let getContent = axios.get(contentUrl);
         let getMenus = axios.get(menusUrl);
 
-        axios.all([getContent, getMenus])
+        axios.all([getMenus])
             .then(res => {
                 let menus = []
 
                 if(res[1])
-                res[1].data.forEach(menu => {
-                    menus.push({key: menu.acf.file.id, name: menu.title.rendered, url: menu.acf.file.url})
-                })
+                    res[1].data.forEach(menu => {
+                        menus.push({key: menu.acf.file.id, name: menu.title.rendered, url: menu.acf.file.url})
+                    })
 
                 this.setState({
-                    content: res[0].data[0].acf,
+                    content: this.props.page,
                     menus: menus,
                     isLoaded: true
                 });
@@ -47,16 +45,7 @@ export class Canteen extends Component {
 
 
         if(this.state.isLoaded) {
-            const {menus} = this.state
-            // const sections = this.state.content.sections
-            // const photo1 = sections[0].images[0].image
-            // const photo2 = sections[1].images[0].image
-            // const header1 = sections[0].lonely_headers[0].text
-            // const header2 = sections[1].lonely_headers[0].text
-            // const links = sections[0].links
-            //
-            // const tCanteen = sections[0].modules[0].text;
-            // const tMobileSystem = sections[0].modules[1].text;
+            const {menus, page} = this.state
 
             return (
                 <div className={"content"}>
@@ -64,12 +53,10 @@ export class Canteen extends Component {
                         <title>{global.config.mainTitle + " " + this.state.title}</title>
                     </Helmet>
 
-                    <PageContent/>
+                    <PageContent page={page}/>
 
                     <div className={"section"}>
-                        {/*<SectionImage image={photo2}/>*/}
                         <div className={"section-container"} style={{minWidth: "40%"}}>
-                            {/*<h1 dangerouslySetInnerHTML={{__html: header2}}/>*/}
                             <div style={{width: "100%"}}>
                                 {
                                     menus.length > 0 ?
@@ -80,7 +67,6 @@ export class Canteen extends Component {
                                         ) : ""
                                 }
                             </div>
-
                         </div>
                     </div>
                 </div>
