@@ -8,27 +8,17 @@ import WaterExamine from "../../elements/WaterExamine";
 
 import "../../../styles/swimmingpool_style.css"
 import SectionImage from "../../elements/SectionImage";
+import PageContent from "../../elements/PageContent";
 
 export class SwimmingPool extends Component {
     state = {
         title: "Basen",
-        content: [],
+        page: undefined,
         isLoaded: false,
         waterExamine: [],
         isExamineLoaded: false,
         examinePerPage: 1,
         offset: 0
-    }
-
-    loadContent(){
-        let contentUrl = global.config.proxy + "/wp-json/wp/v2/built_in_pages?slug=swimmingpool";
-
-        axios.get(contentUrl)
-            .then(res => this.setState({
-                content: res.data[0].acf,
-                isLoaded: true
-            }))
-            .catch(err => console.log(err));
     }
 
     loadWaterExamine(){
@@ -48,7 +38,10 @@ export class SwimmingPool extends Component {
     }
 
     componentDidMount() {
-        this.loadContent();
+        this.setState({
+            page: this.props.page,
+            isLoaded: true
+        })
         this.loadWaterExamine();
     }
 
@@ -62,18 +55,9 @@ export class SwimmingPool extends Component {
     };
 
     render() {
-        const {title, content, isLoaded, waterExamine, isExamineLoaded, pageCount} = this.state;
+        const {title, isLoaded, waterExamine, isExamineLoaded, pageCount, page} = this.state;
 
         if (isLoaded){
-            const sections = content.sections;
-
-            const photo1 = sections[0].images[0].image;
-            const title1 = sections[0].modules[0].header;
-            const text1 = sections[0].modules[0].text;
-
-            const photo2 = sections[1].images[0].image;
-            const title2 = sections[1].modules[0].header;
-            const text2 = sections[1].modules[0].text;
 
             let examineContent = <Spinner/>;
 
@@ -105,19 +89,8 @@ export class SwimmingPool extends Component {
                     <Helmet>
                         <title>{global.config.mainTitle + " " + title}</title>
                     </Helmet>
-                    <div className={"section section-1"}>
-                        <SectionImage image={photo1}/>
-                        <div className={"section-container centered"} id={""}>
-                            <h1 dangerouslySetInnerHTML={{__html: title1}}/>
-                            <div dangerouslySetInnerHTML={{__html: text1}}/>
-                        </div>
-                    </div>
-                    <div className={"section section-2"}>
-                        <SectionImage image={photo2}/>
-                        <div className={"section-container centered"} id={""}>
-                            <h1 dangerouslySetInnerHTML={{__html: title2}}/>
-                            <div dangerouslySetInnerHTML={{__html: text2}}/>
-                        </div>
+                    <PageContent page={page}/>
+                    <div className={"section"}>
                         {examineContent}
                     </div>
                 </div>
