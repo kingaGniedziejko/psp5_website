@@ -18,6 +18,7 @@ import PostPage from "../elements/PostPage";
 import Walk from "../contents/about_school/Walk";
 import PageContent from "../elements/PageContent";
 import Spinner from "../elements/Spinner";
+import Search from "../elements/Search";
 
 export class Content extends Component {
     state = {
@@ -241,6 +242,7 @@ export class Content extends Component {
 
 
                         <Route path="/aktualnosci/:newsID/:newsSlug" component={PostPage}/>
+                        <Route path={"/szukaj/:phrase"} component={Search}/>
                         <Route path={"/"} component={ErrorNotFound}/>
                     </Switch>
                 </div>
