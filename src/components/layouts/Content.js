@@ -186,12 +186,6 @@ export class Content extends Component {
             const menuPages = this.createMenuPages();
             const newsPages = this.filterNews(menuItems);
 
-            console.log(pages);
-            console.log(loadedPages);
-            console.log(loadedContents);
-            console.log(menuPages);
-            console.log(newsPages);
-
             return (
                 <div className={"content-container"}>
                     <Switch>

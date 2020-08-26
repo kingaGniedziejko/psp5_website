@@ -89,7 +89,7 @@ export class Walk extends Component {
                         <title>{global.config.mainTitle + " " + this.state.title}</title>
                     </Helmet>
                     <PageContent page={page} />
-                    <div className={"section"}>
+                    <section>
                         <div className={"section-container"}>
                             <div className={"interactive-photo-container"}>
                                 <figure>
@@ -171,33 +171,32 @@ export class Walk extends Component {
                             }
 
                         </div>
-                    </div>
-
-                    {
-                        selectedArea !== "" ?
-                            <div className={"section grey"}>
-                                <div key={selectedArea.id} className={"section-container area-info"}>
-                                    <h1 dangerouslySetInnerHTML={{__html: selectedArea.name}}/>
-                                    {selectedArea.oembed ? <div dangerouslySetInnerHTML={{__html: selectedArea.oembed}} className={"oembed-container"}/> : "" }                                    {
-                                        images.length !== 0 ?
-                                            <ImageGallery items={images}
-                                                          additionalClass={images.length === 1 ? "single" : ""}
-                                                          useBrowserFullscreen={false}/>
+                        {
+                            selectedArea !== "" ?
+                                <div className={"section grey"}>
+                                    <div key={selectedArea.id} className={"section-container area-info"}>
+                                        <h1 dangerouslySetInnerHTML={{__html: selectedArea.name}}/>
+                                        {selectedArea.oembed ? <div dangerouslySetInnerHTML={{__html: selectedArea.oembed}} className={"oembed-container"}/> : "" }                                    {
+                                            images.length !== 0 ?
+                                                <ImageGallery items={images}
+                                                              additionalClass={images.length === 1 ? "single" : ""}
+                                                              useBrowserFullscreen={false}/>
+                                                : ""
+                                        }
+                                        {
+                                            selectedArea.link ?
+                                                <NavLink to={selectedArea.link.url}>
+                                                    <button className={"button-accent-2"}>
+                                                        Więcej
+                                                    </button>
+                                                </NavLink>
                                             : ""
-                                    }
-                                    {
-                                        selectedArea.link ?
-                                            <NavLink to={selectedArea.link.url}>
-                                                <button className={"button-accent-2"}>
-                                                    Więcej
-                                                </button>
-                                            </NavLink>
-                                        : ""
-                                    }
+                                        }
+                                    </div>
                                 </div>
-                            </div>
-                        : ""
-                    }
+                            : ""
+                        }
+                    </section>
                 </div>
             )
         }

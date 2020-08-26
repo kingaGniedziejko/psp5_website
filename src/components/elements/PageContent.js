@@ -11,7 +11,6 @@ import ImageGallery from "react-image-gallery";
 export class PageContent extends Component {
 
     render() {
-        console.log(this.props.page)
         const sections = this.props.page.acf.sections;
         const hasPostDisplay = this.props.page.acf.has_post_display;
 

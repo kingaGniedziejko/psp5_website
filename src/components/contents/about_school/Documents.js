@@ -28,11 +28,14 @@ export class Documents extends Component {
                 let documentTypes = {};
                 let documents = [];
 
-                res[1].data.forEach(type => {
-                    documentTypes[type.id] = type.name;
+                console.log(res)
+                res[0].data.forEach(type => {
+                    console.log(type)
+                    return(documentTypes[type.id] = type.name)
+
                 });
 
-                res[2].data.forEach(document => {
+                res[1].data.forEach(document => {
                     documents.push({key: document.id, name: document.title.rendered, type: document.document_types[0], url: document.acf.document.url})
                 })
 
@@ -58,34 +61,37 @@ export class Documents extends Component {
 
                     <PageContent page={page}/>
 
-                    <div className={"section"}>
-                        <div className={"section-container centered"}>
-                            {
-                                Object.keys(this.state.documentTypes).map(documentType => {
-                                    const filteredDocuments = this.state.documents.filter(document => documentType === document.type.toString());
-                                    filteredDocuments.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
-                                    if(filteredDocuments.length > 0) {
-                                        return(
-                                            <div key={documentType}>
-                                                <h1 dangerouslySetInnerHTML={{__html: this.state.documentTypes[documentType]}}/>
-                                                {
-                                                    filteredDocuments.map(filteredDocument => {
-                                                    return (
-                                                        <Attachment key={filteredDocument.key}
-                                                                    title={filteredDocument.name}
-                                                                    url={filteredDocument.url}/>
-                                                    )})
-                                                }
-                                            </div>
-                                        )
-
-
-
+                    <section>
+                        <div className={"section-content"}>
+                            <div className={"one-column center"}>
+                                <div className={"text-container"}>
+                                    {
+                                        Object.keys(this.state.documentTypes).map(documentType => {
+                                            const filteredDocuments = this.state.documents.filter(document => documentType === document.type.toString());
+                                            filteredDocuments.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
+                                            if(filteredDocuments.length > 0) {
+                                                return(
+                                                    <div key={documentType}>
+                                                        <h1 dangerouslySetInnerHTML={{__html: this.state.documentTypes[documentType]}}/>
+                                                        {
+                                                            filteredDocuments.map(filteredDocument => {
+                                                                return (
+                                                                    <Attachment key={filteredDocument.key}
+                                                                                title={filteredDocument.name}
+                                                                                url={filteredDocument.url}/>
+                                                                )})
+                                                        }
+                                                    </div>
+                                                )
+                                            }
+                                        })
                                     }
-                                })
-                            }
+                                </div>
+
+                            </div>
+
                         </div>
-                    </div>
+                    </section>
                 </div>
             );
         }
