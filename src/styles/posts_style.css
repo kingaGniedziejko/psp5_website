@@ -18,8 +18,8 @@ div.post{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     box-sizing: border-box;
     overflow: hidden;
-    transition: max-height 0.3s ease-in-out;
-    transition-delay: 0s;
+    transition: max-height 0.3s ease-out;
+    /*transition-delay: 0.5s;*/
 }
 
 div.post:last-child{
@@ -99,6 +99,7 @@ div.post div.post-content-container>p * {
     pointer-events: none;
     opacity: 1;
     transition: opacity 0.3s ease-in-out;
+    /*transition-delay: 0.5s;*/
 }
 
 .disabled-content {

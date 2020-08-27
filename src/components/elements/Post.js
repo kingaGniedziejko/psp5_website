@@ -9,6 +9,7 @@ import AttachedLink from "./Link";
 import Attachment from "./Attachment";
 import "react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from "react-image-gallery";
+import AnchorLink from "react-anchor-link-smooth-scroll";
 
 
 export class Post extends Component {
@@ -38,6 +39,15 @@ export class Post extends Component {
             textHeight += 350;
         } else {
             textHeight += 40;
+        }
+
+        console.log(textHeight);
+        console.log(this.state.shortHeight);
+
+        if (this.state.isExpanded){
+            window.scrollBy({
+                top: (textHeight - this.state.shortHeight.slice(0,-2))*(-1),
+                behavior: 'smooth'});
         }
 
         this.setState({
@@ -90,7 +100,9 @@ export class Post extends Component {
                 onResize={(windowSize) => {
                     this.updateDimensions(windowSize.windowWidth)
                 }}>
-                <div className={"post " + (postDirection ? "post-left" : "post-right")} style={isExpanded? {maxHeight: expandedHeight} : {maxHeight: shortHeight} }>
+                <div className={"post " + (postDirection ? "post-left" : "post-right")}
+                     id={"post-" + id}
+                     style={isExpanded? {maxHeight: expandedHeight} : {maxHeight: shortHeight} }>
                     <div className={"post-image-container"}>
                         <ImageGallery items={images} additionalClass={images.length === 1 ? "single" : ""} useBrowserFullscreen={false}/>
                     </div>
@@ -128,6 +140,16 @@ export class Post extends Component {
                             </div>
                         </div>
                     </div>
+                    {/*{isExpanded?*/}
+                    {/*    <AnchorLink offset={110} href={"#post-" + id}>*/}
+                    {/*        <button className={"post-button button-accent-2"}*/}
+                    {/*                onClick={this.extendButtonClick.bind(this)}>mniej</button>*/}
+                    {/*    </AnchorLink>*/}
+                    {/*    :*/}
+                    {/*    <button className={"post-button button-accent-2"}*/}
+                    {/*        onClick={this.extendButtonClick.bind(this)}>więcej</button>*/}
+                    {/*}*/}
+
                     <button className={"post-button button-accent-2"}
                             onClick={this.extendButtonClick.bind(this)}>{isExpanded ? "mniej" : "więcej"}
                     </button>
