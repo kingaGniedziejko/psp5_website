@@ -47,7 +47,7 @@ export class Library extends Component {
                                 this.state.width > 700 ?
 
                                     <iframe
-                                        src="https://calendar.google.com/calendar/embed?&amp;wkst=2&amp;bgcolor=%23ffffff&amp;ctz=Europe%2FWarsaw&amp;src=a2FsZW5kYXJ6LnBzcC41QGdtYWlsLmNvbQ&amp;src=cGwucG9saXNoI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%234285F4&amp;color=%23D81B60&amp;showCalendars=0&amp;showTitle=0&amp;showDate=1&amp;showPrint=0&amp;showTabs=0&amp;showTz=0&amp;mode=MONTH"
+                                        src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=2&amp;bgcolor=%23ffffff&amp;ctz=Europe%2FWarsaw&amp;src=Z29iMW1qM2l1OWp2a2o5YmlrYXA5bnVtMTBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%234285F4&amp;showTitle=0&amp;showPrint=0;mode=MONTH"
                                         title={"Month Calendar"}
                                         frameBorder="0"
                                         style={{border: "solid 3px", borderRadius: ".5em", margin: "1em"}}
@@ -55,11 +55,11 @@ export class Library extends Component {
                                         scrolling="no"/>
                                     :
                                     <iframe
-                                        src="https://calendar.google.com/calendar/embed?&amp;wkst=2&amp;bgcolor=%23ffffff&amp;ctz=Europe%2FWarsaw&amp;src=a2FsZW5kYXJ6LnBzcC41QGdtYWlsLmNvbQ&amp;src=cGwucG9saXNoI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%234285F4&amp;color=%23D81B60&amp;showCalendars=0&amp;showTitle=0&amp;showDate=1&amp;showPrint=0&amp;showTabs=0&amp;showTz=0&amp;mode=AGENDA"
+                                        src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=2&amp;bgcolor=%23ffffff&amp;ctz=Europe%2FWarsaw&amp;src=Z29iMW1qM2l1OWp2a2o5YmlrYXA5bnVtMTBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%234285F4&amp;showTitle=0&amp;showPrint=0&amp;mode=AGENDA&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0"
                                         title={"Agenda Calendar"}
                                         frameBorder="0"
                                         style={{border: "solid 3px", borderRadius: ".5em", margin: "1em"}}
-                                        height={"800px"}
+                                        height={"400px"}
                                         scrolling="no"/>
                             }
                         </div>

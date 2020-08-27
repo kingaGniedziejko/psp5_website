@@ -1,27 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&family=Rowdies:wght@300;400;700&display=swap');
 
-.footer {
+footer {
     bottom: 0;
     width: 100%;
-    /*box-shadow: 0 -4px 8px 0 rgba(0, 0, 0, 0.2);*/
     box-shadow: 0 -4px 8px 0 rgba(15, 49, 126, 0.2), 0 -6px 20px 0 rgba(15, 49, 126, 0.19);
     flex: 0;
     font-size: smaller;
     z-index: 1;
+    color: var(--white-1);
 }
 
-.footer p {
+footer p {
     margin: auto;
+
+
 }
 
-.footer h3 {
+footer h3 {
     margin-bottom: 5px;
 }
 
-.footer #top {
+footer .contact a {
+    text-decoration: none;
+}
+
+footer #top {
     background-color: var(--accent-1-light);
-    color: var(--white-1);
     padding: 20px;
     box-sizing: border-box;
 }
@@ -33,90 +38,88 @@
     flex-direction: row;
 }
 
-.footer .footer-column {
+.footer-container>div {
     flex: 1;
 }
 
-
-.footer #top #showcase {
-    display: flex;
-    flex-direction: row;
+footer :not(#links)>div>p>a:link {
+    text-decoration: none;
 }
 
-.footer #top #showcase svg{
+footer a:link, footer a:visited {
+    color: var(--white-1);
+}
+
+footer a:hover {
+    color: var(--accent-2-light);
+}
+
+footer #showcase {
+    display: flex;
+}
+
+footer #showcase svg{
     width: 90px;
     height: auto;
     margin-right: 5px;
     align-self: center;
 }
 
-.footer #top #showcase>div{
+footer #showcase>div{
     align-self: center;
 }
 
-.footer #emblem {
+footer #emblem {
     align-self: center;
     flex: 0;
 }
 
-.footer #emblem img{
+footer #emblem img {
     height: 150px;
     margin: 0;
     align-self: center;
 }
 
-.footer #top #contact {
+footer #top .contact {
     display: flex;
     flex-direction: row;
     margin-top: 5px;
 }
 
-.footer #top #contact #labels>p {
+footer #top .contact #labels>p {
     margin-right: 1em;
 }
 
-.footer #top #contact .inline-label {
+footer #top .contact>div>p>span {
     display: none;
 }
 
-.footer #top #links {
+footer #top #links {
     text-align: right;
 }
 
-.footer #top #links h3 {
+footer #top #links h3 {
     margin-block-start: 0;
 }
 
-.footer #top #links a svg {
+footer #top #links a svg {
     margin-block-start: 1em;
 }
 
-.footer a:link, .footer a:visited {
-    color: var(--white-1);
-}
-
-.footer a:hover {
-    color: var(--accent-2-light);
-}
-
-.footer a:active {
-    font-weight: bold;
-}
-
-.footer #bottom {
+footer #bottom {
     padding: 10px;
     background-color: var(--accent-1);
-    color: var(--white-1);
 }
 
-.footer #divider {
+footer #divider {
     height: 0.5em;
     background-color: var(--accent-2-light);
 }
 
-.footer #bottom #authors>p {
+footer #bottom #authors {
     text-align: right;
 }
+
 
 @media (max-width: 970px) {
     .footer-container {
@@ -125,67 +128,33 @@
         justify-content: center;
     }
 
-    .footer #top #showcase {
-        display: flex;
+    footer #top #links h3 {
+        margin-block-start: 1em;
+    }
+
+    footer * {
+        justify-content: center;
+        text-align: center;
+        align-self: center;
+    }
+
+    footer #top #showcase {
         flex-direction: column;
     }
 
-    .footer #top #showcase img{
+    footer #top #showcase img{
         margin: 0;
-        align-self: center;
     }
 
-    .footer #top #showcase>div {
-        align-self: center;
-        text-align: center;
-    }
-
-    .footer #top #contact {
-        justify-content: center;
-        text-align: center;
-    }
-
-    .footer #data {
-        width: 100%;
-    }
-
-    .footer #top #contact #labels  {
+    footer #top .contact #labels  {
         display: none;
     }
 
-    .footer #top #contact .inline-label {
+    footer #top .contact>div>p>span {
         display: inline;
     }
 
-    .footer #emblem img{
+    footer #emblem img{
         display: none;
-    }
-
-    .footer #top #links {
-        text-align: center;
-    }
-
-    .footer #top h3 {
-        text-align: center;
-        margin-block-start: 1em;
-        margin-block-end: 0.5em;
-    }
-
-    .footer #top #links h3 {
-        margin-block-start: 1em;
-    }
-
-    .footer #bottom #copyright {
-        padding: 0;
-        margin: 0;
-        justify-content: center;
-    }
-
-    .footer #bottom {
-        text-align: center;
-    }
-
-    .footer #bottom #authors p {
-        text-align: center;
     }
 }

@@ -18,7 +18,9 @@ div.post-page div.post-content-container {
 }
 
 div.post-page div.post-content-container h2.post-title {
+    font-family: Nunito, sans-serif;
     margin-bottom: 5px;
+    text-transform: none;
 }
 
 div.post-page div.post-content-container div.post-text {

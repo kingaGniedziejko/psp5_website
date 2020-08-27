@@ -28,13 +28,13 @@ export class Shortcuts extends Component {
                             )
                         } else {
                             return <Link to={elem.url} key={index}>
-                                <div><h3>{elem.title}</h3></div>
+                                <div><h3 dangerouslySetInnerHTML={{__html: elem.title}}/></div>
                             </Link>;
                         }
                     }
                     if (elem.type === "post_type"){
                         return <Link to={new URL(elem.url).pathname} key={index}>
-                            <div><h3>{elem.title}</h3></div>
+                            <div><h3 dangerouslySetInnerHTML={{__html: elem.title}}/></div>
                         </Link>;
                     }
                     return ""

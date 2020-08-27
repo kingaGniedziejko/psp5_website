@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import SectionImage from "./SectionImage";
 import Attachment from "./Attachment";
 import Link from "./Link";
-import "../../styles/additional_page_style.css"
+import "../../styles/page_content_style.css"
 import PostDisplay from "./PostDisplay";
 import "react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from "react-image-gallery";
@@ -21,12 +21,11 @@ export class PageContent extends Component {
         }
 
         const modules = (modules) => {
-            let key = 0
             return (
-                modules.map((module) => {
+                modules.map((module, index) => {
                     if (module)
                         return (
-                            <div key={key++}>
+                            <div key={index}>
                                 <h1 dangerouslySetInnerHTML={{__html: module.header}}/>
                                 <div dangerouslySetInnerHTML={{__html: module.text}}/>
                             </div>
@@ -38,10 +37,10 @@ export class PageContent extends Component {
 
         const attachments = (attachments) => {
             return (
-                attachments.map((attachment) => {
+                attachments.map((attachment, index) => {
                     if (attachment && attachment.attachment !== "")
                         return (
-                            <Attachment key={attachment.attachment.id} className={"attachment"}
+                            <Attachment key={index} className={"attachment"}
                                         title={attachment.attachment.title} url={attachment.attachment.url}/>
                         )
                     return ""
@@ -50,12 +49,11 @@ export class PageContent extends Component {
         }
 
         const links = (links) => {
-            let key = 0
             return (
-                links.map((link) => {
+                links.map((link, index) => {
                     if (link && link.link !== "")
                         return (
-                            <Link key={key++} title={link.link.title} url={link.link.url}/>
+                            <Link key={index} title={link.link.title} url={link.link.url}/>
                         )
                     return ""
                 })
@@ -163,13 +161,10 @@ export class PageContent extends Component {
         if(sections)
             return (
                 <>
-                    {/*<Helmet>*/}
-                    {/*    <title>{global.config.mainTitle + " " + this.props.page.title.rendered}</title>*/}
-                    {/*</Helmet>*/}
                     {
                         sections.map((section, index) => {
                                 return (
-                                    <section key={index} className={section.config.background + " " + (index === 0 && !section.section_image ? "photoless-content" : "")}>
+                                    <section key={index} className={section.config.background}>
                                         {sectionImage(section)}
                                         <div className={"section-content"}>
                                             {sectionContent(section)}

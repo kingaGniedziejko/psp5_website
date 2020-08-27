@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 import "moment/locale/pl";
 import PropTypes from "prop-types";
 import "../../config";
-
+import AttachedLink from "./Link";
 import Attachment from "./Attachment";
 import "react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from "react-image-gallery";
@@ -65,7 +65,7 @@ export class Post extends Component {
 
     render() {
         const {id, title, slug, date, acf} = this.props.post;
-        const {text, image_gallery, attachments} = acf;
+        const {text, image_gallery, attachments, links} = acf;
         const {isExpanded, shortHeight, expandedHeight, contentWidth} = this.state;
 
         const {postNr} = this.props;
@@ -106,11 +106,20 @@ export class Post extends Component {
                                 <div>
                                     {
                                         attachments !== undefined && attachments !== false ?
-                                            attachments.map(att => {
-                                                if (att) return <Attachment key={att.attachment.id}
+                                            attachments.map((att, index) => {
+                                                if (att && att.attachment !== "") return <Attachment key={index}
                                                                             className={"post-attachment"}
                                                                             title={att.attachment.title}
                                                                             url={att.attachment.url}/>
+                                                else return "";
+                                            }) : ""
+                                    }
+                                    {
+                                        links !== undefined && links !== false ?
+                                            links.map((link, index) => {
+                                                if (link && link.link !== "") return <AttachedLink key={index}
+                                                                       title={link.link.title}
+                                                                       url={link.link.url}/>
                                                 else return "";
                                             }) : ""
                                     }
