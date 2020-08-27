@@ -58,9 +58,11 @@ export class Canteen extends Component {
                                     {
                                         menus.length > 0 ?
                                             menus.map((menu, index) =>
-                                                <Attachment key={index}
-                                                            title={menu.name}
-                                                            url={menu.url}/>
+                                                menu ?
+                                                    <Attachment key={index}
+                                                                title={menu.name}
+                                                                url={menu.url}/>
+                                                : ""
                                             ) : ""
                                     }
                                 </div>

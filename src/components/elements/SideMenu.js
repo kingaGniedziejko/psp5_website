@@ -8,13 +8,19 @@ export class SideMenu extends Component {
         isSideMenuOpen: false,
     }
 
+    isValidUrl(string) {
+        try {
+            new URL(string);
+        } catch (_) {
+            return false;
+        }
+        return true;
+    }
+
     componentDidMount() {
         this.setState({
             isSideMenuOpen: this.props.isSideMenuOpen,
         })
-
-
-
         document.addEventListener('click', this.handleClickOutside, true);
 
         const details = document.querySelectorAll("details");
@@ -82,7 +88,7 @@ export class SideMenu extends Component {
                                                 <Submenu menuItem={menuItem} closeSideMenu={this.closeSideMenu} type={"mobile"} />
                                             </details>
                                             :
-                                            <NavLink to={menuItem.url} activeClassName={"menu-item-active"} onClick={this.closeSideMenu}>
+                                            <NavLink to={this.isValidUrl(menuItem.url) ? (new URL(menuItem.url).pathname) : menuItem.url} activeClassName={"menu-item-active"} onClick={this.closeSideMenu}>
                                                 {menuItem.title}
                                             </NavLink>
                                     }

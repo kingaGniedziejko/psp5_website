@@ -71,12 +71,14 @@ export class Documents extends Component {
                                                     <div key={documentType}>
                                                         <h1 dangerouslySetInnerHTML={{__html: this.state.documentTypes[documentType]}}/>
                                                         {
-                                                            filteredDocuments.map(filteredDocument => {
-                                                                return (
-                                                                    <Attachment key={filteredDocument.key}
-                                                                                title={filteredDocument.name}
-                                                                                url={filteredDocument.url}/>
-                                                                )})
+                                                            filteredDocuments.map((filteredDocument, index) => {
+                                                                if(filteredDocument && filteredDocument !== "" && filteredDocument.name !== "...")
+                                                                    return (
+                                                                        <Attachment key={index}
+                                                                                    title={filteredDocument.name}
+                                                                                    url={filteredDocument.url}/>
+                                                                    )
+                                                                return ""})
                                                         }
                                                     </div>
                                                 )

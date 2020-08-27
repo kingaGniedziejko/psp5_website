@@ -70,7 +70,7 @@ export class Header extends Component {
 
     render() {
         const {menuItems} = this.props;
-        const {isFullMenuVisible, isBurgerVisible, isLoaded} = this.state
+        const {isFullMenuVisible, isBurgerVisible, isSideMenuOpen, isLoaded} = this.state
 
         if(isLoaded) {
 
@@ -90,22 +90,19 @@ export class Header extends Component {
                                 })
                             })
                         } else if(update_width > 1130) {
-                            document.documentElement.style.setProperty('--nav-bar-height', `${this.navBar.current.clientHeight}px`);
+                            if(isSideMenuOpen) this.toggleSideMenu()
                             this.setState({
+                                isFullMenuVisible: true,
                                 isBurgerVisible: false,
-                                isFullMenuVisible: true
                             })
-                        }
-
-                        if(global.config.isMobile && this.state.isSideMenuOpen) {
-                            this.toggleSideMenu();
+                            document.documentElement.style.setProperty('--nav-bar-height', `${this.navBar.current.clientHeight}px`);
                         }
 
                         this.setState({
                             width: update_width,
                         });
                     }}/>
-                    <div id={"header"}>
+                    <header>
                         <CSSTransition
                             in={this.state.isSearchBarOpen}
                             timeout={300}
@@ -129,59 +126,59 @@ export class Header extends Component {
                         </CSSTransition>
                         <div id={"navigation-bar"} ref={this.navBar}>
                             <div className={"container"}>
-                                <div id={"mobile-spacer"}/>
                                 <div id={"showcase"}>
                                     <a href={"/"}>
                                         <Logo/>
                                     </a>
-                                    <div id={"school-name"}>
+                                    <div>
                                         <p>Publiczna Szkoła Podstawowa nr 5</p>
                                         <p>z Oddziałami Integracyjnymi</p>
                                         <p>im. Karola Musioła w Opolu</p>
                                     </div>
                                 </div>
-                                <div id={"short-showcase"}>PSP nr 5</div>
+                                {
+                                    isFullMenuVisible ?
+                                    <div id={"menu-container"}>
+                                        <div id={"ribbon"}>
+                                            <div>
+                                                <div>
+                                                    <IconPhone/>
+                                                    <a type={"tel"} href={"tel: 77 545 32 23"}>77 545 32 23</a>
+                                                </div>
 
-                                <div id={"menu-container"}>
-                                    <div id={"ribbon"}>
-                                        <div id={"ribbon-contact"}>
-                                            <div className={"ribbon-data"}>
-                                                <IconPhone/>
-                                                <a type={"tel"} href={"tel: 77 545 32 23"}>77 545 32 23</a>
+                                                <div>
+                                                    <IconPhone/>
+                                                    <a type={"tel"} href={"tel: 77 545 32 24"}>77 545 32 24</a>
+                                                </div>
+
+                                                <div>
+                                                    <IconMail/>
+                                                    <a type={"email"} href={"mailto: psp5@psp5.opole.pl"}>psp5@psp5.opole.pl</a>
+                                                </div>
                                             </div>
 
-                                            <div className={"ribbon-data"}>
-                                                <IconPhone/>
-                                                <a type={"tel"} href={"tel: 77 545 32 24"}>77 545 32 24</a>
-                                            </div>
-
-                                            <div className={"ribbon-data"}>
-                                                <IconMail/>
-                                                <a type={"email"} href={"mailto: psp5@psp5.opole.pl"}>psp5@psp5.opole.pl</a>
+                                            <div>
+                                                <a href={"https://www.facebook.com/psp5opole"} rel="noopener noreferrer"
+                                                   target="_blank"><IconFacebook/></a>
+                                                <IconYoutube/>
                                             </div>
                                         </div>
 
-                                        <div id={"ribbon-links"}>
-                                            <a href={"https://www.facebook.com/psp5opole"} rel="noopener noreferrer"
-                                               target="_blank"><IconFacebook className={"image-button"}/></a>
-                                            <IconYoutube className={"image-button"}/>
+                                        <Menu menuItems={menuItems} mutateSearchBar={this.toggleSearchBar}/>
+                                    </div> : ""
+                                }
+                                {
+                                    isBurgerVisible ?
+                                        <div id={"mobile-menu"}>
+                                            <IconSearch onClick={this.toggleSearchBar}/>
+                                            <div id={"burger-spacer"}/>
                                         </div>
-                                    </div>
-                                    {
-                                        isFullMenuVisible ?
-                                            <Menu menuItems={menuItems} mutateSearchBar={this.toggleSearchBar}/> : ""
-                                    }
-                                </div>
-
-                                <div id={"mobile-menu"}>
-                                    <IconSearch onClick={this.toggleSearchBar}/>
-                                    <div id={"burger-spacer"}/>
-
-                                </div>
+                                    : ""
+                                }
                             </div>
                         </div>
 
-                    </div>
+                    </header>
 
                     <CSSTransition
                         in={this.state.isSideMenuOpen}

@@ -1,9 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&family=Rowdies:wght@300;400;700&display=swap');
 
-@media (max-width: 1130px) {
 
-    .menu-item-active, .menu-item-active>* {
+#side-menu .menu-item-active, .menu-item-active>* {
         color: var(--accent-1-light) !important;
         fill: var(--accent-1-light) !important;
     }
@@ -15,7 +14,6 @@
         bottom: 0;
         width: 18em;
         background-color: var(--accent-2-light);
-        /*box-shadow: -10px 0 8px 0 rgba(0, 0, 0, 0.2);*/
         box-shadow: -8px 0 8px 0 rgba(105, 89, 5, 0.2), -20px 0 20px 0 rgba(105, 89, 5, 0.19);
         z-index: 5;
         padding-top: var(--nav-bar-height);
@@ -76,15 +74,15 @@
         padding: 1em;
     }
 
-    summary::-webkit-details-marker {
+#side-menu summary::-webkit-details-marker {
         display: none;
     }
 
-    summary:focus {
+#side-menu summary:focus {
         outline-style: none;
     }
 
-    .submenu {
+    #side-menu .submenu {
         display: flex;
         flex-direction: column;
         padding-top: 0.3em;
@@ -102,5 +100,4 @@
 
     .side-menu-item .submenu-item:hover {
         color: var(--accent-1-light);
-
-    }}
+    }
