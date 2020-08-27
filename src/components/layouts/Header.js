@@ -55,10 +55,22 @@ export class Header extends Component {
         });
     }
 
+    wiggle() {
+        let form = document.getElementById("input")
+        form.classList.add("wiggling")
+        setTimeout(() => { form.classList.remove("wiggling")}, 500);
+    }
+
     onSearchClick() {
         let searchPhrase = document.getElementById("input").value;
-        searchPhrase = searchPhrase.replace(/\s+/g, '+');
 
+        if(searchPhrase === "") {
+            this.wiggle()
+            return
+        }
+
+        this.toggleSearchBar()
+        searchPhrase = searchPhrase.replace(/\s+/g, '+');
         this.props.history.push("/szukaj/" + searchPhrase);
     }
 
