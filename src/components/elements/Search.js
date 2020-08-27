@@ -59,7 +59,7 @@ export class Search extends Component {
 
 
     render() {
-        const {phrase, results, isLoaded, pageCount} = this.state;
+        const {results, isLoaded, pageCount} = this.state;
 
         if (isLoaded) console.log(results);
 
@@ -87,6 +87,9 @@ export class Search extends Component {
                                             url = "/o-szkole/dokumenty";
                                             type = "dokumenty";
                                             break;
+                                        default:
+                                            url = "/";
+                                            type = "nieznane";
                                     }
 
                                     return (
