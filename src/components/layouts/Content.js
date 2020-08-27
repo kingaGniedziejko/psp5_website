@@ -38,7 +38,7 @@ export class Content extends Component {
                 component: SwimmingPool
             },
             {
-                path: "/kontakt/",
+                path: "/kontakt",
                 component: Contact
             },
             {
@@ -88,37 +88,6 @@ export class Content extends Component {
 
         return allItems;
     }
-
-    // filterPages(menuItems) {
-    //     const {pages} = this.state;
-    //
-    //     //filter - pages only in menu
-    //     // return additionalPages.filter(elem => menuItems.some(item => item.url.toLowerCase() === elem.acf.path.toLowerCase()));
-    //
-    //     return pages;
-    // }
-
-    // filterLinkedPages(menuItems) {
-    //     return menuItems.filter(elem => this.isValidUrl(elem.url) && elem.object === "custom");
-    // }
-
-    // filterContents(menuItems) {
-    //     const {contents} = this.state;
-    //     let filteredContents;
-    //
-    //
-    //
-    //     // filteredContents = menuItems.filter(item => contents.find(content => content.path === (new URL(item.url)).pathname))
-    //
-    //     // filteredContents = contents.filter(elem => menuItems.some(item => item.title.toLowerCase() === elem.title.toLowerCase()));
-    //     // filteredContents.forEach(elem => {
-    //     //     elem.path = menuItems.filter((item => item.title.toLowerCase() === elem.title.toLowerCase()))[0].url;
-    //     // });
-    //     // filteredContents = filteredContents.filter(elem => !(pagesFiltered.some(item => item.acf.path.toLowerCase() === elem.path.toLowerCase())));
-    //     // filteredContents = filteredContents.filter(elem => !linkedPagesFiltered.some(item => item.url === elem.url))
-    //
-    //     return filteredContents;
-    // }
 
     loadContents() {
         const {contents, pages} = this.state;
@@ -188,6 +157,9 @@ export class Content extends Component {
             const menuPages = this.createMenuPages();
             const newsPages = this.filterNews(menuItems);
 
+            console.log(loadedPages);
+            console.log(loadedContents);
+
             return (
                 <div className={"content-container"}>
                     <Switch>
@@ -238,7 +210,6 @@ export class Content extends Component {
                                 </Route>
                             )
                         })}
-
 
                         <Route path="/aktualnosci/:newsID/:newsSlug" component={PostPage}/>
                         <Route path={"/szukaj/:phrase"} component={Search}/>
