@@ -1,0 +1,40 @@
+div.content-search div.section h1 {
+    margin-bottom: 0;
+}
+
+div.content-search div.section h3 {
+    font-family: "Nunito", sans-serif;
+    text-transform: unset;
+}
+
+
+div.content-search div.section div.results-container {
+    width: 90%;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div.content-search div.section div.results-container div.result {
+    width: 50%;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+div.content-search div.section div.results-container div.result:last-of-type {
+    margin-bottom: 10px;
+}
+
+div.content-search div.section div.results-container div.result h2 {
+    font-family: "Nunito", sans-serif;
+    text-transform: unset;
+    margin-bottom: 0.5em;
+}
+
+div.content-search div.section div.results-container div.result p {
+    margin: 0 0 0.83em 1em;
+    font-size: smaller;
+}
