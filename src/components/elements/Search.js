@@ -1,36 +1,125 @@
 import React, {Component} from "react";
 import axios from "axios";
+import Spinner from "./Spinner";
+import {Link} from "react-router-dom";
+import ReactPaginate from 'react-paginate';
+import "../../styles/pagination_style.css"
+import "../../styles/search_style.css";
 
 
 export class Search extends Component {
     state = {
-        result: undefined,
-        isLoaded: false
+        phrase: "",
+        formatedPhrase: "",
+        results: undefined,
+        isLoaded: false,
+        page: 1,
+        postsPerPage: 5,
+        pageCount: 0
     }
 
-    componentDidMount() {
-        const {phrase} = this.props.match.params;
-        const searchUrl = global.config.proxy + "/wp-json/wp/v2/search?subtype=news,subpages,documents&search=" + phrase;
+    loadSearch(phrase) {
+
+        const {page, postsPerPage} = this.state;
+
+        console.log(phrase);
+        console.log(page);
+        console.log(postsPerPage);
+
+        let searchUrl = global.config.proxy
+            + "/wp-json/wp/v2/search?subtype=news,subpages,documents&search="
+            + phrase
+            + "&per_page=" + postsPerPage
+            + "&page=" + page;
 
         axios.get(searchUrl)
             .then(res => this.setState({
-                result: res.data,
-                isLoaded: true
+                results: res.data,
+                isLoaded: true,
+                pageCount: Number(res.headers["x-wp-totalpages"])
             }))
             .catch(err => console.log(err));
     }
 
-    render() {
-        const {result, isLoaded} = this.state;
+    handlePageClick = data => {
+        let selected = data.selected + 1;
 
-        if (isLoaded) console.log(result);
-        
+        this.setState({ page: selected }, () => {
+            this.loadSearch(this.props.match.params.phrase);
+        });
+    };
+
+    componentWillReceiveProps(newProps) {
+        this.loadSearch(newProps.match.params.phrase);
+    }
+
+    componentDidMount() {
+        this.loadSearch(this.props.match.params.phrase);
+    }
+
+
+    render() {
+        const {phrase, results, isLoaded, pageCount} = this.state;
+
+        if (isLoaded) console.log(results);
+
         return (
-            <div>
+            <div className={"content content-search"}>
+                <div className={"section"}>
+                    <h1>{"Wyniki wyszukiwania dla:"}</h1>
+                    <h3>{"\"" + this.props.match.params.phrase.replace("+", " ") + "\""}</h3>
+                    {isLoaded?
+                        (results.length !== 0 ?
+                            <div className={"results-container"}>
+                                {results.map((elem, index) => {
+                                    let url = "";
+                                    let type = "";
+                                    switch (elem.subtype) {
+                                        case "subpages":
+                                            url = new URL(elem.url).pathname;
+                                            type = "strony";
+                                            break;
+                                        case "news":
+                                            url = "/aktualnosci/" + elem.id + new URL(elem.url).pathname.substring(5);
+                                            type = "aktualności";
+                                            break;
+                                        case "documents":
+                                            url = "/o-szkole/dokumenty";
+                                            type = "dokumenty";
+                                            break;
+                                    }
+
+                                    return (
+                                        <div className={"result"} key={index}>
+                                            <Link to={url}><h2>{elem.title}</h2></Link>
+                                            <p><b>Kategoria: </b>{type}</p>
+                                        </div>
+                                    );
+                                })}
+                                <ReactPaginate
+                                    previousLabel={"<"}
+                                    nextLabel={">"}
+                                    breakLabel={'...'}
+                                    breakClassName={'break-me'}
+                                    pageCount={pageCount}
+                                    marginPagesDisplayed={2}
+                                    pageRangeDisplayed={5}
+                                    onPageChange={this.handlePageClick}
+                                    containerClassName={'pagination'}
+                                    subContainerClassName={'pages pagination'}
+                                    activeClassName={'active'}
+                                />
+                            </div>
+                            :
+                            <div className={"results-container results-container-empty"}>
+                                <h4><i>Brak wyników</i></h4>
+                            </div>)
+                        : <Spinner/>
+                    }
+                </div>
             </div>
         );
     }
-
 }
 
 export default Search;
