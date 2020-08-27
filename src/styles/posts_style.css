@@ -19,7 +19,7 @@ div.post{
     box-sizing: border-box;
     overflow: hidden;
     transition: max-height 0.3s ease-out;
-    /*transition-delay: 0.5s;*/
+    transition-delay: 0.3s;
 }
 
 div.post:last-child{
@@ -99,7 +99,7 @@ div.post div.post-content-container>p * {
     pointer-events: none;
     opacity: 1;
     transition: opacity 0.3s ease-in-out;
-    /*transition-delay: 0.5s;*/
+    transition-delay: 0.3s;
 }
 
 .disabled-content {
