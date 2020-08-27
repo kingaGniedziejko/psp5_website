@@ -50,7 +50,7 @@ export class PostDisplaySub extends Component {
 
     componentDidMount() {
         this.loadPosts();
-        this.timer = setInterval(() => this.loadPosts(), 5000);
+        this.timer = setInterval(() => this.loadPosts(), 30000);
     }
 
     componentWillUnmount() {
