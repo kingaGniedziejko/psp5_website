@@ -94,7 +94,7 @@ export class Search extends Component {
 
                                     return (
                                         <div className={"result"} key={index}>
-                                            <Link to={url}><h2>{elem.title}</h2></Link>
+                                            <Link to={url}><h2 dangerouslySetInnerHTML={{__html: elem.title}}/></Link>
                                             <p><b>Kategoria: </b>{type}</p>
                                         </div>
                                     );
