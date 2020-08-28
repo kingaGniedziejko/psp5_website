@@ -45,6 +45,7 @@ export class Post extends Component {
         console.log(this.state.shortHeight);
 
         if (this.state.isExpanded){
+            // setTimeout()
             window.scrollBy({
                 top: (textHeight - this.state.shortHeight.slice(0,-2))*(-1),
                 behavior: 'smooth'});

@@ -47,6 +47,13 @@ export class Search extends Component {
         this.setState({ page: selected }, () => {
             this.loadSearch(this.props.match.params.phrase);
         });
+
+        setTimeout(function () {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }, 100);
     };
 
     componentWillReceiveProps(newProps) {
@@ -66,7 +73,7 @@ export class Search extends Component {
         return (
             <div className={"content content-search"}>
                 <div className={"section"}>
-                    <h1>{"Wyniki wyszukiwania dla:"}</h1>
+                    <h1 id={"search-header"}>{"Wyniki wyszukiwania dla:"}</h1>
                     <h3>{"\"" + this.props.match.params.phrase.replace("+", " ") + "\""}</h3>
                     {isLoaded?
                         (results.length !== 0 ?
@@ -106,7 +113,7 @@ export class Search extends Component {
                                     breakClassName={'break-me'}
                                     pageCount={pageCount}
                                     marginPagesDisplayed={2}
-                                    pageRangeDisplayed={5}
+                                    pageRangeDisplayed={3}
                                     onPageChange={this.handlePageClick}
                                     containerClassName={'pagination'}
                                     subContainerClassName={'pages pagination'}

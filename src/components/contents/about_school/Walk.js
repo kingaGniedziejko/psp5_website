@@ -31,6 +31,15 @@ export class Walk extends Component {
         })
     }
 
+    isValidUrl(string) {
+        try {
+            new URL(string);
+        } catch (_) {
+            return false;
+        }
+        return true;
+    }
+
     handleMouseOver = (e) => {
         this.setState({
             hoveredName: e.target.getAttribute('name'),
@@ -72,6 +81,7 @@ export class Walk extends Component {
     render() {
         const {images, selectedArea, hoveredName, page} = this.state
 
+
         if(this.state.isLoaded) {
 
             return (
@@ -79,10 +89,11 @@ export class Walk extends Component {
                     <Helmet>
                         <title>{global.config.mainTitle + " " + this.state.title}</title>
                     </Helmet>
-                    <PageContent page={page} />
+                    {/*<PageContent page={page} />*/}
                     <section>
                         <div className={"section-content"}>
                             <div className={"centered"}>
+                                <h1>{page.acf.sections[0].one_column_content.modules[0].header}</h1>
                                 <div className={"interactive-photo-container"}>
                                     <figure>
                                         <img src={schoolPhoto} alt={"Zdjęcie szkoły z lotu ptaka"}/>
@@ -175,14 +186,20 @@ export class Walk extends Component {
                                                           useBrowserFullscreen={false}/>
                                             : ""
                                     }
-                                        {
-                                            selectedArea.link ?
+                                        {selectedArea.link ?
+                                            (this.isValidUrl(selectedArea.link.url)?
+                                                <a href={selectedArea.link.url} rel="noopener noreferrer" target="_blank">
+                                                    <button className={"button-accent-2"}>
+                                                        Więcej
+                                                    </button>
+                                                </a>
+                                                :
                                                 <NavLink to={selectedArea.link.url}>
                                                     <button className={"button-accent-2"}>
                                                         Więcej
                                                     </button>
-                                                </NavLink>
-                                                : ""
+                                                </NavLink>)
+                                            : ""
                                         }
                                 </div>
                             </section>

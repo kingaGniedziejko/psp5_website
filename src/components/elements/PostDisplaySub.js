@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component, useRef} from "react";
 import ReactPaginate from 'react-paginate';
 import "../../styles/pagination_style.css"
 import Post from "../elements/Post"
@@ -46,6 +46,13 @@ export class PostDisplaySub extends Component {
         this.setState({ offset: offset }, () => {
             this.loadPosts();
         });
+
+        setTimeout(function () {
+            window.scrollTo({
+                top: document.getElementById("post-container-id").offsetTop - 200,
+                behavior: "smooth"
+            });
+        }, 500);
     };
 
     componentDidMount() {
@@ -72,7 +79,7 @@ export class PostDisplaySub extends Component {
             }
             if (postsCount === -1) {
                 return (
-                    <div className={"posts-container"}>
+                    <div className={"posts-container"} id={"post-container-id"}>
                         {posts.map((post, index) => {
                             return <Post key={post.id} post={post} postNr={index} />;
                         })}
@@ -85,7 +92,7 @@ export class PostDisplaySub extends Component {
                             breakClassName={'break-me'}
                             pageCount={pageCount}
                             marginPagesDisplayed={2}
-                            pageRangeDisplayed={5}
+                            pageRangeDisplayed={3}
                             onPageChange={this.handlePageClick}
                             containerClassName={'pagination'}
                             subContainerClassName={'pages pagination'}

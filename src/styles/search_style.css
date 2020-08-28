@@ -39,3 +39,15 @@ div.content-search div.section div.results-container div.result p {
     margin: 0 0 0.83em 1em;
     font-size: smaller;
 }
+
+@media (max-width: 1130px) {
+    div.content-search div.section div.results-container div.result {
+        width: 70%;
+    }
+}
+
+@media (max-width: 600px) {
+    div.content-search div.section div.results-container div.result {
+        width: 90%;
+    }
+}

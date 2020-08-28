@@ -72,7 +72,7 @@ export class SwimmingPool extends Component {
                             breakClassName={'break-me'}
                             pageCount={pageCount}
                             marginPagesDisplayed={2}
-                            pageRangeDisplayed={5}
+                            pageRangeDisplayed={3}
                             onPageChange={this.handlePageClick}
                             containerClassName={'pagination'}
                             subContainerClassName={'pages pagination'}
