@@ -1,4 +1,4 @@
-import React, {Component, useRef} from "react";
+import React, {Component} from "react";
 import ReactPaginate from 'react-paginate';
 import "../../styles/pagination_style.css"
 import Post from "../elements/Post"
@@ -84,8 +84,6 @@ export class PostDisplaySub extends Component {
                             return <Post key={post.id} post={post} postNr={index} />;
                         })}
                         <ReactPaginate
-                            // previousLabel={<IconArrowBack/>}
-                            // nextLabel={<IconArrowForward/>}
                             previousLabel={"<"}
                             nextLabel={">"}
                             breakLabel={'...'}

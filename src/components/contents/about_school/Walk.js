@@ -7,11 +7,8 @@ import ImageGallery from "react-image-gallery";
 import {NavLink} from "react-router-dom";
 import {isMobile} from 'react-device-detect';
 import schoolPhoto from '../../../images/photo_school.jpeg'
-import PageContent from "../../elements/PageContent";
-
 
 export class Walk extends Component {
-
     state = {
         title: "Spacer po szkole",
         page: undefined,
@@ -90,15 +87,12 @@ export class Walk extends Component {
     render() {
         const {images, selectedArea, hoveredName, page} = this.state
 
-
         if(this.state.isLoaded) {
-
             return (
                 <div className={"content"}>
                     <Helmet>
                         <title>{global.config.mainTitle + " " + this.state.title}</title>
                     </Helmet>
-                    {/*<PageContent page={page} />*/}
                     <section>
                         <div className={"section-content"}>
                             <div className={"centered"}>

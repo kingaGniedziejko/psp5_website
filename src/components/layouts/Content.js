@@ -157,9 +157,6 @@ export class Content extends Component {
             const menuPages = this.createMenuPages();
             const newsPages = this.filterNews(menuItems);
 
-            console.log(loadedPages);
-            console.log(loadedContents);
-
             return (
                 <div className={"content-container"}>
                     <Switch>
@@ -181,7 +178,6 @@ export class Content extends Component {
                                         </Route>
                                     );
                             }
-
                         })}
 
                         {loadedPages.map((page, index) => {
