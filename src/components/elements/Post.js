@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import Moment from "react-moment";
 import WindowSizeListener from "react-window-size-listener";
 import {Link} from "react-router-dom";
+import VizSensor from 'react-visibility-sensor';
 import "moment/locale/pl";
 import PropTypes from "prop-types";
 import "../../config";
@@ -9,8 +10,6 @@ import AttachedLink from "./Link";
 import Attachment from "./Attachment";
 import "react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from "react-image-gallery";
-import AnchorLink from "react-anchor-link-smooth-scroll";
-
 
 export class Post extends Component {
     state = {
@@ -24,7 +23,8 @@ export class Post extends Component {
         contentWidth: 68 + "%",
         isGalleryLoaded: false,
         gallery: [],
-        isLoaded: false
+        isLoaded: false,
+        isTopVisible: false
     }
 
     static propTypes = {
@@ -36,19 +36,21 @@ export class Post extends Component {
         let textHeight = document.getElementById(this.props.post.id).scrollHeight;
 
         if (document.body.offsetWidth <= this.state.mobileMaxWidth){
-            textHeight += 350;
+            textHeight += 240;
         } else {
             textHeight += 40;
         }
 
-        console.log(textHeight);
-        console.log(this.state.shortHeight);
+        console.log(document.getElementById("post-" + this.props.post.id).scrollTop);
 
         if (this.state.isExpanded){
-            // setTimeout()
-            window.scrollBy({
-                top: (textHeight - this.state.shortHeight.slice(0,-2))*(-1),
-                behavior: 'smooth'});
+            if (!this.state.isTopVisible) {
+                // setTimeout()
+                window.scrollBy({
+                    top: (textHeight - this.state.shortHeight.slice(0, -2)) * (-1),
+                    behavior: 'smooth'
+                });
+            }
         }
 
         this.setState({
@@ -104,9 +106,14 @@ export class Post extends Component {
                 <div className={"post " + (postDirection ? "post-left" : "post-right")}
                      id={"post-" + id}
                      style={isExpanded? {maxHeight: expandedHeight} : {maxHeight: shortHeight} }>
-                    <div className={"post-image-container"}>
-                        <ImageGallery items={images} additionalClass={images.length === 1 ? "single" : ""} useBrowserFullscreen={false}/>
-                    </div>
+                    <VizSensor
+                        onChange={(isVisible) => {
+                            this.setState({isTopVisible: isVisible})
+                        }}>
+                        <div className={"post-image-container"}>
+                            <ImageGallery items={images} additionalClass={images.length === 1 ? "single" : ""} useBrowserFullscreen={false}/>
+                        </div>
+                    </VizSensor>
 
                     <div className={"post-content-container"} id={id}>
                         <div>
