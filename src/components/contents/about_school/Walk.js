@@ -69,6 +69,15 @@ export class Walk extends Component {
         if(true) {
             document.getElementById(selected.id).classList.add("clicked");
         }
+        setTimeout(function () {
+            if (document.getElementById("area-info-id") !== null) {
+                window.scrollTo({
+                    top: document.getElementById("area-info-id").offsetTop - 90,
+                    behavior: "smooth"
+                })
+            }
+        }, 500)
+
     }
 
     handleMouseOut = () => {
@@ -177,7 +186,7 @@ export class Walk extends Component {
                     {
                         selectedArea !== "" ?
                             <section className={"grey"}>
-                                <div key={selectedArea.id} className={"area-info"}>
+                                <div key={selectedArea.id} className={"area-info"} id={"area-info-id"}>
                                         <h1 dangerouslySetInnerHTML={{__html: selectedArea.name}}/>
                                         {selectedArea.oembed ? <div dangerouslySetInnerHTML={{__html: selectedArea.oembed}} className={"oembed-container"}/> : "" }                                    {
                                         images.length !== 0 ?
