@@ -19,12 +19,7 @@ export class Search extends Component {
     }
 
     loadSearch(phrase) {
-
         const {page, postsPerPage} = this.state;
-
-        console.log(phrase);
-        console.log(page);
-        console.log(postsPerPage);
 
         let searchUrl = global.config.proxy
             + "/wp-json/wp/v2/search?subtype=news,subpages,documents&search="

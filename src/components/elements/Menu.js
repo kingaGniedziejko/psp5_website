@@ -17,7 +17,6 @@ export class Menu extends Component {
         return true;
     }
 
-
     render() {
         const {menuItems} = this.props;
 
@@ -39,7 +38,6 @@ export class Menu extends Component {
                                  }}
                                  onClick={(e) => {
                                      e.preventDefault();
-                                     console.log(e.target.classList);
                                      if(isMobile) {
                                          if (!e.target.classList.contains("submenu-item")) {
                                              let hovered = document.getElementsByClassName("hovered");
@@ -47,28 +45,23 @@ export class Menu extends Component {
                                              e.currentTarget.classList.add("hovered");
                                          }
                                      }
-                                 }}
-                            >
-                                {isMobile ?
-                                    <NavLink to={menuItem.url} className='disabled-link' activeClassName={"menu-item-active"}>{menuItem.title}</NavLink>
-                                    // <a href={""}>{menuItem.title}</a>
-                                    :
-                                    this.isValidUrl(menuItem.url) ?
-                                        (new URL(menuItem.url).origin === global.config.proxy ?
-                                            <NavLink to={new URL(menuItem.url).pathname} activeClassName={"menu-item-active"}>
-                                                {menuItem.title}
-                                            </NavLink>
-                                            :
-                                            <a href={menuItem.url} rel="noopener noreferrer" target="_blank">
-                                                {menuItem.title}
-                                            </a>
-                                        )
-                                        :
-                                        <NavLink to={menuItem.url} activeClassName={"menu-item-active"}>
+                                 }
+                            }>
+                                {this.isValidUrl(menuItem.url) ?
+                                    (new URL(menuItem.url).origin === global.config.proxy ?
+                                        <NavLink to={new URL(menuItem.url).pathname} className={isMobile ? "disabled-link": ""} activeClassName={"menu-item-active"}>
                                             {menuItem.title}
                                         </NavLink>
-                                    }
-                                    <Submenu menuItem={menuItem} type={"fullscreen"} />
+                                        :
+                                        <a href={menuItem.url} rel="noopener noreferrer" target="_blank">
+                                            {menuItem.title}
+                                        </a>)
+                                    :
+                                    <NavLink to={menuItem.url} className={isMobile ? "disabled-link": ""} activeClassName={"menu-item-active"}>
+                                        {menuItem.title}
+                                    </NavLink>
+                                }
+                                <Submenu menuItem={menuItem} type={"fullscreen"} />
                             </div>
                         );
                     })
