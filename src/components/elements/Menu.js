@@ -18,7 +18,6 @@ export class Menu extends Component {
         return true;
     }
 
-
     render() {
         const {menuItems} = this.props;
 
@@ -34,43 +33,36 @@ export class Menu extends Component {
                             <div key={index} className={"menu-item"}
                                  onMouseEnter={(e) => {if(!isMobile) e.target.classList.add("hovered")}}
                                  onMouseOut={(e) => {
-                                     if (!isMobile && e.relatedTarget.closest('.hovered') === null && e.target.closest('.hovered') !== null)
+                                     if (e.relatedTarget.closest('.hovered') === null && e.target.closest('.hovered') !== null)
                                          e.target.closest('.hovered').classList.remove("hovered");
                                      else return ""
                                  }}
                                  onClick={(e) => {
                                      if(isMobile) {
-                                         let hovered = document.getElementsByClassName("hovered");
-                                         if (hovered.length !== 0) hovered[0].classList.remove("hovered");
-                                         e.target.classList.add("hovered");
+                                         if (!e.target.classList.contains("submenu-item")) {
+                                             e.preventDefault();
+                                             let hovered = document.getElementsByClassName("hovered");
+                                             if (hovered.length !== 0) hovered[0].classList.remove("hovered");
+                                             e.currentTarget.classList.add("hovered");
+                                         }
                                      }
-                                 }}
-                            >
-                                {isMobile ?
-                                    // <a onClick={(e) => {
-                                    //     if (isMobile) e.target.closest('.menu-item').classList.add("hovered")
-                                    // }}>
-                                    //     {menuItem.title}
-                                    // </a>
-
-                                    <div>{menuItem.title}</div>
-                                    :
-                                    this.isValidUrl(menuItem.url) ?
-                                        (new URL(menuItem.url).origin === global.config.proxy ?
-                                            <NavLink to={new URL(menuItem.url).pathname} activeClassName={"menu-item-active"}>
-                                                {menuItem.title}
-                                            </NavLink>
-                                            :
-                                            <a href={menuItem.url} rel="noopener noreferrer" target="_blank">
-                                                {menuItem.title}
-                                            </a>
-                                        )
-                                        :
-                                        <NavLink to={menuItem.url} activeClassName={"menu-item-active"}>
+                                 }
+                            }>
+                                {this.isValidUrl(menuItem.url) ?
+                                    (new URL(menuItem.url).origin === global.config.proxy ?
+                                        <NavLink to={new URL(menuItem.url).pathname} className={isMobile ? "disabled-link": ""} activeClassName={"menu-item-active"}>
                                             {menuItem.title}
                                         </NavLink>
-                                    }
-                                    <Submenu menuItem={menuItem} type={"fullscreen"} />
+                                        :
+                                        <a href={menuItem.url} rel="noopener noreferrer" target="_blank">
+                                            {menuItem.title}
+                                        </a>)
+                                    :
+                                    <NavLink to={menuItem.url} className={isMobile ? "disabled-link": ""} activeClassName={"menu-item-active"}>
+                                        {menuItem.title}
+                                    </NavLink>
+                                }
+                                <Submenu menuItem={menuItem} type={"fullscreen"} />
                             </div>
                         );
                     })
