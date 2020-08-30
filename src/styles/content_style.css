@@ -167,7 +167,8 @@ div.content div.shortcut-menu-page {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 2em 0;
+    margin-top: 2em;
+    padding-bottom: 0 !important;
 }
 
 @media (max-width: 700px) {
@@ -191,7 +192,7 @@ div.content div#shortcut {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    margin: 2em 1em;
+    margin-bottom: 2em;
 }
 
 div.content div#shortcut a{
