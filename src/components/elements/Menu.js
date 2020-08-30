@@ -38,46 +38,38 @@ export class Menu extends Component {
                                      else return ""
                                  }}
                                  onClick={(e) => {
-                                     let hovered = document.getElementsByClassName("hovered")
-                                     if(hovered.length !== 0) hovered[0].classList.remove("hovered")
-                                     if(isMobile) e.target.classList.add("hovered")
-                                 }}>
+                                     if(isMobile) {
+                                         let hovered = document.getElementsByClassName("hovered");
+                                         if (hovered.length !== 0) hovered[0].classList.remove("hovered");
+                                         e.target.classList.add("hovered");
+                                     }
+                                 }}
+                            >
+                                {isMobile ?
+                                    // <a onClick={(e) => {
+                                    //     if (isMobile) e.target.closest('.menu-item').classList.add("hovered")
+                                    // }}>
+                                    //     {menuItem.title}
+                                    // </a>
 
-                                {
-                                    isMobile ?
-                                        <a onClick={(e) => {
-                                            if (isMobile) e.target.closest('.menu-item').classList.add("hovered")
-                                        }}>
-                                            {menuItem.title}
-                                        </a>
+                                    <div>{menuItem.title}</div>
+                                    :
+                                    this.isValidUrl(menuItem.url) ?
+                                        (new URL(menuItem.url).origin === global.config.proxy ?
+                                            <NavLink to={new URL(menuItem.url).pathname} activeClassName={"menu-item-active"}>
+                                                {menuItem.title}
+                                            </NavLink>
+                                            :
+                                            <a href={menuItem.url} rel="noopener noreferrer" target="_blank">
+                                                {menuItem.title}
+                                            </a>
+                                        )
                                         :
-                                        <Link to={this.isValidUrl(menuItem.url) ? (new URL(menuItem.url).pathname) : menuItem.url} activeClassName={"menu-item-active"}>
-                                            {menuItem.title}
-                                        </Link>
-                                }
-                                <Submenu menuItem={menuItem} type={"fullscreen"} index={index}/>
-
-
-
-
-
-                            <div key={index} className={"menu-item"}>
-                                {this.isValidUrl(menuItem.url) ?
-                                    (new URL(menuItem.url).origin === global.config.proxy ?
-                                        <NavLink to={new URL(menuItem.url).pathname} activeClassName={"menu-item-active"}>
+                                        <NavLink to={menuItem.url} activeClassName={"menu-item-active"}>
                                             {menuItem.title}
                                         </NavLink>
-                                        :
-                                        <a href={menuItem.url} rel="noopener noreferrer" target="_blank">
-                                            {menuItem.title}
-                                        </a>
-                                    )
-                                    :
-                                    <NavLink to={menuItem.url} activeClassName={"menu-item-active"}>
-                                        {menuItem.title}
-                                    </NavLink>
-                                }
-                                <Submenu menuItem={menuItem} type={"fullscreen"} />
+                                    }
+                                    <Submenu menuItem={menuItem} type={"fullscreen"} />
                             </div>
                         );
                     })
