@@ -1,5 +1,5 @@
 .interactive-photo-container {
-    margin: 1em 0 1em 0;
+    margin: 1em 0;
     width: 80%;
     position: relative;
     height: auto;
@@ -105,7 +105,8 @@ path.clicked, .interactive-photo-container svg path:active, .interactive-photo-c
 .hovered-area {
     height: 3em;
     width: 23em;
-    margin-bottom: 3em
+    margin-bottom: 3em;
+    max-width: 100%;
 }
 
 .hovered-area>h1 {
@@ -151,4 +152,19 @@ path.clicked, .interactive-photo-container svg path:active, .interactive-photo-c
     width: 80%;
     display: flex;
     justify-content: center;
+}
+
+@media (max-width: 750px) {
+    .interactive-photo-container {
+        width: 100%;
+    }
+
+    .area-info .image-gallery-content {
+        max-width: 100%;
+    }
+
+    .area-info .oembed-container {
+        width: 100%;
+    }
+
 }

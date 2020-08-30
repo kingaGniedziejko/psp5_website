@@ -9,7 +9,6 @@ import AttachedLink from "./Link";
 import Attachment from "./Attachment";
 import "react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from "react-image-gallery";
-import AnchorLink from "react-anchor-link-smooth-scroll";
 
 
 export class Post extends Component {

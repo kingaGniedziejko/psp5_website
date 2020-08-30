@@ -75,6 +75,11 @@ div>div.image-gallery .fullscreen div.image-gallery-thumbnails-container button 
 }
 
 /*icons*/
+
+.image-gallery-svg:focus, .image-gallery-svg:active {
+    stroke: var(--white-1);
+}
+
 div>div.image-gallery .image-gallery-left-nav,
 div>div.image-gallery .image-gallery-right-nav{
     padding: 0;
