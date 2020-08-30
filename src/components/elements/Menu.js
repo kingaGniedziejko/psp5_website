@@ -33,26 +33,25 @@ export class Menu extends Component {
                             <div key={index} className={"menu-item"}
                                  onMouseEnter={(e) => {if(!isMobile) e.target.classList.add("hovered")}}
                                  onMouseOut={(e) => {
-                                     if (!isMobile && e.relatedTarget.closest('.hovered') === null && e.target.closest('.hovered') !== null)
+                                     if (e.relatedTarget.closest('.hovered') === null && e.target.closest('.hovered') !== null)
                                          e.target.closest('.hovered').classList.remove("hovered");
                                      else return ""
                                  }}
                                  onClick={(e) => {
+                                     e.preventDefault();
+                                     console.log(e.target.classList);
                                      if(isMobile) {
-                                         let hovered = document.getElementsByClassName("hovered");
-                                         if (hovered.length !== 0) hovered[0].classList.remove("hovered");
-                                         e.target.classList.add("hovered");
+                                         if (!e.target.classList.contains("submenu-item")) {
+                                             let hovered = document.getElementsByClassName("hovered");
+                                             if (hovered.length !== 0) hovered[0].classList.remove("hovered");
+                                             e.currentTarget.classList.add("hovered");
+                                         }
                                      }
                                  }}
                             >
                                 {isMobile ?
-                                    // <a onClick={(e) => {
-                                    //     if (isMobile) e.target.closest('.menu-item').classList.add("hovered")
-                                    // }}>
-                                    //     {menuItem.title}
-                                    // </a>
-
-                                    <div>{menuItem.title}</div>
+                                    <NavLink to={menuItem.url} className='disabled-link' activeClassName={"menu-item-active"}>{menuItem.title}</NavLink>
+                                    // <a href={""}>{menuItem.title}</a>
                                     :
                                     this.isValidUrl(menuItem.url) ?
                                         (new URL(menuItem.url).origin === global.config.proxy ?

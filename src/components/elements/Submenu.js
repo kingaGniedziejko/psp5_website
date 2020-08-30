@@ -5,8 +5,11 @@ export class Submenu extends Component {
 
     handleItemClick = e => {
         if(this.props.type === "fullscreen") {
-            let hovered = document.getElementsByClassName("hovered")[0]
-            hovered.classList.remove("hovered")
+            let hovered = document.getElementsByClassName("hovered");
+
+            while (hovered[0]) {
+                hovered[0].classList.remove('hovered');
+            }
 
         } else if(this.props.type === "mobile"){
             this.props.closeSideMenu();
