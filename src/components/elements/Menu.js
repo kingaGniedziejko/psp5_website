@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {NavLink, Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 import Submenu from "./Submenu"
 import {ReactComponent as IconHome} from '../../images/home.svg';
@@ -56,6 +56,28 @@ export class Menu extends Component {
                                         </Link>
                                 }
                                 <Submenu menuItem={menuItem} type={"fullscreen"} index={index}/>
+
+
+
+
+
+                            <div key={index} className={"menu-item"}>
+                                {this.isValidUrl(menuItem.url) ?
+                                    (new URL(menuItem.url).origin === global.config.proxy ?
+                                        <NavLink to={new URL(menuItem.url).pathname} activeClassName={"menu-item-active"}>
+                                            {menuItem.title}
+                                        </NavLink>
+                                        :
+                                        <a href={menuItem.url} rel="noopener noreferrer" target="_blank">
+                                            {menuItem.title}
+                                        </a>
+                                    )
+                                    :
+                                    <NavLink to={menuItem.url} activeClassName={"menu-item-active"}>
+                                        {menuItem.title}
+                                    </NavLink>
+                                }
+                                <Submenu menuItem={menuItem} type={"fullscreen"} />
                             </div>
                         );
                     })

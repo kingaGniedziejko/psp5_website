@@ -147,6 +147,27 @@ iframe {
     width: 100%
 }
 
+input {
+    font-family: "Nunito", sans-serif;
+    color: var(--font-dark) !important;
+}
+
+::-webkit-input-placeholder {
+    color: var(--accent-1);
+}
+:-ms-input-placeholder {
+    color: var(--accent-1);
+}
+::-ms-input-placeholder {
+    color: var(--accent-1);
+}
+:-moz-placeholder {
+    color: var(--accent-1);
+}
+::placeholder {
+    color: var(--accent-1);
+}
+
 a:link, a:visited {
     color: var(--accent-1);
 }

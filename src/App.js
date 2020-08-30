@@ -32,6 +32,7 @@ export class App extends Component {
 
         if (isLoaded){
             global.config.menuItems = menuItems;
+
             return (
                 <BrowserRouter >
                     <div className={"container"}>

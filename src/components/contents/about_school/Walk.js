@@ -7,11 +7,8 @@ import ImageGallery from "react-image-gallery";
 import {NavLink} from "react-router-dom";
 import {isMobile} from 'react-device-detect';
 import schoolPhoto from '../../../images/photo_school.jpeg'
-import PageContent from "../../elements/PageContent";
-
 
 export class Walk extends Component {
-
     state = {
         title: "Spacer po szkole",
         page: undefined,
@@ -69,6 +66,15 @@ export class Walk extends Component {
         if(true) {
             document.getElementById(selected.id).classList.add("clicked");
         }
+        setTimeout(function () {
+            if (document.getElementById("area-info-id") !== null) {
+                window.scrollTo({
+                    top: document.getElementById("area-info-id").offsetTop - 90,
+                    behavior: "smooth"
+                })
+            }
+        }, 500)
+
     }
 
     handleMouseOut = () => {
@@ -81,15 +87,12 @@ export class Walk extends Component {
     render() {
         const {images, selectedArea, hoveredName, page} = this.state
 
-
         if(this.state.isLoaded) {
-
             return (
                 <div className={"content"}>
                     <Helmet>
                         <title>{global.config.mainTitle + " " + this.state.title}</title>
                     </Helmet>
-                    {/*<PageContent page={page} />*/}
                     <section>
                         <div className={"section-content"}>
                             <div className={"centered"}>
@@ -177,7 +180,7 @@ export class Walk extends Component {
                     {
                         selectedArea !== "" ?
                             <section className={"grey"}>
-                                <div key={selectedArea.id} className={"area-info"}>
+                                <div key={selectedArea.id} className={"area-info"} id={"area-info-id"}>
                                         <h1 dangerouslySetInnerHTML={{__html: selectedArea.name}}/>
                                         {selectedArea.oembed ? <div dangerouslySetInnerHTML={{__html: selectedArea.oembed}} className={"oembed-container"}/> : "" }                                    {
                                         images.length !== 0 ?
