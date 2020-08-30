@@ -4,6 +4,8 @@ import {NavLink, Link} from "react-router-dom";
 import Submenu from "./Submenu"
 import {ReactComponent as IconHome} from '../../images/home.svg';
 import {ReactComponent as IconSearch} from '../../images/search.svg';
+import {isMobile} from 'react-device-detect';
+
 
 export class Menu extends Component {
     isValidUrl(string) {
@@ -14,6 +16,7 @@ export class Menu extends Component {
         }
         return true;
     }
+
 
     render() {
         const {menuItems} = this.props;
@@ -27,11 +30,32 @@ export class Menu extends Component {
                 {
                     menuItems.map((menuItem, index) => {
                         return (
-                            <div key={index} className={"menu-item"}>
-                                <Link to={this.isValidUrl(menuItem.url) ? (new URL(menuItem.url).pathname) : menuItem.url} activeClassName={"menu-item-active"}>
-                                    {menuItem.title}
-                                </Link>
-                                <Submenu menuItem={menuItem} type={"fullscreen"} />
+                            <div key={index} className={"menu-item"}
+                                 onMouseEnter={(e) => {if(!isMobile) e.target.classList.add("hovered")}}
+                                 onMouseOut={(e) => {
+                                     if (!isMobile && e.relatedTarget.closest('.hovered') === null && e.target.closest('.hovered') !== null)
+                                         e.target.closest('.hovered').classList.remove("hovered");
+                                     else return ""
+                                 }}
+                                 onClick={(e) => {
+                                     let hovered = document.getElementsByClassName("hovered")
+                                     if(hovered.length !== 0) hovered[0].classList.remove("hovered")
+                                     if(isMobile) e.target.classList.add("hovered")
+                                 }}>
+
+                                {
+                                    isMobile ?
+                                        <a onClick={(e) => {
+                                            if (isMobile) e.target.closest('.menu-item').classList.add("hovered")
+                                        }}>
+                                            {menuItem.title}
+                                        </a>
+                                        :
+                                        <Link to={this.isValidUrl(menuItem.url) ? (new URL(menuItem.url).pathname) : menuItem.url} activeClassName={"menu-item-active"}>
+                                            {menuItem.title}
+                                        </Link>
+                                }
+                                <Submenu menuItem={menuItem} type={"fullscreen"} index={index}/>
                             </div>
                         );
                     })

@@ -71,36 +71,62 @@
         padding: 0;
     }
 
-    .submenu {
+.menu-item:not(.hovered) .submenu:not(.hovered) {
         display: none;
         z-index: 15;
     }
 
-    .menu-item:hover:not(:focus) .submenu {
-        top: 100%;
-        left: 0;
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        font-size: medium;
-        background-color: var(--accent-2-light);
-        padding-top: 0.3em;
-        padding-bottom: 0.5em;
-    }
+    /*.menu-item:hover .submenu {*/
+    /*    top: 100%;*/
+    /*    left: 0;*/
+    /*    display: flex;*/
+    /*    flex-direction: column;*/
+    /*    position: absolute;*/
+    /*    font-size: medium;*/
+    /*    background-color: var(--accent-2-light);*/
+    /*    padding-top: 0.3em;*/
+    /*    padding-bottom: 0.5em;*/
+    /*}*/
 
-    .submenu-item {
-        white-space: pre-wrap;
-    }
+    /*.submenu-item {*/
+    /*    white-space: pre-wrap;*/
+    /*}*/
 
-    .menu-item:hover:not(:focus) .submenu-item {
-        color: var(--accent-1);
-        padding: 0.4em 0.7em;
-        width: 15em;
-    }
+    /*.menu-item:hover .submenu-item {*/
+    /*    color: var(--accent-1);*/
+    /*    padding: 0.4em 0.7em;*/
+    /*    width: 15em;*/
+    /*}*/
 
-    .menu-item:hover:not(:focus) .submenu-item:hover {
-        color: var(--accent-1-light);
-    }
+    /*.menu-item:hover .submenu-item:hover {*/
+    /*    color: var(--accent-1-light);*/
+    /*}*/
+
+.menu-item.hovered .submenu {
+    top: 100%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    font-size: medium;
+    background-color: var(--accent-2-light);
+    padding-top: 0.3em;
+    padding-bottom: 0.5em;
+}
+
+.submenu-item {
+    white-space: pre-wrap;
+}
+
+.menu-item.hovered .submenu .submenu-item {
+    color: var(--accent-1);
+    padding: 0.4em 0.7em;
+    width: 15em;
+}
+
+.menu-item.hovered .submenu .submenu-item:hover {
+    color: var(--accent-1-light);
+}
 
     @media (min-width: 1131px) {
         .submenu {
