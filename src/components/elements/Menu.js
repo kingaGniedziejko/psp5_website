@@ -5,6 +5,7 @@ import Submenu from "./Submenu"
 import {ReactComponent as IconHome} from '../../images/home.svg';
 import {ReactComponent as IconSearch} from '../../images/search.svg';
 import {isMobile} from 'react-device-detect';
+import ReactDOM from "react-dom";
 
 
 export class Menu extends Component {

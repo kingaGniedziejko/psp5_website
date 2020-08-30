@@ -30,7 +30,7 @@ export class FullscreenModal extends Component {
                         <IconCross onClick={this.props.closeFullscreen}/>
                     </div>
                     {
-                        url !== undefined ?
+                        url !== undefined && url !== "" ?
                             <a href={url.url} rel="noopener noreferrer" target="_blank">
                                 <button className={"button-accent-2"}>
                                     Szczegóły

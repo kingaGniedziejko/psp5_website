@@ -17,6 +17,7 @@ import {ReactComponent as IconSearch} from '../../images/search.svg';
 import {ReactComponent as Logo} from '../../images/logo.svg';
 import {ReactComponent as IconCross} from '../../images/cross.svg';
 import {ReactComponent as IconArrow} from '../../images/arrow.svg';
+import ReactDOM from "react-dom";
 
 
 export class Header extends Component {
@@ -24,6 +25,7 @@ export class Header extends Component {
         super(props);
         this.burgerRef = React.createRef();
         this.navBar = React.createRef();
+        this.searchbar = React.createRef();
     }
 
     state = {
@@ -52,6 +54,9 @@ export class Header extends Component {
     toggleSearchBar = () => {
         this.setState({
             isSearchBarOpen: !this.state.isSearchBarOpen
+        }, () => {
+            if(this.state.isSearchBarOpen)
+                document.addEventListener('click', this.handleClickOutsideSearchBar, true);
         });
     }
 
@@ -79,6 +84,19 @@ export class Header extends Component {
             this.onSearchClick();
         }
     }
+
+    handleClickOutsideSearchBar = event => {
+        const domNode = ReactDOM.findDOMNode(this);
+        const searchBar = ReactDOM.findDOMNode(this.searchbar.current)
+
+        console.log(event.target)
+
+        if(this.state.isSearchBarOpen)
+            if((domNode && !domNode.contains(event.target)) || (searchBar && !searchBar.contains(event.target))) {
+                this.toggleSearchBar()
+            }
+    }
+
 
     render() {
         const {menuItems} = this.props;
@@ -121,7 +139,7 @@ export class Header extends Component {
                             classNames="search-bar-anim"
                             unmountOnExit
                         >
-                            <div id={"search-bar"}>
+                            <div id={"search-bar"} ref={this.searchbar}>
                                 <div className={"container"}>
                                     <div id={"spacer"}/>
                                     <div id={"form"}>
