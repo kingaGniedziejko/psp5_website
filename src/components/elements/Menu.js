@@ -37,9 +37,9 @@ export class Menu extends Component {
                                      else return ""
                                  }}
                                  onClick={(e) => {
-                                     e.preventDefault();
                                      if(isMobile) {
                                          if (!e.target.classList.contains("submenu-item")) {
+                                             e.preventDefault();
                                              let hovered = document.getElementsByClassName("hovered");
                                              if (hovered.length !== 0) hovered[0].classList.remove("hovered");
                                              e.currentTarget.classList.add("hovered");
