@@ -5,8 +5,6 @@ import Submenu from "./Submenu"
 import {ReactComponent as IconHome} from '../../images/home.svg';
 import {ReactComponent as IconSearch} from '../../images/search.svg';
 import {isMobile} from 'react-device-detect';
-import ReactDOM from "react-dom";
-
 
 export class Menu extends Component {
     isValidUrl(string) {
@@ -38,13 +36,17 @@ export class Menu extends Component {
                                      else return ""
                                  }}
                                  onClick={(e) => {
-                                     if(isMobile) {
-                                         if (!e.target.classList.contains("submenu-item")) {
+                                     if (!e.target.classList.contains("submenu-item")) {
+                                        if(isMobile) {
                                              e.preventDefault();
                                              let hovered = document.getElementsByClassName("hovered");
                                              if (hovered.length !== 0) hovered[0].classList.remove("hovered");
                                              e.currentTarget.classList.add("hovered");
-                                         }
+                                        } else {
+                                            e.preventDefault();
+                                            let hovered = document.getElementsByClassName("hovered");
+                                            if (hovered.length !== 0) hovered[0].classList.remove("hovered");
+                                        }
                                      }
                                  }
                             }>
