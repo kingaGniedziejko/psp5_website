@@ -23,6 +23,7 @@ header #ribbon a:hover {
 }
 
 #navigation-bar {
+    position: relative;
     background-color: var(--accent-1);
     box-shadow: 0 4px 8px 0 rgba(15, 49, 126, 0.2), 0 6px 20px 0 rgba(15, 49, 126, 0.19);
     order: 1;
@@ -194,6 +195,7 @@ header .container {
     right: 0;
     box-shadow: 0 4px 8px 0 rgba(15, 49, 126, 0.2), 0 6px 20px 0 rgba(15, 49, 126, 0.19);
     order: 2;
+    z-index: 3;
 }
 
 #search-bar .container {

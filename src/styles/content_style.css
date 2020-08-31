@@ -246,8 +246,7 @@ div.content div.vertical-centered>div#shortcut>a{
 
 /* table styling */
 table {
-    /*max-width: 100%;*/
-    margin: 4px;
+    margin: auto;
 }
 
 table,
@@ -290,15 +289,14 @@ table.no-border-table {
     font-size: 1em;
     border: none;
     width: auto;
-    white-space: pre;
+    margin: 0;
+    /*white-space: pre;*/
 }
 
 table.no-border-table td {
     border: none;
     width: auto;
     height: auto !important;
-
     padding: 0.3em 0.5em 0.3em 0;
     vertical-align: top;
-
 }
