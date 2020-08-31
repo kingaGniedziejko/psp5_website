@@ -133,10 +133,6 @@ section {
     max-width: 600px;
 }
 
-table {
-    margin: auto
-}
-
 @media (min-width: 600px) {
     .two-column>*:first-child {
         padding-right: 1em;
