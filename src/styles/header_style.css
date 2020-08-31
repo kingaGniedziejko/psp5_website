@@ -313,8 +313,8 @@ header .container {
         width: 70px;
     }
 
-    #navigation-bar #showcase {
-        font-size: small;
+    #navigation-bar #showcase>div {
+        font-size: smaller;
     }
 
 }
@@ -368,7 +368,6 @@ header .container {
     #navigation-bar #showcase>div {
         margin-left: 0.6em;
         font-size: x-small;
-
     }
 
     #navigation-bar #showcase {
