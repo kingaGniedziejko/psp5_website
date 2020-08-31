@@ -6,10 +6,15 @@ import "../../styles/page_content_style.css"
 import PostDisplay from "./PostDisplay";
 import "react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from "react-image-gallery";
+import Helmet from "react-helmet";
 
 export class PageContent extends Component {
 
     render() {
+        const title = this.props.page.title.rendered;
+
+        console.log(title);
+
         const sections = this.props.page.acf.sections;
         const hasPostDisplay = this.props.page.acf.has_post_display;
 
@@ -161,6 +166,9 @@ export class PageContent extends Component {
         if(sections)
             return (
                 <>
+                    <Helmet>
+                        <title>{global.config.mainTitle + " " + title}</title>
+                    </Helmet>
                     {
                         sections.map((section, index) => {
                                 return (
