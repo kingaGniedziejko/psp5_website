@@ -31,9 +31,13 @@ export class Menu extends Component {
                             <div key={index} className={"menu-item"}
                                  onMouseEnter={(e) => {if(!isMobile) e.target.classList.add("hovered")}}
                                  onMouseOut={(e) => {
-                                     if (e.relatedTarget.closest('.hovered') === null && e.target.closest('.hovered') !== null)
-                                         e.target.closest('.hovered').classList.remove("hovered");
-                                     else return ""
+                                     if (e.relatedTarget !== null) {
+                                         if (e.relatedTarget.closest('.hovered') === null && e.target.closest('.hovered') !== null) {
+                                             if (e.target !== null) {
+                                                 e.target.closest('.hovered').classList.remove("hovered");
+                                             }
+                                         }
+                                     }
                                  }}
                                  onClick={(e) => {
                                      if (!e.target.classList.contains("submenu-item")) {

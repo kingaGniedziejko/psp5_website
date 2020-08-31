@@ -160,7 +160,7 @@ path.clicked, .interactive-photo-container svg path:active, .interactive-photo-c
     }
 
     .area-info .image-gallery-content {
-        max-width: 100%;
+        max-width: 95%;
     }
 
     .area-info .oembed-container {
