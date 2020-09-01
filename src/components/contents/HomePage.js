@@ -18,7 +18,7 @@ export class HomePage extends Component {
         isLoaded: false,
         title: global.config.mainTitle + " Strona główna",
         postCategory: "komunikaty",
-        postCount: 3,
+        postCount: 5,
         width: 0,
         achievements: []
     }

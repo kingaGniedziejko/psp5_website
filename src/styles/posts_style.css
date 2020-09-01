@@ -18,7 +18,8 @@ div.post{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     box-sizing: border-box;
     overflow: hidden;
-    transition: max-height 0.2s ease;
+    transition: max-height 0.543s ease-in-out;
+    /*transition: max-height 0.56s linear;*/
     /*transition-delay: 0.2s;*/
 }
 
@@ -98,7 +99,8 @@ div.post div.post-content-container>p * {
     background: linear-gradient(to top, var(--white-1) 30%, rgba(255,255,255, 0) 70%);
     pointer-events: none;
     opacity: 1;
-    transition: opacity 0.2s ease;
+    transition: opacity 0.543s ease-in-out;
+    /*transition: opacity 0.5s ease;*/
     /*transition-delay: 0.3s;*/
 }
 
@@ -175,9 +177,6 @@ div.post.post-left button.post-button {
         max-height: 420px;
     }
 
-    /*div.post.post-empty {*/
-    /*    height: 420px;*/
-    /*}*/
     .post-text div.after {
         background: linear-gradient(to top, var(--white-1) 30%, rgba(255, 255, 255, 0) 70%);
         height: 40%;
@@ -203,6 +202,12 @@ div.post.post-left button.post-button {
 
     div.post div>div.image-gallery.single img.image-gallery-image {
         height: 260px;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    div.post, div.post-empty {
+        width: 100%;
     }
 }
 

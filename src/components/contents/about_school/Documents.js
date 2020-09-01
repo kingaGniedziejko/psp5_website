@@ -17,7 +17,7 @@ export class Documents extends Component {
 
     componentDidMount() {
         let typesUrl = global.config.proxy + "/wp-json/wp/v2/document_types"
-        let documentsUrl = global.config.proxy + "/wp-json/wp/v2/documents"
+        let documentsUrl = global.config.proxy + "/wp-json/wp/v2/documents?per_page=100"
 
         let getTypes = axios.get(typesUrl);
         let getDocuments = axios.get(documentsUrl);
