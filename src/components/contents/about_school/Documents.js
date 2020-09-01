@@ -21,6 +21,7 @@ export class Documents extends Component {
 
         let getTypes = axios.get(typesUrl);
         let getDocuments = axios.get(documentsUrl);
+        let otherDocuments;
 
         axios.all([getTypes, getDocuments])
             .then(res => {
@@ -33,8 +34,19 @@ export class Documents extends Component {
                 });
 
                 res[1].data.forEach(document => {
-                    documents.push({key: document.id, name: document.title.rendered, type: document.document_types[0], url: document.acf.document.url})
+                    documents.push({key: document.id, name: document.title.rendered, type: documentTypes[document.document_types[0]], url: document.acf.document.url})
                 })
+
+                documentTypes =  Object.values(documentTypes).sort((a,b) => (a.value > b.value) ? 1 : ((b.value > a.value) ? -1 : 0));
+
+                console.log(documentTypes)
+
+                otherDocuments = documentTypes.filter((type) => type === "Inne dokumenty")
+                documentTypes = documentTypes.filter((type) => type !== "Inne dokumenty")
+                documentTypes.push(otherDocuments[0])
+
+                console.log(documentTypes)
+
 
                 this.setState({
                     page: this.props.page,
@@ -63,13 +75,13 @@ export class Documents extends Component {
                             <div className={"one-column center"}>
                                 <div className={"text-container"}>
                                     {
-                                        Object.keys(this.state.documentTypes).map(documentType => {
+                                        this.state.documentTypes.map(documentType => {
                                             const filteredDocuments = this.state.documents.filter(document => documentType === document.type.toString());
                                             filteredDocuments.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
                                             if(filteredDocuments.length > 0) {
                                                 return(
                                                     <div key={documentType}>
-                                                        <h1 dangerouslySetInnerHTML={{__html: this.state.documentTypes[documentType]}}/>
+                                                        <h1 dangerouslySetInnerHTML={{__html: documentType}}/>
                                                         {
                                                             filteredDocuments.map((filteredDocument, index) => {
                                                                 if(filteredDocument && filteredDocument !== "" && filteredDocument.name !== "...")
