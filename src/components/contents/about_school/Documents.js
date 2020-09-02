@@ -34,19 +34,13 @@ export class Documents extends Component {
                 });
 
                 res[1].data.forEach(document => {
-                    documents.push({key: document.id, name: document.title.rendered, type: documentTypes[document.document_types[0]], url: document.acf.document.url})
+                    documents.push({key: document.id, name: document.title.rendered, type: document.document_types.map(type => documentTypes[type]), url: document.acf.document.url})
                 })
 
                 documentTypes =  Object.values(documentTypes).sort((a,b) => (a.value > b.value) ? 1 : ((b.value > a.value) ? -1 : 0));
-
-                console.log(documentTypes)
-
                 otherDocuments = documentTypes.filter((type) => type === "Inne dokumenty")
                 documentTypes = documentTypes.filter((type) => type !== "Inne dokumenty")
                 documentTypes.push(otherDocuments[0])
-
-                console.log(documentTypes)
-
 
                 this.setState({
                     page: this.props.page,
@@ -76,7 +70,7 @@ export class Documents extends Component {
                                 <div className={"text-container"}>
                                     {
                                         this.state.documentTypes.map(documentType => {
-                                            const filteredDocuments = this.state.documents.filter(document => documentType === document.type.toString());
+                                            const filteredDocuments = this.state.documents.filter(document => document.type !== undefined && document.type.includes(documentType));
                                             filteredDocuments.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
                                             if(filteredDocuments.length > 0) {
                                                 return(

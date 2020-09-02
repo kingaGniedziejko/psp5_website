@@ -63,7 +63,8 @@ export class Canteen extends Component {
                                                                 title={menu.name}
                                                                 url={menu.url}/>
                                                 : ""
-                                            ) : ""
+                                            ) : <h4 className={"centered"}><i>Brak jadłospisów</i></h4>
+
                                     }
                                 </div>
 
