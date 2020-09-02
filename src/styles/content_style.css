@@ -184,7 +184,6 @@ div.content div.shortcut-menu-page div#shortcut {
 div.content div.shortcut-menu-page div#shortcut a {
     min-width: 140px;
     padding: 0 10px;
-    white-space: pre;
 }
 
 div.content div#shortcut {
@@ -192,9 +191,8 @@ div.content div#shortcut {
     max-width: 1200px;
     display: flex;
     flex-wrap: wrap;
-    align-items: stretch;
+    align-items: center;
     margin-bottom: 2em;
-    align-content: stretch;
 }
 
 div.content div#shortcut a{
@@ -208,9 +206,6 @@ div.content div#shortcut a{
     border-radius: 10px;
     color: var(--white-1);
     text-decoration: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 div.content div#shortcut a:hover {
@@ -223,6 +218,7 @@ div.content div#shortcut a:hover {
 
 div.content div#shortcut a div h3 {
     text-align: center;
+    white-space: nowrap;
 }
 
 div.content div.vertical-centered>div#shortcut{
@@ -294,6 +290,7 @@ table.no-border-table {
     border: none;
     width: auto;
     margin: 0;
+    /*white-space: pre;*/
 }
 
 table.no-border-table td {

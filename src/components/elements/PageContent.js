@@ -143,7 +143,7 @@ export class PageContent extends Component {
                 return (
                     <div>
                         {section.two_column_content.header ? <h1 className={"center"} dangerouslySetInnerHTML={{__html: section.two_column_content.header}}/> : ""}
-                        <div className={`two-column ${section.config.formatting.toString().replace(',',' ')}`}>
+                        <div className={`two-column ${columnClass(section.two_column_content)} ${section.config.formatting.toString().replace(',',' ')}`}>
                             {column(section.two_column_content.left_column)}
                             {column(section.two_column_content.right_column)}
                         </div>
@@ -151,6 +151,16 @@ export class PageContent extends Component {
                 )
             }
 
+        }
+
+        const columnClass = (content) => {
+            let classNames = "";
+            if(content.left_column.config.toString() === "text" && content.left_column.config.toString() === "text") {
+                classNames += "text-text "
+            }
+            classNames += content.config
+
+            return classNames
         }
 
         if(sections)

@@ -52,15 +52,13 @@ section {
 }
 
 
-.two-column:not(.narrow) {
+.two-column {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.two-column.narrow {
-    display: flex;
-    flex-direction: row;
+.two-column.text-text {
     justify-content: space-around;
 }
 
@@ -78,6 +76,10 @@ section {
 .additions {
     margin-right: auto;
     margin-left: auto;
+}
+
+.justify {
+    text-align: justify;
 }
 
 
@@ -139,11 +141,11 @@ section {
         padding-left: 1em;
     }
 
-    .one-column.narrow {
+    .one-column.center {
         max-width: 60%
     }
 
-    .one-column:not(.narrow) .image-gallery {
+    .one-column:not(.center) .image-gallery {
         max-width: 60%;
     }
 }
