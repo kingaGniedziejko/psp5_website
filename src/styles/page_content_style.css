@@ -52,13 +52,15 @@ section {
 }
 
 
-.two-column {
+.two-column:not(.narrow) {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.two-column.text-text {
+.two-column.narrow {
+    display: flex;
+    flex-direction: row;
     justify-content: space-around;
 }
 
@@ -76,10 +78,6 @@ section {
 .additions {
     margin-right: auto;
     margin-left: auto;
-}
-
-.justify {
-    text-align: justify;
 }
 
 
@@ -141,11 +139,11 @@ section {
         padding-left: 1em;
     }
 
-    .one-column.center {
+    .one-column.narrow {
         max-width: 60%
     }
 
-    .one-column:not(.center) .image-gallery {
+    .one-column:not(.narrow) .image-gallery {
         max-width: 60%;
     }
 }

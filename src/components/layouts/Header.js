@@ -190,7 +190,8 @@ export class Header extends Component {
                                             <div>
                                                 <a href={"https://www.facebook.com/psp5opole"} rel="noopener noreferrer"
                                                    target="_blank"><IconFacebook/></a>
-                                                <IconYoutube/>
+                                                <a href={"https://www.youtube.com/channel/UCRiApte7czAngxIDo3jPFAQ/featured?disable_polymer=1"} rel="noopener noreferrer"
+                                                   target="_blank"><IconYoutube/></a>
                                             </div>
                                         </div>
 
