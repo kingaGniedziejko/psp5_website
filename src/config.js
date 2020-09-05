@@ -1,6 +1,6 @@
 module.exports = global.config = {
     mainTitle: "PSP 5",
-    proxy: "http://this.mind-the-web.com",
+    proxy: "https://psp-5.opole.pl",
     menuItems: [],
     isMobile: false,
 
