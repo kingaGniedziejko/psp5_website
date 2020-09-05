@@ -126,6 +126,7 @@ path.clicked, .interactive-photo-container svg path:active, .interactive-photo-c
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 .area-info div>div.image-gallery img.image-gallery-image, div.area-info>div>img {
@@ -148,7 +149,7 @@ path.clicked, .interactive-photo-container svg path:active, .interactive-photo-c
 
 .area-info .oembed-container {
     margin: 1em 0;
-    width: 80%;
+    width: 95%;
     display: flex;
     justify-content: center;
 }
@@ -161,9 +162,4 @@ path.clicked, .interactive-photo-container svg path:active, .interactive-photo-c
     .area-info .image-gallery-content {
         max-width: 95%;
     }
-
-    .area-info .oembed-container {
-        width: 100%;
-    }
-
 }
