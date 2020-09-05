@@ -12,9 +12,6 @@ export class PageContent extends Component {
 
     render() {
         const title = this.props.page.title.rendered;
-
-        console.log(title);
-
         const sections = this.props.page.acf.sections;
         const hasPostDisplay = this.props.page.acf.has_post_display;
 

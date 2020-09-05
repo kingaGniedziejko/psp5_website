@@ -51,16 +51,16 @@ section {
     text-align: center;
 }
 
-
-.two-column:not(.narrow) {
+.two-column {
     display: flex;
     flex-direction: row;
+}
+
+.two-column:not(.narrow) {
     justify-content: space-between;
 }
 
 .two-column.narrow {
-    display: flex;
-    flex-direction: row;
     justify-content: space-around;
 }
 
