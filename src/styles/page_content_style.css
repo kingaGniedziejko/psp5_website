@@ -143,7 +143,7 @@ section {
         max-width: 60%
     }
 
-    .one-column:not(.narrow) .image-gallery {
+    .one-column:not(.narrow) .image-gallery:not(.fullscreen-modal) {
         max-width: 60%;
     }
 }
