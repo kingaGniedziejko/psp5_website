@@ -31,10 +31,18 @@
         overflow-x: hidden;
     }
 
+    #side-menu-container>div,
+    #side-menu-container>div>a.side-menu-item,
+    #side-menu-container details,
+    #side-menu-container div.side-menu-item>a {
+        width: 100%;
+    }
+
     #side-menu-container, summary {
         font-family: Rowdies, sans-serif;
         text-transform: uppercase;
-        color: var(--accent-1)
+        color: var(--accent-1);
+        width: 100%;
     }
 
     .side-menu-anim-enter {
