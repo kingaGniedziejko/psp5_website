@@ -125,7 +125,6 @@ path.clicked, .interactive-photo-container svg path:active, .interactive-photo-c
 .area-info, .area-info .image-gallery {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 

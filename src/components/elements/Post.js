@@ -41,8 +41,6 @@ export class Post extends Component {
             textHeight += 40;
         }
 
-        console.log(document.getElementById("post-" + this.props.post.id).scrollTop);
-
         if (this.state.isExpanded){
             if (!this.state.isTopVisible) {
                 // setTimeout()

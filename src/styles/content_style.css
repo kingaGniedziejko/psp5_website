@@ -184,7 +184,6 @@ div.content div.shortcut-menu-page div#shortcut {
 div.content div.shortcut-menu-page div#shortcut a {
     min-width: 140px;
     padding: 0 10px;
-    white-space: pre;
 }
 
 div.content div#shortcut {
