@@ -3,6 +3,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Spinner from "../elements/Spinner";
 import {ReactComponent as IconCross} from "../../images/cross.svg";
+import {isMobile} from "react-device-detect";
+import {NavLink} from "react-router-dom";
 
 export class FullscreenModal extends Component {
     state = {
@@ -19,6 +21,15 @@ export class FullscreenModal extends Component {
         })
     }
 
+    isValidUrl(string) {
+        try {
+            new URL(string);
+        } catch (_) {
+            return false;
+        }
+        return true;
+    }
+
     render() {
         const {image, url, alt, isLoaded} = this.state;
 
@@ -30,12 +41,27 @@ export class FullscreenModal extends Component {
                         <IconCross onClick={this.props.closeFullscreen}/>
                     </div>
                     {
-                        url !== undefined && url !== "" ?
-                            <a href={url.url} rel="noopener noreferrer" target="_blank">
-                                <button className={"button-accent-2"}>
-                                    Szczegóły
-                                </button>
-                            </a>
+                        url !== undefined && url !== ""  ?
+                            this.isValidUrl(url.url) ?
+                                (
+                                    new URL(url.url).origin === global.config.proxy ?
+                                    <NavLink to={(new URL(url.url)).pathname}>
+                                        <button className={"button-accent-2"}>
+                                            Szczegóły
+                                        </button>
+                                    </NavLink>
+                                    :
+                                    <a href={url.url} rel="noopener noreferrer" target="_blank">
+                                        <button className={"button-accent-2"}>
+                                            Szczegóły
+                                        </button>
+                                    </a>)
+                            :
+                                <NavLink to={url.url}>
+                                    <button className={"button-accent-2"}>
+                                        Szczegóły
+                                    </button>
+                                </NavLink>
                         : ""
                     }
                 </div>
