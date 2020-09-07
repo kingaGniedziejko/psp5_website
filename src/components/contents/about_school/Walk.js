@@ -180,7 +180,7 @@ export class Walk extends Component {
                     {
                         selectedArea !== "" ?
                             <section className={"grey"}>
-                                <div key={selectedArea.id} className={"area-info"} id={"area-info-id"}>
+                                <div key={selectedArea.id} className={"section-content area-info"} id={"area-info-id"}>
                                         <h1 dangerouslySetInnerHTML={{__html: selectedArea.name}}/>
                                         {selectedArea.oembed ? <div dangerouslySetInnerHTML={{__html: selectedArea.oembed}} className={"oembed-container"}/> : "" }                                    {
                                         images.length !== 0 ?
