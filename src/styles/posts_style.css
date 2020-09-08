@@ -7,7 +7,7 @@ div.posts-container{
     margin: 20px 5% 30px 5%;
 }
 
-div.post{
+div.post {
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -19,8 +19,6 @@ div.post{
     box-sizing: border-box;
     overflow: hidden;
     transition: max-height 0.543s ease-in-out;
-    /*transition: max-height 0.56s linear;*/
-    /*transition-delay: 0.2s;*/
 }
 
 div.post:last-child{
@@ -44,7 +42,6 @@ div.post.post-empty {
 
 div.post>div {
     margin: 10px;
-    /*display: flex;*/
     flex-direction: column;
 }
 
@@ -90,6 +87,11 @@ div.post div.post-content-container>p * {
     overflow: hidden;
 }
 
+.post-text, .post-text * {
+    font-size: 1em !important;
+    text-align: left !important;
+}
+
 .post-text div.after {
     position: absolute;
     bottom: 0;
@@ -100,8 +102,6 @@ div.post div.post-content-container>p * {
     pointer-events: none;
     opacity: 1;
     transition: opacity 0.543s ease-in-out;
-    /*transition: opacity 0.5s ease;*/
-    /*transition-delay: 0.3s;*/
 }
 
 .disabled-content {
