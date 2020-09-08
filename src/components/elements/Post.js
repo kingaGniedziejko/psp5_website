@@ -75,7 +75,7 @@ export class Post extends Component {
     }
 
     render() {
-        const {id, title, slug, date, acf} = this.props.post;
+        const {id, title, slug, modified, acf} = this.props.post;
         const {text, image_gallery, attachments, links} = acf;
         const {isExpanded, shortHeight, expandedHeight, contentWidth} = this.state;
 
@@ -117,7 +117,7 @@ export class Post extends Component {
                         <div>
                             <Link to={"/aktualnosci/" + id + "/" + slug}><h2 className={"post-title"} dangerouslySetInnerHTML={{__html: title.rendered}}/></Link>
                             <small className={"post-date"}>
-                                <Moment locale={"pl"} format="DD MMMM YYYYr. HH:mm">{date}</Moment>
+                                <Moment locale={"pl"} format="DD MMMM YYYYr. HH:mm">{modified}</Moment>
                             </small>
                             <div className={"post-text" + (isExpanded? "" : " disabled-content")}>
                                 <div dangerouslySetInnerHTML={{ __html: text}}/>
