@@ -207,7 +207,7 @@ a.attachment p, a.link p {
     display: inline-block;
     text-align: left;
     color: var(--font-dark);
-
+    word-break: break-word;
 }
 
 a.attachment svg, a.link svg {
@@ -257,5 +257,4 @@ a.attachment:hover *, a.link:hover * {
     justify-content: center;
     padding-top: 4em;
     padding-bottom: 4em;
-
 }
