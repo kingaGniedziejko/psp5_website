@@ -34,18 +34,21 @@ export class Post extends Component {
 
     extendButtonClick(){
         let textHeight = document.getElementById(this.props.post.id).scrollHeight;
+        let scrollHeight = textHeight;
 
         if (document.body.offsetWidth <= this.state.mobileMaxWidth){
-            textHeight += 240;
+            textHeight += 290;
+            scrollHeight += 240;
         } else {
             textHeight += 40;
+            scrollHeight += 40;
         }
 
         if (this.state.isExpanded){
             if (!this.state.isTopVisible) {
                 // setTimeout()
                 window.scrollBy({
-                    top: (textHeight - this.state.shortHeight.slice(0, -2)) * (-1),
+                    top: (scrollHeight - this.state.shortHeight.slice(0, -2)) * (-1),
                     behavior: 'smooth'
                 });
             }
