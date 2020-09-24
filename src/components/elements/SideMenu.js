@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {NavLink} from "react-router-dom";
 import ReactDOM from 'react-dom';
 import Submenu from "./Submenu"
+import {ReactComponent as IconContrast} from "../../images/contrast.svg";
 
 export class SideMenu extends Component {
     state = {
@@ -58,6 +59,60 @@ export class SideMenu extends Component {
         })
     }
 
+    increaseFont = (event) => {
+        var body = document.getElementsByTagName('body')[0];
+        var style = window.getComputedStyle(body, null).getPropertyValue('font-size');
+        var fontSize = parseFloat(style);
+        body.style.fontSize = (fontSize + 1) + 'px';
+    }
+
+    decreaseFont = (event) => {
+        var body = document.getElementsByTagName('body')[0];
+        var style = window.getComputedStyle(body, null).getPropertyValue('font-size');
+        var fontSize = parseFloat(style);
+        body.style.fontSize = (fontSize - 1) + 'px';
+    }
+
+    toggleContrast = event => {
+        global.config.isContrasted = !global.config.isContrasted
+        if(global.config.isContrasted) {
+            this.setContrastedColors()
+        }
+        else {
+            this.setStandardColors()
+        }
+    }
+
+    setContrastedColors() {
+        document.documentElement.style.setProperty('--white-1', 'black');
+        document.documentElement.style.setProperty('--white-2', 'black');
+        document.documentElement.style.setProperty('--font-dark', 'white');
+        document.documentElement.style.setProperty('--accent-1', 'yellow');
+        document.documentElement.style.setProperty('--accent-1-light', 'yellow');
+        document.documentElement.style.setProperty('--accent-1-extra-light', 'black');
+        document.documentElement.style.setProperty('--accent-2', 'black');
+        document.documentElement.style.setProperty('--accent-2-light', 'black');
+        document.documentElement.style.setProperty('--accent-2-lighter', 'black');
+        document.documentElement.style.setProperty('--accent-2-faded', 'black');
+        document.documentElement.style.setProperty('--accent-2-lightly-faded', 'black');
+        document.documentElement.style.setProperty('--accent-3-light', 'black');
+    }
+
+    setStandardColors() {
+        document.documentElement.style.setProperty('--white-1', 'rgb(246, 246, 246)');
+        document.documentElement.style.setProperty('--white-2', 'rgb(242, 242, 242)');
+        document.documentElement.style.setProperty('--font-dark', 'rgb(19, 15, 83)');
+        document.documentElement.style.setProperty('--accent-1', 'rgb(65, 111, 216)');
+        document.documentElement.style.setProperty('--accent-1-light', 'rgb(122, 158, 239)');
+        document.documentElement.style.setProperty('--accent-1-extra-light', 'rgb(195, 215, 252)');
+        document.documentElement.style.setProperty('--accent-2', 'rgb(238, 204, 35)');
+        document.documentElement.style.setProperty('--accent-2-light', 'rgb(241, 218, 105)');
+        document.documentElement.style.setProperty('--accent-2-lighter', 'rgb(238, 225, 160)');
+        document.documentElement.style.setProperty('--accent-2-faded', 'rgba(238, 204, 35, 0.38)');
+        document.documentElement.style.setProperty('--accent-2-lightly-faded', 'rgba(238, 204, 35, 0.53)');
+        document.documentElement.style.setProperty('--accent-3-light', 'rgba(232, 232, 232, 1.0)');
+    }
+
     render() {
 
         const {menuItems} = this.props;
@@ -97,7 +152,22 @@ export class SideMenu extends Component {
                                 );
                             })
                         }
+
                 </div>
+                    <div className={"accessibility-setting"}>
+                        <div>
+                            <p>Czcionka:</p>
+                            <div>
+                                <span onClick={this.increaseFont}>A+</span>
+                                <span onClick={this.decreaseFont}>A-</span>
+                            </div>
+
+                        </div>
+                        <div>
+                            <p>Kontrast:</p>
+                            <span onClick={this.toggleContrast}><IconContrast/></span>
+                        </div>
+                    </div>
             </div>
         </>
         );

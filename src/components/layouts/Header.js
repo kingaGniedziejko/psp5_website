@@ -17,6 +17,9 @@ import {ReactComponent as IconSearch} from '../../images/search.svg';
 import {ReactComponent as Logo} from '../../images/logo.svg';
 import {ReactComponent as IconCross} from '../../images/cross.svg';
 import {ReactComponent as IconArrow} from '../../images/arrow.svg';
+import {ReactComponent as IconContrast} from '../../images/contrast.svg';
+
+
 import ReactDOM from "react-dom";
 
 
@@ -95,6 +98,60 @@ export class Header extends Component {
             if((domNode && !domNode.contains(event.target)) || (searchBar && !searchBar.contains(event.target))) {
                 this.toggleSearchBar()
             }
+    }
+
+    toggleContrast = event => {
+        global.config.isContrasted = !global.config.isContrasted
+        if(global.config.isContrasted) {
+            this.setContrastedColors()
+        }
+        else {
+            this.setStandardColors()
+        }
+    }
+
+    setContrastedColors() {
+        document.documentElement.style.setProperty('--white-1', 'black');
+        document.documentElement.style.setProperty('--white-2', 'black');
+        document.documentElement.style.setProperty('--font-dark', 'white');
+        document.documentElement.style.setProperty('--accent-1', 'yellow');
+        document.documentElement.style.setProperty('--accent-1-light', 'yellow');
+        document.documentElement.style.setProperty('--accent-1-extra-light', 'black');
+        document.documentElement.style.setProperty('--accent-2', 'black');
+        document.documentElement.style.setProperty('--accent-2-light', 'black');
+        document.documentElement.style.setProperty('--accent-2-lighter', 'black');
+        document.documentElement.style.setProperty('--accent-2-faded', 'black');
+        document.documentElement.style.setProperty('--accent-2-lightly-faded', 'black');
+        document.documentElement.style.setProperty('--accent-3-light', 'black');
+    }
+
+    setStandardColors() {
+        document.documentElement.style.setProperty('--white-1', 'rgb(246, 246, 246)');
+        document.documentElement.style.setProperty('--white-2', 'rgb(242, 242, 242)');
+        document.documentElement.style.setProperty('--font-dark', 'rgb(19, 15, 83)');
+        document.documentElement.style.setProperty('--accent-1', 'rgb(65, 111, 216)');
+        document.documentElement.style.setProperty('--accent-1-light', 'rgb(122, 158, 239)');
+        document.documentElement.style.setProperty('--accent-1-extra-light', 'rgb(195, 215, 252)');
+        document.documentElement.style.setProperty('--accent-2', 'rgb(238, 204, 35)');
+        document.documentElement.style.setProperty('--accent-2-light', 'rgb(241, 218, 105)');
+        document.documentElement.style.setProperty('--accent-2-lighter', 'rgb(238, 225, 160)');
+        document.documentElement.style.setProperty('--accent-2-faded', 'rgba(238, 204, 35, 0.38)');
+        document.documentElement.style.setProperty('--accent-2-lightly-faded', 'rgba(238, 204, 35, 0.53)');
+        document.documentElement.style.setProperty('--accent-3-light', 'rgba(232, 232, 232, 1.0)');
+    }
+
+    increaseFont = (event) => {
+        var body = document.getElementsByTagName('body')[0];
+        var style = window.getComputedStyle(body, null).getPropertyValue('font-size');
+        var fontSize = parseFloat(style);
+        body.style.fontSize = (fontSize + 1) + 'px';
+    }
+
+    decreaseFont = (event) => {
+        var body = document.getElementsByTagName('body')[0];
+        var style = window.getComputedStyle(body, null).getPropertyValue('font-size');
+        var fontSize = parseFloat(style);
+        body.style.fontSize = (fontSize - 1) + 'px';
     }
 
 
@@ -185,11 +242,24 @@ export class Header extends Component {
                                                     <IconMail/>
                                                     <a type={"email"} href={"mailto: psp5@psp5.opole.pl"}>psp5@psp5.opole.pl</a>
                                                 </div>
+
+                                            </div>
+                                            <div>
+                                                <div className={"accessibility-setting"}>
+                                                    <p>Czcionka:</p>
+                                                    <span onClick={this.increaseFont}>A+</span>
+                                                    <span onClick={this.decreaseFont}>A-</span>
+                                                </div>
+                                                <div className={"accessibility-setting"}>
+                                                    <p>Kontrast:</p>
+                                                    <span onClick={this.toggleContrast}><IconContrast/></span>
+                                                </div>
                                             </div>
 
                                             <div>
                                                 <a href={"https://www.facebook.com/psp5opole"} rel="noopener noreferrer"
                                                    target="_blank"><IconFacebook/></a>
+
                                                 <a href={"https://www.youtube.com/channel/UCRiApte7czAngxIDo3jPFAQ/featured?disable_polymer=1"} rel="noopener noreferrer"
                                                    target="_blank"><IconYoutube/></a>
                                             </div>

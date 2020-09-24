@@ -79,7 +79,7 @@ div.post div.post-content-container p {
 }
 
 div.post div.post-content-container>p * {
-    font-size: 14px;
+    font-size: medium;
 }
 
 .post-text {
@@ -90,6 +90,11 @@ div.post div.post-content-container>p * {
 .post-text, .post-text * {
     font-size: 1em !important;
     text-align: left !important;
+}
+
+.post-text img {
+    max-width: 100%;
+    object-fit: scale-down;
 }
 
 .post-text div.after {

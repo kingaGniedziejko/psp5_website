@@ -207,7 +207,7 @@ export class Content extends Component {
                             )
                         })}
 
-                        <Route path="/aktualnosci/:newsID/:newsSlug" component={PostPage}/>
+                        <Route path="/aktualnosci/:newsID/:newsSlug/" component={PostPage}/>
                         <Route path={"/szukaj/:phrase"} component={Search}/>
                         <Route path={"/"} component={ErrorNotFound}/>
                     </Switch>

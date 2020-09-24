@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="33" viewBox="0 0 32 33">
+  <defs>
+    <clipPath id="clip-contrast">
+      <rect width="32" height="33"/>
+    </clipPath>
+  </defs>
+  <g id="contrast" clip-path="url(#clip-contrast)">
+    <path id="Icon_ionic-ios-contrast" data-name="Icon ionic-ios-contrast" d="M15.5,3.375A12.127,12.127,0,1,0,27.63,15.5,12.126,12.126,0,0,0,15.5,3.375Zm7.422,19.55A10.425,10.425,0,0,1,15.5,26V5.008a10.5,10.5,0,0,1,7.422,17.917Z" transform="translate(0.625 0.625)"/>
+  </g>
+</svg>

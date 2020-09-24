@@ -115,7 +115,7 @@ export class Post extends Component {
 
                     <div className={"post-content-container"} id={id}>
                         <div>
-                            <Link to={"/aktualnosci/" + id + "/" + slug}><h2 className={"post-title"} dangerouslySetInnerHTML={{__html: title.rendered}}/></Link>
+                            <Link to={"/aktualnosci/" + id + "/" + slug + "/"}><h2 className={"post-title"} dangerouslySetInnerHTML={{__html: title.rendered}}/></Link>
                             <small className={"post-date"}>
                                 <Moment locale={"pl"} format="DD MMMM YYYYr. HH:mm">{modified}</Moment>
                             </small>

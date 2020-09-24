@@ -121,6 +121,8 @@ section {
 
 .text-container>div>div {
     margin-bottom: 1em;
+    overflow-x: auto;
+
 }
 
 .section-content .additions {

@@ -3,9 +3,5 @@ module.exports = global.config = {
     proxy: "http://psp-5.opole.pl",
     menuItems: [],
     isMobile: false,
-
-    // currentPost: {
-    //     post: undefined,
-    //     images: []
-    // }
+    isContrasted: false
 };

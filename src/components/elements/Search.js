@@ -63,8 +63,6 @@ export class Search extends Component {
     render() {
         const {results, isLoaded, pageCount} = this.state;
 
-        if (isLoaded) console.log(results);
-
         return (
             <div className={"content content-search"}>
                 <div className={"section"}>

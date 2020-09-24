@@ -114,32 +114,52 @@ header .container {
     flex-direction: row;
     align-items: center;
     margin-inline-start: 0.5em;
-    margin-inline-end: 0.5em;
 }
 
-#ribbon>div:first-of-type>div {
+#ribbon>div>div, #ribbon>div>a {
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-inline-end: 0.5em;
 }
 
-#ribbon a {
-    height: 1.5em;
-    margin: 0;
+#ribbon>div>a {
+    height: 1.5em
 }
+
+/*#ribbon a {*/
+/*    height: 1.5em;*/
+/*    margin: 0;*/
+/*}*/
 
 #ribbon svg {
     height: 1.5em;
     margin: 0;
+    vertical-align: bottom;
 }
 
-#ribbon a svg path{
+#ribbon a svg path, #ribbon span svg path{
     fill: var(--font-dark);
 }
 
-#ribbon a svg:hover path {
+#ribbon a svg:hover path, #ribbon span svg:hover path {
     fill: var(--accent-1);
+}
+
+#ribbon span:hover {
+    color: var(--accent-1);
+}
+
+#ribbon .accessibility-setting>span {
+    font-family: Rowdies, sans-serif;
+    font-size: larger;
+    vertical-align: bottom;
+    cursor: pointer;
+}
+
+#ribbon .accessibility-setting>span:not(:last-of-type) {
+    margin: 0 0.2em
+
 }
 
 /* searchbar */
@@ -248,6 +268,8 @@ header .container {
 #search-bar #cross>* {
     height: 1.2em;
     padding-right: 0.4em;
+    fill: var(--white-1);
+
 }
 
 #search-bar #cross:hover svg * {
@@ -277,6 +299,7 @@ header .container {
     width: 1.7em;
     margin: 1em;
     stroke-width: 7;
+    color: var(--white-1);
 }
 
 #burger {
@@ -293,7 +316,7 @@ header .container {
 }
 
 #navigation-bar #mobile-menu svg path {
-    stroke-width: 7;
+    fill: var(--white-1);
 }
 @media (max-width: 1130px) {
 

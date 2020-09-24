@@ -64,8 +64,8 @@ ul.pagination li:last-of-type a {
     width: 30px;
     height: 30px;
     font-family: "Nunito", sans-serif;
-    font-size: 1.3em;
-    font-weight: 1000;
+    font-size: larger;
+    font-weight: bolder;
     background: none;
     box-shadow: none;
     color: var(--accent-1);

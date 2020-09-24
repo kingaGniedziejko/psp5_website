@@ -18,6 +18,9 @@
         z-index: 5;
         padding-top: var(--nav-bar-height);
         overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
 
         -webkit-touch-callout: none;
         -webkit-user-select: none;
@@ -29,20 +32,62 @@
 
     #side-menu-container {
         overflow-x: hidden;
+
     }
+
+#side-menu .accessibility-setting {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 0 0 0 1em;
+    background-color: var(--accent-2-light);
+}
+
+#side-menu .accessibility-setting>div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#side-menu .accessibility-setting>div>p {
+    font-family: Nunito, SansSerif;
+    text-transform: capitalize;
+    color: var(--font-dark);
+}
+
+#side-menu .accessibility-setting>div>*:not(p) {
+    font-size: larger;
+    margin: 0 0.3em;
+    fill: var(--font-dark);
+    vertical-align: bottom;
+    font-family: Rowdies, SansSerif, serif;
+}
+
+#side-menu .accessibility-setting>div>div>span:first-of-type {
+    margin-right: 0.5em;
+}
+
+#side-menu .accessibility-setting>div>*:not(p) * {
+    vertical-align: baseline;
+}
+
+#side-menu .accessibility-setting svg {
+    height: 1.3em;
+}
 
     #side-menu-container>div,
     #side-menu-container>div>a.side-menu-item,
     #side-menu-container details,
     #side-menu-container div.side-menu-item>a {
         width: 100%;
+        box-sizing: border-box;
     }
 
     #side-menu-container, summary {
         font-family: Rowdies, sans-serif;
         text-transform: uppercase;
         color: var(--accent-1);
-        width: 100%;
     }
 
     .side-menu-anim-enter {
