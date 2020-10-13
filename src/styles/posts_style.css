@@ -146,6 +146,12 @@ div.post.post-left button.post-button {
     left: 0;
 }
 
+div.post iframe {
+    max-width: 100%;
+    width: initial;
+    height: initial;
+}
+
 @media only screen and (min-width: 1600px) {
     div.post div.post-content-container {
         flex: 4;

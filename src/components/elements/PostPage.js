@@ -72,7 +72,7 @@ export class PostPage extends Component {
                                 <ImageGallery items={images} additionalClass={images.length === 1 ? "single" : ""} useBrowserFullscreen={false}/>
                             </div>
                             <div className={"post-content-container"}>
-                                <h2 className={"post-title"}>{title.rendered}</h2>
+                                <h2 className={"post-title"} dangerouslySetInnerHTML={{__html: title.rendered}}/>
                                 <small className={"post-date"}>
                                     <Moment locale={"pl"} format="DD MMMM YYYYr. HH:mm">{date}</Moment>
                                 </small>

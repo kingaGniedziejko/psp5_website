@@ -98,7 +98,7 @@ export class Post extends Component {
                 }
             })
         }
-
+        console.log(title)
         return (
             <WindowSizeListener
                 onResize={(windowSize) => {
