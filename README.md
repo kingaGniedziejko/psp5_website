@@ -1,5 +1,5 @@
 # Website for elementary school - PSP5
-Website is build with React and Wordpress as a Content Management System. This combination allows school staff to manage almost every aspect of the page. and maintain custom design of it.
+Website is build with React and Wordpress as a Content Management System. This combination allows school staff to manage almost every aspect of the page and maintain custom design of it.
 
 ## Maintenance
 School staff can set elements such as navigation and subnavigation items, single pages with different elements (images, tables, text, links, files etc.), announcements and achievements. All action is managed through Wordpress and fetched by front-end side of the app.
